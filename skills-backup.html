@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Catalog - LawTasksAI</title>
+    <meta name="description" content="200 AI-powered skills for law firms. Automation for contracts, litigation, research, billing, and more.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        header { padding: 20px 0; background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
+        .logo span { color: #2563eb; }
+        .header-cta { background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
+        .header-cta:hover { background: #1d4ed8; }
+        .hero { padding: 60px 0 40px; text-align: center; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+        .hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; color: #6b7280; max-width: 600px; margin: 0 auto; }
+        .stats { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: #2563eb; }
+        .stat-label { font-size: 0.9rem; color: #6b7280; }
+        .category-nav { background: white; padding: 20px 0; border-bottom: 1px solid #e5e7eb; position: sticky; top: 72px; z-index: 99; }
+        .category-nav .container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; flex-wrap: wrap; }
+        .category-nav a { white-space: nowrap; padding: 8px 16px; background: #f3f4f6; border-radius: 20px; text-decoration: none; color: #4b5563; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+        .category-nav a:hover { background: #2563eb; color: white; }
+        .skills-section { padding: 60px 0; }
+        .category { margin-bottom: 50px; }
+        .category h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #2563eb; display: inline-block; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+        .skill-card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; transition: all 0.2s; }
+        .skill-card:hover { border-color: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1); }
+        .skill-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 10px; }
+        .skill-name { font-weight: 600; font-size: 0.95rem; color: #1a1a2e; }
+        .skill-status { font-size: 0.7rem; padding: 3px 8px; border-radius: 12px; font-weight: 500; white-space: nowrap; }
+        .status-coming { background: #fef3c7; color: #92400e; }
+        .status-available { background: #d1fae5; color: #065f46; }
+        .skill-description { font-size: 0.85rem; color: #6b7280; line-height: 1.5; }
+        .cta-section { padding: 60px 0; background: #1a1a2e; color: white; text-align: center; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 15px; }
+        .cta-section p { color: #9ca3af; margin-bottom: 30px; }
+        .cta-button { display: inline-block; background: #2563eb; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .cta-button:hover { background: #1d4ed8; }
+        footer { padding: 40px 0; background: #f9fafb; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280; font-size: 0.9rem; }
+        footer a { color: #6b7280; text-decoration: none; margin: 0 15px; }
+        footer a:hover { color: #2563eb; }
+        .powered-by { margin-top: 15px; font-size: 0.85rem; }
+        .powered-by a { color: #2563eb; }
+        @media (max-width: 768px) { .hero h1 { font-size: 1.8rem; } .stats { gap: 20px; } .stat-number { font-size: 2rem; } .skills-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <a href="/#signup" class="header-cta">Subscribe</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>200 AI Skills for Law Firms</h1>
+            <p>Every repetitive task in your practice, automated. From contract review to billing audits.</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">200</div>
+                    <div class="stat-label">Total Skills</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Expert Skills Ready</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">73</div>
+                    <div class="stat-label">Query-Only Skills</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #6b7280; font-size: 0.95rem;">
+                <strong>How it works:</strong> Buy credits → Use any skill. 1-15 credits per use depending on complexity.
+            </p>
+        </div>
+    </section>
+    
+    <nav class="category-nav">
+        <div class="container">
+<a href="#contract">Contract</a>
+            <a href="#litigation">Litigation</a>
+            <a href="#case-management">Case Management</a>
+            <a href="#specialized">Specialized Practice Areas</a>
+            <a href="#research">Research</a>
+            <a href="#administrative">Administrative</a>
+            <a href="#billing">Billing</a>
+            <a href="#marketing">Marketing</a>
+            <a href="#client-relations">Client Relations</a>
+            <a href="#compliance">Compliance</a>
+            <a href="#technology">Technology</a>
+            <a href="#hr">Human Resources</a>
+            <a href="#court">Court</a>        </div>
+    </nav>
+    
+    <section class="skills-section">
+        <div class="container">
+<div class="category" id="contract">
+                <h2>1. Contract & Transactional</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Clause Comparer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compares contract clauses against a firm-standard library.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Lease-Crawler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans hundreds of leases for expiration or renewal dates.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">NDA Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Flags unfavorable "non-compete" or "indemnity" terms in standard NDAs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Change-of-Control Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans data rooms for contracts triggered by an acquisition.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Entity Validator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Cross-references contract parties against Secretary of State records.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Force Majeure Auditor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies which contracts cover specific events (e.g., pandemics).</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Signature Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Verifies all signature pages and dates are present in a closing set.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Amendment Synthesizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Merges original contracts with multiple amendments into a single 'restated' view.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Exclusivity Mapper</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies overlapping geographic or product exclusivity in retail leases.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Termination Notice Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts notice letters based on specific contract breach clauses.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Due Diligence Checklist</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates customized DD checklists by deal type.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Representations & Warranties Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors R&W survival periods and claim deadlines.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Escrow Release Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks escrow milestones and calculates release amounts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Assignment Consent Finder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies contracts requiring consent for assignment.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Governing Law Mapper</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Catalogs governing law and venue provisions across a contract portfolio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="litigation">
+                <h2>2. Litigation & Discovery</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Deposition Summarizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Distills 200-page transcripts into key testimony bullets.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Inconsistency Finder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Flags when a witness's trial testimony contradicts their deposition.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Medical Record Chronology</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sorts and summarizes years of medical history for personal injury.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Bates-Stamping Assistant</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Automatically organizes and tags incoming production files.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Privilege Log Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Suggests entries for a privilege log based on attorney-client identifiers.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Demand Letter Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates letters based on structured fact sheets.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Discovery Request Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts Interrogatories based on the specific allegations in a Complaint.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Social Media Scraper (Legal)</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Gathers public posts for evidence preservation (with metadata).</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Exhibit List Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Automatically re-numbers exhibits and updates references in briefs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Sentiment Analyzer for Jury Pools</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans public records/social media of potential jurors for bias.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Timeline Builder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Creates visual timelines from case facts and document dates.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Damages Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Computes economic damages based on structured inputs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Expert Report Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Summarizes opposing expert reports and flags weaknesses.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Motion Template Selector</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Recommends motion templates based on case posture.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Settlement Demand Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Evaluates demand letters against case value metrics.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Subpoena Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts subpoenas with proper service instructions by jurisdiction.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Objection Assistant</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Suggests objections during deposition transcript review.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Trial Exhibit Organizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Prepares and numbers exhibits for trial presentation.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Jury Instruction Researcher</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Finds pattern jury instructions by claim type and jurisdiction.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Appeal Issue Spotter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies preserved issues for appellate review.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="case-management">
+                <h2>3. Case Management & Intake</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Conflict Check Bot</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans internal databases for party name overlaps.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Intake Triage</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Categorizes incoming website leads by practice area and urgency.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">SOL Alert System</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Calculates and calendarizes Statutes of Limitations from intake dates.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Court Docket Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Notifies the team the second a new filing appears in a watched case.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Appointment Reminder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sends SMS reminders to clients for hearings or meetings.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Document Rejection Bot</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Flags if an e-filing was rejected and summarizes the clerk's reason.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Witness Coordinator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages scheduling and contact info for dozens of expert witnesses.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Matter Budget Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Alerts the partner when a matter hits 80% of the estimated budget.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Closing Binder Builder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compiles all final versions of deal docs into a single PDF.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Trust Account Reconciler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Matches bank statements to specific client ledger entries.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Deadline Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Computes response deadlines based on service date and jurisdiction.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Case Status Reporter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates weekly status reports for active matters.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Client Portal Updater</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Automatically posts case updates to client-facing portals.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">File Organization Bot</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Standardizes folder structure for new matters.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Retention Letter Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts engagement letters based on matter type.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="specialized">
+                <h2>4. Specialized Practice Areas</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Patent Claim Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Verifies that all terms in a claim have "antecedent basis."</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Trademark Infringement Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans new USPTO filings for similar brand marks.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Probate Asset Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Cross-references death certificates with known property holdings.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Immigration Form Pre-filler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Extracts data from passports to fill USCIS forms.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Family Law Financial Sworn Statement</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Summarizes bank statements into a standard financial affidavit.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">SEC Filing Summarizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Highlights "Risk Factors" in annual 10-K filings for corporate clients.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Zoning Code Researcher</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans local municipal codes for specific setbacks or land-use rules.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Workers' Comp Rating Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Estimates disability ratings based on medical findings.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Environmental Permit Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors expiration for industrial discharge or air permits.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Tax Opinion Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Pulls relevant IRS private letter rulings based on a set of facts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Bankruptcy Means Test Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Determines Chapter 7 eligibility from financial data.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Child Support Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Computes support amounts by state guidelines.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Criminal Sentencing Estimator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Projects sentencing ranges based on offense and history.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">ERISA Plan Auditor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Reviews retirement plan documents for compliance issues.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">ADA Compliance Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Audits websites or facilities against accessibility standards.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">HIPAA Incident Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Assesses breach notification requirements from incident facts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Real Estate Title Examiner</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Summarizes title commitments and flags exceptions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Construction Lien Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Computes lien deadlines based on project milestones.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Franchise Disclosure Reviewer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Extracts key terms from FDD documents.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Non-Profit Formation Assistant</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Guides 501(c)(3) application preparation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="research">
+                <h2>5. Research & Knowledge Management</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Precedent Finder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Locates the firm's own past briefs on a specific niche legal issue.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Statute Updater</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Checks if a cited law has been amended or repealed (Shepardizing).</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Bench Memo Preparer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Summarizes a judge's past rulings on similar motions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Legal News Curator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sends daily updates on specific case law changes to practice groups.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Multi-Jurisdiction Mapper</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compares laws on a single topic (e.g., privacy) across 50 states.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Citation Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Validates all case citations in a brief for accuracy.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Regulation Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors Federal Register for proposed rules in specific areas.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Legislative History Compiler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Gathers committee reports and floor statements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Secondary Source Finder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Locates treatises and law review articles on niche topics.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Local Rule Lookup</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Retrieves court-specific local rules and standing orders.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Opposing Counsel Profiler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compiles past case outcomes and litigation style.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Judge Assignment Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Provides background when a new judge is assigned.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Form Library Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Indexes and retrieves firm-approved form documents.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">CLE Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors attorney continuing education requirements and deadlines.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Brief Bank Organizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Catalogs and searches past work product by issue.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="administrative">
+                <h2>6. Administrative & Operations</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Bio-Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Updates attorney website bios based on recent wins/publications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Email Triage Agent</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts replies to standard client FAQs about "What happens next?".</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Compliance Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors firm emails for ethical wall violations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Voice-to-Task Agent</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Converts partner voice memos directly into tasks.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Expert Witness Reviewer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Scans an opposing expert's past trial testimony for contradictions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Translation Bridge</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Translates client intake documents for non-English speakers.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Cyber-Insurance Auditor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Checks firm protocols against insurance policy requirements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Office Supply Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks inventory and triggers reorder alerts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Conference Room Scheduler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages room bookings and resolves conflicts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Vendor Contract Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks renewal dates for firm service agreements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Mail Processing Bot</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Logs incoming mail and routes to appropriate attorneys.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">File Destruction Scheduler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies files past retention period for destruction.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Parking Validator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages client parking validation for office visits.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Visitor Log Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Maintains security logs for building access.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Office Directory Updater</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Keeps internal contact lists current with changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="billing">
+                <h2>7. Billing & Finance</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Billing Narrative Auditor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Flags "block billing" or vague entries (e.g., "work on file").</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Pre-Bill Reviewer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Checks draft bills against client billing guidelines.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">LEDES Formatter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Converts time entries to LEDES billing format.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Rate Increase Letter Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts annual rate adjustment notices.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Collections Prioritizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Ranks overdue accounts by likelihood of recovery.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Budget vs. Actual Reporter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compares matter spend against approved budgets.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Alternative Fee Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Models fixed-fee or contingency arrangements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Expense Reimbursement Processor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Validates expense reports against policy.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Write-Off Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies patterns in written-off time for process improvement.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Profitability Reporter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Calculates matter and client profitability metrics.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">UTBMS Code Suggester</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Recommends task codes based on time entry descriptions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Invoice Dispute Handler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks and responds to client billing disputes.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Retainer Replenishment Alert</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Notifies when trust account balance falls below threshold.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Payment Plan Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks installment payments and sends reminders.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Tax Reporting Assistant</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compiles 1099 data for vendor payments.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="marketing">
+                <h2>8. Marketing & Business Development</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">RFP Response Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates proposal responses from firm templates and matter history.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Pitch Deck Builder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Creates client presentations from firm credentials.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Event Follow-Up Bot</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sends personalized follow-ups after conference contacts.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Social Media Post Scheduler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Queues LinkedIn posts for attorney thought leadership.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Client Alert Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Writes legal updates on recent developments for distribution.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Media Mention Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors news for firm and attorney mentions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Referral Source Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Logs and analyzes business referral patterns.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Cross-Sell Identifier</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Suggests additional services for existing clients.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Competitive Intel Gatherer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors competitor announcements and moves.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Speaking Engagement Finder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies relevant CLE and conference opportunities.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Award Submission Preparer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compiles data for legal directory submissions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Webinar Coordinator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages registration, reminders, and follow-up for virtual events.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Testimonial Collector</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Solicits and organizes client testimonials (ethically).</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Alumni Network Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Maintains relationships with former firm attorneys.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Industry Report Generator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Creates thought leadership pieces from legal trends.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="client-relations">
+                <h2>9. Client Relations & Communication</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Client Satisfaction Surveyor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sends and analyzes post-matter feedback surveys.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Birthday/Anniversary Reminder</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Alerts attorneys to client relationship milestones.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Matter Status Emailer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Sends templated updates at key case milestones.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Meeting Prep Brief</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compiles client background before scheduled calls.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Thank-You Note Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates personalized appreciation messages.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Holiday Card Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Coordinates annual client holiday communications.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">New Client Welcome Kit</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Assembles onboarding materials for new engagements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Key Contact Updater</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Maintains current client contact information.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Client Team Mapper</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Visualizes relationships across client organizations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Communication Preference Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Records and respects client contact preferences.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Feedback Response Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Creates responses to client complaints or concerns.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">VIP Client Alerter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Notifies partners immediately when key clients contact the firm.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Relationship Health Scorer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks engagement metrics to identify at-risk clients.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Client Education Curator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Recommends webinars or articles relevant to client industries.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Exit Interview Coordinator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages client feedback when engagements end.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="compliance">
+                <h2>10. Compliance & Ethics</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Ethical Wall Enforcer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Automates access restrictions on conflicted matters.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Trust Account Auditor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Reconciles IOLTA accounts against client ledgers.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Engagement Letter Compliance Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Ensures required disclosures are included.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Fee Agreement Reviewer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Validates fee arrangements against state bar rules.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Pro Bono Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors attorney pro bono hours for annual goals.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Advertising Compliance Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Reviews marketing materials against bar rules.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Outside Counsel Guidelines Parser</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Extracts requirements from client OCGs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Conflicts Waiver Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Generates conflict waiver letters with required disclosures.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Matter Closure Checklist</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Ensures all compliance steps completed before closing.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Risk Assessment Tool</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Evaluates new matter risks before engagement.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Anti-Money Laundering Screener</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Checks clients against OFAC and sanctions lists.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Data Privacy Compliance Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks GDPR/CCPA obligations by matter.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Malpractice Exposure Analyzer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Flags matters with elevated risk profiles.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Bar Admission Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors attorney licensing status across jurisdictions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Mandatory Reporting Alerter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Identifies situations requiring reporting obligations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="technology">
+                <h2>11. Technology & Security</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Document Version Controller</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages document versions and tracks changes.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Secure File Share Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Creates and monitors client document portals.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Phishing Alert Trainer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tests and educates staff on email security.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Password Policy Enforcer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors compliance with credential requirements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Mobile Device Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks firm devices and enforces security policies.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">E-Signature Coordinator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages DocuSign/Adobe Sign workflows.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Data Backup Verifier</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Confirms backup completion and tests restoration.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Software License Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors license usage and renewal dates.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">IT Ticket Categorizer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Routes support requests to appropriate teams.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Remote Access Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Logs and audits VPN and remote connections.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Security Incident Logger</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Documents and tracks security events.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Vendor Security Assessor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Evaluates third-party security practices.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Encryption Compliance Checker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Verifies data encryption in transit and at rest.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">System Access Reviewer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Audits user permissions quarterly.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Disaster Recovery Tester</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Coordinates and documents DR drills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="hr">
+                <h2>12. Human Resources & Talent</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Resume Screener</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Filters attorney candidates against position requirements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Interview Scheduler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Coordinates multi-round interview logistics.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Onboarding Checklist Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks new hire setup across departments.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Performance Review Compiler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Aggregates matter feedback for annual reviews.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Billable Hours Monitor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Alerts attorneys approaching or missing targets.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Vacation Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Manages PTO requests and coverage arrangements.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Mentorship Matcher</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Pairs junior attorneys with appropriate mentors.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Training Completion Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors required training across the firm.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Departure Checklist Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Ensures proper offboarding when attorneys leave.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Compensation Benchmarker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Compares firm pay against market data.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Diversity Metrics Reporter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks and reports D&I statistics.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Workload Balancer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Analyzes matter distribution across associates.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Career Path Planner</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Maps progression milestones toward partnership.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Employee Satisfaction Surveyor</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Administers and analyzes workplace surveys.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Recognition Program Manager</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Tracks and celebrates attorney achievements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category" id="court">
+                <h2>13. Court & Government Interaction</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">E-Filing Assistant</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Prepares and validates documents for electronic filing.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Court Fee Calculator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Computes filing fees by court and document type.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Hearing Scheduler</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Coordinates available dates with court calendars.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Judge Preference Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Records judicial preferences for formatting and procedure.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Court Reporter Coordinator</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Schedules and confirms court reporters for depositions.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Government Records Requester</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Drafts FOIA and public records requests.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Agency Comment Drafter</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Prepares comments on proposed regulations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Permit Application Tracker</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Monitors government permit application status.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Court Holiday Calendar</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Maintains court closure dates by jurisdiction.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">Pro Hac Vice Application Preparer</span>
+                            <span class="skill-status status-available">Available</span>
+                        </div>
+                        <p class="skill-description">Completes admission applications for out-of-state counsel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Be First in Line</h2>
+            <p>Get updates on new skills and legal tech tips.</p>
+            <a href="/#signup" class="cta-button">Subscribe</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LawTasksAI. All rights reserved.</p>
+            <p><a href="mailto:hello@lawtasksai.com">Contact</a></p>
+            <p class="powered-by">Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
+        </div>
+    </footer>
+</body>
+</html>

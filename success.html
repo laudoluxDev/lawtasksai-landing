@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Complete - LawTasksAI</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 12px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        
+        .details {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        .license-key {
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        
+        .download-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .instructions {
+            margin-top: 32px;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .instructions code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .error {
+            color: #dc2626;
+            background: #fef2f2;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        
+        footer {
+            padding: 24px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">LawTasks<span>AI</span></a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="success-card">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading your purchase details...</p>
+            </div>
+            
+            <div id="content" style="display: none;">
+                <div class="success-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                
+                <h1>Purchase Complete!</h1>
+                <p class="subtitle">Your legal AI skills are ready to download.</p>
+                
+                <div class="details">
+                    <div class="detail-row">
+                        <span class="detail-label">Email</span>
+                        <span class="detail-value" id="email">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Credits Purchased</span>
+                        <span class="detail-value" id="credits">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Credits</span>
+                        <span class="detail-value" id="total-credits">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">License Key</span>
+                        <span class="detail-value license-key" id="license-key">-</span>
+                    </div>
+                </div>
+                
+                <a href="#" id="download-btn" class="download-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Download Your Skill
+                </a>
+                
+                <div class="instructions">
+                    <h3>Installation Instructions:</h3>
+                    <ol>
+                        <li><strong>Extract the ZIP:</strong> Double-click <code>lawtasksai-skills.zip</code> to extract it</li>
+                        <li><strong>Copy the folder</strong> <code>lawtasksai-skills</code> to your OpenClaw skills directory:
+                            <ul style="margin-top: 8px; font-size: 0.85rem;">
+                                <li><strong>Mac:</strong> <code>~/.openclaw/skills/</code></li>
+                                <li><strong>Windows:</strong> <code>C:\Users\YOU\.openclaw\skills\</code></li>
+                                <li><strong>Linux:</strong> <code>~/.openclaw/skills/</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>Restart OpenClaw</strong> or type <code>/reload</code></li>
+                        <li><strong>Start using!</strong> Just ask for any legal task</li>
+                    </ol>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">
+                        💡 Your license key is already configured — no setup needed!
+                    </p>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #9ca3af;">
+                        ⚠️ Some skills process text on our servers. For privileged materials, use skills marked 🔒 (local-only).
+                    </p>
+                </div>
+            </div>
+            
+            <div id="error" class="error" style="display: none;">
+                <p>Something went wrong loading your purchase. Please contact <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a> with your payment confirmation.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 LawTasksAI. Questions? <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
+    </footer>
+    
+    <script>
+        const API_BASE = 'https://lawtasksai-api-431860735682.us-central1.run.app';
+        
+        async function loadPurchaseDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const sessionId = params.get('session_id');
+            
+            if (!sessionId) {
+                showError();
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/session/${sessionId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load session');
+                }
+                
+                const data = await response.json();
+                
+                // Populate the page
+                document.getElementById('email').textContent = data.email;
+                document.getElementById('credits').textContent = data.credits_purchased;
+                document.getElementById('total-credits').textContent = data.total_credits;
+                document.getElementById('license-key').textContent = data.license_key;
+                
+                // Set download link
+                document.getElementById('download-btn').href = `${API_BASE}/download/loader/${data.license_key}`;
+                
+                // Show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError();
+            }
+        }
+        
+        function showError() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+        }
+        
+        // Load on page ready
+        loadPurchaseDetails();
+    </script>
+</body>
+</html>
