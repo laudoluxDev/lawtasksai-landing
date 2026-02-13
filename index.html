@@ -391,9 +391,9 @@
         
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -679,40 +679,64 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Starter</h3>
-                    <div class="price">$5</div>
-                    <div class="credits">50 credits</div>
-                    <p class="per-credit">$0.10 per task</p>
+                    <div class="price">$19</div>
+                    <div class="credits">25 tasks</div>
+                    <p class="per-credit">$0.76 per task</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
-                        <li>✓ Perfect for trying it out</li>
+                        <li>✓ One-time introductory offer</li>
                     </ul>
-                    <button onclick="checkout('starter')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('starter')" class="buy-btn">Try It</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Essentials</h3>
+                    <div class="price">$50</div>
+                    <div class="credits">70 tasks</div>
+                    <p class="per-credit">$0.71 per task · 11% off</p>
+                    <ul>
+                        <li>✓ Access to all 200+ tasks</li>
+                        <li>✓ Credits never expire</li>
+                        <li>✓ Great for regular use</li>
+                    </ul>
+                    <button onclick="checkout('essentials')" class="buy-btn">Buy Now</button>
                 </div>
                 <div class="pricing-card featured">
                     <div class="badge">Most Popular</div>
-                    <h3>Standard</h3>
-                    <div class="price">$20</div>
-                    <div class="credits">250 credits</div>
-                    <p class="per-credit">$0.08 per task</p>
+                    <h3>Accelerator</h3>
+                    <div class="price">$100</div>
+                    <div class="credits">155 tasks</div>
+                    <p class="per-credit">$0.65 per task · 19% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
-                        <li>✓ 20% savings</li>
+                        <li>✓ Best for active practices</li>
                     </ul>
-                    <button onclick="checkout('standard')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('accelerator')" class="buy-btn">Buy Now</button>
                 </div>
                 <div class="pricing-card">
-                    <h3>Bulk</h3>
-                    <div class="price">$50</div>
-                    <div class="credits">750 credits</div>
-                    <p class="per-credit">$0.067 per task</p>
+                    <h3>Efficient</h3>
+                    <div class="price">$250</div>
+                    <div class="credits">450 tasks</div>
+                    <p class="per-credit">$0.56 per task · 30% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
-                        <li>✓ Best value — 33% savings</li>
+                        <li>✓ Serious savings for busy firms</li>
                     </ul>
-                    <button onclick="checkout('bulk')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('efficient')" class="buy-btn">Buy Now</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Unstoppable</h3>
+                    <div class="price">$500</div>
+                    <div class="credits">1,100 tasks</div>
+                    <p class="per-credit">$0.45 per task · 44% off</p>
+                    <ul>
+                        <li>✓ Access to all 200+ tasks</li>
+                        <li>✓ Credits never expire</li>
+                        <li>✓ Maximum value</li>
+                    </ul>
+                    <button onclick="checkout('unstoppable')" class="buy-btn">Buy Now</button>
                 </div>
             </div>
         </div>
