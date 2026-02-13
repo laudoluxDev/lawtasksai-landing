@@ -286,9 +286,21 @@
                     <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">
                         💡 Your license key is already configured — no setup needed!
                     </p>
-                    <p style="margin-top: 8px; font-size: 0.85rem; color: #9ca3af;">
-                        ⚠️ Some skills process text on our servers. For privileged materials, use skills marked 🔒 (local-only).
-                    </p>
+                    
+                    <h3 style="margin-top: 24px;">Example Queries:</h3>
+                    <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem;">
+                        <li><strong>Research:</strong> "What's the SOL for medical malpractice in Texas?"</li>
+                        <li><strong>Deadlines:</strong> "Calculate response deadline for a complaint served March 1"</li>
+                        <li><strong>Documents:</strong> "Analyze this NDA" (paste or attach file)</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: #ecfdf5; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <p style="font-size: 0.9rem; color: #065f46; margin: 0;">
+                            <strong>🔒 Document Analysis is Local!</strong><br>
+                            When you analyze contracts, depositions, or NDAs, your files <em>never leave your computer</em>. 
+                            OpenClaw fetches the expert analysis framework, then applies it locally.
+                        </p>
+                    </div>
                 </div>
             </div>
             
@@ -303,7 +315,7 @@
     </footer>
     
     <script>
-        const API_BASE = 'https://lawtasksai-api-431860735682.us-central1.run.app';
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
         
         async function loadPurchaseDetails() {
             const params = new URLSearchParams(window.location.search);
