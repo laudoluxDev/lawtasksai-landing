@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download LawTasksAI - Get Your Skill Loader</title>
+    <title>Download LawTasksAI - Your Account</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
             min-height: 100vh;
         }
         
-        .container { max-width: 600px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
         
         header {
             padding: 20px 0;
@@ -31,6 +31,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1100px;
         }
         
         .logo {
@@ -42,6 +43,12 @@
         
         .logo span { color: #2563eb; }
         
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        
         .nav-link {
             color: #6b7280;
             text-decoration: none;
@@ -50,17 +57,14 @@
         
         .nav-link:hover { color: #2563eb; }
         
-        main {
-            padding: 60px 24px;
-        }
+        main { padding: 40px 24px; }
         
         .card {
             background: white;
             border-radius: 12px;
-            padding: 40px;
+            padding: 32px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: 0 auto;
+            margin-bottom: 24px;
         }
         
         h1 {
@@ -69,12 +73,19 @@
             text-align: center;
         }
         
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        
         .subtitle {
             color: #6b7280;
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         
+        /* Login Form */
         .tabs {
             display: flex;
             gap: 8px;
@@ -94,16 +105,8 @@
             transition: all 0.2s;
         }
         
-        .tab:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-        
-        .tab.active {
-            border-color: #2563eb;
-            background: #eff6ff;
-            color: #2563eb;
-        }
+        .tab:hover { border-color: #2563eb; color: #2563eb; }
+        .tab.active { border-color: #2563eb; background: #eff6ff; color: #2563eb; }
         
         .tab-content { display: none; }
         .tab-content.active { display: block; }
@@ -125,10 +128,7 @@
             transition: border-color 0.2s;
         }
         
-        input:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
+        input:focus { outline: none; border-color: #2563eb; }
         
         .input-hint {
             font-size: 0.85rem;
@@ -147,57 +147,132 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
-            margin-top: 20px;
+            margin-top: 16px;
         }
         
         .btn:hover { background: #1d4ed8; }
         .btn:disabled { background: #9ca3af; cursor: not-allowed; }
         
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+        
+        .btn-secondary:hover { background: #eff6ff; }
+        
         .message {
             padding: 16px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 16px;
             display: none;
         }
         
-        .message.success {
-            background: #ecfdf5;
-            border: 1px solid #10b981;
-            color: #065f46;
+        .message.success { background: #ecfdf5; border: 1px solid #10b981; color: #065f46; display: block; }
+        .message.error { background: #fef2f2; border: 1px solid #ef4444; color: #991b1b; display: block; }
+        
+        /* Dashboard styles */
+        #dashboard { display: none; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
         
-        .message.error {
-            background: #fef2f2;
-            border: 1px solid #ef4444;
-            color: #991b1b;
-        }
-        
-        .platform-note {
-            margin-top: 32px;
-            padding: 20px;
+        .stat-card {
             background: #f9fafb;
             border-radius: 8px;
+            padding: 20px;
+            text-align: center;
         }
         
-        .platform-note h3 {
-            font-size: 1rem;
-            margin-bottom: 12px;
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2563eb;
         }
         
-        .platform-note ul {
-            margin-left: 20px;
+        .stat-label {
+            font-size: 0.9rem;
             color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .license-box {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .license-key {
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #1a1a2e;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            padding: 8px 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        
+        .copy-btn:hover { background: #1d4ed8; }
+        
+        /* Purchase History */
+        .purchases-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        
+        .purchases-table th,
+        .purchases-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .purchases-table th {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        .purchases-table td {
+            color: #4b5563;
+        }
+        
+        .invoice-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .invoice-link:hover { text-decoration: underline; }
+        
+        .logout-btn {
+            color: #6b7280;
+            background: none;
+            border: none;
+            cursor: pointer;
             font-size: 0.9rem;
         }
         
-        .platform-note li { margin-bottom: 6px; }
-        
-        .platform-note code {
-            background: #e5e7eb;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
+        .logout-btn:hover { color: #ef4444; }
         
         footer {
             padding: 40px 24px;
@@ -207,49 +282,96 @@
         }
         
         footer a { color: #6b7280; }
+        
+        @media (max-width: 600px) {
+            .license-box { flex-direction: column; }
+            .purchases-table { font-size: 0.85rem; }
+            .purchases-table th, .purchases-table td { padding: 8px; }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="/" class="logo">LawTasks<span>AI</span></a>
-            <a href="/getting-started.html" class="nav-link">Getting Started</a>
+            <div class="nav-links">
+                <a href="/getting-started.html" class="nav-link">Getting Started</a>
+                <button id="logout-btn" class="logout-btn" style="display: none;" onclick="logout()">Sign Out</button>
+            </div>
         </div>
     </header>
     
     <main>
-        <div class="card">
-            <h1>Download LawTasksAI</h1>
-            <p class="subtitle">Install on a new machine or re-download your skill loader.</p>
-            
-            <div class="tabs">
-                <div class="tab active" data-tab="key">I have my license key</div>
-                <div class="tab" data-tab="email">Look up by email</div>
+        <!-- Login Section -->
+        <div id="login-section">
+            <div class="card">
+                <h1>Access Your Account</h1>
+                <p class="subtitle">Download your skill loader or check your balance.</p>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="email">Look up by Email</div>
+                    <div class="tab" data-tab="key">I have my License Key</div>
+                </div>
+                
+                <div id="tab-email" class="tab-content active">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@lawfirm.com">
+                    <p class="input-hint">The email you used when purchasing credits</p>
+                    <button class="btn" onclick="loginByEmail()">Access My Account</button>
+                </div>
+                
+                <div id="tab-key" class="tab-content">
+                    <label for="license-key-input">License Key</label>
+                    <input type="text" id="license-key-input" placeholder="lt_xxxxxxxxxxxxxxxx">
+                    <p class="input-hint">Your license key starts with <code>lt_</code></p>
+                    <button class="btn" onclick="loginByKey()">Access My Account</button>
+                </div>
+                
+                <div id="login-message" class="message"></div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Section (shown after login) -->
+        <div id="dashboard">
+            <div class="card">
+                <h2>👋 Welcome back!</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="credits-balance">—</div>
+                        <div class="stat-label">Credits Remaining</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-purchased">—</div>
+                        <div class="stat-label">Total Purchased</div>
+                    </div>
+                </div>
+                
+                <label>Your License Key</label>
+                <div class="license-box">
+                    <span class="license-key" id="display-license-key">—</span>
+                    <button class="copy-btn" onclick="copyLicenseKey()">Copy</button>
+                </div>
+                
+                <button class="btn" onclick="downloadLoader()">📥 Download Skill Loader</button>
+                <a href="https://lawtasksai.com/#pricing" class="btn btn-secondary" style="display: block; text-align: center; text-decoration: none; margin-top: 12px;">Buy More Credits</a>
             </div>
             
-            <div id="tab-key" class="tab-content active">
-                <label for="license-key">License Key</label>
-                <input type="text" id="license-key" placeholder="lt_xxxxxxxxxxxxxxxx">
-                <p class="input-hint">Your license key starts with <code>lt_</code></p>
-                <button class="btn" onclick="downloadByKey()">Download Skill Loader</button>
-            </div>
-            
-            <div id="tab-email" class="tab-content">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="you@lawfirm.com">
-                <p class="input-hint">The email you used when purchasing credits</p>
-                <button class="btn" onclick="lookupByEmail()">Send Download Link</button>
-            </div>
-            
-            <div id="message" class="message"></div>
-            
-            <div class="platform-note">
-                <h3>📦 After downloading:</h3>
-                <ul>
-                    <li><strong>OpenClaw:</strong> Extract to <code>~/.openclaw/skills/</code> and restart</li>
-                    <li><strong>Claude Desktop:</strong> See <a href="/getting-started.html">setup guide</a> for MCP configuration</li>
-                    <li><strong>Other MCP clients:</strong> Configure with your license key</li>
-                </ul>
+            <div class="card">
+                <h2>Purchase History</h2>
+                <table class="purchases-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Credits</th>
+                            <th>Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchases-body">
+                        <tr><td colspan="4" style="text-align: center; color: #9ca3af;">Loading...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -260,6 +382,16 @@
     
     <script>
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        let currentLicenseKey = null;
+        
+        // Check if already logged in (license key in localStorage)
+        window.onload = function() {
+            const savedKey = localStorage.getItem('lawtasksai_license_key');
+            if (savedKey) {
+                currentLicenseKey = savedKey;
+                loadDashboard();
+            }
+        };
         
         // Tab switching
         document.querySelectorAll('.tab').forEach(tab => {
@@ -273,52 +405,17 @@
         });
         
         function showMessage(text, type) {
-            const msg = document.getElementById('message');
+            const msg = document.getElementById('login-message');
             msg.textContent = text;
             msg.className = 'message ' + type;
-            msg.style.display = 'block';
         }
         
         function hideMessage() {
-            document.getElementById('message').style.display = 'none';
+            document.getElementById('login-message').className = 'message';
         }
         
-        async function downloadByKey() {
-            const key = document.getElementById('license-key').value.trim();
-            
-            if (!key) {
-                showMessage('Please enter your license key.', 'error');
-                return;
-            }
-            
-            if (!key.startsWith('lt_')) {
-                showMessage('License key should start with "lt_"', 'error');
-                return;
-            }
-            
-            // Validate key first
-            try {
-                const response = await fetch(`${API_BASE}/v1/credits/balance`, {
-                    headers: { 'Authorization': `Bearer ${key}` }
-                });
-                
-                if (!response.ok) {
-                    showMessage('Invalid license key. Please check and try again.', 'error');
-                    return;
-                }
-                
-                // Key is valid, trigger download
-                window.location.href = `${API_BASE}/download/loader/${key}`;
-                showMessage('Download started! Check your downloads folder.', 'success');
-                
-            } catch (error) {
-                showMessage('Error validating license key. Please try again.', 'error');
-            }
-        }
-        
-        async function lookupByEmail() {
+        async function loginByEmail() {
             const email = document.getElementById('email').value.trim();
-            
             if (!email) {
                 showMessage('Please enter your email address.', 'error');
                 return;
@@ -332,23 +429,143 @@
                 });
                 
                 if (response.ok) {
-                    showMessage('✓ Download link sent to your email! Check your inbox.', 'success');
+                    const data = await response.json();
+                    currentLicenseKey = data.license_key;
+                    localStorage.setItem('lawtasksai_license_key', currentLicenseKey);
+                    loadDashboard();
                 } else {
                     const data = await response.json();
                     showMessage(data.detail || 'No account found with that email.', 'error');
                 }
-                
             } catch (error) {
-                showMessage('Error looking up email. Please try again.', 'error');
+                showMessage('Error connecting to server. Please try again.', 'error');
             }
         }
         
-        // Allow Enter key to submit
-        document.getElementById('license-key').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') downloadByKey();
-        });
+        async function loginByKey() {
+            const key = document.getElementById('license-key-input').value.trim();
+            if (!key) {
+                showMessage('Please enter your license key.', 'error');
+                return;
+            }
+            if (!key.startsWith('lt_')) {
+                showMessage('License key should start with "lt_"', 'error');
+                return;
+            }
+            
+            try {
+                // Validate key by checking balance
+                const response = await fetch(`${API_BASE}/v1/credits/balance`, {
+                    headers: { 'Authorization': `Bearer ${key}` }
+                });
+                
+                if (response.ok) {
+                    currentLicenseKey = key;
+                    localStorage.setItem('lawtasksai_license_key', currentLicenseKey);
+                    loadDashboard();
+                } else {
+                    showMessage('Invalid license key. Please check and try again.', 'error');
+                }
+            } catch (error) {
+                showMessage('Error connecting to server. Please try again.', 'error');
+            }
+        }
+        
+        async function loadDashboard() {
+            // Show dashboard, hide login
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('logout-btn').style.display = 'block';
+            
+            // Display license key
+            document.getElementById('display-license-key').textContent = currentLicenseKey;
+            
+            // Load balance
+            try {
+                const response = await fetch(`${API_BASE}/v1/credits/balance`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('credits-balance').textContent = data.credits_balance;
+                }
+            } catch (e) {
+                document.getElementById('credits-balance').textContent = '?';
+            }
+            
+            // Load purchase history
+            try {
+                const response = await fetch(`${API_BASE}/v1/account/purchases`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const purchases = await response.json();
+                    renderPurchases(purchases);
+                } else {
+                    document.getElementById('purchases-body').innerHTML = 
+                        '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchase history available.</td></tr>';
+                }
+            } catch (e) {
+                document.getElementById('purchases-body').innerHTML = 
+                    '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">Could not load purchase history.</td></tr>';
+            }
+            
+            // Load total purchased
+            try {
+                const response = await fetch(`${API_BASE}/v1/account/stats`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const stats = await response.json();
+                    document.getElementById('total-purchased').textContent = stats.total_purchased || '—';
+                }
+            } catch (e) {
+                document.getElementById('total-purchased').textContent = '—';
+            }
+        }
+        
+        function renderPurchases(purchases) {
+            const tbody = document.getElementById('purchases-body');
+            if (!purchases || purchases.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchases yet.</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = purchases.map(p => `
+                <tr>
+                    <td>${new Date(p.date).toLocaleDateString()}</td>
+                    <td>${p.description}</td>
+                    <td>+${p.credits}</td>
+                    <td>${p.invoice_url ? `<a href="${p.invoice_url}" target="_blank" class="invoice-link">Download</a>` : '—'}</td>
+                </tr>
+            `).join('');
+        }
+        
+        function copyLicenseKey() {
+            navigator.clipboard.writeText(currentLicenseKey);
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        }
+        
+        function downloadLoader() {
+            window.location.href = `${API_BASE}/download/loader/${currentLicenseKey}`;
+        }
+        
+        function logout() {
+            localStorage.removeItem('lawtasksai_license_key');
+            currentLicenseKey = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+        }
+        
+        // Enter key support
         document.getElementById('email').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') lookupByEmail();
+            if (e.key === 'Enter') loginByEmail();
+        });
+        document.getElementById('license-key-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginByKey();
         });
     </script>
 </body>
