@@ -143,7 +143,7 @@
             font-size: 2rem; margin-bottom: 12px;
         }
         .security-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-        .security-card p { color: #6b7280; font-size: 0.93rem; }
+        .security-card p { color: #4b5563; font-size: 0.93rem; }
         
         /* How it works diagram */
         .how-it-works {
@@ -159,7 +159,8 @@
             border-radius: 8px; padding: 16px 24px; min-width: 160px;
         }
         .flow-box .label { font-size: 0.8rem; color: #9ca3af; margin-bottom: 4px; }
-        .flow-box .value { font-weight: 600; font-size: 1rem; }
+        .flow-box .value { font-weight: 600; font-size: 1rem; color: #e5e7eb; }
+        .flow-box .emphasis { color: #fbbf24; font-weight: 700; }
         .flow-box.secure { border-color: #34d399; }
         .flow-box.secure .value { color: #34d399; }
         .flow-arrow { font-size: 1.5rem; color: #60a5fa; }
@@ -345,6 +346,7 @@
                         <div class="value">You get the answer</div>
                     </div>
                 </div>
+                <p style="color: #34d399; font-size: 0.9rem; margin-top: 16px;">✓ Your queries are not stored on our servers</p>
             </div>
 
             <div class="how-it-works" style="border: 1px solid #34d399;">
@@ -353,19 +355,20 @@
                 <div class="flow">
                     <div class="flow-box secure">
                         <div class="label">Your Computer</div>
-                        <div class="value">🔒 Files stay here</div>
+                        <div class="value">🔒 Files stay <span class="emphasis">on your machine</span></div>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="flow-box secure">
-                        <div class="label">Local AI</div>
-                        <div class="value">🔒 Analyzes on your machine</div>
+                        <div class="label">AI Analysis</div>
+                        <div class="value">🔒 Analyzes <span class="emphasis">on your machine</span></div>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="flow-box secure">
-                        <div class="label">Your Computer</div>
-                        <div class="value">🔒 Results stay here</div>
+                        <div class="label">Results</div>
+                        <div class="value">🔒 Reported <span class="emphasis">on your machine</span></div>
                     </div>
                 </div>
+                <p style="color: #34d399; font-size: 0.9rem; margin-top: 16px;">✓ No data transferred to LawTasksAI — everything stays local</p>
             </div>
             
             <div class="security-grid">
