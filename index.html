@@ -675,7 +675,8 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Simple, Pay-As-You-Go Pricing</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 40px;">No subscriptions. Purchase credits for task access. One credit = one task. Credits never expire.</p>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 10px;">No subscriptions. Purchase credits for task access. One credit = one task. Credits never expire.</p>
+            <p style="text-align: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 40px;">By purchasing, you agree to our <a href="/terms.html" target="_blank" style="color: #2563eb; text-decoration: underline;">Terms of Service</a></p>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Starter</h3>
@@ -782,28 +783,6 @@
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
         
         async function checkout(pack) {
-            // Terms acceptance
-            const accepted = confirm(
-                'By purchasing credits, you agree to our Terms of Service.\n\n' +
-                'You are purchasing credits to ACCESS and USE our AI task automation service. ' +
-                'You do not own the underlying prompts or methodologies.\n\n' +
-                'Click OK to review Terms and continue, or Cancel to go back.\n\n' +
-                '(Terms will open in a new tab)'
-            );
-            
-            if (!accepted) return;
-            
-            // Open Terms in new tab
-            window.open('/terms.html', '_blank');
-            
-            // Confirm they've read it
-            const confirmed = confirm(
-                'Have you reviewed the Terms of Service?\n\n' +
-                'Click OK to proceed to checkout.'
-            );
-            
-            if (!confirmed) return;
-            
             // Find the button and disable it
             const buttons = document.querySelectorAll('.buy-btn');
             buttons.forEach(btn => btn.disabled = true);
