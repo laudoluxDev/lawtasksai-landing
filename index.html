@@ -604,7 +604,7 @@
                     <a href="mailto:support@lawtasksai.com" style="color: #4b5563; text-decoration: none; font-weight: 500;">Support</a>
                 </nav>
                 <div class="header-buttons">
-                    <a href="#pricing" class="header-cta btn-primary">Buy Credits</a>
+                    <a href="#pricing" class="header-cta btn-primary">Get Credits</a>
                     <a href="#signup" class="header-cta btn-secondary">Subscribe</a>
                 </div>
             </div>
@@ -675,7 +675,7 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Simple, Pay-As-You-Go Pricing</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 40px;">No subscriptions. Buy credits, use them anytime. One credit = one task.</p>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 40px;">No subscriptions. Purchase credits for task access. One credit = one task. Credits never expire.</p>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Starter</h3>
@@ -687,7 +687,7 @@
                         <li>✓ Credits never expire</li>
                         <li>✓ One-time introductory offer</li>
                     </ul>
-                    <button onclick="checkout('starter')" class="buy-btn">Try It</button>
+                    <button onclick="checkout('starter')" class="buy-btn">Get Started</button>
                 </div>
                 <div class="pricing-card">
                     <h3>Essentials</h3>
@@ -699,7 +699,7 @@
                         <li>✓ Credits never expire</li>
                         <li>✓ Great for regular use</li>
                     </ul>
-                    <button onclick="checkout('essentials')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('essentials')" class="buy-btn">Get Credits</button>
                 </div>
                 <div class="pricing-card featured">
                     <div class="badge">Most Popular</div>
@@ -712,7 +712,7 @@
                         <li>✓ Credits never expire</li>
                         <li>✓ Best for active practices</li>
                     </ul>
-                    <button onclick="checkout('accelerator')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('accelerator')" class="buy-btn">Get Credits</button>
                 </div>
                 <div class="pricing-card">
                     <h3>Efficient</h3>
@@ -724,7 +724,7 @@
                         <li>✓ Credits never expire</li>
                         <li>✓ Serious savings for busy firms</li>
                     </ul>
-                    <button onclick="checkout('efficient')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('efficient')" class="buy-btn">Get Credits</button>
                 </div>
                 <div class="pricing-card">
                     <h3>Unstoppable</h3>
@@ -736,7 +736,7 @@
                         <li>✓ Credits never expire</li>
                         <li>✓ Maximum value</li>
                     </ul>
-                    <button onclick="checkout('unstoppable')" class="buy-btn">Buy Now</button>
+                    <button onclick="checkout('unstoppable')" class="buy-btn">Get Credits</button>
                 </div>
             </div>
         </div>
@@ -757,7 +757,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 LawTasksAI. All rights reserved.</p>
-            <p><a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
             <p class="powered-by">Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
         </div>
     </footer>
@@ -782,6 +782,28 @@
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
         
         async function checkout(pack) {
+            // Terms acceptance
+            const accepted = confirm(
+                'By purchasing credits, you agree to our Terms of Service.\n\n' +
+                'You are purchasing credits to ACCESS and USE our AI task automation service. ' +
+                'You do not own the underlying prompts or methodologies.\n\n' +
+                'Click OK to review Terms and continue, or Cancel to go back.\n\n' +
+                '(Terms will open in a new tab)'
+            );
+            
+            if (!accepted) return;
+            
+            // Open Terms in new tab
+            window.open('/terms.html', '_blank');
+            
+            // Confirm they've read it
+            const confirmed = confirm(
+                'Have you reviewed the Terms of Service?\n\n' +
+                'Click OK to proceed to checkout.'
+            );
+            
+            if (!confirmed) return;
+            
             // Find the button and disable it
             const buttons = document.querySelectorAll('.buy-btn');
             buttons.forEach(btn => btn.disabled = true);
