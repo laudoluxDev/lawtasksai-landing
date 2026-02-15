@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Analysis - LawTasksAI</title>
+    <meta name="description" content="See what LawTasksAI's deposition analysis looks like. Full sample with keyword index, impeachment points, and contact extraction.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .back-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+        
+        /* Sample Cards */
+        .sample-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 700px) {
+            .sample-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .sample-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .sample-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+        
+        .sample-card p {
+            color: #6b7280;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .sample-card .meta {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .download-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .download-btn.secondary {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+        
+        .download-btn.secondary:hover {
+            background: #eff6ff;
+        }
+        
+        /* What's Included */
+        .features-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 60px;
+        }
+        
+        .features-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: #1a1a2e;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .feature-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            border-radius: 12px;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .cta-section .download-btn {
+            background: white;
+            color: #2563eb;
+        }
+        
+        .cta-section .download-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Law<span>Tasks</span>AI</a>
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <h1>Sample Deposition Analysis</h1>
+            <p class="subtitle">See exactly what LawTasksAI delivers — a real deposition with full analysis.</p>
+            
+            <div class="sample-grid">
+                <div class="sample-card">
+                    <h2>📄 Original Deposition</h2>
+                    <p>36-page police officer deposition from a pedestrian accident case. Real testimony, names redacted for privacy.</p>
+                    <div class="meta">
+                        Anne Arundel County, Maryland • November 2016<br>
+                        Format: PDF • 36 pages
+                    </div>
+                    <a href="/sample-deposition.pdf" class="download-btn secondary" target="_blank">View Deposition</a>
+                </div>
+                
+                <div class="sample-card">
+                    <h2>🔍 LawTasksAI Analysis</h2>
+                    <p>Complete analysis with keyword index, impeachment points, contradictions, and strategic trial notes.</p>
+                    <div class="meta">
+                        Generated by LawTasksAI • February 2026<br>
+                        Format: PDF • ~10 pages
+                    </div>
+                    <a href="/sample-analysis.pdf" class="download-btn" target="_blank">View Analysis</a>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h2>What's Included in Every Analysis</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>📋 Executive Summary</h3>
+                        <p>Key findings and strategic implications at a glance.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🔤 Keyword Index</h3>
+                        <p>Every significant term with page:line citations for quick reference.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>👥 Named Parties</h3>
+                        <p>All persons mentioned with roles, contact info, and personal descriptors.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>⚠️ Impeachment Points</h3>
+                        <p>Memory gaps, inconsistencies, and credibility issues flagged.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🔄 Contradictions</h3>
+                        <p>Internal conflicts and inconsistencies with other evidence.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>⚖️ Strategic Notes</h3>
+                        <p>Separate sections for plaintiff and defense perspectives.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📞 Contact Extraction</h3>
+                        <p>Phone numbers, addresses, and emails pulled into a directory.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📅 Timeline</h3>
+                        <p>Chronological sequence of events discussed in testimony.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Ready to Try It Yourself?</h2>
+                <p>Get instant analysis on your own depositions. Credits never expire.</p>
+                <a href="/#pricing" class="download-btn">Get Started</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LawTasksAI. <a href="/terms.html">Terms</a> • <a href="/privacy.html">Privacy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
