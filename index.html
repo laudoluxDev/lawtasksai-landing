@@ -678,17 +678,17 @@
             <p style="text-align: center; color: #6b7280; margin-bottom: 10px;">No subscriptions. Purchase credits for task access. One credit = one task. Credits never expire.</p>
             <p style="text-align: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 40px;">By purchasing, you agree to our <a href="/terms.html" target="_blank" style="color: #2563eb; text-decoration: underline;">Terms of Service</a></p>
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
+                <div class="pricing-card" id="trial-card">
+                    <h3>Trial</h3>
                     <div class="price">$19</div>
                     <div class="credits">25 tasks</div>
                     <p class="per-credit">$0.76 per task</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
-                        <li>✓ One-time introductory offer</li>
+                        <li>✓ One-time trial offer</li>
                     </ul>
-                    <button onclick="checkout('starter')" class="buy-btn">Get Started</button>
+                    <button onclick="checkout('trial')" class="buy-btn">Get Started</button>
                 </div>
                 <div class="pricing-card">
                     <h3>Essentials</h3>
@@ -782,6 +782,16 @@
     <script>
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
         
+        // Hide trial card if user has already purchased it
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('lawtasksai_trial_purchased') === 'true') {
+                const trialCard = document.getElementById('trial-card');
+                if (trialCard) {
+                    trialCard.style.display = 'none';
+                }
+            }
+        });
+        
         async function checkout(pack) {
             // Find the button and disable it
             const buttons = document.querySelectorAll('.buy-btn');
@@ -789,9 +799,9 @@
             
             let body = { pack: pack };
             
-            // Starter pack requires email (one-time offer)
-            if (pack === 'starter') {
-                const email = prompt('Enter your email address to claim your one-time Starter offer:');
+            // Trial pack requires email (one-time offer)
+            if (pack === 'trial') {
+                const email = prompt('Enter your email address to claim your one-time Trial offer:');
                 if (!email) {
                     buttons.forEach(btn => btn.disabled = false);
                     return;
@@ -808,18 +818,32 @@
                     body: JSON.stringify(body)
                 });
                 
+                const data = await response.json();
+                
                 if (!response.ok) {
-                    throw new Error('Failed to create checkout session');
+                    // Check for specific error messages
+                    const errorMessage = data.error || data.message || 'Failed to create checkout session';
+                    
+                    if (errorMessage.includes('already purchased') || errorMessage.includes('one-time')) {
+                        alert('Sorry, the Trial package is only available once per customer.\n\nCheck out our other packages for better value!');
+                    } else {
+                        alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    }
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
                 }
                 
-                const data = await response.json();
+                // Store trial purchase flag before redirecting
+                if (pack === 'trial') {
+                    localStorage.setItem('lawtasksai_trial_purchased', 'true');
+                }
                 
                 // Redirect to Stripe checkout
                 window.location.href = data.checkout_url;
                 
             } catch (error) {
                 console.error('Checkout error:', error);
-                alert('Something went wrong. Please try again or contact support@lawtasksai.com');
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
                 buttons.forEach(btn => btn.disabled = false);
             }
         }
