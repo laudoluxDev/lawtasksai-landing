@@ -680,21 +680,21 @@
             <div class="pricing-grid">
                 <div class="pricing-card" id="trial-card">
                     <h3>Trial</h3>
-                    <div class="price">$19</div>
-                    <div class="credits">25 tasks</div>
-                    <p class="per-credit">$0.76 per task</p>
+                    <div class="price">$20</div>
+                    <div class="credits">10 tasks</div>
+                    <p class="per-credit">$2.00 per task</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
-                        <li>✓ One-time trial offer</li>
+                        <li>✓ Perfect for getting started</li>
                     </ul>
                     <button onclick="checkout('trial')" class="buy-btn">Get Started</button>
                 </div>
                 <div class="pricing-card">
                     <h3>Essentials</h3>
-                    <div class="price">$50</div>
-                    <div class="credits">70 tasks</div>
-                    <p class="per-credit">$0.71 per task · 11% off</p>
+                    <div class="price">$75</div>
+                    <div class="credits">50 tasks</div>
+                    <p class="per-credit">$1.50 per task · 25% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
@@ -705,9 +705,9 @@
                 <div class="pricing-card featured">
                     <div class="badge">Most Popular</div>
                     <h3>Accelerator</h3>
-                    <div class="price">$100</div>
-                    <div class="credits">155 tasks</div>
-                    <p class="per-credit">$0.65 per task · 19% off</p>
+                    <div class="price">$125</div>
+                    <div class="credits">100 tasks</div>
+                    <p class="per-credit">$1.25 per task · 38% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
@@ -718,8 +718,8 @@
                 <div class="pricing-card">
                     <h3>Efficient</h3>
                     <div class="price">$250</div>
-                    <div class="credits">450 tasks</div>
-                    <p class="per-credit">$0.56 per task · 30% off</p>
+                    <div class="credits">250 tasks</div>
+                    <p class="per-credit">$1.00 per task · 50% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
@@ -730,14 +730,26 @@
                 <div class="pricing-card">
                     <h3>Unstoppable</h3>
                     <div class="price">$500</div>
-                    <div class="credits">1,100 tasks</div>
-                    <p class="per-credit">$0.45 per task · 44% off</p>
+                    <div class="credits">625 tasks</div>
+                    <p class="per-credit">$0.80 per task · 60% off</p>
                     <ul>
                         <li>✓ Access to all 200+ tasks</li>
                         <li>✓ Credits never expire</li>
                         <li>✓ Maximum value</li>
                     </ul>
                     <button onclick="checkout('unstoppable')" class="buy-btn">Get Credits</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Apex</h3>
+                    <div class="price">$1,000</div>
+                    <div class="credits">1,500 tasks</div>
+                    <p class="per-credit">$0.67 per task · 67% off</p>
+                    <ul>
+                        <li>✓ Access to all 200+ tasks</li>
+                        <li>✓ Credits never expire</li>
+                        <li>✓ Best value for power users</li>
+                    </ul>
+                    <button onclick="checkout('apex')" class="buy-btn">Get Credits</button>
                 </div>
             </div>
         </div>
@@ -782,32 +794,12 @@
     <script>
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
         
-        // Hide trial card if user has already purchased it
-        window.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.getItem('lawtasksai_trial_purchased') === 'true') {
-                const trialCard = document.getElementById('trial-card');
-                if (trialCard) {
-                    trialCard.style.display = 'none';
-                }
-            }
-        });
-        
         async function checkout(pack) {
             // Find the button and disable it
             const buttons = document.querySelectorAll('.buy-btn');
             buttons.forEach(btn => btn.disabled = true);
             
             let body = { pack: pack };
-            
-            // Trial pack requires email (one-time offer)
-            if (pack === 'trial') {
-                const email = prompt('Enter your email address to claim your one-time Trial offer:');
-                if (!email) {
-                    buttons.forEach(btn => btn.disabled = false);
-                    return;
-                }
-                body.email = email;
-            }
             
             try {
                 const response = await fetch(`${API_BASE}/checkout/create-session`, {
@@ -821,21 +813,10 @@
                 const data = await response.json();
                 
                 if (!response.ok) {
-                    // Check for specific error messages
-                    const errorMessage = data.error || data.message || 'Failed to create checkout session';
-                    
-                    if (errorMessage.includes('already purchased') || errorMessage.includes('one-time')) {
-                        alert('Sorry, the Trial package is only available once per customer.\n\nCheck out our other packages for better value!');
-                    } else {
-                        alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
-                    }
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
                     buttons.forEach(btn => btn.disabled = false);
                     return;
-                }
-                
-                // Store trial purchase flag before redirecting
-                if (pack === 'trial') {
-                    localStorage.setItem('lawtasksai_trial_purchased', 'true');
                 }
                 
                 // Redirect to Stripe checkout
