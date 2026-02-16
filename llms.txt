@@ -44,6 +44,7 @@ Most tasks cost 1-2 credits. Document analysis tasks cost 10-15 credits.
 
 ## Security
 
+- **We never see your documents. We never see your client identities. Client sensitive data stays on your computer.**
 - Every release scanned by VirusTotal (70+ antivirus engines)
 - All API communication encrypted with TLS 1.2+
 - Server-side skills: prompts never leave LawTasksAI servers (can't be copied or extracted)
