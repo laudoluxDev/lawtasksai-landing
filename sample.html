@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Analysis - LawTasksAI</title>
-    <meta name="description" content="See what LawTasksAI's deposition analysis looks like. Full sample with keyword index, impeachment points, and contact extraction.">
+    <meta name="description" content="See what LawTasksAI delivers: deposition analysis, witness outlines, and more. Download real samples.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,12 +24,11 @@
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
         }
         
-        /* Header */
         header {
             padding: 20px 0;
             background: white;
@@ -63,7 +62,6 @@
             text-decoration: underline;
         }
         
-        /* Main Content */
         main {
             padding: 60px 0;
         }
@@ -77,18 +75,18 @@
         .subtitle {
             font-size: 1.25rem;
             color: #6b7280;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
-        /* Sample Cards */
+        /* Sample Cards Grid */
         .sample-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             margin-bottom: 60px;
         }
         
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
             .sample-grid {
                 grid-template-columns: 1fr;
             }
@@ -97,38 +95,50 @@
         .sample-card {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            padding: 28px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sample-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
         }
         
         .sample-card h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 12px;
             color: #1a1a2e;
         }
         
         .sample-card p {
             color: #6b7280;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-size: 0.95rem;
+            flex-grow: 1;
         }
         
         .sample-card .meta {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #9ca3af;
             margin-bottom: 20px;
+            padding-top: 12px;
+            border-top: 1px solid #f3f4f6;
         }
         
         .download-btn {
             display: inline-block;
             background: #2563eb;
             color: white;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: background 0.2s;
+            text-align: center;
         }
         
         .download-btn:hover {
@@ -145,7 +155,88 @@
             background: #eff6ff;
         }
         
-        /* What's Included */
+        .download-btn.green {
+            background: #059669;
+        }
+        
+        .download-btn.green:hover {
+            background: #047857;
+        }
+        
+        /* How It Works Section */
+        .workflow-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 60px;
+        }
+        
+        .workflow-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1a1a2e;
+            text-align: center;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        @media (max-width: 700px) {
+            .workflow-steps {
+                flex-direction: column;
+            }
+        }
+        
+        .workflow-step {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .workflow-step .step-number {
+            width: 40px;
+            height: 40px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+        
+        .workflow-step h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .workflow-step p {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .arrow {
+            color: #d1d5db;
+            font-size: 1.5rem;
+            padding-top: 10px;
+        }
+        
+        @media (max-width: 700px) {
+            .arrow {
+                transform: rotate(90deg);
+                padding: 10px 0;
+            }
+        }
+        
+        /* Features Grid */
         .features-section {
             background: white;
             border-radius: 12px;
@@ -163,7 +254,7 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
         
@@ -174,13 +265,13 @@
         }
         
         .feature-item h3 {
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
             color: #1a1a2e;
         }
         
         .feature-item p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #6b7280;
         }
         
@@ -212,7 +303,6 @@
             background: #f0f0f0;
         }
         
-        /* Footer */
         footer {
             padding: 30px 0;
             text-align: center;
@@ -236,28 +326,64 @@
     
     <main>
         <div class="container">
-            <h1>Sample Deposition Analysis</h1>
-            <p class="subtitle">See exactly what LawTasksAI delivers — a real deposition with full analysis.</p>
+            <h1>See LawTasksAI in Action</h1>
+            <p class="subtitle">Real deposition, real analysis, real results. Download and compare.</p>
             
             <div class="sample-grid">
                 <div class="sample-card">
-                    <h2>📄 Original Deposition</h2>
-                    <p>36-page police officer deposition from a pedestrian accident case. Real testimony, names redacted for privacy.</p>
+                    <div class="icon">📄</div>
+                    <h2>1. Original Deposition</h2>
+                    <p>36-page police officer deposition from a pedestrian accident case. Real testimony with names redacted.</p>
                     <div class="meta">
-                        Anne Arundel County, Maryland • November 2016<br>
-                        Format: PDF • 36 pages
+                        Anne Arundel County, MD<br>
+                        PDF • 36 pages
                     </div>
-                    <a href="/sample-deposition.pdf" class="download-btn secondary" target="_blank">View Deposition</a>
+                    <a href="/sample-deposition.pdf" class="download-btn secondary" target="_blank">Download Deposition</a>
                 </div>
                 
                 <div class="sample-card">
-                    <h2>🔍 LawTasksAI Analysis</h2>
-                    <p>Complete analysis with keyword index, impeachment points, contradictions, and strategic trial notes.</p>
+                    <div class="icon">🔍</div>
+                    <h2>2. Deposition Analysis</h2>
+                    <p>Complete analysis with keyword index, impeachment points, contradictions, and strategic notes.</p>
                     <div class="meta">
-                        Generated by LawTasksAI • February 2026<br>
-                        Format: PDF • ~10 pages
+                        Generated by LawTasksAI<br>
+                        PDF • ~10 pages
                     </div>
-                    <a href="/sample-analysis.pdf" class="download-btn" target="_blank">View Analysis</a>
+                    <a href="/sample-analysis.pdf" class="download-btn" target="_blank">Download Analysis</a>
+                </div>
+                
+                <div class="sample-card">
+                    <div class="icon">⚖️</div>
+                    <h2>3. Witness Outline</h2>
+                    <p>Trial-ready cross-examination outline with suggested questions, citations, and closing sequences.</p>
+                    <div class="meta">
+                        Generated by LawTasksAI<br>
+                        Word Doc • 10 sections
+                    </div>
+                    <a href="/sample-witness-outline.docx" class="download-btn green" target="_blank">Download Outline</a>
+                </div>
+            </div>
+            
+            <div class="workflow-section">
+                <h2>How It Works</h2>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h3>Upload Deposition</h3>
+                        <p>Drop in your PDF or Word transcript</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h3>AI Analyzes</h3>
+                        <p>Extracts key testimony, builds index</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Analysis + trial-ready outline</p>
+                    </div>
                 </div>
             </div>
             
@@ -266,41 +392,41 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <h3>📋 Executive Summary</h3>
-                        <p>Key findings and strategic implications at a glance.</p>
+                        <p>Key findings at a glance</p>
                     </div>
                     <div class="feature-item">
                         <h3>🔤 Keyword Index</h3>
-                        <p>Every significant term with page:line citations for quick reference.</p>
+                        <p>Page:line citations for quick reference</p>
                     </div>
                     <div class="feature-item">
                         <h3>👥 Named Parties</h3>
-                        <p>All persons mentioned with roles, contact info, and personal descriptors.</p>
+                        <p>Contact info and personal details extracted</p>
                     </div>
                     <div class="feature-item">
                         <h3>⚠️ Impeachment Points</h3>
-                        <p>Memory gaps, inconsistencies, and credibility issues flagged.</p>
+                        <p>Memory gaps and inconsistencies flagged</p>
                     </div>
                     <div class="feature-item">
                         <h3>🔄 Contradictions</h3>
-                        <p>Internal conflicts and inconsistencies with other evidence.</p>
+                        <p>Internal conflicts identified</p>
                     </div>
                     <div class="feature-item">
-                        <h3>⚖️ Strategic Notes</h3>
-                        <p>Separate sections for plaintiff and defense perspectives.</p>
+                        <h3>⚖️ Trial Strategy</h3>
+                        <p>Plaintiff and defense perspectives</p>
                     </div>
                     <div class="feature-item">
-                        <h3>📞 Contact Extraction</h3>
-                        <p>Phone numbers, addresses, and emails pulled into a directory.</p>
+                        <h3>❓ Suggested Questions</h3>
+                        <p>Ready-to-use examination questions</p>
                     </div>
                     <div class="feature-item">
                         <h3>📅 Timeline</h3>
-                        <p>Chronological sequence of events discussed in testimony.</p>
+                        <p>Chronological event sequence</p>
                     </div>
                 </div>
             </div>
             
             <div class="cta-section">
-                <h2>Ready to Try It Yourself?</h2>
+                <h2>Ready to Try It on Your Cases?</h2>
                 <p>Get instant analysis on your own depositions. Credits never expire.</p>
                 <a href="/#pricing" class="download-btn">Get Started</a>
             </div>
