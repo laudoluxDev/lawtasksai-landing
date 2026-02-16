@@ -42,9 +42,11 @@ Most tasks cost 1-2 credits. Document analysis tasks cost 10-15 credits.
 - **Discovery Request Generator:** Interrogatories, RFPs, and RFAs tailored to case type
 - **Contract Reviewer:** Clause-by-clause analysis with risk scoring (local execution — documents stay on user's machine)
 
-## Security
+## Security & Data Transmission
 
 - **We never see your documents. We never see your client identities. Client sensitive data stays on your computer.**
+- **What users transmit for server-side tasks:** Only the legal question (e.g., "What is the SOL for negligence in Colorado?"), a license key, and a task ID. No client files, no client names, no case documents. The query is processed and discarded — nothing is stored.
+- **What users transmit for local tasks:** Nothing except a license key verification. Documents never leave the user's machine.
 - Every release scanned by VirusTotal (70+ antivirus engines)
 - All API communication encrypted with TLS 1.2+
 - Server-side skills: prompts never leave LawTasksAI servers (can't be copied or extracted)
