@@ -33,6 +33,9 @@
             background: white;
             border-bottom: 1px solid #e5e7eb;
             margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         header .container {
@@ -51,6 +54,27 @@
         .logo span {
             color: #2563eb;
         }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links > a:hover { color: #2563eb; }
+        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; background: #2563eb; color: white; }
+        .header-cta:hover { background: #1d4ed8; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: #4b5563; text-decoration: none; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+        .dropdown-toggle:hover { color: #2563eb; }
+        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; margin-top: 8px; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 300; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
+        .mobile-overlay.active { display: block; }
         
         .content {
             background: white;

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security & Compliance - LawTasksAI</title>
+    <meta name="description" content="Learn how LawTasksAI protects your client data with local execution, encryption, and Rule 1.6 compliance.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            margin-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Section */
+        .content {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #1a1a2e;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            color: #1a1a2e;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+        
+        .content ul {
+            margin: 15px 0 15px 30px;
+            color: #4b5563;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .security-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .security-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .security-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .checksum-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        
+        .contact-cta {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .contact-cta h3 {
+            margin: 0 0 15px 0;
+            color: white;
+        }
+        
+        .contact-cta p {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .contact-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="/skills.html">Tasks</a>
+                <a href="/sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="/getting-started.html">Getting Started Guide</a>
+                        <a href="/download.html">Download</a>
+                        <a href="/#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="/#faq">FAQ</a>
+                        <a href="/security.html">Security</a>
+                        <a href="/terms.html">Terms of Service</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="/#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Security & Compliance</h1>
+            <p>Your client data is protected with local execution, encryption, and ethical AI practices built for legal professionals.</p>
+        </div>
+    </section>
+    
+    <section class="content">
+        <div class="container">
+            <div class="content-wrapper">
+                <h2>Data Handling & Privacy</h2>
+                
+                <p>LawTasksAI is designed with attorney-client privilege and Rule 1.6 compliance at its core. We understand that your client data is sacred, and we've built our architecture to protect it.</p>
+                
+                <div class="highlight-box">
+                    <h3>🔒 Rule 1.6 Compliance</h3>
+                    <p>For local-execution skills, documents never leave your machine. Your client files stay on your computer, processed locally by AI, with zero data transmission to external servers.</p>
+                </div>
+                
+                <h3>What We Collect</h3>
+                <ul>
+                    <li><strong>Account Information:</strong> Email, name, and payment details (processed securely via Stripe)</li>
+                    <li><strong>Usage Data:</strong> Which tasks you run, credit consumption, and aggregate usage patterns</li>
+                    <li><strong>Technical Data:</strong> Device type, operating system, app version for debugging and support</li>
+                </ul>
+                
+                <h3>What We Don't Collect</h3>
+                <ul>
+                    <li>Client names, case details, or matter information</li>
+                    <li>Document contents from local-execution tasks</li>
+                    <li>Personal identifiable information about your clients</li>
+                    <li>Browsing history or activity outside the app</li>
+                </ul>
+                
+                <h2>Architecture Overview</h2>
+                
+                <p>LawTasksAI includes <strong>202 AI-powered legal skills</strong> split across two execution models:</p>
+                
+                <div class="security-grid">
+                    <div class="security-card">
+                        <h4>🖥️ Local Execution (43 Skills)</h4>
+                        <p>Runs entirely on your computer. Documents never leave your machine. Perfect for sensitive client materials and confidential case files.</p>
+                    </div>
+                    <div class="security-card">
+                        <h4>☁️ Server-Side (159 Skills)</h4>
+                        <p>Processed via our secure Cloud Run infrastructure. All data encrypted in transit with TLS 1.2+. Used for non-sensitive tasks and external integrations.</p>
+                    </div>
+                </div>
+                
+                <h3>When Your Data Travels</h3>
+                <p>For server-side skills, data is transmitted to our Google Cloud Run backend for processing. This includes:</p>
+                <ul>
+                    <li>Task inputs you provide (e.g., legal questions, research topics)</li>
+                    <li>Generated outputs returned to your device</li>
+                    <li>No persistent storage — data is processed and immediately discarded</li>
+                </ul>
+                
+                <h2>Encryption & Security</h2>
+                
+                <h3>Data in Transit</h3>
+                <p>All API communication uses <strong>TLS 1.2 or higher</strong> encryption. Data transmitted between your device and our servers is protected with industry-standard encryption protocols.</p>
+                
+                <h3>Data at Rest</h3>
+                <p>We do not store your case documents or client files. Task outputs are delivered directly to your device. Only account information (email, credit balance) is stored in our secure database.</p>
+                
+                <h3>Third-Party Services</h3>
+                <ul>
+                    <li><strong>Stripe:</strong> Payment processing (PCI-DSS compliant)</li>
+                    <li><strong>OpenAI / Anthropic:</strong> AI model providers for server-side tasks (zero data retention per their terms)</li>
+                    <li><strong>Google Cloud:</strong> Infrastructure hosting with enterprise-grade security</li>
+                </ul>
+                
+                <h2>Application Security</h2>
+                
+                <h3>VirusTotal Verification</h3>
+                <p>Every release of the LawTasksAI desktop app is scanned by VirusTotal to ensure it's free from malware, viruses, and security threats.</p>
+                
+                <p><a href="https://www.virustotal.com/gui/file/a87db0d408aed18b6d3cec885c4fd5ee6735a75e75b9adff48f8c6ec106bf0e2" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 500;">View Latest VirusTotal Scan Report →</a></p>
+                
+                <h3>SHA-256 Checksums</h3>
+                <p>Verify the integrity of your downloaded installer:</p>
+                
+                <div class="checksum-box">
+                    <strong>Windows Installer (v1.0.0):</strong><br>
+                    SHA-256: a87db0d408aed18b6d3cec885c4fd5ee6735a75e75b9adff48f8c6ec106bf0e2
+                </div>
+                
+                <p style="font-size: 0.9rem; color: #6b7280;">To verify: Open PowerShell and run <code style="background: #f3f4f6; padding: 2px 6px; border-radius: 3px;">Get-FileHash -Algorithm SHA256 LawTasksAI-Setup.exe</code></p>
+                
+                <h2>Compatibility with Security Tools</h2>
+                
+                <h3>Works with Prompt Guard & ClawSec</h3>
+                <p>If you use security skills like <strong>Prompt Guard</strong> or <strong>ClawSec</strong> to protect your AI assistant, LawTasksAI works seamlessly alongside them. Our loader skill simply makes secure API calls to retrieve results — it does not modify system files, inject prompts into other skills, or alter your agent's configuration in any way.</p>
+                
+                <h3>Why Server-Side Is Safer</h3>
+                <p>A recent <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/" target="_blank" style="color: #2563eb; text-decoration: underline;">Snyk security analysis</a> of nearly 4,000 publicly available AI skills found that <strong>7.1% contained critical security flaws</strong> — including exposed credentials, prompt injection vulnerabilities, and unauthorized code execution.</p>
+                
+                <p>LawTasksAI avoids these risks entirely:</p>
+                
+                <div class="security-grid">
+                    <div class="security-card">
+                        <h4>🛡️ Typical Public Skills</h4>
+                        <p>Full skill code runs on your machine. If compromised, it can access your files, inject malicious prompts, or exfiltrate data. 7.1% of public skills have critical flaws.</p>
+                    </div>
+                    <div class="security-card">
+                        <h4>✅ LawTasksAI Approach</h4>
+                        <p>Only a thin loader runs locally — it sends your query and receives a result. The actual skill logic runs on our secured servers, where it can't access your files or system.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🔐 Supply Chain Security</h3>
+                    <p>Every LawTasksAI release is scanned by 70+ antivirus engines via VirusTotal before publication. Our loader contains no executable code beyond a simple API call — there is nothing to exploit. Your documents and client data remain completely isolated from our skill logic.</p>
+                </div>
+                
+                <h2>Your Responsibilities</h2>
+                
+                <p>While we provide secure infrastructure, you play a critical role in protecting your data:</p>
+                <ul>
+                    <li><strong>Use local-execution skills</strong> for highly sensitive documents</li>
+                    <li><strong>Review task descriptions</strong> to understand whether a skill runs locally or server-side</li>
+                    <li><strong>Keep your device secure</strong> with updated antivirus software and strong passwords</li>
+                    <li><strong>Don't share your account</strong> — each attorney should have their own login</li>
+                </ul>
+                
+                <div class="contact-cta">
+                    <h3>Security Concerns?</h3>
+                    <p>If you discover a security vulnerability or have questions about our data practices, contact us immediately.</p>
+                    <a href="mailto:security@lawtasksai.com" class="contact-button">security@lawtasksai.com</a>
+                </div>
+                
+                <h2>Related Policies</h2>
+                <p>For more details on how we handle your data:</p>
+                <ul>
+                    <li><a href="/terms.html" style="color: #2563eb; text-decoration: underline;">Terms of Service</a> — Legal terms governing your use of LawTasksAI</li>
+                    <li><a href="/privacy.html" style="color: #2563eb; text-decoration: underline;">Privacy Policy</a> — Comprehensive data collection and usage policy</li>
+                </ul>
+                
+                <p style="margin-top: 40px; color: #9ca3af; font-size: 0.9rem;">Last updated: February 2026</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LawTasksAI. All rights reserved.</p>
+            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p class="powered-by">Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+</body>
+</html>

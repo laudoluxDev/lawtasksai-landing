@@ -56,10 +56,21 @@
             color: #2563eb;
         }
         
-        .header-buttons {
+        .nav-links {
             display: flex;
-            gap: 12px;
             align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
         }
         
         .header-cta {
@@ -69,25 +80,12 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.2s;
-        }
-        
-        .btn-primary {
             background: #2563eb;
             color: white;
         }
         
-        .btn-primary:hover {
+        .header-cta:hover {
             background: #1d4ed8;
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: #2563eb;
-            border: 1px solid #2563eb;
-        }
-        
-        .btn-secondary:hover {
-            background: #eff6ff;
         }
         
         /* Dropdown */
@@ -104,6 +102,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            transition: color 0.2s;
         }
         
         .dropdown-toggle:hover {
@@ -127,6 +126,7 @@
             min-width: 200px;
             padding: 8px 0;
             z-index: 200;
+            margin-top: 8px;
         }
         
         .dropdown:hover .dropdown-menu {
@@ -139,6 +139,7 @@
             color: #4b5563;
             text-decoration: none;
             font-size: 0.9rem;
+            transition: all 0.2s;
         }
         
         .dropdown-menu a:hover {
@@ -557,8 +558,10 @@
             .nav-links {
                 display: none;
                 position: fixed;
-                top: 0; right: 0;
-                width: 280px; height: 100vh;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
                 background: white;
                 flex-direction: column;
                 padding: 80px 32px 32px;
@@ -567,27 +570,48 @@
                 z-index: 200;
                 align-items: flex-start;
             }
-            .nav-links.active { display: flex; }
-            .nav-links a, .nav-links nav a {
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
                 padding: 14px 0;
                 font-size: 1.05rem;
                 border-bottom: 1px solid #f3f4f6;
                 width: 100%;
             }
-            .nav-links nav {
-                display: flex;
-                flex-direction: column;
+            
+            .dropdown {
                 width: 100%;
-                gap: 0;
             }
-            .header-buttons {
-                flex-direction: column;
+            
+            .dropdown-toggle {
                 width: 100%;
-                margin-top: 16px;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
             }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
             .header-cta {
-                text-align: center;
                 width: 100%;
+                text-align: center;
+                margin-top: 16px;
             }
         }
     </style>
@@ -597,17 +621,26 @@
         <div class="container">
             <a href="/" class="logo">LawTasks<span>AI</span></a>
             <div class="nav-links" id="navLinks">
-                <nav style="display: flex; align-items: center; gap: 24px;">
-                    <a href="/skills.html" style="color: #4b5563; text-decoration: none; font-weight: 500;">200+ Tasks</a>
-                    <a href="/sample.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">Sample ✨</a>
-                    <a href="/getting-started.html" style="color: #4b5563; text-decoration: none; font-weight: 500;">Getting Started</a>
-                    <a href="/download.html" style="color: #4b5563; text-decoration: none; font-weight: 500;">Download</a>
-                    <a href="mailto:support@lawtasksai.com" style="color: #4b5563; text-decoration: none; font-weight: 500;">Support</a>
-                </nav>
-                <div class="header-buttons">
-                    <a href="#pricing" class="header-cta btn-primary">Get Credits</a>
-                    <a href="#signup" class="header-cta btn-secondary">Subscribe</a>
+                <a href="/skills.html">Tasks</a>
+                <a href="/sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="/getting-started.html">Getting Started Guide</a>
+                        <a href="/download.html">Download</a>
+                        <a href="/#pricing">Get Credits</a>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="/#faq">FAQ</a>
+                        <a href="/security.html">Security</a>
+                        <a href="/terms.html">Terms of Service</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="/#pricing" class="header-cta">Get Credits</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -772,7 +805,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 LawTasksAI. All rights reserved.</p>
-            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
             <p class="powered-by">Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
         </div>
     </footer>
@@ -782,16 +815,32 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         const overlay = document.getElementById('overlay');
+        
         function toggleNav() {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
             overlay.classList.toggle('active');
         }
+        
         hamburger.addEventListener('click', toggleNav);
         overlay.addEventListener('click', toggleNav);
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) toggleNav();
-        }));
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
     </script>
     <script>
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';

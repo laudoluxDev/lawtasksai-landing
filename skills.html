@@ -19,12 +19,19 @@
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
         .logo span { color: #2563eb; }
-        .header-buttons { display: flex; gap: 12px; align-items: center; }
-        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; }
-        .btn-primary { background: #2563eb; color: white; }
-        .btn-primary:hover { background: #1d4ed8; }
-        .btn-secondary { background: white; color: #2563eb; border: 1px solid #2563eb; }
-        .btn-secondary:hover { background: #eff6ff; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links > a:hover { color: #2563eb; }
+        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; background: #2563eb; color: white; }
+        .header-cta:hover { background: #1d4ed8; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: #4b5563; text-decoration: none; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+        .dropdown-toggle:hover { color: #2563eb; }
+        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; margin-top: 8px; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
         
         /* Hero */
         .hero { padding: 60px 0 40px; text-align: center; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
@@ -85,7 +92,6 @@
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
         .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
         .mobile-overlay.active { display: block; }
-        .nav-links { display: flex; align-items: center; gap: 24px; }
         
         @media (max-width: 768px) { 
             .hero h1 { font-size: 1.8rem; } 
@@ -99,13 +105,13 @@
                 align-items: flex-start;
             }
             .nav-links.active { display: flex; }
-            .nav-links a, .nav-links nav a {
-                padding: 14px 0; font-size: 1.05rem;
-                border-bottom: 1px solid #f3f4f6; width: 100%;
-            }
-            .nav-links nav { display: flex; flex-direction: column; width: 100%; gap: 0; }
-            .header-buttons { flex-direction: column; width: 100%; margin-top: 16px; }
-            .header-cta { text-align: center; width: 100%; }
+            .nav-links > a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid #f3f4f6; width: 100%; }
+            .dropdown { width: 100%; }
+            .dropdown-toggle { width: 100%; padding: 14px 0; border-bottom: 1px solid #f3f4f6; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; margin-top: 0; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.mobile-open .dropdown-menu { display: block; }
+            .header-cta { width: 100%; text-align: center; margin-top: 16px; }
         }
     </style>
 </head>
@@ -114,15 +120,26 @@
         <div class="container">
             <a href="/" class="logo">LawTasks<span>AI</span></a>
             <div class="nav-links" id="navLinks">
-                <nav style="display: flex; align-items: center; gap: 24px;">
-                    <a href="/skills.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">200+ Tasks</a>
-                    <a href="/getting-started.html" style="color: #4b5563; text-decoration: none; font-weight: 500;">Getting Started</a>
-                    <a href="mailto:support@lawtasksai.com" style="color: #4b5563; text-decoration: none; font-weight: 500;">Support</a>
-                </nav>
-                <div class="header-buttons">
-                    <a href="https://lawtasksai.com/#pricing" class="header-cta btn-primary">Buy Credits</a>
-                    <a href="/#signup" class="header-cta btn-secondary">Subscribe</a>
+                <a href="/skills.html">Tasks</a>
+                <a href="/sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="/getting-started.html">Getting Started Guide</a>
+                        <a href="/download.html">Download</a>
+                        <a href="/#pricing">Get Credits</a>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="/#faq">FAQ</a>
+                        <a href="/security.html">Security</a>
+                        <a href="/terms.html">Terms of Service</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="/#pricing" class="header-cta">Get Credits</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -483,7 +500,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 LawTasksAI. All rights reserved.</p>
-            <p><a href="mailto:hello@lawtasksai.com">Contact</a></p>
+            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
             <p class="powered-by">Powered by <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
         </div>
     </footer>
@@ -507,10 +524,32 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         const overlay = document.getElementById('overlay');
-        function toggleNav() { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); overlay.classList.toggle('active'); }
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
         hamburger.addEventListener('click', toggleNav);
         overlay.addEventListener('click', toggleNav);
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (navLinks.classList.contains('active')) toggleNav(); }));
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
     </script>
 </body>
 </html>
