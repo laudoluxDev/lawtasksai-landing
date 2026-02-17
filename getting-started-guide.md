@@ -48,12 +48,18 @@ Skip the prompt engineering. Get jurisdiction-specific, professionally-formatted
 # How It Works
 
 ## Step 1: Get Your License
-Visit **lawtasksai.com** and purchase credits.
-- 50 credits — $5
-- 250 credits — $20 (most popular)
-- 750 credits — $50
+Visit **lawtasksai.com** and purchase credits. One credit = one task.
 
-You'll receive a license key (starts with `lt_`).
+| Package | Tasks | Price | Per Task |
+|---------|-------|-------|----------|
+| Trial | 10 | $20 | $2.00 |
+| Essentials | 50 | $75 | $1.50 |
+| Accelerator ⭐ | 100 | $125 | $1.25 |
+| Efficient | 250 | $250 | $1.00 |
+| Unstoppable | 625 | $500 | $0.80 |
+| Apex | 1,500 | $1,000 | $0.67 |
+
+You'll receive a license key via email (starts with `lt_`).
 
 ## Step 2: Install the Loader
 **For OpenClaw users:**
@@ -106,13 +112,16 @@ The system automatically finds the right skill and runs it.
 
 # Pricing
 
-| Package | Credits | Price | Per Credit |
-|---------|---------|-------|------------|
-| Starter | 50 | $5 | $0.10 |
-| **Standard** | 250 | $20 | $0.08 |
-| Professional | 750 | $50 | $0.067 |
+| Package | Tasks | Price | Per Task |
+|---------|-------|-------|----------|
+| Trial | 10 | $20 | $2.00 |
+| Essentials | 50 | $75 | $1.50 |
+| **Accelerator** ⭐ | 100 | $125 | $1.25 |
+| Efficient | 250 | $250 | $1.00 |
+| Unstoppable | 625 | $500 | $0.80 |
+| Apex | 1,500 | $1,000 | $0.67 |
 
-**Most skills cost 1 credit.** Complex document analysis may cost 2-3 credits.
+**One credit = one task.** Credits never expire.
 
 ✅ Credits never expire
 ✅ No monthly fees
