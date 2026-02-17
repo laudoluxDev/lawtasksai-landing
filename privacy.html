@@ -139,6 +139,14 @@
         }
         
         @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 0; right: -280px; width: 280px; height: 100vh; background: white; flex-direction: column; padding: 80px 24px 24px; gap: 0; transition: right 0.3s; z-index: 200; box-shadow: -4px 0 12px rgba(0,0,0,0.1); }
+            .nav-links.active { right: 0; }
+            .nav-links > a, .nav-links .dropdown { padding: 15px 0; border-bottom: 1px solid #e5e7eb; width: 100%; }
+            .nav-links .header-cta { margin-top: 20px; text-align: center; display: block; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; display: none; }
+            .dropdown.active .dropdown-menu { display: block; }
+            
             .content {
                 padding: 24px;
             }
@@ -157,6 +165,32 @@
     <header>
         <div class="container">
             <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="/skills.html">Tasks</a>
+                <a href="/sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="/getting-started.html">Getting Started Guide</a>
+                        <a href="/download.html">Download</a>
+                        <a href="/#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="/#faq">FAQ</a>
+                        <a href="/security.html">Rule 1.6 &amp; Security</a>
+                        <a href="/terms.html">Terms of Service</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="/#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
         </div>
     </header>
     
@@ -303,5 +337,20 @@
             </ul>
         </div>
     </div>
+    
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
 </body>
 </html>
