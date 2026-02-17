@@ -498,8 +498,8 @@
             <div class="content-wrapper">
                 <div class="highlight-box" style="background: #f0fdf4; border-left-color: #059669; margin-top: 30px;">
                     <h3 style="color: #059669; margin-top: 0;">🛡️ We Never See Your Client Data</h3>
-                    <p style="font-size: 1.05rem; margin-bottom: 10px;"><strong>We never see your documents. We never see your client identities. Your client's sensitive data stays on your computer.</strong></p>
-                    <p>For local-execution tasks, everything runs on your machine — documents are never transmitted. For server-side tasks, we process your legal questions, not your client files. We do not see or store case documents, client names, or matter details. Ever.</p>
+                    <p style="font-size: 1.05rem; margin-bottom: 10px;"><strong>LawTasksAI never receives your documents. Your files are processed locally on your machine — we don't see them, period.</strong></p>
+                    <p>For document analysis tasks, everything runs on your computer — documents are never transmitted to LawTasksAI servers. For other tasks, we process legal questions (not client files). We do not see or store case documents, client names, or matter details. Ever.</p>
                 </div>
             </div>
         </div>
@@ -508,13 +508,26 @@
     <section class="content">
         <div class="container">
             <div class="content-wrapper">
-                <h2>Data Handling & Privacy</h2>
+                <h2>Understanding Privacy: Two Layers</h2>
                 
-                <p>LawTasksAI is designed with attorney-client privilege and Rule 1.6 compliance at its core. We understand that your client data is sacred, and we've built our architecture to protect it.</p>
+                <p>Many attorneys ask: "Is LawTasksAI Rule 1.6 compliant?" The answer requires understanding two separate systems working together:</p>
+                
+                <div class="highlight-box" style="background: #fef3c7; border-left-color: #f59e0b;">
+                    <h3 style="color: #92400e;">⚠️ Important: Privacy Has Two Parts</h3>
+                    <p><strong>Layer 1: LawTasksAI</strong> (our software) never receives your documents. Files stay on your machine.</p>
+                    <p><strong>Layer 2: Your AI Assistant</strong> (Claude Desktop, ChatGPT, OpenClaw, etc.) processes your prompts and may send data to its cloud provider.</p>
+                    <p><strong>For full Rule 1.6 compliance, you need both layers to be private.</strong> See recommendations below.</p>
+                </div>
+                
+                <h2>Layer 1: LawTasksAI (Our Architecture)</h2>
+                
+                <p>LawTasksAI is designed with attorney confidentiality as the foundation. Here's what we do and don't collect:</p>
                 
                 <div class="highlight-box">
-                    <h3>🔒 Rule 1.6 Compliance</h3>
-                    <p>For local-execution skills, documents never leave your machine. Your client files stay on your computer, processed locally by AI, with zero data transmission to external servers.</p>
+                    <h3>🔒 Our Privacy Commitment</h3>
+                    <p><strong>Document analysis tasks:</strong> Run entirely on your machine. Your files never reach LawTasksAI servers.</p>
+                    <p><strong>Server-side tasks:</strong> We process your legal questions (e.g., "What is the SOL for fraud in Texas?") but never see client files or case details.</p>
+                    <p><strong>Data retention:</strong> Task results are delivered to you and immediately deleted. We don't train AI on your data. We don't sell your information.</p>
                 </div>
                 
                 <h3>What We Collect</h3>
@@ -533,7 +546,126 @@
                 </ul>
                 <p>That's it. You are transmitting <strong>legal questions</strong>, not client files, not case documents, not client names. We process your question, return the result, and discard the query. Nothing is stored.</p>
                 
-                <p>For <strong>local-execution tasks</strong> (43 tasks — document analysis, contract review, deposition summaries), <strong>nothing is transmitted</strong>. Your documents stay on your computer. The only transmission is a request to verify your license key.</p>
+                <p>For <strong>local-execution tasks</strong> (43 tasks — document analysis, contract review, deposition summaries), <strong>nothing is transmitted to LawTasksAI</strong>. Your documents stay on your computer. The only transmission is a request to verify your license key.</p>
+                
+                <h2>Layer 2: Your AI Assistant (The Missing Piece)</h2>
+                
+                <p><strong>This is where confidentiality decisions actually happen.</strong></p>
+                
+                <p>LawTasksAI doesn't work alone — it integrates with an AI assistant like Claude Desktop, ChatGPT, or OpenClaw. When you upload a document or send a prompt:</p>
+                
+                <ol>
+                    <li>Your AI assistant receives your prompt/document first</li>
+                    <li>It may send data to its cloud provider (Anthropic, OpenAI, etc.)</li>
+                    <li>The AI assistant calls LawTasksAI to execute the task</li>
+                    <li>Results flow back through the same path</li>
+                </ol>
+                
+                <div class="highlight-box" style="background: #fee2e2; border-left-color: #dc2626;">
+                    <h3 style="color: #991b1b;">⚠️ Critical Understanding</h3>
+                    <p><strong>If you use a cloud AI assistant (Claude Desktop, ChatGPT, etc.), your documents and prompts may be sent to that provider's servers — regardless of LawTasksAI's local execution.</strong></p>
+                    <p>LawTasksAI is designed for privacy, but full Rule 1.6 compliance requires BOTH layers to be private.</p>
+                </div>
+                
+                <h3>Current AI Provider Policies</h3>
+                <ul>
+                    <li><strong>Anthropic (Claude):</strong> Does not train on user data, but processes prompts/documents on their servers</li>
+                    <li><strong>OpenAI (ChatGPT):</strong> Does not train on API/ChatGPT Plus data (with opt-out), but processes it in the cloud</li>
+                    <li><strong>OpenClaw with cloud LLM:</strong> Same as above — depends on the LLM provider</li>
+                    <li><strong>OpenClaw with local LLM:</strong> Everything stays on your machine (full confidentiality)</li>
+                </ul>
+                
+                <h3>Rule 1.6 Considerations</h3>
+                <p>Most state bar associations require attorneys using cloud AI to:</p>
+                <ol>
+                    <li>Understand the provider's data handling practices</li>
+                    <li>Ensure reasonable security measures are in place</li>
+                    <li>Obtain informed client consent (in many jurisdictions)</li>
+                    <li>Document your due diligence</li>
+                </ol>
+                
+                <h2>Recommendations for Full Confidentiality</h2>
+                
+                <div class="security-grid">
+                    <div class="security-card" style="background: #f0fdf4; border: 2px solid #059669;">
+                        <h4 style="color: #059669;">✅ Option 1: Local AI (Highest Security)</h4>
+                        <p><strong>Best for:</strong> Highly confidential matters, privileged documents, discovery materials</p>
+                        <p><strong>Setup:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Install OpenClaw on your computer</li>
+                            <li>Configure with local LLM (Ollama + Llama 3.1 70B or 405B)</li>
+                            <li>Install LawTasksAI via /skill install</li>
+                            <li>All processing happens offline</li>
+                        </ul>
+                        <p><strong>Pros:</strong> Full Rule 1.6 compliance, no third-party exposure</p>
+                        <p><strong>Cons:</strong> Requires powerful hardware (32GB+ RAM)</p>
+                        <p><a href="/local-setup.html" style="color: #059669; text-decoration: underline; font-weight: 600;">→ See Complete Local Setup Guide</a></p>
+                    </div>
+                    <div class="security-card" style="background: #fef3c7; border: 2px solid #f59e0b;">
+                        <h4 style="color: #92400e;">⚠️ Option 2: Cloud AI with Safeguards</h4>
+                        <p><strong>Best for:</strong> Non-privileged documents, general legal research, drafting</p>
+                        <p><strong>Setup:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Use Claude Desktop or ChatGPT Business/Enterprise tier</li>
+                            <li>Review provider's data processing agreements</li>
+                            <li>Obtain informed client consent</li>
+                            <li>Document your due diligence</li>
+                        </ul>
+                        <p><strong>Pros:</strong> Easy to use, powerful AI, no hardware requirements</p>
+                        <p><strong>Cons:</strong> Data leaves your control, third-party risk</p>
+                    </div>
+                    <div class="security-card" style="background: #dbeafe; border: 2px solid #2563eb;">
+                        <h4 style="color: #1e40af;">🎯 Option 3: Hybrid (Recommended)</h4>
+                        <p><strong>Best for:</strong> Most solo and small firm attorneys</p>
+                        <p><strong>Strategy:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li><strong>Confidential/privileged:</strong> Local AI setup</li>
+                            <li><strong>General research/drafting:</strong> Cloud AI</li>
+                            <li><strong>Client intake, non-privileged:</strong> Cloud AI with consent</li>
+                        </ul>
+                        <p><strong>Implementation:</strong> Set up both environments, train staff on when to use each, create internal policy</p>
+                        <p style="font-style: italic; color: #4b5563;">This is what I do in my practice.</p>
+                    </div>
+                </div>
+                
+                <h3>Quick Decision Matrix</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background: #f3f4f6;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Your Setup</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Documents</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Prompts</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Confidentiality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Claude Desktop + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to Anthropic</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to Anthropic</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ Anthropic's policy applies</td>
+                        </tr>
+                        <tr style="background: #fafbfc;">
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>ChatGPT + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to OpenAI</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to OpenAI</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ OpenAI's policy applies</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>OpenClaw + Cloud LLM + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to LLM provider</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to LLM provider</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ Provider's policy applies</td>
+                        </tr>
+                        <tr style="background: #f0fdf4;">
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>OpenClaw + Local LLM + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Stay local</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Stay local</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">✅ Fully confidential</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
                 <h2>Architecture Overview</h2>
                 
