@@ -15,6 +15,9 @@
             font-size: 11pt;
         }
         
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
         .page {
             page-break-after: always;
             padding: 50px 60px;
@@ -48,6 +51,8 @@
             color: #9ca3af;
             margin-bottom: 60px;
         }
+        
+        .cover .tagline a { color: #60a5fa; }
         
         .cover .subtitle {
             font-size: 24pt;
@@ -276,9 +281,12 @@
         
         .cta-url {
             font-size: 24pt;
-            color: #2563eb;
             font-weight: 700;
             margin: 30px 0;
+        }
+        
+        .cta-url a {
+            color: #2563eb;
         }
         
         .cta-features {
@@ -286,8 +294,20 @@
             color: #6b7280;
         }
         
+        .info-callout {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        .info-callout strong { color: #92400e; }
+        
         @media print {
             .page { padding: 40px 50px; }
+            a { color: #1a1a2e; }
         }
     </style>
 </head>
@@ -295,8 +315,8 @@
 
 <!-- Page 1: Cover -->
 <div class="page cover">
-    <h1>Law<span>Tasks</span>AI</h1>
-    <p class="tagline">200+ AI-Powered Legal Automation Skills</p>
+    <h1>LawTasks<span>AI</span></h1>
+    <p class="tagline"><a href="https://lawtasksai.com/skills" target="_blank">200+ AI-Powered Legal Automation Tasks</a></p>
     <p class="subtitle">Getting Started Guide</p>
     <p class="version">February 2026</p>
 </div>
@@ -305,12 +325,12 @@
 <div class="page">
     <h1>What is LawTasksAI?</h1>
     
-    <p class="lead"><strong>200+ AI-powered legal automation skills for solo attorneys and small firms.</strong></p>
+    <p class="lead"><strong><a href="https://lawtasksai.com/skills" target="_blank">200+ AI-powered legal automation tasks</a></strong> for solo attorneys and small firms.</p>
     
     <p>LawTasksAI gives you instant access to specialized legal AI tools — deadline calculators, document drafters, research assistants, and more — all through your existing AI assistant.</p>
     
     <div class="highlight-box">
-        <strong>No new software to learn.</strong> If you're already using Claude, ChatGPT, or OpenClaw, you can use LawTasksAI.
+        <strong>No new software to learn.</strong> If you're already using Claude, ChatGPT, or OpenClaw, you can use LawTasksAI. You type prompts in the same chat interface you already use.
     </div>
     
     <h1 style="margin-top: 40px;">Why LawTasksAI?</h1>
@@ -318,11 +338,11 @@
     <div class="feature-grid">
         <div class="feature">
             <h3>🎯 Built for Legal Work</h3>
-            <p>Generic AI makes you write prompts from scratch. LawTasksAI skills are pre-engineered by legal professionals for specific tasks.</p>
+            <p>Generic AI makes you write prompts from scratch. LawTasksAI tasks are pre-engineered by legal professionals for specific workflows.</p>
         </div>
         <div class="feature">
             <h3>🔒 Your Documents Stay Private</h3>
-            <p>Document analysis skills run locally on your machine. Confidential files never leave your computer. Full Rule 1.6 compliance.</p>
+            <p>Document analysis tasks run locally on your machine. Confidential files never leave your computer. Full Rule 1.6 compliance.</p>
         </div>
         <div class="feature">
             <h3>💰 Pay Only for What You Use</h3>
@@ -337,14 +357,14 @@
 
 <!-- Page 3: Categories -->
 <div class="page">
-    <h1>Skill Categories</h1>
+    <h1>Task Categories</h1>
     
-    <p class="lead">Over 200 skills across 13 practice areas and firm operations.</p>
+    <p class="lead">Over <a href="https://lawtasksai.com/skills" target="_blank">200 tasks</a> across 13 practice areas and firm operations.</p>
     
     <table>
         <tr>
             <th>Category</th>
-            <th>Skills</th>
+            <th>Tasks</th>
             <th>Examples</th>
         </tr>
         <tr>
@@ -385,7 +405,7 @@
     </table>
     
     <div class="highlight-box">
-        <strong>Browse all 200+ skills at:</strong> lawtasksai.com/skills
+        <strong>Browse all 200+ tasks:</strong> <a href="https://lawtasksai.com/skills" target="_blank">lawtasksai.com/skills</a>
     </div>
 </div>
 
@@ -397,7 +417,7 @@
         <div class="step-number">1</div>
         <div class="step-content">
             <h3>Get Your License</h3>
-            <p>Visit <strong>lawtasksai.com</strong> and purchase credits. You'll receive a license key (starts with <code>lt_</code>).</p>
+            <p>Visit <a href="https://lawtasksai.com" target="_blank"><strong>lawtasksai.com</strong></a> and purchase credits. You'll receive a license key via email (starts with <code>lt_</code>).</p>
         </div>
     </div>
     
@@ -405,26 +425,31 @@
         <div class="step-number">2</div>
         <div class="step-content">
             <h3>Install the Loader</h3>
-            <p>For OpenClaw users, just run:</p>
+            <p>The loader connects your AI assistant to LawTasksAI.</p>
         </div>
     </div>
     
-    <div class="code-block">/skill install lawtasksai</div>
+    <p style="margin-left: 47px; margin-bottom: 5px;"><strong>For OpenClaw users:</strong> Type this command in your chat:</p>
+    <div class="code-block" style="margin-left: 47px;">/skill install lawtasksai</div>
     
-    <p style="color: #6b7280; font-size: 10pt; margin-left: 47px;">For Claude Desktop (MCP), download the server from your account dashboard.</p>
+    <p style="color: #6b7280; font-size: 10pt; margin-left: 47px; margin-top: 10px;"><strong>For Claude Desktop (MCP):</strong> Download the MCP server from <a href="https://lawtasksai.com/download" target="_blank">lawtasksai.com/download</a></p>
     
     <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-            <h3>Start Using Skills</h3>
-            <p>Just describe what you need in natural language. The system automatically finds and runs the right skill.</p>
+            <h3>Start Using Tasks</h3>
+            <p>Type your request in the same chat window where you installed the loader. Just describe what you need in plain English.</p>
         </div>
     </div>
     
+    <div class="info-callout">
+        <strong>💡 Where do I type prompts?</strong> In the same place you normally chat with your AI — whether that's the OpenClaw terminal, Claude Desktop app, or web interface. LawTasksAI works through your existing AI assistant.
+    </div>
+    
     <div class="example-box">
-        <h4>Example Request</h4>
+        <h4>Example: Type this in your AI chat</h4>
         <div class="input">"Calculate deadlines for a breach of contract case in Colorado. Complaint served February 17, 2026."</div>
-        <p style="margin: 0; font-size: 10pt; color: #166534;">→ Automatically runs Deadline Calculator skill and returns formatted deadline table</p>
+        <p style="margin: 0; font-size: 10pt; color: #166534;">→ LawTasksAI automatically finds the right task and returns a formatted deadline table</p>
     </div>
 </div>
 
@@ -433,7 +458,7 @@
     <h1>Example: Deadline Calculator</h1>
     
     <div class="example-box">
-        <h4>You say:</h4>
+        <h4>You type in your AI chat:</h4>
         <div class="input">"I need litigation deadlines for a personal injury case in Texas federal court. Complaint filed January 15, 2026."</div>
     </div>
     
@@ -449,7 +474,7 @@
     
     <h1 style="margin-top: 40px;">Example: Deposition Summary</h1>
     
-    <p><strong>You provide:</strong> A deposition transcript (PDF or text)</p>
+    <p><strong>You type:</strong> "Summarize this deposition" and attach the transcript file</p>
     
     <p><strong>LawTasksAI returns:</strong></p>
     <ul style="margin-left: 20px; color: #4b5563;">
@@ -461,7 +486,7 @@
     </ul>
     
     <div class="highlight-box">
-        <strong>🔒 Privacy:</strong> Document never leaves your machine — processed entirely locally.
+        <strong>🔒 Privacy:</strong> Document never leaves your machine — processed entirely locally. See our <a href="https://lawtasksai.com/security" target="_blank">security page</a> for details.
     </div>
 </div>
 
@@ -498,7 +523,7 @@
         </tr>
     </table>
     
-    <p><strong>Most skills cost 1 credit.</strong> Complex document analysis may cost 2-3 credits.</p>
+    <p><strong>Most tasks cost 1 credit.</strong> Complex document analysis may cost 2-3 credits.</p>
     
     <div class="feature-grid" style="margin-top: 30px;">
         <div class="feature">
@@ -516,15 +541,16 @@
     <div class="feature-grid">
         <div class="feature">
             <h3>🔒 Local Execution</h3>
-            <p>Document analysis skills run entirely on your machine. Files are never uploaded anywhere.</p>
+            <p>Document analysis tasks run entirely on your machine. Files are never uploaded anywhere.</p>
         </div>
         <div class="feature">
             <h3>☁️ Server Execution</h3>
-            <p>Non-document skills run on secure servers. No client data stored after processing.</p>
+            <p>Non-document tasks run on secure servers. No client data stored after processing.</p>
         </div>
     </div>
     
     <p style="margin-top: 20px;"><strong>Compliance:</strong> Rule 1.6 compliant architecture • No training on your data • SOC 2 security practices</p>
+    <p style="font-size: 10pt;"><a href="https://lawtasksai.com/security" target="_blank">Read our full security documentation →</a></p>
 </div>
 
 <!-- Page 7: Quick Start -->
@@ -532,28 +558,28 @@
     <h1>Quick Start Checklist</h1>
     
     <ul class="checklist">
-        <li>Purchase credits at <strong>lawtasksai.com</strong></li>
-        <li>Save your license key (starts with <code>lt_</code>)</li>
-        <li>Install the loader: <code>/skill install lawtasksai</code></li>
+        <li>Purchase credits at <a href="https://lawtasksai.com" target="_blank"><strong>lawtasksai.com</strong></a></li>
+        <li>Save your license key (starts with <code>lt_</code>) from your email</li>
+        <li>Install the loader — type <code>/skill install lawtasksai</code> in your AI chat</li>
         <li>Enter your license key when prompted</li>
-        <li>Try: <em>"What legal skills do you have?"</em></li>
-        <li>Run your first skill!</li>
+        <li>Try asking: <em>"What legal tasks do you have?"</em></li>
+        <li>Run your first task!</li>
     </ul>
     
     <h1 style="margin-top: 50px;">Getting Help</h1>
     
     <table>
         <tr>
-            <td><strong>Documentation</strong></td>
-            <td>docs.lawtasksai.com</td>
+            <td><strong>Task Catalog</strong></td>
+            <td><a href="https://lawtasksai.com/skills" target="_blank">lawtasksai.com/skills</a></td>
+        </tr>
+        <tr>
+            <td><strong>Download Page</strong></td>
+            <td><a href="https://lawtasksai.com/download" target="_blank">lawtasksai.com/download</a></td>
         </tr>
         <tr>
             <td><strong>Email Support</strong></td>
-            <td>support@lawtasksai.com</td>
-        </tr>
-        <tr>
-            <td><strong>Skill Catalog</strong></td>
-            <td>lawtasksai.com/skills</td>
+            <td><a href="mailto:support@lawtasksai.com">support@lawtasksai.com</a></td>
         </tr>
     </table>
     
@@ -566,9 +592,9 @@
 <div class="page cta-page">
     <h1>Start Automating Today</h1>
     
-    <p class="cta-url">lawtasksai.com</p>
+    <p class="cta-url"><a href="https://lawtasksai.com" target="_blank">lawtasksai.com</a></p>
     
-    <p class="cta-features">200+ legal skills • Pay-per-use • Private & secure</p>
+    <p class="cta-features"><a href="https://lawtasksai.com/skills" target="_blank">200+ legal tasks</a> • Pay-per-use • Private & secure</p>
 </div>
 
 </body>
