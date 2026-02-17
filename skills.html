@@ -258,7 +258,7 @@
                             ${catSkills.map(skill => `
                                 <div class="skill-card">
                                     <div class="skill-header">
-                                        <span class="skill-name">${skill.name}</span>
+                                        <span class="skill-name">${skill.name} <span style="color:#2563eb;font-weight:400;font-size:0.8em;">(${skill.credits_per_use} cr)</span></span>
                                         <span class="skill-status">Available</span>
                                     </div>
                                     <p class="skill-description">${skill.description || ''}</p>
