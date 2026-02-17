@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LawTasksAI - Getting Started Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            font-size: 11pt;
+        }
+        
+        .page {
+            page-break-after: always;
+            padding: 50px 60px;
+            min-height: 100vh;
+        }
+        
+        .page:last-child { page-break-after: avoid; }
+        
+        /* Cover Page */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3748 100%);
+            color: white;
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .cover h1 span { color: #60a5fa; }
+        
+        .cover .tagline {
+            font-size: 18pt;
+            color: #9ca3af;
+            margin-bottom: 60px;
+        }
+        
+        .cover .subtitle {
+            font-size: 24pt;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .cover .version {
+            font-size: 11pt;
+            color: #6b7280;
+            margin-top: 80px;
+        }
+        
+        /* Content Pages */
+        h1 {
+            font-size: 24pt;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            color: #2563eb;
+            margin: 25px 0 12px 0;
+        }
+        
+        p { margin-bottom: 12px; }
+        
+        .lead {
+            font-size: 13pt;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box strong { color: #1d4ed8; }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .feature h3 {
+            font-size: 12pt;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        
+        .feature p {
+            font-size: 10pt;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        tr:hover { background: #f9fafb; }
+        
+        .step {
+            display: flex;
+            margin: 20px 0;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #2563eb;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 12pt;
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            font-size: 10pt;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        code {
+            background: #1a1a2e;
+            color: #60a5fa;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 9pt;
+        }
+        
+        .code-block {
+            background: #1a1a2e;
+            color: #e5e7eb;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 10pt;
+            margin: 15px 0;
+        }
+        
+        .example-box {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-box h4 {
+            color: #166534;
+            font-size: 11pt;
+            margin-bottom: 10px;
+        }
+        
+        .example-box .input {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #4b5563;
+        }
+        
+        .pricing-table {
+            margin: 20px 0;
+        }
+        
+        .pricing-table th:first-child { width: 30%; }
+        .pricing-table td:nth-child(2),
+        .pricing-table td:nth-child(3),
+        .pricing-table td:nth-child(4) { text-align: center; }
+        .pricing-table th:nth-child(2),
+        .pricing-table th:nth-child(3),
+        .pricing-table th:nth-child(4) { text-align: center; }
+        
+        .popular {
+            background: #dbeafe !important;
+            font-weight: 600;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 10px 0 10px 35px;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 14pt;
+            color: #2563eb;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #6b7280;
+            font-size: 9pt;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* CTA Page */
+        .cta-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .cta-page h1 {
+            border: none;
+            font-size: 28pt;
+            margin-bottom: 30px;
+        }
+        
+        .cta-url {
+            font-size: 24pt;
+            color: #2563eb;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+        
+        .cta-features {
+            font-size: 14pt;
+            color: #6b7280;
+        }
+        
+        @media print {
+            .page { padding: 40px 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Page 1: Cover -->
+<div class="page cover">
+    <h1>Law<span>Tasks</span>AI</h1>
+    <p class="tagline">200+ AI-Powered Legal Automation Skills</p>
+    <p class="subtitle">Getting Started Guide</p>
+    <p class="version">February 2026</p>
+</div>
+
+<!-- Page 2: What & Why -->
+<div class="page">
+    <h1>What is LawTasksAI?</h1>
+    
+    <p class="lead"><strong>200+ AI-powered legal automation skills for solo attorneys and small firms.</strong></p>
+    
+    <p>LawTasksAI gives you instant access to specialized legal AI tools — deadline calculators, document drafters, research assistants, and more — all through your existing AI assistant.</p>
+    
+    <div class="highlight-box">
+        <strong>No new software to learn.</strong> If you're already using Claude, ChatGPT, or OpenClaw, you can use LawTasksAI.
+    </div>
+    
+    <h1 style="margin-top: 40px;">Why LawTasksAI?</h1>
+    
+    <div class="feature-grid">
+        <div class="feature">
+            <h3>🎯 Built for Legal Work</h3>
+            <p>Generic AI makes you write prompts from scratch. LawTasksAI skills are pre-engineered by legal professionals for specific tasks.</p>
+        </div>
+        <div class="feature">
+            <h3>🔒 Your Documents Stay Private</h3>
+            <p>Document analysis skills run locally on your machine. Confidential files never leave your computer. Full Rule 1.6 compliance.</p>
+        </div>
+        <div class="feature">
+            <h3>💰 Pay Only for What You Use</h3>
+            <p>No monthly subscriptions. Buy credits, use them when you need them. Credits never expire.</p>
+        </div>
+        <div class="feature">
+            <h3>⚡ Instant Results</h3>
+            <p>Skip the prompt engineering. Get jurisdiction-specific, professionally-formatted output in seconds.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Page 3: Categories -->
+<div class="page">
+    <h1>Skill Categories</h1>
+    
+    <p class="lead">Over 200 skills across 13 practice areas and firm operations.</p>
+    
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Skills</th>
+            <th>Examples</th>
+        </tr>
+        <tr>
+            <td><strong>Litigation & Discovery</strong></td>
+            <td>35</td>
+            <td>Deadline Calculator, Deposition Summarizer, Motion Drafters</td>
+        </tr>
+        <tr>
+            <td><strong>Contract & Transactional</strong></td>
+            <td>30+</td>
+            <td>Contract Analyzer, Due Diligence Checklist, Clause Library</td>
+        </tr>
+        <tr>
+            <td><strong>Research & Knowledge</strong></td>
+            <td>25+</td>
+            <td>Case Law Finder, Statute Lookup, Legal Issue Spotter</td>
+        </tr>
+        <tr>
+            <td><strong>Case Management</strong></td>
+            <td>20+</td>
+            <td>Timeline Builder, Exhibit Organizer, Task Prioritizer</td>
+        </tr>
+        <tr>
+            <td><strong>Administrative</strong></td>
+            <td>20+</td>
+            <td>Time Entry Drafter, Email Templates, Meeting Summarizer</td>
+        </tr>
+        <tr>
+            <td><strong>Billing & Finance</strong></td>
+            <td>15+</td>
+            <td>Invoice Reviewer, Fee Agreement Drafter</td>
+        </tr>
+        <tr>
+            <td><strong>Specialized Practice</strong></td>
+            <td>40+</td>
+            <td>Immigration, Family Law, Estate Planning, IP</td>
+        </tr>
+    </table>
+    
+    <div class="highlight-box">
+        <strong>Browse all 200+ skills at:</strong> lawtasksai.com/skills
+    </div>
+</div>
+
+<!-- Page 4: How It Works -->
+<div class="page">
+    <h1>How It Works</h1>
+    
+    <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h3>Get Your License</h3>
+            <p>Visit <strong>lawtasksai.com</strong> and purchase credits. You'll receive a license key (starts with <code>lt_</code>).</p>
+        </div>
+    </div>
+    
+    <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h3>Install the Loader</h3>
+            <p>For OpenClaw users, just run:</p>
+        </div>
+    </div>
+    
+    <div class="code-block">/skill install lawtasksai</div>
+    
+    <p style="color: #6b7280; font-size: 10pt; margin-left: 47px;">For Claude Desktop (MCP), download the server from your account dashboard.</p>
+    
+    <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h3>Start Using Skills</h3>
+            <p>Just describe what you need in natural language. The system automatically finds and runs the right skill.</p>
+        </div>
+    </div>
+    
+    <div class="example-box">
+        <h4>Example Request</h4>
+        <div class="input">"Calculate deadlines for a breach of contract case in Colorado. Complaint served February 17, 2026."</div>
+        <p style="margin: 0; font-size: 10pt; color: #166534;">→ Automatically runs Deadline Calculator skill and returns formatted deadline table</p>
+    </div>
+</div>
+
+<!-- Page 5: Examples -->
+<div class="page">
+    <h1>Example: Deadline Calculator</h1>
+    
+    <div class="example-box">
+        <h4>You say:</h4>
+        <div class="input">"I need litigation deadlines for a personal injury case in Texas federal court. Complaint filed January 15, 2026."</div>
+    </div>
+    
+    <h2>LawTasksAI Returns:</h2>
+    <table>
+        <tr><td><strong>Answer deadline</strong></td><td>February 5, 2026</td></tr>
+        <tr><td><strong>Initial disclosures</strong></td><td>March 1, 2026</td></tr>
+        <tr><td><strong>Discovery cutoff</strong></td><td>July 15, 2026</td></tr>
+        <tr><td><strong>Dispositive motions</strong></td><td>August 15, 2026</td></tr>
+        <tr><td><strong>Pretrial conference</strong></td><td>September 1, 2026</td></tr>
+    </table>
+    <p style="font-size: 10pt; color: #6b7280; font-style: italic;">All dates account for weekends, holidays, and local rules.</p>
+    
+    <h1 style="margin-top: 40px;">Example: Deposition Summary</h1>
+    
+    <p><strong>You provide:</strong> A deposition transcript (PDF or text)</p>
+    
+    <p><strong>LawTasksAI returns:</strong></p>
+    <ul style="margin-left: 20px; color: #4b5563;">
+        <li>Witness background summary</li>
+        <li>Key testimony organized by topic</li>
+        <li>Admissions and contradictions flagged</li>
+        <li>Impeachment material identified</li>
+        <li>Page/line citations throughout</li>
+    </ul>
+    
+    <div class="highlight-box">
+        <strong>🔒 Privacy:</strong> Document never leaves your machine — processed entirely locally.
+    </div>
+</div>
+
+<!-- Page 6: Pricing -->
+<div class="page">
+    <h1>Pricing</h1>
+    
+    <p class="lead">Simple, transparent pricing. No subscriptions, no contracts.</p>
+    
+    <table class="pricing-table">
+        <tr>
+            <th>Package</th>
+            <th>Credits</th>
+            <th>Price</th>
+            <th>Per Credit</th>
+        </tr>
+        <tr>
+            <td>Starter</td>
+            <td>50</td>
+            <td>$5</td>
+            <td>$0.10</td>
+        </tr>
+        <tr class="popular">
+            <td>Standard ⭐</td>
+            <td>250</td>
+            <td>$20</td>
+            <td>$0.08</td>
+        </tr>
+        <tr>
+            <td>Professional</td>
+            <td>750</td>
+            <td>$50</td>
+            <td>$0.067</td>
+        </tr>
+    </table>
+    
+    <p><strong>Most skills cost 1 credit.</strong> Complex document analysis may cost 2-3 credits.</p>
+    
+    <div class="feature-grid" style="margin-top: 30px;">
+        <div class="feature">
+            <h3>✅ Credits Never Expire</h3>
+            <p>Use them whenever you need them. No "use it or lose it."</p>
+        </div>
+        <div class="feature">
+            <h3>✅ No Monthly Fees</h3>
+            <p>Pay only when you buy credits. No recurring charges.</p>
+        </div>
+    </div>
+    
+    <h1 style="margin-top: 40px;">Privacy & Security</h1>
+    
+    <div class="feature-grid">
+        <div class="feature">
+            <h3>🔒 Local Execution</h3>
+            <p>Document analysis skills run entirely on your machine. Files are never uploaded anywhere.</p>
+        </div>
+        <div class="feature">
+            <h3>☁️ Server Execution</h3>
+            <p>Non-document skills run on secure servers. No client data stored after processing.</p>
+        </div>
+    </div>
+    
+    <p style="margin-top: 20px;"><strong>Compliance:</strong> Rule 1.6 compliant architecture • No training on your data • SOC 2 security practices</p>
+</div>
+
+<!-- Page 7: Quick Start -->
+<div class="page">
+    <h1>Quick Start Checklist</h1>
+    
+    <ul class="checklist">
+        <li>Purchase credits at <strong>lawtasksai.com</strong></li>
+        <li>Save your license key (starts with <code>lt_</code>)</li>
+        <li>Install the loader: <code>/skill install lawtasksai</code></li>
+        <li>Enter your license key when prompted</li>
+        <li>Try: <em>"What legal skills do you have?"</em></li>
+        <li>Run your first skill!</li>
+    </ul>
+    
+    <h1 style="margin-top: 50px;">Getting Help</h1>
+    
+    <table>
+        <tr>
+            <td><strong>Documentation</strong></td>
+            <td>docs.lawtasksai.com</td>
+        </tr>
+        <tr>
+            <td><strong>Email Support</strong></td>
+            <td>support@lawtasksai.com</td>
+        </tr>
+        <tr>
+            <td><strong>Skill Catalog</strong></td>
+            <td>lawtasksai.com/skills</td>
+        </tr>
+    </table>
+    
+    <div class="footer">
+        <p>LawTasksAI is a software product, not a law firm. Output should be reviewed by a licensed attorney.</p>
+    </div>
+</div>
+
+<!-- Page 8: CTA -->
+<div class="page cta-page">
+    <h1>Start Automating Today</h1>
+    
+    <p class="cta-url">lawtasksai.com</p>
+    
+    <p class="cta-features">200+ legal skills • Pay-per-use • Private & secure</p>
+</div>
+
+</body>
+</html>
