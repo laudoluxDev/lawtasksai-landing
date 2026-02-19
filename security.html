@@ -526,9 +526,9 @@
                 
                 <div class="highlight-box">
                     <h3>🔒 Our Privacy Commitment</h3>
-                    <p><strong>Document analysis tasks:</strong> Run entirely on your machine. Your files never reach LawTasksAI servers.</p>
-                    <p><strong>Server-side tasks:</strong> We process your legal questions (e.g., "What is the SOL for fraud in Texas?") but never see client files or case details.</p>
-                    <p><strong>Data retention:</strong> Task results are delivered to you and immediately deleted. We don't train AI on your data. We don't sell your information.</p>
+                    <p><strong>All tasks run locally:</strong> Every task — research, document analysis, drafting — runs entirely on your machine. Your questions and files never reach LawTasksAI servers.</p>
+                    <p><strong>We only deliver expertise:</strong> Our server validates your license and delivers the expert analysis framework. Your AI does all the processing locally.</p>
+                    <p><strong>Data retention:</strong> We never see your queries or results. We don't train AI on your data. We don't sell your information.</p>
                 </div>
                 
                 <h3>What We Collect</h3>
@@ -539,15 +539,12 @@
                 </ul>
                 
                 <h3>What You Transmit to Us</h3>
-                <p>When you use a <strong>server-side task</strong> (159 of 202 tasks), your device sends:</p>
+                <p><strong>All tasks run locally on your machine.</strong> The only things your device sends to LawTasksAI are:</p>
                 <ul>
-                    <li><strong>Your legal question or query</strong> — e.g., "What is the statute of limitations for negligence in Colorado?"</li>
                     <li><strong>Your license key</strong> — to verify your account and deduct credits</li>
-                    <li><strong>Task ID</strong> — which skill to run</li>
+                    <li><strong>Task ID</strong> — which expert framework to deliver</li>
                 </ul>
-                <p>That's it. You are transmitting <strong>legal questions</strong>, not client files, not case documents, not client names. We process your question, return the result, and discard the query. Nothing is stored.</p>
-                
-                <p>For <strong>local-execution tasks</strong> (43 tasks — document analysis, contract review, deposition summaries), <strong>nothing is transmitted to LawTasksAI</strong>. Your documents stay on your computer. The only transmission is a request to verify your license key.</p>
+                <p><strong>Your questions, documents, and results are never sent to our servers.</strong> Our server validates your license, delivers the expert analysis framework, and your AI processes everything locally. Nothing is stored on our end.</p>
                 
                 <h2>Layer 2: Your AI Assistant (The Missing Piece)</h2>
                 
@@ -670,25 +667,25 @@
                 
                 <h2>Architecture Overview</h2>
                 
-                <p>LawTasksAI includes <strong>202 AI-powered legal skills</strong> split across two execution models:</p>
+                <p>LawTasksAI includes <strong>200+ AI-powered legal skills</strong>, and <strong>every single one runs locally on your machine.</strong></p>
                 
                 <div class="security-grid">
                     <div class="security-card">
-                        <h4>🖥️ Local Execution (43 Skills)</h4>
-                        <p>Runs entirely on your computer. Documents never leave your machine. Perfect for sensitive client materials and confidential case files.</p>
+                        <h4>🔒 100% Local Execution</h4>
+                        <p>Every task runs entirely on your computer. Your questions, documents, and results never leave your machine. You choose which AI model processes your work.</p>
                     </div>
                     <div class="security-card">
-                        <h4>☁️ Server-Side (159 Skills)</h4>
-                        <p>Processed via our secure Cloud Run infrastructure. All data encrypted in transit with TLS 1.2+. Used for non-sensitive tasks and external integrations.</p>
+                        <h4>📦 What Our Server Does</h4>
+                        <p>Our server only validates your license key and delivers the expert analysis framework. It never sees your questions, documents, or results. Think of it like downloading a template — the work happens on your end.</p>
                     </div>
                 </div>
                 
-                <h3>When Your Data Travels</h3>
-                <p>For server-side skills, data is transmitted to our Google Cloud Run backend for processing. This includes:</p>
+                <h3>What Your Device Sends to Us</h3>
+                <p>The only data transmitted to LawTasksAI servers is:</p>
                 <ul>
-                    <li>Task inputs you provide (e.g., legal questions, research topics)</li>
-                    <li>Generated outputs returned to your device</li>
-                    <li>No persistent storage — data is processed and immediately discarded</li>
+                    <li>Your license key (for authentication and credit deduction)</li>
+                    <li>The task ID (which expert framework to retrieve)</li>
+                    <li>That's it — no questions, no documents, no results</li>
                 </ul>
                 
                 <h2>Encryption & Security</h2>
@@ -702,7 +699,7 @@
                 <h3>Third-Party Services</h3>
                 <ul>
                     <li><strong>Stripe:</strong> Payment processing (PCI-DSS compliant)</li>
-                    <li><strong>OpenAI / Anthropic:</strong> AI model providers for server-side tasks (zero data retention per their terms)</li>
+                    <li><strong>OpenAI / Anthropic / other AI providers:</strong> Only involved if YOU choose to use their AI model on your machine (your choice, not ours)</li>
                     <li><strong>Google Cloud:</strong> Infrastructure hosting with enterprise-grade security</li>
                 </ul>
                 
@@ -711,7 +708,7 @@
                 <h3>Works with Prompt Guard & ClawSec</h3>
                 <p>If you use security skills like <strong>Prompt Guard</strong> or <strong>ClawSec</strong> to protect your AI assistant, LawTasksAI works seamlessly alongside them. Our loader skill simply makes secure API calls to retrieve results — it does not modify system files, inject prompts into other skills, or alter your agent's configuration in any way.</p>
                 
-                <h3>Why Server-Side Is Safer</h3>
+                <h3>Why Our Approach Is Safer</h3>
                 <p>A recent <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/" target="_blank" style="color: #2563eb; text-decoration: underline;">Snyk security analysis</a> of nearly 4,000 publicly available AI skills found that <strong>7.1% contained critical security flaws</strong> — including exposed credentials, prompt injection vulnerabilities, and unauthorized code execution.</p>
                 
                 <p>LawTasksAI avoids these risks entirely:</p>
@@ -723,7 +720,7 @@
                     </div>
                     <div class="security-card">
                         <h4>✅ LawTasksAI Approach</h4>
-                        <p>Only a thin loader runs locally — it sends your query and receives a result. The actual skill logic runs on our secured servers, where it can't access your files or system.</p>
+                        <p>Only a thin loader runs locally — it fetches an expert analysis framework from our server and applies it using your AI. No executable code, no system access, no hidden behavior.</p>
                     </div>
                 </div>
                 
@@ -736,8 +733,7 @@
                 
                 <p>While we provide secure infrastructure, you play a critical role in protecting your data:</p>
                 <ul>
-                    <li><strong>Use local-execution skills</strong> for highly sensitive documents</li>
-                    <li><strong>Review task descriptions</strong> to understand whether a skill runs locally or server-side</li>
+                    <li><strong>Consider using a local AI model</strong> (like Ollama via OpenClaw) for highly sensitive documents — this keeps everything 100% on your machine with no cloud AI involved</li>
                     <li><strong>Keep your device secure</strong> with updated antivirus software and strong passwords</li>
                     <li><strong>Don't share your account</strong> — each attorney should have their own login</li>
                 </ul>
