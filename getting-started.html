@@ -341,7 +341,7 @@
                     <ol>
                         <li>Install <a href="https://openclaw.ai" target="_blank">OpenClaw</a> (one command)</li>
                         <li>Download the skill file from your <a href="/download.html">Account Page</a></li>
-                        <li>Install: <code>openclaw skills install ~/Downloads/lawtasksai</code></li>
+                        <li>Copy the skill folder into <code>~/.openclaw/skills/</code></li>
                         <li>Enter your license key when prompted</li>
                         <li>Start asking legal questions — 200+ tasks ready to use</li>
                     </ol>
@@ -494,50 +494,49 @@
                     <div class="step-num">5</div>
                     <div class="step-content">
                         <h3>Install the Skill — Here's Exactly How</h3>
-                        <p>You need to open a <strong>Terminal</strong> (a text command window) and run one command. Don't worry — here's exactly what to do:</p>
+                        <p>You need to copy the downloaded skill folder into OpenClaw's skills directory. Here's exactly what to do:</p>
                         
-                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 12px;">
-                            <p style="font-weight: 600; margin-bottom: 12px;">🖥️ On Windows:</p>
+                        <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 20px; margin-top: 12px;">
+                            <p style="font-weight: 600; margin-bottom: 12px;">✨ Easiest Method: Just Ask Your AI Assistant</p>
+                            <p style="font-size: 0.93rem; color: #166534;">Open your OpenClaw chat window and type:</p>
+                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 8px; font-size: 0.95rem;">Please install the LawTasksAI skill from my Downloads folder</code>
+                            <p style="font-size: 0.88rem; color: #166534; margin-top: 10px;">Your AI assistant will find the downloaded file, unzip it if needed, and install it in the right place. <strong>That's it — skip to Step 6!</strong></p>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 16px;">
+                            <p style="font-weight: 600; margin-bottom: 12px;">🖥️ Manual Method — Windows:</p>
                             <ol style="padding-left: 20px; color: #4b5563; font-size: 0.92rem; margin-bottom: 0;">
-                                <li style="margin-bottom: 8px;">Press the <strong>Windows key</strong> on your keyboard (bottom-left, has the Windows logo)</li>
-                                <li style="margin-bottom: 8px;">Type <strong>cmd</strong> and press <strong>Enter</strong> — a black window will open. This is the Terminal.</li>
-                                <li style="margin-bottom: 8px;">Type this command exactly and press <strong>Enter</strong>:<br>
-                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">openclaw skills install %USERPROFILE%\Downloads\lawtasksai</code>
+                                <li style="margin-bottom: 8px;">Open <strong>File Explorer</strong> (the folder icon on your taskbar)</li>
+                                <li style="margin-bottom: 8px;">Navigate to your <strong>Downloads</strong> folder</li>
+                                <li style="margin-bottom: 8px;">Find the <strong>lawtasksai</strong> file — if it's a <code>.zip</code> file, right-click it and choose <strong>"Extract All"</strong>, then click <strong>Extract</strong></li>
+                                <li style="margin-bottom: 8px;">Now you need to copy the <strong>lawtasksai</strong> folder to OpenClaw's skills directory. Click the address bar at the top of File Explorer and type this, then press Enter:<br>
+                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">%USERPROFILE%\.openclaw\skills</code>
                                 </li>
-                                <li style="margin-bottom: 0;">That's it! The skill will install automatically.</li>
+                                <li style="margin-bottom: 8px;">If the <code>skills</code> folder doesn't exist, create it: right-click → <strong>New</strong> → <strong>Folder</strong> → name it <strong>skills</strong></li>
+                                <li style="margin-bottom: 0;">Go back to Downloads, <strong>copy</strong> (Ctrl+C) the <strong>lawtasksai</strong> folder, then go back to the skills folder and <strong>paste</strong> (Ctrl+V)</li>
                             </ol>
                         </div>
 
                         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 16px;">
-                            <p style="font-weight: 600; margin-bottom: 12px;">🍎 On Mac:</p>
+                            <p style="font-weight: 600; margin-bottom: 12px;">🍎 Manual Method — Mac:</p>
                             <ol style="padding-left: 20px; color: #4b5563; font-size: 0.92rem; margin-bottom: 0;">
-                                <li style="margin-bottom: 8px;">Press <strong>Command + Space</strong> to open Spotlight search</li>
-                                <li style="margin-bottom: 8px;">Type <strong>Terminal</strong> and press <strong>Enter</strong> — a window will open. This is the Terminal.</li>
-                                <li style="margin-bottom: 8px;">Type this command exactly and press <strong>Enter</strong>:<br>
-                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">openclaw skills install ~/Downloads/lawtasksai</code>
+                                <li style="margin-bottom: 8px;">Open <strong>Finder</strong> and go to your <strong>Downloads</strong> folder</li>
+                                <li style="margin-bottom: 8px;">Find the <strong>lawtasksai</strong> file — if it's a <code>.zip</code> file, double-click it to unzip</li>
+                                <li style="margin-bottom: 8px;">Open <strong>Terminal</strong> (press <strong>Command + Space</strong>, type <strong>Terminal</strong>, press Enter) and paste this command:<br>
+                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">cp -r ~/Downloads/lawtasksai ~/.openclaw/skills/</code>
                                 </li>
-                                <li style="margin-bottom: 0;">That's it! The skill will install automatically.</li>
+                                <li style="margin-bottom: 0;">Press <strong>Enter</strong>. Done!</li>
                             </ol>
                         </div>
 
                         <div style="background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px; margin-top: 16px;">
-                            <p style="font-weight: 600; margin-bottom: 6px;">⚠️ Common issue: "No such file or directory"</p>
-                            <p style="font-size: 0.9rem; color: #92400e;">This means the file isn't where the command is looking. Check these things:</p>
+                            <p style="font-weight: 600; margin-bottom: 6px;">⚠️ Troubleshooting</p>
                             <ul style="padding-left: 20px; font-size: 0.9rem; color: #92400e; margin-top: 8px;">
                                 <li style="margin-bottom: 4px;">Make sure you downloaded the Skill Loader from your <a href="/download.html" style="color: #2563eb;">Account Page</a> first (Step 4)</li>
-                                <li style="margin-bottom: 4px;">Check if the file downloaded to a different folder (look in your browser's download bar at the bottom)</li>
-                                <li style="margin-bottom: 4px;">If the file is named differently (like <code>lawtasksai.zip</code>), unzip it first, then use the folder name</li>
-                                <li style="margin-bottom: 4px;">If it saved to your Desktop instead, use:<br>
-                                    <strong>Windows:</strong> <code>openclaw skills install %USERPROFILE%\Desktop\lawtasksai</code><br>
-                                    <strong>Mac:</strong> <code>openclaw skills install ~/Desktop/lawtasksai</code></li>
+                                <li style="margin-bottom: 4px;">If the file saved to your Desktop instead of Downloads, look there</li>
+                                <li style="margin-bottom: 4px;">The folder must contain a file called <strong>SKILL.md</strong> — if you don't see it, you may need to unzip first</li>
+                                <li style="margin-bottom: 4px;">After copying, <strong>restart OpenClaw</strong> so it picks up the new skill</li>
                             </ul>
-                        </div>
-
-                        <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; margin-top: 16px;">
-                            <p style="font-weight: 600; margin-bottom: 6px;">💡 Alternative: Install from chat</p>
-                            <p style="font-size: 0.9rem; color: #166534;">If the Terminal feels uncomfortable, you can also ask your OpenClaw assistant to install it for you. Open your OpenClaw chat and type:</p>
-                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 8px; font-size: 0.95rem;">"Please install the LawTasksAI skill from my Downloads folder"</code>
-                            <p style="font-size: 0.85rem; color: #166534; margin-top: 8px;">Your AI assistant will find the file and install it for you.</p>
                         </div>
                     </div>
                 </div>
