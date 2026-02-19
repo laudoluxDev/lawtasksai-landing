@@ -340,11 +340,13 @@
                     <p class="desc">A personal AI assistant that runs on your computer. Best for attorneys who want an always-available legal research partner. Simplest setup.</p>
                     <ol>
                         <li>Install <a href="https://openclaw.ai" target="_blank">OpenClaw</a> (one command)</li>
-                        <li>Type: <code>/skill install lawtasksai</code></li>
-                        <li>Enter your license key</li>
+                        <li>Download the skill file from your <a href="/download.html">Account Page</a></li>
+                        <li>Install: <code>openclaw skill install ~/Downloads/lawtasksai</code></li>
+                        <li>Enter your license key when prompted</li>
                         <li>Start asking legal questions — 200+ tasks ready to use</li>
                     </ol>
                     <p style="font-size: 0.9rem; color: #6b7280; margin-top: 12px;"><strong>Bonus:</strong> Works via chat, Telegram, or WhatsApp</p>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-top: 4px;">See <a href="#quick-start" style="color: #2563eb;">detailed step-by-step below</a> if you need help.</p>
                 </div>
                 
                 <div class="platform-card">
@@ -455,7 +457,7 @@
     <section class="content-section">
         <div class="container">
             <h1 class="section-title">Quick Start: <span style="color: #2563eb;">Get Your Tasks</span></h1>
-            <p class="section-subtitle">Here's the fastest path from zero to running your first legal research query.</p>
+            <p class="section-subtitle">Here's the fastest path from zero to running your first legal research query. Follow each step exactly — we'll walk you through everything.</p>
             
             <div class="steps">
                 <div class="step">
@@ -469,28 +471,94 @@
                     <div class="step-num">2</div>
                     <div class="step-content">
                         <h3>Get Your License Key</h3>
-                        <p>After purchase, you'll receive a license key by email. It looks like: <code>lt_abc123...</code></p>
+                        <p>After purchase, you'll receive a license key by email. It looks like: <code>lt_abc123...</code> — keep this handy, you'll need it in a few minutes.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
                     <div class="step-content">
-                        <h3>Install Your Platform</h3>
-                        <p>Download <a href="https://claude.ai/download" style="color: #2563eb;">Claude Desktop</a> (easiest) or <a href="https://openclaw.ai" style="color: #2563eb;">OpenClaw</a> (most powerful). Both take under 2 minutes to install.</p>
+                        <h3>Install OpenClaw</h3>
+                        <p>Visit <a href="https://openclaw.ai" style="color: #2563eb;">openclaw.ai</a> and follow their install instructions. OpenClaw is the AI assistant that runs LawTasksAI's legal tools.</p>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: #6b7280;">Once installed, OpenClaw gives you a <strong>chat window</strong> where you type messages — similar to ChatGPT or iMessage. That chat window is where you'll do everything below.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">4</div>
                     <div class="step-content">
-                        <h3>Add LawTasksAI</h3>
-                        <p>Connect LawTasksAI to your platform using your license key. Detailed setup instructions are emailed with your key.</p>
+                        <h3>Download the LawTasksAI Skill File</h3>
+                        <p>Go to your <a href="/download.html" style="color: #2563eb;">LawTasksAI Account Page</a>, log in with your license key, and click <strong>"Download Skill Loader."</strong></p>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: #6b7280;">This downloads a small file to your computer (usually to your <strong>Downloads</strong> folder). You don't need to open or edit this file — you just need to know where it was saved.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">5</div>
                     <div class="step-content">
-                        <h3>Ask Your First Question</h3>
-                        <p>Try something like: <em>"What's the statute of limitations for breach of contract in Texas?"</em> — and watch the magic happen.</p>
+                        <h3>Install the Skill — Here's Exactly How</h3>
+                        <p>You need to open a <strong>Terminal</strong> (a text command window) and run one command. Don't worry — here's exactly what to do:</p>
+                        
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 12px;">
+                            <p style="font-weight: 600; margin-bottom: 12px;">🖥️ On Windows:</p>
+                            <ol style="padding-left: 20px; color: #4b5563; font-size: 0.92rem; margin-bottom: 0;">
+                                <li style="margin-bottom: 8px;">Press the <strong>Windows key</strong> on your keyboard (bottom-left, has the Windows logo)</li>
+                                <li style="margin-bottom: 8px;">Type <strong>cmd</strong> and press <strong>Enter</strong> — a black window will open. This is the Terminal.</li>
+                                <li style="margin-bottom: 8px;">Type this command exactly and press <strong>Enter</strong>:<br>
+                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">openclaw skill install %USERPROFILE%\Downloads\lawtasksai</code>
+                                </li>
+                                <li style="margin-bottom: 0;">That's it! The skill will install automatically.</li>
+                            </ol>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 16px;">
+                            <p style="font-weight: 600; margin-bottom: 12px;">🍎 On Mac:</p>
+                            <ol style="padding-left: 20px; color: #4b5563; font-size: 0.92rem; margin-bottom: 0;">
+                                <li style="margin-bottom: 8px;">Press <strong>Command + Space</strong> to open Spotlight search</li>
+                                <li style="margin-bottom: 8px;">Type <strong>Terminal</strong> and press <strong>Enter</strong> — a window will open. This is the Terminal.</li>
+                                <li style="margin-bottom: 8px;">Type this command exactly and press <strong>Enter</strong>:<br>
+                                    <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 6px; font-size: 0.95rem;">openclaw skill install ~/Downloads/lawtasksai</code>
+                                </li>
+                                <li style="margin-bottom: 0;">That's it! The skill will install automatically.</li>
+                            </ol>
+                        </div>
+
+                        <div style="background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px; margin-top: 16px;">
+                            <p style="font-weight: 600; margin-bottom: 6px;">⚠️ Common issue: "No such file or directory"</p>
+                            <p style="font-size: 0.9rem; color: #92400e;">This means the file isn't where the command is looking. Check these things:</p>
+                            <ul style="padding-left: 20px; font-size: 0.9rem; color: #92400e; margin-top: 8px;">
+                                <li style="margin-bottom: 4px;">Make sure you downloaded the Skill Loader from your <a href="/download.html" style="color: #2563eb;">Account Page</a> first (Step 4)</li>
+                                <li style="margin-bottom: 4px;">Check if the file downloaded to a different folder (look in your browser's download bar at the bottom)</li>
+                                <li style="margin-bottom: 4px;">If the file is named differently (like <code>lawtasksai.zip</code>), unzip it first, then use the folder name</li>
+                                <li style="margin-bottom: 4px;">If it saved to your Desktop instead, use:<br>
+                                    <strong>Windows:</strong> <code>openclaw skill install %USERPROFILE%\Desktop\lawtasksai</code><br>
+                                    <strong>Mac:</strong> <code>openclaw skill install ~/Desktop/lawtasksai</code></li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; margin-top: 16px;">
+                            <p style="font-weight: 600; margin-bottom: 6px;">💡 Alternative: Install from chat</p>
+                            <p style="font-size: 0.9rem; color: #166534;">If the Terminal feels uncomfortable, you can also ask your OpenClaw assistant to install it for you. Open your OpenClaw chat and type:</p>
+                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; margin-top: 8px; font-size: 0.95rem;">"Please install the LawTasksAI skill from my Downloads folder"</code>
+                            <p style="font-size: 0.85rem; color: #166534; margin-top: 8px;">Your AI assistant will find the file and install it for you.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">6</div>
+                    <div class="step-content">
+                        <h3>Enter Your License Key</h3>
+                        <p>After the skill installs, OpenClaw will ask for your license key. Paste the key from your email (the one that starts with <code>lt_</code>). You only need to do this once.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">7</div>
+                    <div class="step-content">
+                        <h3>Ask Your First Question!</h3>
+                        <p>Open your OpenClaw chat window and type a legal question in plain English. Try one of these:</p>
+                        <ul style="padding-left: 20px; color: #4b5563; font-size: 0.95rem; margin-top: 8px;">
+                            <li style="margin-bottom: 6px;"><em>"What's the statute of limitations for breach of contract in Texas?"</em></li>
+                            <li style="margin-bottom: 6px;"><em>"What are the filing deadlines for a personal injury case in California?"</em></li>
+                            <li style="margin-bottom: 6px;"><em>"Summarize Colorado's rules on expert witness disclosures."</em></li>
+                        </ul>
+                        <p style="margin-top: 8px;">You don't need to know which task to use — LawTasksAI automatically picks the right one based on your question.</p>
                     </div>
                 </div>
             </div>
