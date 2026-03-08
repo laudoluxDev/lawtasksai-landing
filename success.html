@@ -222,10 +222,45 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR Guide</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
         </div>
-    </header>
-    
+    </header>    
     <main>
         <div class="success-card">
             <div id="loading" class="loading">
@@ -296,9 +331,8 @@
                     
                     <div style="margin-top: 20px; padding: 16px; background: #ecfdf5; border-radius: 8px; border-left: 4px solid #10b981;">
                         <p style="font-size: 0.9rem; color: #065f46; margin: 0;">
-                            <strong>🔒 Document Analysis is Local!</strong><br>
-                            When you analyze contracts, depositions, or NDAs, your files <em>never leave your computer</em>. 
-                            OpenClaw fetches the expert analysis framework, then applies it locally.
+                            <strong>🔒 Your Data Never Touches Our Servers</strong><br>
+                            LawTasksAI delivers expert analysis frameworks — your AI assistant applies them. We never see your documents or queries. For confidential work, use a local LLM or a cloud provider with a zero data retention agreement.
                         </p>
                     </div>
                 </div>

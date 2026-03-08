@@ -307,11 +307,45 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">Law<span>Tasks</span>AI</a>
-            <a href="/security.html" class="back-link">← Back to Security</a>
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR Guide</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
         </div>
-    </header>
-    
+    </header>    
     <section class="hero">
         <div class="container">
             <div class="badge">✅ Full Rule 1.6 Compliance</div>
@@ -732,13 +766,13 @@ providers:
             
             <p>Now that you have a fully private setup:</p>
             <ul>
-                <li><strong>Explore the task catalog:</strong> <a href="/skills.html">lawtasksai.com/skills</a></li>
-                <li><strong>Read the security documentation:</strong> <a href="/security.html">lawtasksai.com/security</a></li>
+                <li><strong>Explore the task catalog:</strong> <a href="skills.html">lawtasksai.com/skills</a></li>
+                <li><strong>Read the security documentation:</strong> <a href="security.html">lawtasksai.com/security</a></li>
                 <li><strong>Create a usage policy:</strong> Document when to use local vs. cloud AI</li>
                 <li><strong>Train your team:</strong> Show paralegals and associates how to use the system</li>
             </ul>
             
-            <p style="margin-top: 40px;"><a href="/" class="btn">Back to LawTasksAI Home</a> <a href="/security.html" class="btn btn-secondary">Security Overview</a></p>
+            <p style="margin-top: 40px;"><a href="index.html" class="btn">Back to LawTasksAI Home</a> <a href="security.html" class="btn btn-secondary">Security Overview</a></p>
             
         </div>
     </section>
@@ -746,7 +780,7 @@ providers:
     <footer>
         <div class="container">
             <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
-            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
         </div>
     </footer>
 </body>

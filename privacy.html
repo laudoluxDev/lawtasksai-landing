@@ -164,37 +164,45 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
             <div class="nav-links" id="navLinks">
-                <a href="/skills.html">Tasks</a>
-                <a href="/sample.html">Samples</a>
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
                 <div class="dropdown">
                     <span class="dropdown-toggle">Get Started</span>
                     <div class="dropdown-menu">
-                        <a href="/getting-started.html">Getting Started Guide</a>
-                        <a href="/requirements.html">System Requirements</a>
-                        <a href="/download.html">Download</a>
-                        <a href="/#pricing">Get Credits</a>
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR Guide</a>
                     </div>
                 </div>
                 <div class="dropdown">
                     <span class="dropdown-toggle">Support</span>
                     <div class="dropdown-menu">
-                        <a href="/#faq">FAQ</a>
-                        <a href="/security.html">Rule 1.6 &amp; Security</a>
-                        <a href="/terms.html">Terms of Service</a>
-                        <a href="/privacy.html">Privacy Policy</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
                     </div>
                 </div>
-                <a href="/#pricing" class="header-cta">Get Credits</a>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
             <div class="mobile-overlay" id="overlay"></div>
         </div>
-    </header>
-    
+    </header>    
     <div class="container">
         <div class="content">
             <h1>Privacy Policy</h1>
@@ -247,7 +255,7 @@
             <ul>
                 <li><strong>Stripe:</strong> For payment processing (they have their own privacy policy)</li>
                 <li><strong>Google Cloud Platform:</strong> Our infrastructure provider (hosting, database)</li>
-                <li><strong>Anthropic:</strong> For AI processing of server-side tasks (they don't train on your data)</li>
+                <li><strong>Anthropic:</strong> For AI processing of server-side tasks (see their data policies for current retention terms)</li>
             </ul>
             
             <p>We may disclose data if required by law or to protect our rights.</p>
@@ -258,7 +266,7 @@
             <p>Research, calculations, and lookups run on our servers. Your query is sent to us, processed, and results are returned. We keep minimal logs for troubleshooting.</p>
             
             <h3>Local Execution Tasks (43 tasks)</h3>
-            <p>Document analysis tasks run entirely on your computer. Your documents <strong>never leave your machine</strong>. We deliver the expert framework, you apply it locally. This protects client confidentiality and complies with ABA Model Rule 1.6.</p>
+            <p>Your documents are <strong>never sent to LawTasksAI</strong>. We deliver the expert framework; your AI assistant applies it. If you use a cloud AI provider, your documents are sent to them for processing. For Rule 1.6 compliance with confidential materials, use a local LLM or ensure your cloud provider has a zero data retention agreement.</p>
             
             <h2>Data Security</h2>
             
@@ -306,14 +314,13 @@
             
             <h2>Third-Party AI Providers</h2>
             
-            <p>When you use server-side tasks, your queries are processed by Anthropic (Claude). Per Anthropic's policy:</p>
+            <p>LawTasksAI delivers expert analysis frameworks. Your AI assistant processes your data. Depending on your setup:</p>
             <ul>
-                <li>They do NOT train on your data</li>
-                <li>They do NOT store your queries long-term</li>
-                <li>They use encryption in transit and at rest</li>
+                <li><strong>Local LLM:</strong> Your data stays entirely on your machine — no third-party processing.</li>
+                <li><strong>Cloud AI provider:</strong> Your queries and documents are sent to the provider (e.g., Anthropic, OpenAI) for processing. Review your provider's data retention and confidentiality policies before using with sensitive client materials.</li>
             </ul>
             
-            <p>Local execution tasks bypass this entirely — your AI runs locally, no third-party processing.</p>
+            <p>We recommend using a provider with a zero data retention agreement for confidential legal work.</p>
             
             <h2>Children's Privacy</h2>
             
@@ -340,7 +347,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
-            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
         </div>
     </footer>
 

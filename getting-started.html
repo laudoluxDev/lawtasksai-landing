@@ -256,37 +256,45 @@
 <body>
     <header>
         <div class="container">
-            <a href="/" class="logo">LawTasks<span>AI</span></a>
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
             <div class="nav-links" id="navLinks">
-                <a href="/skills.html">Tasks</a>
-                <a href="/sample.html">Samples</a>
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
                 <div class="dropdown">
                     <span class="dropdown-toggle">Get Started</span>
                     <div class="dropdown-menu">
-                        <a href="/getting-started.html">Getting Started Guide</a>
-                        <a href="/requirements.html">System Requirements</a>
-                        <a href="/download.html">Download</a>
-                        <a href="/#pricing">Get Credits</a>
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR Guide</a>
                     </div>
                 </div>
                 <div class="dropdown">
                     <span class="dropdown-toggle">Support</span>
                     <div class="dropdown-menu">
-                        <a href="/#faq">FAQ</a>
-                        <a href="/security.html">Rule 1.6 &amp; Security</a>
-                        <a href="/terms.html">Terms of Service</a>
-                        <a href="/privacy.html">Privacy Policy</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
                     </div>
                 </div>
-                <a href="/#pricing" class="header-cta">Get Credits</a>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
             <div class="mobile-overlay" id="overlay"></div>
         </div>
-    </header>
-    
+    </header>    
     <section class="page-hero">
         <div class="container">
             <h1>Get Up and Running <span>in 10 Minutes</span></h1>
@@ -341,7 +349,7 @@
                     <p class="desc">A personal AI assistant that runs on your computer. Best for attorneys who want an always-available legal research partner. Simplest setup.</p>
                     <ol>
                         <li>Install <a href="https://openclaw.ai" target="_blank">OpenClaw</a> (one command)</li>
-                        <li>Download the skill file from your <a href="/download.html">Account Page</a></li>
+                        <li>Download the skill file from your <a href="download.html">Account Page</a></li>
                         <li>Copy the skill folder into <code>~/.openclaw/skills/</code></li>
                         <li>Enter your license key when prompted</li>
                         <li>Start asking legal questions — 200+ tasks ready to use</li>
@@ -386,8 +394,8 @@
             <p class="section-subtitle">We built LawTasksAI with attorney-client privilege in mind. Here's exactly what happens when you use a task.</p>
             
             <div class="how-it-works" style="border: 1px solid #34d399;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Every Task Runs Locally on Your Machine</h3>
-                <p style="color: #d1d5db; font-size: 0.9rem;">Your questions, documents, and results never leave your computer. Our server only validates your license and delivers the expert analysis framework — your AI does all the processing.</p>
+                <h3 style="font-size: 1.1rem; margin-bottom: 8px;">LawTasksAI Never Sees Your Data</h3>
+                <p style="color: #d1d5db; font-size: 0.9rem;">Our server only validates your license and delivers the expert analysis framework — your AI assistant does all the processing. Your documents and queries are never sent to LawTasksAI. If you use a cloud AI provider, your data is sent to them — use a provider with a zero data retention agreement for confidential work.</p>
                 <div class="flow">
                     <div class="flow-box secure">
                         <div class="label">Your Computer</div>
@@ -401,33 +409,33 @@
                     <div class="flow-arrow">→</div>
                     <div class="flow-box secure">
                         <div class="label">Your Computer</div>
-                        <div class="value">🔒 Your AI applies the framework <span class="emphasis">locally</span></div>
+                        <div class="value">🔒 Your AI applies the framework</div>
                     </div>
                 </div>
-                <p style="color: #34d399; font-size: 0.9rem; margin-top: 16px;">✓ Your queries and documents are NEVER sent to our servers — all AI processing happens on your machine</p>
-                <p style="color: #34d399; font-size: 0.9rem; margin-top: 4px;">✓ You choose which AI model to use</p>
+                <p style="color: #34d399; font-size: 0.9rem; margin-top: 16px;">✓ Your queries and documents are NEVER sent to LawTasksAI servers</p>
+                <p style="color: #34d399; font-size: 0.9rem; margin-top: 4px;">✓ You choose which AI model processes your work — local LLM for maximum privacy, or a cloud provider with appropriate data protections</p>
             </div>
             
             <div class="security-grid">
                 <div class="security-card">
-                    <div class="security-icon">🏠</div>
-                    <h3>100% Local Processing</h3>
-                    <p>All AI processing happens on your computer. Your questions and documents are never sent to our servers. We only deliver the expert framework — your AI does the work.</p>
+                    <div class="security-icon">🛡️</div>
+                    <h3>Two-Layer Architecture</h3>
+                    <p>LawTasksAI delivers expert frameworks — your AI assistant applies them. We never see your documents, queries, or results. Your data only goes where you send it.</p>
                 </div>
                 <div class="security-card">
                     <div class="security-icon">🚫</div>
-                    <h3>Nothing to Subpoena</h3>
-                    <p>We never see your queries or results. There's nothing on our servers to find, subpoena, or breach — because your data never leaves your machine.</p>
+                    <h3>Nothing to Subpoena From Us</h3>
+                    <p>We never receive your queries or results. There's nothing on LawTasksAI servers to find, subpoena, or breach — because we only deliver methodology, not process your data.</p>
                 </div>
                 <div class="security-card">
-                    <div class="security-icon">🧠</div>
-                    <h3>No AI Training</h3>
-                    <p>Your questions and data are never used to train AI models. Your legal work stays your legal work. Period.</p>
+                    <div class="security-icon">🔐</div>
+                    <h3>You Control the AI Layer</h3>
+                    <p>Choose a local LLM for maximum confidentiality, or a cloud provider with a zero data retention agreement. You decide what level of privacy fits your practice.</p>
                 </div>
                 <div class="security-card">
                     <div class="security-icon">📋</div>
-                    <h3>Privilege-Aware Design</h3>
-                    <p>Everything runs locally — documents, queries, and results stay on your machine. Attorney-client privilege is maintained by design, not by policy.</p>
+                    <h3>Transparent By Design</h3>
+                    <p>We're clear about what we handle (license validation and expert frameworks) and what we don't (your data). See our <a href="/security" style="color: #34d399;">security page</a> for full details.</p>
                 </div>
             </div>
         </div>
@@ -466,7 +474,7 @@
                     <div class="step-num">4</div>
                     <div class="step-content">
                         <h3>Download the LawTasksAI Skill File</h3>
-                        <p>Go to your <a href="/download.html" style="color: #2563eb;">LawTasksAI Account Page</a>, log in with your license key, and click <strong>"Download Skill Loader."</strong></p>
+                        <p>Go to your <a href="download.html" style="color: #2563eb;">LawTasksAI Account Page</a>, log in with your license key, and click <strong>"Download Skill Loader."</strong></p>
                         <p style="margin-top: 8px; font-size: 0.9rem; color: #6b7280;">This downloads a small file to your computer (usually to your <strong>Downloads</strong> folder). You don't need to open or edit this file — you just need to know where it was saved.</p>
                     </div>
                 </div>
@@ -565,7 +573,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">What if I have confidential documents to analyze?</div>
-                    <div class="faq-a">Document analysis tasks run locally on your computer. Your files are never uploaded to our servers or any third party. The AI processes everything on your machine, so attorney-client privilege is maintained.</div>
+                    <div class="faq-a">Your documents are never sent to LawTasksAI — we only deliver the expert analysis framework. However, your AI assistant processes the document, so if you use a cloud AI provider, the document is sent to them. For maximum confidentiality with sensitive client materials, use a local LLM or ensure your cloud provider has a zero data retention agreement.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Do credits expire?</div>
@@ -603,7 +611,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
-            <p><a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
         </div>
     </footer>
     
