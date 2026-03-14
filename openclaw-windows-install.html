@@ -1,12 +1,1274 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw + Ollama on Windows | LawTasksAI</title>
+    <meta name="description" content="AI-powered legal task automation for lawyers, paralegals and staff. 200+ specialized tasks for research, drafting, case management and more. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LawTasksAI",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.",
+        "url": "https://lawtasksai.com",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Pack",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "50 credits — approximately 50 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Standard Pack",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "description": "250 credits — approximately 250 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Bulk Pack",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "description": "750 credits — approximately 750 legal task executions"
+            }
+        ],
+        "featureList": [
+            "202 AI-powered legal tasks",
+            "100% local processing — all AI runs on your machine, nothing sent to LawTasksAI servers",
+            "Privacy-focused architecture designed for attorney confidentiality",
+            "Use with cloud AI (Claude, ChatGPT) or local AI (OpenClaw + Ollama) for full Rule 1.6 compliance",
+            "Works with OpenClaw, Claude Desktop, Cursor, and MCP-compatible apps",
+            "Prepaid credits — no subscription required",
+            "VirusTotal-verified releases",
+            "Built by a former trial attorney with 21 years of practice"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Solo attorneys, small law firms, legal professionals"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            color: #2563eb;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Pain Points */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pain-card {
+            padding: 30px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+        
+        .pain-card p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+        
+        /* Solutions */
+        .solutions {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .solution-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        
+        .credibility blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .credibility cite {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        /* Email Signup */
+        .signup {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .signup p {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .signup-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .signup-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .credits {
+            font-size: 1.1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-card .per-credit {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card li {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .buy-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .buy-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        .mobile-overlay.active { display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .credibility blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
+        <p>OpenClaw + Ollama on Windows</p>
+        <p>Installation & Configuration Guide — Windows 10 / 11</p>
+        <p>Covers WSL2 setup, Ollama local model install, OpenClaw gateway, and auto-start configuration</p>
+        <h1>Overview</h1>
+        <p>OpenClaw is a local-first AI agent. It runs a gateway process on your machine that connects to a local LLM (via Ollama) or a cloud AI provider (Anthropic, OpenAI), then routes instructions through messaging apps like Telegram, WhatsApp, or Discord.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Important: OpenClaw on Windows Requires WSL2
+OpenClaw does not run as a native Windows application. It depends on Unix/POSIX subsystem features (inotify file watchers, Unix sockets, POSIX process management) that are not available in native Windows environments.
+WSL2 (Windows Subsystem for Linux) solves this by running a genuine Linux kernel inside Windows. This is the only officially supported path for Windows users.
+This guide installs: WSL2 + Ubuntu 24.04 → Node.js 22 → OpenClaw → Ollama (native Windows app) → auto-start configuration.</th>
+          </tr>
+        </table>
+        <h1>System Requirements</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Operating System</h2>
+        <ul>
+        <li>Windows 10 version 2004 or later (Build 19041+) — required for WSL2</li>
+        <li>Windows 11 (all versions) — fully supported, recommended</li>
+        <li>64-bit (x86-64) architecture required — ARM64 Windows has limited GPU support in WSL2</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Hardware Requirements</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Component</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Minimum (Cloud API mode)</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Recommended (Local LLM via Ollama)</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">CPU</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Any modern x86-64, 4 cores</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">8+ cores, modern Intel/AMD (Zen 3+)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">RAM (System)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">8 GB (4 GB for WSL2 minimum)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">16–32 GB (assign 8–12 GB to WSL2)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Storage</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">20 GB free (10 GB for WSL2 + OpenClaw)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">50–100 GB SSD (models are 5–20 GB each)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">GPU (optional)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Not required — CPU-only Ollama works</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">NVIDIA GPU with 8+ GB VRAM for 14B models</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">GPU VRAM (if GPU used)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">8 GB VRAM → 7B–8B parameter models</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">16 GB VRAM → 13B–14B models at full speed</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Network</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Broadband for API calls + model downloads</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Broadband — models are 5–20 GB to download</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Virtualization</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">VT-x or AMD-V enabled in BIOS/UEFI</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Same — verify in BIOS before starting</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">GPU Notes for Windows + Ollama
+NVIDIA GPUs: Install CUDA drivers before WSL2. Ollama for Windows uses CUDA natively and runs outside WSL2 — no GPU passthrough needed. NVIDIA compute capability 5.0+ required (GTX 900 series or newer).
+AMD GPUs: ROCm support on Windows is limited. AMD Radeon users should install the ROCm package from the Ollama Windows release page. Performance may vary.
+No GPU (CPU-only): Ollama will use system RAM. A 14B parameter model (Q4 quantized, ~9 GB) will run but slowly — expect 2–5 tokens/second instead of 30–45 on GPU. Functional, not fast.</th>
+          </tr>
+        </table>
+        <h1>Phase 1 — Enable WSL2 and Install Ubuntu</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.1 — Verify Virtualization is Enabled</h2>
+        <p>Open Task Manager → Performance tab → CPU. Look for 'Virtualization: Enabled' in the lower right. If it shows Disabled, restart your PC, enter BIOS/UEFI, and enable Intel VT-x or AMD-V.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.2 — Install WSL2</h2>
+        <p>Open PowerShell as Administrator (right-click Start → 'Windows PowerShell (Admin)') and run:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">wsl --install</th>
+          </tr>
+        </table>
+        <p>This installs WSL2, the Linux kernel, and Ubuntu 24.04 (the default and recommended distribution). Restart your computer when prompted.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.3 — First Ubuntu Launch</h2>
+        <p>After restarting, Ubuntu will open automatically and ask you to create a Linux username and password. This is separate from your Windows account. Choose a simple username (lowercase, no spaces) and remember the password — you will need it for sudo commands.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.4 — Enable systemd in WSL2</h2>
+        <p>OpenClaw and Ollama use systemd for service management. Enable it now:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">sudo tee /etc/wsl.conf > /dev/null << 'EOF'
+[boot]
+systemd=true
+[automount]
+enabled=true
+options="metadata,umask=22,fmask=11"
+EOF</th>
+          </tr>
+        </table>
+        <p>Then from a PowerShell window (not inside Ubuntu):</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">wsl --shutdown</th>
+          </tr>
+        </table>
+        <p>Reopen Ubuntu from the Start menu. Verify systemd is running:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">systemctl --version</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.5 — Configure WSL2 Memory Allocation</h2>
+        <p>By default WSL2 can consume up to 50% of system RAM. Create a config file to set a sensible limit. In Windows Explorer, navigate to your user folder (C:\Users\YourName\) and create a file named .wslconfig with Notepad:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># File: C:\Users\YourName\.wslconfig
+[wsl2]
+memory=8GB       # Adjust based on your total RAM
+processors=4     # Number of CPU cores for WSL2
+swap=4GB         # Optional swap space
+localhostForwarding=true</th>
+          </tr>
+        </table>
+        <p>Apply the change:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">wsl --shutdown</th>
+          </tr>
+        </table>
+        <p>Reopen Ubuntu. Recommended memory allocation: assign roughly half your total system RAM to WSL2, keeping at least 4 GB for Windows.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 1.6 — Update Ubuntu Packages</h2>
+        <p>Inside Ubuntu, run:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">sudo apt update && sudo apt upgrade -y</th>
+          </tr>
+        </table>
+        <h1>Phase 2 — Install Node.js 22</h1>
+        <p>OpenClaw requires Node.js version 22 or later. Run the following inside your Ubuntu (WSL2) terminal:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Add Node.js 22 package source
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 
-<!-- Content goes here -->
+# Install Node.js
+sudo apt-get install -y nodejs
+
+# Verify the version (must show v22.x.x or higher)
+node --version
+npm --version</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">If node --version shows below v22
+Do not use the default Ubuntu apt packages for Node.js — they are outdated. The nodesource setup script above installs the correct version directly from the Node.js distribution. If you already have an older Node.js installed, run: sudo apt-get remove nodejs first, then repeat the steps above.</th>
+          </tr>
+        </table>
+        <p>Fix npm global install permissions (prevents errors later):</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">mkdir -p ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc</th>
+          </tr>
+        </table>
+        <h1>Phase 3 — Install OpenClaw</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 3.1 — Install the OpenClaw CLI</h2>
+        <p>Inside Ubuntu (WSL2):</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Install OpenClaw globally
+npm install -g openclaw@latest
+
+# Verify installation
+openclaw --version</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 3.2 — Run the Onboarding Wizard</h2>
+        <p>The onboarding wizard creates your config directory (~/.openclaw/), prompts for your LLM API key, and installs the background daemon:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">openclaw onboard --install-daemon</th>
+          </tr>
+        </table>
+        <p>During onboarding you will be asked to:</p>
+        <ul>
+        <li>Select your primary messaging channel (Telegram recommended for setup — easiest to configure)</li>
+        <li>Enter your AI model API key (Anthropic or OpenAI), or skip if using Ollama local model only</li>
+        <li>Confirm daemon install (select Gateway service when prompted)</li>
+        </ul>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Keep All Files on the Linux File System
+Critical: Store OpenClaw config and working files inside WSL2 (/home/yourusername/.openclaw/), NOT on the Windows drive (/mnt/c/...). File I/O on the Linux filesystem is 5–10x faster. Storing configs on /mnt/c/ causes slow startup and intermittent read errors.</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 3.3 — Start and Verify the Gateway</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Start gateway in foreground (for first-run verification)
+openclaw start
+
+# You should see: Gateway running on http://127.0.0.1:18789
+# Open this URL in your Windows browser to verify the dashboard
+
+# Stop with Ctrl+C, then start as daemon:
+openclaw start --daemon</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 3.4 — Access the Dashboard from Windows Browser</h2>
+        <p>The OpenClaw dashboard runs inside WSL2 but is accessible from your Windows browser at:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">http://localhost:18789</th>
+          </tr>
+        </table>
+        <p>If localhost does not resolve, WSL2's port forwarding may need to be configured. From PowerShell as Administrator:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Get WSL2's current IP address
+$wslIp = (wsl hostname -I).Trim().Split(' ')[0]
+
+# Forward Windows port to WSL2
+netsh interface portproxy add v4tov4 listenport=18789 listenaddress=0.0.0.0 connectport=18789 connectaddress=$wslIp</th>
+          </tr>
+        </table>
+        <p>Note: The WSL2 IP address changes on each restart. See Phase 5 for a startup script that refreshes this automatically.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 3.5 — Configure a Local-Only Config for Sensitive Work</h2>
+        <p>Create a privileged configuration with no cloud API keys. Inside Ubuntu:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Copy base config as starting point
+cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw-privileged.json
+
+# Edit the privileged config
+nano ~/.openclaw/openclaw-privileged.json</th>
+          </tr>
+        </table>
+        <p>In the privileged config, remove or blank any cloud API keys and set the primary model to your local Ollama model (configured in Phase 4). Switch configs when starting a privileged session:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">openclaw start --config ~/.openclaw/openclaw-privileged.json --daemon</th>
+          </tr>
+        </table>
+        <h1>Phase 4 — Install Ollama and Pull Local Models</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 4.1 — Install Ollama for Windows</h2>
+        <p>Unlike OpenClaw, Ollama installs as a native Windows application — not inside WSL2. This allows it to use your Windows GPU drivers directly.</p>
+        <ul>
+        <li>Go to ollama.com and download OllamaSetup.exe</li>
+        <li>Run the installer — no Administrator rights required</li>
+        <li>Ollama installs to your user folder and starts automatically in the system tray</li>
+        <li>The Ollama API will be available at http://localhost:11434</li>
+        </ul>
+        <p>Verify Ollama is running from a Windows terminal (cmd or PowerShell):</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">curl http://localhost:11434</th>
+          </tr>
+        </table>
+        <p>You should receive a response. Ollama is also accessible from inside WSL2 at the same localhost:11434 address due to WSL2's localhost forwarding.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">GPU Driver Requirement for Accelerated Inference
+NVIDIA: Install the latest Game Ready or Studio driver from nvidia.com before installing Ollama. CUDA is bundled with Ollama — no separate CUDA install needed.
+AMD Radeon: Download and extract the ROCm package (ollama-windows-amd64-rocm.zip) from the Ollama releases page on GitHub into the same directory as Ollama's CLI.
+No GPU: Ollama will fall back to CPU inference automatically. Performance will be significantly slower but functional.</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 4.2 — Pull Recommended Models</h2>
+        <p>Open a Windows terminal (cmd, PowerShell, or Windows Terminal) and pull your preferred models:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Primary recommendation for 16+ GB RAM systems
+ollama pull deepseek-r1:14b
+
+# Secondary model (optional, ~9 GB)
+ollama pull qwen3:14b
+
+# Lighter option for 8–12 GB RAM systems
+ollama pull deepseek-r1:7b</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Model</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Disk / RAM</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">GPU VRAM Needed</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Best For</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">deepseek-r1:7b</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~5 GB / 8 GB RAM</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">8 GB VRAM (or CPU)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Light tasks, low-RAM systems</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">deepseek-r1:14b</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~9 GB / 16 GB RAM</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">12–16 GB VRAM (or CPU)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Recommended: strong reasoning, balanced</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">qwen3:14b</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~9 GB / 16 GB RAM</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">12–16 GB VRAM (or CPU)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Alternative to DeepSeek, good at code</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">deepseek-r1:32b</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~20 GB / 32 GB RAM</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">24 GB VRAM (RTX 4090)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">High-end systems only</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 4.3 — Verify Ollama is Accessible from WSL2</h2>
+        <p>Inside your Ubuntu terminal, confirm OpenClaw can reach Ollama:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">curl http://localhost:11434
+# Expected response: Ollama is running
+
+# List downloaded models
+curl http://localhost:11434/api/tags | python3 -m json.tool</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 4.4 — Point OpenClaw to Ollama</h2>
+        <p>Edit your OpenClaw config to use the local model as primary. Inside Ubuntu:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">nano ~/.openclaw/openclaw.json</th>
+          </tr>
+        </table>
+        <p>Set the model field to your chosen Ollama model. Example snippet:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/deepseek-r1:14b"
+      }
+    }
+  }
+}</th>
+          </tr>
+        </table>
+        <p>Save, then restart the gateway: openclaw stop && openclaw start --daemon</p>
+        <h1>Phase 5 — Auto-Start on Boot</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 5.1 — Ollama Auto-Start (Windows)</h2>
+        <p>Ollama installs itself as a Windows startup application automatically. Verify in Task Manager → Startup Apps that 'Ollama' is listed and enabled.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Step 5.2 — OpenClaw Daemon Auto-Start (WSL2)</h2>
+        <p>WSL2 does not start automatically when Windows boots by default. The following Task Scheduler approach starts WSL2 and the OpenClaw daemon at login.</p>
+        <p>In PowerShell as Administrator, create and run a startup script:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;"># Create startup script at C:\Users\YourName\wsl-openclaw-start.ps1
+
+$script = @'
+wsl -u root -- bash -c 'systemctl start openclaw-gateway 2>/dev/null || true'
+Start-Sleep -Seconds 5
+$wslIp = (wsl hostname -I).Trim().Split(" ")[0]
+netsh interface portproxy delete v4tov4 listenport=18789 listenaddress=0.0.0.0 2>$null
+netsh interface portproxy add v4tov4 listenport=18789 listenaddress=0.0.0.0 connectport=18789 connectaddress=$wslIp
+'@
+$script | Out-File -FilePath "$env:USERPROFILE\wsl-openclaw-start.ps1" -Encoding UTF8</th>
+          </tr>
+        </table>
+        <p>Register it in Task Scheduler to run at login:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">$action = New-ScheduledTaskAction -Execute "PowerShell.exe" `
+  -Argument "-NonInteractive -WindowStyle Hidden -File $env:USERPROFILE\wsl-openclaw-start.ps1"
+$trigger = New-ScheduledTaskTrigger -AtLogOn
+$settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -StartWhenAvailable
+Register-ScheduledTask -TaskName "OpenClaw WSL2 Startup" `
+  -Action $action -Trigger $trigger -Settings $settings -RunLevel Highest</th>
+          </tr>
+        </table>
+        <h1>Phase 6 — Tailscale VPN (Recommended)</h1>
+        <p>Never expose the OpenClaw gateway (port 18789) directly to the internet. Use Tailscale to access it securely from other devices.</p>
+        <ul>
+        <li>Download and install Tailscale for Windows from tailscale.com</li>
+        <li>Sign in with your existing Tailscale account</li>
+        <li>Tailscale on Windows automatically covers WSL2 — no separate WSL2 install needed</li>
+        <li>Access the OpenClaw dashboard remotely via your Tailscale IP: http://100.x.x.x:18789</li>
+        </ul>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Verify Ollama Stays on Localhost Only
+After setup, confirm Ollama is not accessible from outside your machine. Ollama defaults to localhost:11434 but this should be verified.
+From another device on your network (not via Tailscale), attempt: curl http://[your-windows-ip]:11434
+This should fail or time out. If it succeeds, Ollama is exposed. Add a Windows Firewall rule to block port 11434 inbound.</th>
+          </tr>
+        </table>
+        <h1>Troubleshooting Common Issues</h1>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Problem</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Fix</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">wsl --install fails</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ensure Virtualization is enabled in BIOS. Run PowerShell as Administrator. Check Windows version: Settings → System → About → OS Build must be 19041+.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">WSL version is 1, not 2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: wsl --set-default-version 2 and then: wsl --set-version Ubuntu 2</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Node.js shows version below 22</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Remove old Node: sudo apt-get remove nodejs. Then re-run the nodesource setup script from Phase 2.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">openclaw: command not found</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: source ~/.bashrc. If still missing: npm config get prefix — verify ~/.npm-global/bin is in your PATH.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Dashboard shows 'unauthorized'</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: openclaw dashboard — this prints a tokenized URL. Use that URL with the ?token= parameter in your browser.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">localhost:18789 doesn't load in browser</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run the portproxy commands from Step 3.4. Also check Windows Firewall — add an inbound rule allowing TCP 18789.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ollama not reachable from WSL2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify Ollama is running in Windows tray. Test: curl http://localhost:11434 from both Windows and WSL2. If WSL2 fails, check localhostForwarding=true is set in .wslconfig.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Model runs slowly / CPU only</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ollama may not be detecting your GPU. Check: ollama ps to see active models. Verify NVIDIA drivers are current. Check Device Manager for GPU errors.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">WSL2 high memory usage</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Adjust .wslconfig memory= setting. Run wsl --shutdown when not in use to release memory. Run: Optimize-VHD on the WSL2 .vhdx file to reclaim disk space.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">DNS failures inside WSL2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: sudo rm /etc/resolv.conf and then: echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf</td>
+          </tr>
+        </table>
+        <h1>Quick Reference — Common Commands</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">WSL2 (PowerShell)</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">wsl                         # Open Ubuntu terminal
+wsl --shutdown              # Stop all WSL2 instances (frees memory)
+wsl --list --verbose        # List distributions and WSL versions
+wsl --update                # Update WSL2 kernel</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Ollama (Windows Terminal or cmd)</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">ollama list                 # List downloaded models
+ollama pull deepseek-r1:14b # Download a model
+ollama rm deepseek-r1:7b    # Remove a model
+ollama ps                   # Show currently loaded model
+ollama serve                # Start Ollama server manually (if not running)</th>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">OpenClaw (inside WSL2 Ubuntu terminal)</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">openclaw start --daemon                            # Start gateway as background daemon
+openclaw stop                                      # Stop gateway
+openclaw status                                    # Check gateway status
+openclaw dashboard                                 # Open dashboard (prints token URL)
+openclaw update                                    # Update to latest version
+openclaw start --config ~/.openclaw/openclaw-privileged.json --daemon  # Local-only session</th>
+          </tr>
+        </table>
+        <p>Personal reference guide. Verify all commands against current official documentation at docs.openclaw.ai and docs.ollama.com before executing on production systems.</p>
+    </div>
+<footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        
+        async function checkout(pack) {
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.buy-btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            let body = { pack: pack };
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/create-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
+                }
+                
+                // Redirect to Stripe checkout
+                window.location.href = data.checkout_url;
+                
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        }
+    </script>
+</body>
+
+</html>

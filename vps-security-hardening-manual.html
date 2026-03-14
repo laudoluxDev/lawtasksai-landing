@@ -1,12 +1,1192 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS Security Hardening Manual | LawTasksAI</title>
+    <meta name="description" content="AI-powered legal task automation for lawyers, paralegals and staff. 200+ specialized tasks for research, drafting, case management and more. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LawTasksAI",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.",
+        "url": "https://lawtasksai.com",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Pack",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "50 credits — approximately 50 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Standard Pack",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "description": "250 credits — approximately 250 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Bulk Pack",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "description": "750 credits — approximately 750 legal task executions"
+            }
+        ],
+        "featureList": [
+            "202 AI-powered legal tasks",
+            "100% local processing — all AI runs on your machine, nothing sent to LawTasksAI servers",
+            "Privacy-focused architecture designed for attorney confidentiality",
+            "Use with cloud AI (Claude, ChatGPT) or local AI (OpenClaw + Ollama) for full Rule 1.6 compliance",
+            "Works with OpenClaw, Claude Desktop, Cursor, and MCP-compatible apps",
+            "Prepaid credits — no subscription required",
+            "VirusTotal-verified releases",
+            "Built by a former trial attorney with 21 years of practice"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Solo attorneys, small law firms, legal professionals"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            color: #2563eb;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Pain Points */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pain-card {
+            padding: 30px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+        
+        .pain-card p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+        
+        /* Solutions */
+        .solutions {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .solution-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        
+        .credibility blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .credibility cite {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        /* Email Signup */
+        .signup {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .signup p {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .signup-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .signup-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .credits {
+            font-size: 1.1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-card .per-credit {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card li {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .buy-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .buy-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        .mobile-overlay.active { display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .credibility blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
+        <p>VPS Security Hardening Manual</p>
+        <p>SSH Hardening, Root Access Lockdown & API Key Management</p>
+        <p>For OpenClaw / Skills-as-SaaS Deployments</p>
+        <p>February 2026</p>
+        <h1>Table of Contents</h1>
+        <p>1.  Introduction & Threat Model</p>
+        <p>2.  SSH Hardening</p>
+        <p>2.1  Generate SSH Key Pair</p>
+        <p>2.2  Copy Public Key to Server</p>
+        <p>2.3  Configure SSHD</p>
+        <p>2.4  Set Up a Firewall (UFW)</p>
+        <p>2.5  Install Fail2Ban</p>
+        <p>3.  Disable Password-Based Root Access</p>
+        <p>3.1  Create a Non-Root Admin User</p>
+        <p>3.2  Lock Down Root</p>
+        <p>3.3  Verify the Lockdown</p>
+        <p>4.  Treat API Keys as Production Credentials</p>
+        <p>4.1  Never Hardcode Keys</p>
+        <p>4.2  Environment Variables & .env Files</p>
+        <p>4.3  Secrets Manager Options</p>
+        <p>4.4  Key Rotation Strategy</p>
+        <p>4.5  Monitoring & Auditing</p>
+        <p>5.  Quick-Reference Checklists</p>
+        <p>6.  Emergency Response Playbook</p>
+        <h1>1. Introduction & Threat Model</h1>
+        <p>When you deploy a VPS to host an OpenClaw backend service, a trading bot, or any skill-as-SaaS application, you are placing a publicly reachable computer on the internet. Automated bots will begin probing your server within minutes of it going live. This manual covers the three most critical layers of defense you need from day one.</p>
+        <p>⚠  WARNING: A misconfigured VPS can expose your API keys, customer data, and the server itself to attackers. Do not skip any section.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Threat Landscape</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Threat</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">How It Happens</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">What You Lose</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Brute-force SSH</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Bots try thousands of password combos</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Full server control</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Leaked API keys</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Keys committed to Git or left in code</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Billing fraud, data theft</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Root compromise</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Attacker gains root via weak password</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Total system takeover</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Privilege escalation</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Non-root exploit chains to root</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Lateral movement, data exfil</td>
+          </tr>
+        </table>
+        <h1>2. SSH Hardening</h1>
+        <p>SSH is the front door to your server. By default, most VPS providers ship with password authentication enabled and root login allowed. This section locks that down.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">2.1  Generate an SSH Key Pair (On Your Local Machine)</h2>
+        <p>SSH keys use public-key cryptography. The private key stays on your machine; the public key goes on the server. No password ever crosses the network.</p>
+        <p>On macOS / Linux:</p>
+        <p>ssh-keygen -t ed25519 -C "your_email@example.com"</p>
+        <p># When prompted:</p>
+        <p>#   File: press Enter for default (~/.ssh/id_ed25519)</p>
+        <p>#   Passphrase: enter a STRONG passphrase (adds 2nd factor)</p>
+        <p>On Windows (PowerShell):</p>
+        <p>ssh-keygen -t ed25519 -C "your_email@example.com"</p>
+        <p># Keys saved to C:\Users\YourName\.ssh\id_ed25519</p>
+        <p>✅  TIP: Always use ed25519 over RSA. It is faster, more secure, and produces shorter keys.</p>
+        <p>What this creates:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">File</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Purpose</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Share It?</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">id_ed25519</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Private key (YOUR SECRET)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">NEVER</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">id_ed25519.pub</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Public key</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Yes – goes on server</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">2.2  Copy Your Public Key to the Server</h2>
+        <p>Method A – ssh-copy-id (easiest):</p>
+        <p>ssh-copy-id -i ~/.ssh/id_ed25519.pub root@YOUR_SERVER_IP</p>
+        <p>Method B – Manual (if ssh-copy-id unavailable):</p>
+        <p># On your local machine, display the public key:</p>
+        <p>cat ~/.ssh/id_ed25519.pub</p>
+        <p># SSH into the server and paste it:</p>
+        <p>ssh root@YOUR_SERVER_IP</p>
+        <p>mkdir -p ~/.ssh && chmod 700 ~/.ssh</p>
+        <p>echo 'PASTE_YOUR_PUBLIC_KEY_HERE' >> ~/.ssh/authorized_keys</p>
+        <p>chmod 600 ~/.ssh/authorized_keys</p>
+        <p>Test the key before proceeding:</p>
+        <p>ssh -i ~/.ssh/id_ed25519 root@YOUR_SERVER_IP</p>
+        <p># Should log in WITHOUT asking for a password</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">2.3  Configure the SSH Daemon (sshd_config)</h2>
+        <p>Now that key-based login works, disable everything else.</p>
+        <p>Edit the config file:</p>
+        <p>sudo nano /etc/ssh/sshd_config</p>
+        <p>Find and change these lines (or add them if missing):</p>
+        <p># --- CRITICAL SETTINGS ---</p>
+        <p># Disable password authentication entirely</p>
+        <p>PasswordAuthentication no</p>
+        <p># Disable root login (we will create a separate admin user)</p>
+        <p>PermitRootLogin no</p>
+        <p># Disable challenge-response (another password vector)</p>
+        <p>ChallengeResponseAuthentication no</p>
+        <p>KbdInteractiveAuthentication no</p>
+        <p># Only allow SSH protocol 2</p>
+        <p>Protocol 2</p>
+        <p># Limit login attempts per connection</p>
+        <p>MaxAuthTries 3</p>
+        <p># Disconnect idle sessions after 5 minutes</p>
+        <p>ClientAliveInterval 300</p>
+        <p>ClientAliveCountMax 0</p>
+        <p># Disable X11 forwarding (not needed for servers)</p>
+        <p>X11Forwarding no</p>
+        <p># Disable empty passwords</p>
+        <p>PermitEmptyPasswords no</p>
+        <p># --- OPTIONAL: Change default port ---</p>
+        <p># Port 2222    # Reduces noise from automated bots</p>
+        <p>⚠  IMPORTANT: Keep your current SSH session open until you verify the new config works in a SECOND terminal window.</p>
+        <p>Restart SSH and test:</p>
+        <p>sudo systemctl restart sshd</p>
+        <p># In a NEW terminal (keep old one open!):</p>
+        <p>ssh -i ~/.ssh/id_ed25519 your_admin_user@YOUR_SERVER_IP</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">2.4  Set Up a Firewall (UFW)</h2>
+        <p>UFW (Uncomplicated Firewall) blocks all ports except the ones you explicitly allow.</p>
+        <p># Allow SSH (change 22 to your custom port if applicable)</p>
+        <p>sudo ufw allow 22/tcp</p>
+        <p># Allow your app port (e.g., OpenClaw backend on 3000)</p>
+        <p>sudo ufw allow 3000/tcp</p>
+        <p># Allow HTTPS if you run a landing page</p>
+        <p>sudo ufw allow 443/tcp</p>
+        <p># Enable the firewall</p>
+        <p>sudo ufw enable</p>
+        <p># Verify</p>
+        <p>sudo ufw status verbose</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">2.5  Install Fail2Ban</h2>
+        <p>Fail2Ban monitors log files and automatically bans IPs that show malicious signs (like repeated failed SSH logins).</p>
+        <p>sudo apt update && sudo apt install fail2ban -y</p>
+        <p># Create local config (never edit the main file)</p>
+        <p>sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</p>
+        <p>sudo nano /etc/fail2ban/jail.local</p>
+        <p>Key settings to adjust in jail.local:</p>
+        <p>[sshd]</p>
+        <p>enabled = true</p>
+        <p>port = 22          # Match your SSH port</p>
+        <p>maxretry = 3        # Ban after 3 failed attempts</p>
+        <p>bantime = 3600      # Ban for 1 hour (seconds)</p>
+        <p>findtime = 600      # Within 10-minute window</p>
+        <p>sudo systemctl enable fail2ban</p>
+        <p>sudo systemctl start fail2ban</p>
+        <p># Check status</p>
+        <p>sudo fail2ban-client status sshd</p>
+        <h1>3. Disable Password-Based Root Access</h1>
+        <p>The root user has unrestricted access to everything on the server. If an attacker gets root, they own the machine. The strategy here is simple: never log in as root. Instead, create a dedicated admin user with sudo privileges.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">3.1  Create a Non-Root Admin User</h2>
+        <p># While still logged in as root:</p>
+        <p>adduser deployer</p>
+        <p># Set a strong password when prompted</p>
+        <p># Grant sudo privileges</p>
+        <p>usermod -aG sudo deployer</p>
+        <p># Copy your SSH key to the new user</p>
+        <p>mkdir -p /home/deployer/.ssh</p>
+        <p>cp ~/.ssh/authorized_keys /home/deployer/.ssh/</p>
+        <p>chown -R deployer:deployer /home/deployer/.ssh</p>
+        <p>chmod 700 /home/deployer/.ssh</p>
+        <p>chmod 600 /home/deployer/.ssh/authorized_keys</p>
+        <p>Test login as the new user (in a new terminal):</p>
+        <p>ssh -i ~/.ssh/id_ed25519 deployer@YOUR_SERVER_IP</p>
+        <p># Verify sudo works:</p>
+        <p>sudo whoami</p>
+        <p># Should output: root</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">3.2  Lock Down Root</h2>
+        <p>Step A: Disable root SSH login</p>
+        <p>You already set this in sshd_config above, but verify it:</p>
+        <p>sudo grep PermitRootLogin /etc/ssh/sshd_config</p>
+        <p># Must show: PermitRootLogin no</p>
+        <p>Step B: Lock the root password</p>
+        <p># This prevents ANY password-based root login, even on console</p>
+        <p>sudo passwd -l root</p>
+        <p>Step C: Restrict su to admin group only</p>
+        <p>sudo dpkg-statoverride --update --add root sudo 4750 /bin/su</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">3.3  Verify the Lockdown</h2>
+        <p>Run these checks to confirm everything is properly locked down:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Test</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Expected Result</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">ssh root@SERVER_IP</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Permission denied (publickey)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">ssh -o PubkeyAuth=no deployer@SERVER_IP</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Permission denied (publickey)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">sudo passwd -S root</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">root L ... (L means locked)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">sudo fail2ban-client status sshd</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Shows active jail with ban count</td>
+          </tr>
+        </table>
+        <h1>4. Treat API Keys as Production Credentials</h1>
+        <p>API keys for OpenAI, Anthropic, OANDA, Stripe, and any other service are as sensitive as passwords. A leaked key can drain your account balance, expose customer data, or allow attackers to impersonate your service.</p>
+        <p>⚠  CRITICAL: If you accidentally push an API key to a public GitHub repo, consider it compromised IMMEDIATELY. Rotate the key, then clean the Git history.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">4.1  Never Hardcode Keys</h2>
+        <p>The single most common mistake. Never put API keys directly in your source code.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">❌  WRONG (Hardcoded)</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">✅  RIGHT (Environment Var)</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">api_key = "sk-abc123..."</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">api_key = os.environ["OPENAI_KEY"]</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">4.2  Environment Variables & .env Files</h2>
+        <p>Option A: System environment variables (simplest for VPS)</p>
+        <p># Add to /home/deployer/.bashrc or .profile:</p>
+        <p>export OPENAI_API_KEY="sk-your-key-here"</p>
+        <p>export OANDA_API_KEY="your-oanda-key"</p>
+        <p>export STRIPE_SECRET_KEY="sk_live_your-stripe-key"</p>
+        <p># Reload:</p>
+        <p>source ~/.bashrc</p>
+        <p># In your app (Python):</p>
+        <p>import os</p>
+        <p>api_key = os.environ["OPENAI_API_KEY"]</p>
+        <p># In your app (Node.js):</p>
+        <p>const apiKey = process.env.OPENAI_API_KEY;</p>
+        <p>Option B: .env file with dotenv library</p>
+        <p># Create .env in your project root:</p>
+        <p>OPENAI_API_KEY=sk-your-key-here</p>
+        <p>OANDA_API_KEY=your-oanda-key</p>
+        <p>STRIPE_SECRET_KEY=sk_live_your-stripe-key</p>
+        <p>DATABASE_URL=postgresql://user:pass@localhost/mydb</p>
+        <p>⚠  CRITICAL: Add .env to your .gitignore IMMEDIATELY. Create .env.example with placeholder values for teammates.</p>
+        <p># .gitignore - add these lines:</p>
+        <p>.env</p>
+        <p>.env.local</p>
+        <p>.env.production</p>
+        <p>*.pem</p>
+        <p>*.key</p>
+        <p>Set proper file permissions on .env:</p>
+        <p>chmod 600 .env            # Only owner can read/write</p>
+        <p>chown deployer:deployer .env</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">4.3  Secrets Manager Options (For Growing Projects)</h2>
+        <p>When you move beyond a single VPS, consider a dedicated secrets manager:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Tool</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Best For</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Cost</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Complexity</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System env vars</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Single VPS</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Free</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Low</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">.env + dotenv</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Small projects</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Free</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Low</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Docker secrets</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Containerized apps</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Free</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Medium</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">AWS Secrets Manager</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">AWS deployments</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~$0.40/secret/mo</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Medium</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">HashiCorp Vault</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Multi-env / team</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Free (self-host)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">High</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">4.4  Key Rotation Strategy</h2>
+        <p>Rotate keys regularly, and always rotate immediately if a compromise is suspected.</p>
+        <ul>
+        <li>Set a rotation schedule:</li>
+        <li>High-risk keys (Stripe, payment APIs): every 30 days</li>
+        <li>Medium-risk keys (OpenAI, Anthropic): every 90 days</li>
+        <li>Low-risk keys (analytics, non-sensitive): every 180 days</li>
+        <li>Rotation process:</li>
+        <li>Generate a new key in the provider dashboard</li>
+        <li>Update the key in your environment or secrets manager</li>
+        <li>Deploy and verify the new key works</li>
+        <li>Revoke the old key in the provider dashboard</li>
+        <li>Log the rotation date</li>
+        <li>Track it:</li>
+        </ul>
+        <p># Create a simple key-rotation-log.md:</p>
+        <p>| Key          | Last Rotated | Next Due   | Owner    |</p>
+        <p>|--------------|-------------|------------|----------|</p>
+        <p>| OPENAI_KEY   | 2026-02-01  | 2026-05-01 | deployer |</p>
+        <p>| STRIPE_KEY   | 2026-02-15  | 2026-03-15 | deployer |</p>
+        <p>| OANDA_KEY    | 2026-01-10  | 2026-04-10 | deployer |</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">4.5  Monitoring & Auditing</h2>
+        <p>Monitor API usage for anomalies:</p>
+        <ul>
+        <li>Set billing alerts on OpenAI, Anthropic, and Stripe dashboards</li>
+        <li>Set hard spending caps where available (OpenAI allows this)</li>
+        <li>Review API usage logs weekly for unexpected spikes</li>
+        </ul>
+        <p>Audit key access:</p>
+        <p># Check who has read access to your .env file:</p>
+        <p>ls -la .env</p>
+        <p># Search for any hardcoded keys in your codebase:</p>
+        <p>grep -rn "sk-" --include="*.py" --include="*.js" .</p>
+        <p>grep -rn "sk_live" --include="*.py" --include="*.js" .</p>
+        <p># Use git-secrets to prevent committing keys:</p>
+        <p># https://github.com/awslabs/git-secrets</p>
+        <p>git secrets --install</p>
+        <p>git secrets --register-aws</p>
+        <p>git secrets --add 'sk-[a-zA-Z0-9]{20,}'   # OpenAI pattern</p>
+        <h1>5. Quick-Reference Checklists</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">SSH Hardening Checklist</h2>
+        <ul>
+        <li>[ ]  Generated ed25519 key pair locally</li>
+        <li>[ ]  Copied public key to server</li>
+        <li>[ ]  Set PasswordAuthentication no</li>
+        <li>[ ]  Set PermitRootLogin no</li>
+        <li>[ ]  Set ChallengeResponseAuthentication no</li>
+        <li>[ ]  Set MaxAuthTries 3</li>
+        <li>[ ]  Restarted sshd and tested login</li>
+        <li>[ ]  UFW enabled with only needed ports open</li>
+        <li>[ ]  Fail2Ban installed and active</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Root Access Lockdown Checklist</h2>
+        <ul>
+        <li>[ ]  Created non-root admin user (e.g., deployer)</li>
+        <li>[ ]  Granted sudo to admin user</li>
+        <li>[ ]  Copied SSH keys to admin user</li>
+        <li>[ ]  Locked root password (passwd -l root)</li>
+        <li>[ ]  Verified root SSH login is denied</li>
+        <li>[ ]  Verified password login is denied for all users</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">API Key Security Checklist</h2>
+        <ul>
+        <li>[ ]  No keys hardcoded in source code</li>
+        <li>[ ]  Keys stored in .env or env vars with 600 permissions</li>
+        <li>[ ]  .env added to .gitignore</li>
+        <li>[ ]  .env.example created with placeholder values</li>
+        <li>[ ]  Billing alerts set on all API provider dashboards</li>
+        <li>[ ]  Spending caps configured where available</li>
+        <li>[ ]  Key rotation schedule documented</li>
+        <li>[ ]  git-secrets or equivalent pre-commit hook installed</li>
+        </ul>
+        <h1>6. Emergency Response Playbook</h1>
+        <p>If you suspect a security breach, act fast. Here is your step-by-step response plan.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Scenario A: Suspected SSH Compromise</h2>
+        <ul>
+        <li>Immediately rotate your SSH keys from a known-clean machine</li>
+        <li>Block the attacker: sudo ufw deny from ATTACKER_IP</li>
+        <li>Check for unauthorized keys: cat ~/.ssh/authorized_keys</li>
+        <li>Review login history: last -20 and sudo journalctl -u ssh --since '1 hour ago'</li>
+        <li>If unauthorized access confirmed, consider rebuilding the VPS from scratch</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">Scenario B: Leaked API Key</h2>
+        <ul>
+        <li>Revoke the key immediately in the provider dashboard (OpenAI, Stripe, OANDA, etc.)</li>
+        <li>Generate a new key</li>
+        <li>Update the key in your server environment</li>
+        <li>Deploy and verify</li>
+        <li>If the key was in a Git repo, clean the history: git filter-repo --replace-text expressions.txt</li>
+        <li>Review billing/usage dashboards for unauthorized charges</li>
+        <li>Contact the provider support if fraudulent usage is detected</li>
+        </ul>
+        <p>✅  REMEMBER: Leaked keys must be treated as compromised even if you have no evidence of misuse. Always revoke and rotate.</p>
+        <p>End of Manual</p>
+    </div>
+<footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        
+        async function checkout(pack) {
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.buy-btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            let body = { pack: pack };
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/create-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
+                }
+                
+                // Redirect to Stripe checkout
+                window.location.href = data.checkout_url;
+                
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        }
+    </script>
+</body>
 
-<!-- Content goes here -->
+</html>

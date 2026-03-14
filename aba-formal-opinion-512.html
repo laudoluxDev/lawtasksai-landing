@@ -1,12 +1,1459 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABA Formal Opinion 512: Generative AI Tools | LawTasksAI</title>
+    <meta name="description" content="AI-powered legal task automation for lawyers, paralegals and staff. 200+ specialized tasks for research, drafting, case management and more. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LawTasksAI",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.",
+        "url": "https://lawtasksai.com",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Pack",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "50 credits — approximately 50 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Standard Pack",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "description": "250 credits — approximately 250 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Bulk Pack",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "description": "750 credits — approximately 750 legal task executions"
+            }
+        ],
+        "featureList": [
+            "202 AI-powered legal tasks",
+            "100% local processing — all AI runs on your machine, nothing sent to LawTasksAI servers",
+            "Privacy-focused architecture designed for attorney confidentiality",
+            "Use with cloud AI (Claude, ChatGPT) or local AI (OpenClaw + Ollama) for full Rule 1.6 compliance",
+            "Works with OpenClaw, Claude Desktop, Cursor, and MCP-compatible apps",
+            "Prepaid credits — no subscription required",
+            "VirusTotal-verified releases",
+            "Built by a former trial attorney with 21 years of practice"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Solo attorneys, small law firms, legal professionals"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            color: #2563eb;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Pain Points */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pain-card {
+            padding: 30px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+        
+        .pain-card p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+        
+        /* Solutions */
+        .solutions {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .solution-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        
+        .credibility blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .credibility cite {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        /* Email Signup */
+        .signup {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .signup p {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .signup-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .signup-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .credits {
+            font-size: 1.1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-card .per-credit {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card li {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .buy-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .buy-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        .mobile-overlay.active { display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .credibility blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
+        <h2 style="color:#1a5c3a;margin-top:2rem;">AMERICAN BAR ASSOCIATION</h2>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">STANDING COMMITTEE ON ETHICS AND PROFESSIONAL RESPONSIBILITY</h2>
+        <p>Formal Opinion 512 July 29, 2024</p>
+        <p>Generative Artificial Intelligence Tools</p>
+        <p>To ensure clients are protected, lawyers using generative artificial intelligence tools must fully</p>
+        <p>consider their applicable ethical obligations, including their duties to provide competent legal</p>
+        <p>representation, to protect client information, to communicate with clients, to supervise their</p>
+        <p>employees and agents, to advance only meritorious claims and contentions, to ensure candor</p>
+        <p>toward the tribunal, and to charge reasonable fees.</p>
+        <p>I. Introduction</p>
+        <p>Many lawyers use artificial intelligence (AI) based technologies in their practices to</p>
+        <p>improve the efficiency and quality of legal services to clients.1 A well-known use is electronic</p>
+        <p>discovery in litigation, in which lawyers use technology-assisted review to categorize vast</p>
+        <p>quantities of documents as responsive or non-responsive and to segregate privileged documents.</p>
+        <p>Another common use is contract analytics, which lawyers use to conduct due diligence in</p>
+        <p>connection with mergers and acquisitions and large corporate transactions. In the realm of</p>
+        <p>analytics, AI also can help lawyers predict how judges might rule on a legal question based on data</p>
+        <p>about the judge’s rulings; discover the summary judgment grant rate for every federal district</p>
+        <p>judge; or evaluate how parties and lawyers may behave in current litigation based on their past</p>
+        <p>conduct in similar litigation. And for basic legal research, AI may enhance lawyers’ search results.</p>
+        <p>This opinion discusses a subset of AI technology that has more recently drawn the attention</p>
+        <p>of the legal profession and the world at large – generative AI (GAI), which can create various types</p>
+        <p>of new content, including text, images, audio, video, and software code in response to a user’s</p>
+        <p>prompts and questions.2 GAI tools that produce new text are prediction tools that generate a</p>
+        <p>statistically probable output when prompted. To accomplish this, these tools analyze large amounts</p>
+        <p>of digital text culled from the internet or proprietary data sources. Some GAI tools are described</p>
+        <p>as “self-learning,” meaning they will learn from themselves as they cull more data. GAI tools may</p>
+        <p>assist lawyers in tasks such as legal research, contract review, due diligence, document review,</p>
+        <p>regulatory compliance, and drafting letters, contracts, briefs, and other legal documents.</p>
+        <p>1 There is no single definition of artificial intelligence. At its essence, AI involves computer technology, software,</p>
+        <p>and systems that perform tasks traditionally requiring human intelligence. The ability of a computer or computer-</p>
+        <p>controlled robot to perform tasks commonly associated with intelligent beings is one definition. The term is</p>
+        <p>frequently applied to the project of developing systems that appear to employ or replicate intellectual processes</p>
+        <p>characteristic of humans, such as the ability to reason, discover meaning, generalize, or learn from past experience.</p>
+        <p>BRITTANICA, https://www.britannica.com/technology/artificial-intelligence (last visited July 12, 2024).</p>
+        <p>2 George Lawton, What is Generative AI? Everything You Need to Know, TECHTARGET (July 12, 2024),</p>
+        <p>https://www.techtarget.com/searchenterpriseai/definition/generative-AI.</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 2</p>
+        <p>GAI tools—whether general purpose or designed specifically for the practice of law—raise</p>
+        <p>important questions under the ABA Model Rules of Professional Conduct.3 What level of</p>
+        <p>competency should lawyers acquire regarding a GAI tool? How can lawyers satisfy their duty of</p>
+        <p>confidentiality when using a GAI tool that requires input of information relating to a</p>
+        <p>representation? When must lawyers disclose their use of a GAI tool to clients? What level of</p>
+        <p>review of a GAI tool’s process or output is necessary? What constitutes a reasonable fee or expense</p>
+        <p>when lawyers use a GAI tool to provide legal services to clients?</p>
+        <p>At the same time, as with many new technologies, GAI tools are a moving target—indeed,</p>
+        <p>a rapidly moving target—in the sense that their precise features and utility to law practice are</p>
+        <p>quickly changing and will continue to change in ways that may be difficult or impossible to</p>
+        <p>anticipate. This Opinion identifies some ethical issues involving the use of GAI tools and offers</p>
+        <p>general guidance for lawyers attempting to navigate this emerging landscape.4 It is anticipated that</p>
+        <p>this Committee and state and local bar association ethics committees will likely offer updated</p>
+        <p>guidance on professional conduct issues relevant to specific GAI tools as they develop.</p>
+        <p>II. Discussion</p>
+        <p>A. Competence</p>
+        <p>Model Rule 1.1 obligates lawyers to provide competent representation to clients.5 This duty</p>
+        <p>requires lawyers to exercise the “legal knowledge, skill, thoroughness and preparation reasonably</p>
+        <p>necessary for the representation,” as well as to understand “the benefits and risks associated” with</p>
+        <p>the technologies used to deliver legal services to clients.6 Lawyers may ordinarily achieve the</p>
+        <p>requisite level of competency by engaging in self-study, associating with another competent</p>
+        <p>lawyer, or consulting with an individual who has sufficient expertise in the relevant field.7</p>
+        <p>To competently use a GAI tool in a client representation, lawyers need not become GAI</p>
+        <p>experts. Rather, lawyers must have a reasonable understanding of the capabilities and limitations</p>
+        <p>3 Many of the professional responsibility concerns that arise with GAI tools are similar to the issues that exist with</p>
+        <p>other AI tools and should be considered by lawyers using such technology.</p>
+        <p>4 This opinion is based on the ABA Model Rules of Professional Conduct as amended by the ABA House of</p>
+        <p>Delegates through August 2023. The Opinion addresses several imminent ethics issues associated with the use of</p>
+        <p>GAI, but additional issues may surface, including those found in Model Rule 7.1 (“Communications Concerning a</p>
+        <p>Lawyer’s Services”), Model Rule 1.7 (“Conflict of Interest: Current Clients”), and Model Rule 1.9 (“Duties to</p>
+        <p>Former Clients”). See, e.g., Fla. State Bar Ass’n, Prof’l Ethics Comm. Op. 24-1, at 7 (2024) (discussing the use of</p>
+        <p>GAI chatbots under Florida Rule 4-7.13, which prohibits misleading content and unduly manipulative or intrusive</p>
+        <p>advertisements); Pa. State Bar Ass’n Comm. on Legal Ethics &amp; Prof’l Resp. &amp; Philadelphia Bar Ass’n Prof’l</p>
+        <p>Guidance Comm. Joint Formal Op. 2024-200 [hereinafter Pa. &amp; Philadelphia Joint Formal Opinion 2024-200], at 10</p>
+        <p>(2024) (“Because the large language models used in generative AI continue to develop, some without safeguards</p>
+        <p>similar to those already in use in law offices, such as ethical walls, they may run afoul of Rules 1.7 and 1.9 by using</p>
+        <p>the information developed from one representation to inform another.”). Accordingly, lawyers should consider all</p>
+        <p>rules before using GAI tools.</p>
+        <p>5 MODEL RULES OF PROF’L CONDUCT R. 1.1 (2023) [hereinafter MODEL RULES].</p>
+        <p>6 MODEL RULES R. 1.1 &amp; cmt. [8]. See also ABA Comm. on Ethics &amp; Prof’l Responsibility, Formal Op. 477R, at 2–3</p>
+        <p>(2017) [hereinafter ABA Formal Op. 477R] (discussing the ABA’s “technology amendments” made to the Model</p>
+        <p>Rules in 2012).</p>
+        <p>7 MODEL RULES R. 1.1 cmts. [1], [2] &amp; [4]; Cal. St. Bar, Comm. Prof’l Resp. Op. 2015-193, 2015 WL 4152025, at</p>
+        <p>*2–3 (2015).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 3</p>
+        <p>of the specific GAI technology that the lawyer might use. This means that lawyers should either</p>
+        <p>acquire a reasonable understanding of the benefits and risks of the GAI tools that they employ in</p>
+        <p>their practices or draw on the expertise of others who can provide guidance about the relevant GAI</p>
+        <p>tool’s capabilities and limitations.8 This is not a static undertaking. Given the fast-paced evolution</p>
+        <p>of GAI tools, technological competence presupposes that lawyers remain vigilant about the tools’</p>
+        <p>benefits and risks.9 Although there is no single right way to keep up with GAI developments,</p>
+        <p>lawyers should consider reading about GAI tools targeted at the legal profession, attending relevant</p>
+        <p>continuing legal education programs, and, as noted above, consulting others who are proficient in</p>
+        <p>GAI technology.10</p>
+        <p>With the ability to quickly create new, seemingly human-crafted content in response to user</p>
+        <p>prompts, GAI tools offer lawyers the potential to increase the efficiency and quality of their legal</p>
+        <p>services to clients. Lawyers must recognize inherent risks, however.11 One example is the risk of</p>
+        <p>producing inaccurate output, which can occur in several ways. The large language models</p>
+        <p>underlying GAI tools use complex algorithms to create fluent text, yet GAI tools are only as good</p>
+        <p>as their data and related infrastructure. If the quality, breadth, and sources of the underlying data</p>
+        <p>on which a GAI tool is trained are limited or outdated or reflect biased content, the tool might</p>
+        <p>produce unreliable, incomplete, or discriminatory results. In addition, the GAI tools lack the ability</p>
+        <p>to understand the meaning of the text they generate or evaluate its context.12 Thus, they may</p>
+        <p>combine otherwise accurate information in unexpected ways to yield false or inaccurate results.13</p>
+        <p>Some GAI tools are also prone to “hallucinations,” providing ostensibly plausible responses that</p>
+        <p>have no basis in fact or reality.14</p>
+        <p>Because GAI tools are subject to mistakes, lawyers’ uncritical reliance on content created</p>
+        <p>by a GAI tool can result in inaccurate legal advice to clients or misleading representations to courts</p>
+        <p>and third parties. Therefore, a lawyer’s reliance on, or submission of, a GAI tool’s output—without</p>
+        <p>8 Pa. Bar Ass’n, Comm. on Legal Ethics &amp; Prof’l Resp. Op. 2020-300, 2020 WL 2544268, at *2–3 (2020). See also</p>
+        <p>Cal. State Bar, Standing Comm. on Prof’l Resp. &amp; Conduct Op. 2023-208, 2023 WL 4035467, at *2 (2023) adopting</p>
+        <p>a “reasonable efforts standard” and “fact-specific approach” to a lawyer’s duty of technology competence, citing ABA</p>
+        <p>Formal Opinion 477R, at 4).</p>
+        <p>9 See New York County Lawyers Ass’n Prof’l Ethics Comm. Op. 749 (2017) (emphasizing that “[l]awyers must be</p>
+        <p>responsive to technological developments as they become integrated into the practice of law”); Cal. St. Bar, Comm.</p>
+        <p>Prof’l Resp. Op. 2015-193, 2015 WL 4152025, at *1 (2015) (discussing the level of competence required for</p>
+        <p>lawyers to handle e-discovery issues in litigation).</p>
+        <p>10 MODEL RULES R. 1.1 cmt. [8]; see Melinda J. Bentley, The Ethical Implications of Technology in Your Law Practice:</p>
+        <p>Understanding the Rules of Professional Conduct Can Prevent Potential Problems, 76 J. MO. BAR 1 (2020)</p>
+        <p>(identifying ways for lawyers to acquire technology competence skills).</p>
+        <p>11 As further detailed in this opinion, lawyers’ use of GAI raises confidentiality concerns under Model Rule 1.6 due to</p>
+        <p>the risk of disclosure of, or unauthorized access to, client information. GAI also poses complex issues relating to</p>
+        <p>ownership and potential infringement of intellectual property rights and even potential data security threats.</p>
+        <p>12 See, W. Bradley Wendel, The Promise and Limitations of AI in the Practice of Law, 72 OKLA. L. REV. 21, 26</p>
+        <p>(2019) (discussing the limitations of AI based on an essential function of lawyers, making normative judgments that</p>
+        <p>are impossible for AI).</p>
+        <p>13 See, e.g., Karen Weise &amp; Cade Metz, When A.I. Chatbots Hallucinate, N.Y. TIMES (May 1, 2023).</p>
+        <p>14 Ivan Moreno, AI Practices Law ‘At the Speed of Machines.’ Is it Worth It?, LAW360 (June 7, 2023); See Varun</p>
+        <p>Magesh, Faiz Surani, Matthew Dahl, Mirac Suzgun, Christopher D. Manning, &amp; Daniel E. Ho, Hallucination Free?</p>
+        <p>Assessing the Reliability of Leading AI Legal Research Tools, STANFORD UNIVERSITY (June 26, 2024), available at</p>
+        <p>https://dho.stanford.edu/wp-content/uploads/Legal_RAG_Hallucinations.pdf (study finding leading legal research</p>
+        <p>companies’ GAI systems “hallucinate between 17% and 33% of the time”).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 4</p>
+        <p>an appropriate degree of independent verification or review of its output—could violate the duty</p>
+        <p>to provide competent representation as required by Model Rule 1.1.15 While GAI tools may be</p>
+        <p>able to significantly assist lawyers in serving clients, they cannot replace the judgment and</p>
+        <p>experience necessary for lawyers to competently advise clients about their legal matters or to craft</p>
+        <p>the legal documents or arguments required to carry out representations.</p>
+        <p>The appropriate amount of independent verification or review required to satisfy Rule 1.1</p>
+        <p>will necessarily depend on the GAI tool and the specific task that it performs as part of the lawyer’s</p>
+        <p>representation of a client. For example, if a lawyer relies on a GAI tool to review and summarize</p>
+        <p>numerous, lengthy contracts, the lawyer would not necessarily have to manually review the entire</p>
+        <p>set of documents to verify the results if the lawyer had previously tested the accuracy of the tool</p>
+        <p>on a smaller subset of documents by manually reviewing those documents, comparing then to the</p>
+        <p>summaries produced by the tool, and finding the summaries accurate. Moreover, a lawyer’s use of</p>
+        <p>a GAI tool designed specifically for the practice of law or to perform a discrete legal task, such as</p>
+        <p>generating ideas, may require less independent verification or review, particularly where a lawyer’s</p>
+        <p>prior experience with the GAI tool provides a reasonable basis for relying on its results.</p>
+        <p>While GAI may be used as a springboard or foundation for legal work—for example, by</p>
+        <p>generating an analysis on which a lawyer bases legal advice, or by generating a draft from which</p>
+        <p>a lawyer produces a legal document—lawyers may not abdicate their responsibilities by relying</p>
+        <p>solely on a GAI tool to perform tasks that call for the exercise of professional judgment. For</p>
+        <p>example, lawyers may not leave it to GAI tools alone to offer legal advice to clients, negotiate</p>
+        <p>clients’ claims, or perform other functions that require a lawyer’s personal judgment or</p>
+        <p>participation.16 Competent representation presupposes that lawyers will exercise the requisite level</p>
+        <p>of skill and judgment regarding all legal work. In short, regardless of the level of review the lawyer</p>
+        <p>selects, the lawyer is fully responsible for the work on behalf of the client.</p>
+        <p>Emerging technologies may provide an output that is of distinctively higher quality than</p>
+        <p>current GAI tools produce, or may enable lawyers to perform work markedly faster and more</p>
+        <p>economically, eventually becoming ubiquitous in legal practice and establishing conventional</p>
+        <p>expectations regarding lawyers’ duty of competence.17 Over time, other new technologies have</p>
+        <p>become integrated into conventional legal practice in this manner.18 For example, “a lawyer would</p>
+        <p>have difficulty providing competent legal services in today’s environment without knowing how</p>
+        <p>15 See generally ABA Comm. on Ethics &amp; Prof’l Responsibility, Formal Op. 08-451, at 1 (2008) [hereinafter ABA</p>
+        <p>Formal Op. 08-451] (concluding that “[a] lawyer may outsource legal or nonlegal support services provided the lawyer</p>
+        <p>remains ultimately responsible for rendering competent legal services to the client under Model Rule 1.1”).</p>
+        <p>16 See Fla. State Bar Ass’n, Prof’l Ethics Comm. Op. 24-1, supra note 4.</p>
+        <p>17 See, e.g., Sharon Bradley, Rule 1.1 Duty of Competency and Internet Research: Benefits and Risks Associated with</p>
+        <p>Relevant Technology at 7 (2019), available at https://ssrn.com/abstract=3485055 (“View Model Rule 1.1 as elastic.</p>
+        <p>It is expanding as legal technology solutions expand. The ever-changing shape of this rule makes clear that a lawyer</p>
+        <p>cannot simply learn technology today and never again update their skills or knowledge.”).</p>
+        <p>18 See, e.g., Smith v. Lewis, 530 P.2d 589, 595 (Cal. 1975) (stating that a lawyer is expected “to possess knowledge</p>
+        <p>of those plain and elementary principles of law which are commonly known by well-informed attorneys, and to</p>
+        <p>discover those additional rules of law which, although not commonly known, may readily be found by standard</p>
+        <p>research techniques”) (emphasis added); Hagopian v. Justice Admin. Comm’n, 18 So. 3d 625, 642 (Fla. Dist. Ct.</p>
+        <p>App. 2009) (observing that lawyers have “become expected to use computer-assisted legal research to ensure that</p>
+        <p>their research is complete and up-to-date, but the costs of this service can be significant”).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 5</p>
+        <p>to use email or create an electronic document.”19 Similar claims might be made about other tools</p>
+        <p>such as computerized legal research or internet searches.20 As GAI tools continue to develop and</p>
+        <p>become more widely available, it is conceivable that lawyers will eventually have to use them to</p>
+        <p>competently complete certain tasks for clients.21 But even in the absence of an expectation for</p>
+        <p>lawyers to use GAI tools as a matter of course,22 lawyers should become aware of the GAI tools</p>
+        <p>relevant to their work so that they can make an informed decision, as a matter of professional</p>
+        <p>judgment, whether to avail themselves of these tools or to conduct their work by other means.23</p>
+        <p>As previously noted regarding the possibility of outsourcing certain work, “[t]here is no unique</p>
+        <p>blueprint for the provision of competent legal services. Different lawyers may perform the same</p>
+        <p>tasks through different means, all with the necessary ‘legal knowledge, skill, thoroughness and</p>
+        <p>preparation.’”24 Ultimately, any informed decision about whether to employ a GAI tool must</p>
+        <p>consider the client’s interests and objectives.25</p>
+        <p>19 ABA Formal Op. 477R, supra note 6, at 3 (quoting ABA COMMISSION ON ETHICS 20/20 REPORT 105A (Aug.</p>
+        <p>2012)).</p>
+        <p>20 See, e.g., Bradley, supra note 17, at 3 (“Today no competent lawyer would rely solely upon a typewriter to draft a</p>
+        <p>contract, brief, or memo. Typewriters are no longer part of ‘methods and procedures’ used by competent lawyers.”);</p>
+        <p>Lawrence Duncan MacLachlan, Gandy Dancers on the Web: How the Internet Has Raised the Bar on Lawyers’</p>
+        <p>Professional Responsibility to Research and Know the Law, 13 GEO. J. LEGAL ETHICS 607, 608 (2000) (“The lawyer</p>
+        <p>in the twenty-first century who does not effectively use the Internet for legal research may fall short of the minimal</p>
+        <p>standards of professional competence and be potentially liable for malpractice”); Ellie Margolis, Surfin’ Safari—</p>
+        <p>Why Competent Lawyers Should Research on the Web, 10 YALE J.L. &amp; TECH. 82, 110 (2007) (“While a lawyer’s</p>
+        <p>research methods reveal a great deal about the competence of the research, the method of research is ultimately a</p>
+        <p>secondary inquiry, only engaged in when the results of that research process is judged inadequate. A lawyer who</p>
+        <p>provides the court with adequate controlling authority is not going to be judged incompetent whether she found that</p>
+        <p>authority in print, electronically, or by any other means.”); Michael Thomas Murphy, The Search for Clarity in an</p>
+        <p>Attorney’s Duty to Google, 18 LEGAL COMM. &amp; RHETORIC: JALWD 133, 133 (2021) (“This Duty to Google</p>
+        <p>contemplates that certain readily available information on the public Internet about a legal matter is so easily</p>
+        <p>accessible that it must be discovered, collected, and examined by an attorney, or else that attorney is acting</p>
+        <p>unethically, committing malpractice, or both”); Michael Whiteman, The Impact of the Internet and Other Electronic</p>
+        <p>Sources on an Attorney’s Duty of Competence Under the Rules of Professional Conduct, 11 ALB. L.J. SCI. &amp; TECH.</p>
+        <p>89, 91 (2000) (“Unless it can be shown that the use of electronic sources in legal research has become a standard</p>
+        <p>technique, then lawyers who fail to use electronic sources will not be deemed unethical or negligent in his or her</p>
+        <p>failure to use such tools.”).</p>
+        <p>21 See MODEL RULES R. 1.1 cmt. [5] (stating that “[c]ompetent handling of a particular matter includes . . . [the] use</p>
+        <p>of methods and procedures meeting the standards of competent practitioners”); New York County Lawyers Ass’n</p>
+        <p>Prof’l Ethics Comm. Op. 749, 2017 WL 11659554, at *3 (2017) (explaining that the duty of competence covers not</p>
+        <p>only substantive knowledge in different areas of the law, but also the manner in which lawyers provide legal services</p>
+        <p>to clients).</p>
+        <p>22 The establishment of such an expectation would likely require an increased acceptance of GAI tools across the</p>
+        <p>legal profession, a track record of reliable results from those platforms, the widespread availability of these</p>
+        <p>technologies to lawyers from a cost or financial standpoint, and robust client demand for GAI tools as an efficiency</p>
+        <p>or cost-cutting measure.</p>
+        <p>23 Model Rule 1.5’s prohibition on unreasonable fees, as well as market forces, may influence lawyers to use new</p>
+        <p>technology in favor of slower or less efficient methods.</p>
+        <p>24 ABA Formal Op. 08-451, supra note 15, at 2. See also id. (“Rule 1.1 does not require that tasks be accomplished</p>
+        <p>in any special way. The rule requires only that the lawyer who is responsible to the client satisfies her obligation to</p>
+        <p>render legal services competently.”).</p>
+        <p>25 MODEL RULES R. 1.2(a).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 6</p>
+        <p>B. Confidentiality</p>
+        <p>A lawyer using GAI must be cognizant of the duty under Model Rule 1.6 to keep</p>
+        <p>confidential all information relating to the representation of a client, regardless of its source, unless</p>
+        <p>the client gives informed consent, disclosure is impliedly authorized to carry out the representation,</p>
+        <p>or disclosure is permitted by an exception.26 Model Rules 1.9(c) and 1.18(b) require lawyers to</p>
+        <p>extend similar protections to former and prospective clients’ information. Lawyers also must make</p>
+        <p>“reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access</p>
+        <p>to, information relating to the representation of the client.”27</p>
+        <p>Generally, the nature and extent of the risk that information relating to a representation may</p>
+        <p>be revealed depends on the facts. In considering whether information relating to any representation</p>
+        <p>is adequately protected, lawyers must assess the likelihood of disclosure and unauthorized access,</p>
+        <p>the sensitivity of the information,28 the difficulty of implementing safeguards, and the extent to</p>
+        <p>which safeguards negatively impact the lawyer’s ability to represent the client.29</p>
+        <p>Before lawyers input information relating to the representation of a client into a GAI tool,</p>
+        <p>they must evaluate the risks that the information will be disclosed to or accessed by others outside</p>
+        <p>the firm. Lawyers must also evaluate the risk that the information will be disclosed to or accessed</p>
+        <p>by others inside the firm who will not adequately protect the information from improper disclosure</p>
+        <p>or use30 because, for example, they are unaware of the source of the information and that it</p>
+        <p>originated with a client of the firm. Because GAI tools now available differ in their ability to ensure</p>
+        <p>that information relating to the representation is protected from impermissible disclosure and</p>
+        <p>access, this risk analysis will be fact-driven and depend on the client, the matter, the task, and the</p>
+        <p>GAI tool used to perform it.31</p>
+        <p>Self-learning GAI tools into which lawyers input information relating to the representation,</p>
+        <p>by their very nature, raise the risk that information relating to one client’s representation may be</p>
+        <p>disclosed improperly,32 even if the tool is used exclusively by lawyers at the same firm.33 This can</p>
+        <p>occur when information relating to one client’s representation is input into the tool, then later</p>
+        <p>revealed in response to prompts by lawyers working on other matters, who then share that output</p>
+        <p>with other clients, file it with the court, or otherwise disclose it. In other words, the self-learning</p>
+        <p>26 MODEL RULES R. 1.6; MODEL RULES R. 1.6 cmt. [3].</p>
+        <p>27 MODEL RULES R. 1.6(c).</p>
+        <p>28 ABA Formal Op. 477R, supra note 6, at 1 (A lawyer “may be required to take special security precautions to</p>
+        <p>protect against the inadvertent or unauthorized disclosure of client information when … the nature of the</p>
+        <p>information requires a higher degree of security.”).</p>
+        <p>29 MODEL RULES R. 1.6, cmt. [18].</p>
+        <p>30 See MODEL RULES R. 1.8(b), which prohibits use of information relating to the representation of a client to the</p>
+        <p>disadvantage of the client.</p>
+        <p>31 See ABA Formal Op. 477R, supra note 6, at 4 (rejecting specific security measures to protect information relating</p>
+        <p>to a client’s representation and advising lawyers to adopt a fact-specific approach to data security).</p>
+        <p>32 See generally State Bar of Cal. Standing Comm. on Prof’l Resp. &amp; Conduct, PRACTICAL GUIDANCE FOR THE USE</p>
+        <p>OF GENERATIVE ARTIFICIAL INTELLIGENCE IN THE PRACTICE OF LAW (2024), available at</p>
+        <p>https://www.calbar.ca.gov/Portals/0/documents/ethics/Generative-AI-Practical-Guidance.pdf; Fla. State Bar Ass’n,</p>
+        <p>Prof’l Ethics Comm. Op. 24-1, supra note 4.</p>
+        <p>33 See Pa. &amp; Philadelphia Joint Formal Opinion 2024-200, supra note 4, at 10 (noting risk that information relating</p>
+        <p>to one representation may be used to inform work on another representation).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 7</p>
+        <p>GAI tool may disclose information relating to the representation to persons outside the firm who</p>
+        <p>are using the same GAI tool. Similarly, it may disclose information relating to the representation</p>
+        <p>to persons in the firm (1) who either are prohibited from access to said information because of an</p>
+        <p>ethical wall or (2) who could inadvertently use the information from one client to help another</p>
+        <p>client, not understanding that the lawyer is revealing client confidences. Accordingly, because</p>
+        <p>many of today’s self-learning GAI tools are designed so that their output could lead directly or</p>
+        <p>indirectly to the disclosure of information relating to the representation of a client, a client’s</p>
+        <p>informed consent is required prior to inputting information relating to the representation into such</p>
+        <p>a GAI tool.34</p>
+        <p>When consent is required, it must be informed. For the consent to be informed, the client</p>
+        <p>must have the lawyer’s best judgment about why the GAI tool is being used, the extent of and</p>
+        <p>specific information about the risk, including particulars about the kinds of client information that</p>
+        <p>will be disclosed, the ways in which others might use the information against the client’s interests,</p>
+        <p>and a clear explanation of the GAI tool’s benefits to the representation. Part of informed consent</p>
+        <p>requires the lawyer to explain the extent of the risk that later users or beneficiaries of the GAI tool</p>
+        <p>will have access to information relating to the representation. To obtain informed consent when</p>
+        <p>using a GAI tool, merely adding general, boiler-plate provisions to engagement letters purporting</p>
+        <p>to authorize the lawyer to use GAI is not sufficient.35</p>
+        <p>Because of the uncertainty surrounding GAI tools’ ability to protect such information and</p>
+        <p>the uncertainty about what happens to information both at input and output, it will be difficult to</p>
+        <p>evaluate the risk that information relating to the representation will either be disclosed to or</p>
+        <p>accessed by others inside the firm to whom it should not be disclosed as well as others outside</p>
+        <p>the firm.36 As a baseline, all lawyers should read and understand the Terms of Use, privacy policy,</p>
+        <p>and related contractual terms and policies of any GAI tool they use to learn who has access to the</p>
+        <p>information that the lawyer inputs into the tool or consult with a colleague or external expert who</p>
+        <p>has read and analyzed those terms and policies.37 Lawyers may need to consult with IT</p>
+        <p>professionals or cyber security experts to fully understand these terms and policies as well as the</p>
+        <p>manner in which GAI tools utilize information.</p>
+        <p>Today, there are uses of self-learning GAI tools in connection with a legal representation</p>
+        <p>when client informed consent is not required because the lawyer will not be inputting information</p>
+        <p>relating to the representation. As an example, if a lawyer is using the tool for idea generation in a</p>
+        <p>manner that does not require inputting information relating to the representation, client informed</p>
+        <p>consent would not be necessary.</p>
+        <p>34 This conclusion is based on the risks and capabilities of GAI tools as of the publication of this opinion. As the</p>
+        <p>technology develops, the risks may change in ways that would alter our conclusion. See Fla. State Bar Ass’n, Prof’l</p>
+        <p>Ethics Comm. Op. 24-1, supra note 4, at 2; W. Va. Lawyer Disciplinary Bd. Op. 24-01 (2024), available at</p>
+        <p>http://www.wvodc.org/pdf/AILEO24-01.pdf.</p>
+        <p>35 See W. Va. Lawyer Disciplinary Bd. Op. 24-01, supra note 34.</p>
+        <p>36 Magesh et al. supra note 14, at 23 (describing some of the GAI tools available to lawyers as “difficult for lawyers</p>
+        <p>to assess when it is safe to trust them. Official documentation does not clearly illustrate what they can do for lawyers</p>
+        <p>and in which areas lawyers should exercise caution.”)</p>
+        <p>37 Stephanie Pacheco, Three Considerations for Attorneys Using Generative AI, BLOOMBERG LAW ANALYSIS (June</p>
+        <p>16, 2023, 4:00 pm), https://news.bloomberglaw.com/bloomberg-law-analysis/analysis-three-considerations-for-</p>
+        <p>attorneys-using-generative-ai?context=search&amp;index=7.</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 8</p>
+        <p>C. Communication</p>
+        <p>Where Model Rule 1.6 does not require disclosure and informed consent, the lawyer must</p>
+        <p>separately consider whether other Model Rules, particularly Model Rule 1.4, require disclosing</p>
+        <p>the use of a GAI tool in the representation.</p>
+        <p>Model Rule 1.4, which addresses lawyers’ duty to communicate with their clients, builds</p>
+        <p>on lawyers’ legal obligations as fiduciaries, which include “the duty of an attorney to advise the</p>
+        <p>client promptly whenever he has any information to give which it is important the client should</p>
+        <p>receive.”38 Of particular relevance, Model Rule 1.4(a)(2) states that a lawyer shall “reasonably</p>
+        <p>consult with the client about the means by which the client’s objectives are to be accomplished.”</p>
+        <p>Additionally, Model Rule 1.4(b) obligates lawyers to explain matters “to the extent reasonably</p>
+        <p>necessary to permit a client to make an informed decision regarding the representation.” Comment</p>
+        <p>[5] to Rule 1.4 explains, “the lawyer should fulfill reasonable client expectations for information</p>
+        <p>consistent with the duty to act in the client’s best interests, and the client’s overall requirements as</p>
+        <p>to the character of representation.” Considering these underlying principles, questions arise</p>
+        <p>regarding whether and when lawyers might be required to disclose their use of GAI tools to clients</p>
+        <p>pursuant to Rule 1.4.</p>
+        <p>The facts of each case will determine whether Model Rule 1.4 requires lawyers to disclose</p>
+        <p>their GAI practices to clients or obtain their informed consent to use a particular GAI tool.</p>
+        <p>Depending on the circumstances, client disclosure may be unnecessary.</p>
+        <p>Of course, lawyers must disclose their GAI practices if asked by a client how they</p>
+        <p>conducted their work, or whether GAI technologies were employed in doing so, or if the client</p>
+        <p>expressly requires disclosure under the terms of the engagement agreement or the client’s outside</p>
+        <p>counsel guidelines.39 There are also situations where Model Rule 1.4 requires lawyers to discuss</p>
+        <p>their use of GAI tools unprompted by the client.40 For example, as discussed in the previous</p>
+        <p>section, clients would need to be informed in advance, and to give informed consent, if the lawyer</p>
+        <p>proposes to input information relating to the representation into the GAI tool.41 Lawyers must also</p>
+        <p>consult clients when the use of a GAI tool is relevant to the basis or reasonableness of a lawyer’s</p>
+        <p>fee.42</p>
+        <p>Client consultation about the use of a GAI tool is also necessary when its output will</p>
+        <p>influence a significant decision in the representation,43 such as when a lawyer relies on GAI</p>
+        <p>38 Baker v. Humphrey, 101 U.S. 494, 500 (1879).</p>
+        <p>39 See, e.g., MODEL RULES R. 1.4(a)(4) (“A lawyer shall . . . promptly comply with reasonable requests for</p>
+        <p>information[.]”).</p>
+        <p>40 See MODEL RULES R. 1.4(a)(1) (requiring lawyers to “promptly inform the client of any decision or circumstance</p>
+        <p>with respect to which the client’s informed consent” is required by the rules of professional conduct).</p>
+        <p>41 See section B for a discussion of confidentiality issues under Rule 1.6.</p>
+        <p>42 See section F for a discussion of fee issues under Rule 1.5.</p>
+        <p>43 Guidance may be found in ethics opinions requiring lawyers to disclose their use of temporary lawyers whose</p>
+        <p>involvement is significant or otherwise material to the representation. See, e.g., Va. State Bar Legal Ethics Op. 1850,</p>
+        <p>2010 WL 5545407, at *5 (2010) (acknowledging that “[t]here is little purpose to informing a client every time a</p>
+        <p>lawyer outsources legal support services that are truly tangential, clerical, or administrative in nature, or even when</p>
+        <p>basic legal research or writing is outsourced without any client confidences being revealed”); Cal. State Bar,</p>
+        <p>Standing Comm. on Prof’l Resp. &amp; Conduct Op. 2004-165, 2004 WL 3079030, at *2–3 (2004) (opining that a</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 9</p>
+        <p>technology to evaluate potential litigation outcomes or jury selection. A client would reasonably</p>
+        <p>want to know whether, in providing advice or making important decisions about how to carry out</p>
+        <p>the representation, the lawyer is exercising independent judgment or, in the alternative, is deferring</p>
+        <p>to the output of a GAI tool. Or there may be situations where a client retains a lawyer based on the</p>
+        <p>lawyer’s particular skill and judgment, when the use of a GAI tool, without the client’s knowledge,</p>
+        <p>would violate the terms of the engagement agreement or the client’s reasonable expectations</p>
+        <p>regarding how the lawyer intends to accomplish the objectives of the representation.</p>
+        <p>It is not possible to catalogue every situation in which lawyers must inform clients about</p>
+        <p>their use of GAI. Again, lawyers should consider whether the specific circumstances warrant client</p>
+        <p>consultation about the use of a GAI tool, including the client’s needs and expectations, the scope</p>
+        <p>of the representation, and the sensitivity of the information involved. Potentially relevant</p>
+        <p>considerations include the GAI tool’s importance to a particular task, the significance of that task</p>
+        <p>to the overall representation, how the GAI tool will process the client’s information, and the extent</p>
+        <p>to which knowledge of the lawyer’s use of the GAI tool would affect the client’s evaluation of or</p>
+        <p>confidence in the lawyer’s work.</p>
+        <p>Even when Rule 1.6 does not require informed consent and Rule 1.4 does not require a</p>
+        <p>disclosure regarding the use of GAI, lawyers may tell clients how they employ GAI tools to assist</p>
+        <p>in the delivery of legal services. Explaining this may serve the interest of effective client</p>
+        <p>communication. The engagement agreement is a logical place to make such disclosures and to</p>
+        <p>identify any client instructions on the use of GAI in the representation.44</p>
+        <p>D. Meritorious Claims and Contentions and Candor Toward the Tribunal</p>
+        <p>Lawyers using GAI in litigation have ethical responsibilities to the courts as well as to</p>
+        <p>clients. Model Rules 3.1, 3.3, and 8.4(c) may be implicated by certain uses. Rule 3.1 states, in part,</p>
+        <p>that “[a] lawyer shall not bring or defend a proceeding, or assert or controvert and issue therein,</p>
+        <p>unless there is a basis in law or fact for doing so that is not frivolous.” Rule 3.3 makes it clear that</p>
+        <p>lawyers cannot knowingly make any false statement of law or fact to a tribunal or fail to correct a</p>
+        <p>material false statement of law or fact previously made to a tribunal.45 Rule 8.4(c) provides that a</p>
+        <p>lawyer must disclose the use of a temporary lawyer to a client where the temporary lawyer’s use constitutes a</p>
+        <p>“significant development” in the matter and listing relevant considerations); N.Y. State Bar Ass’n, Comm on Prof’l</p>
+        <p>Ethics 715, at 7 (1999) (opining that “whether a law firm needs to disclose to the client and obtain client consent for</p>
+        <p>the participation of a Contract lawyer depends upon whether client confidences will be disclosed to the lawyer, the</p>
+        <p>degree of involvement of the lawyer in the matter, and the significance of the work done by the lawyer”); D.C. Bar</p>
+        <p>Op. 284, at 4 (1988) (recommending client disclosure “whenever the proposed use of a temporary lawyer to perform</p>
+        <p>work on the client’s matter appears reasonably likely to be material to the representation or to affect the client’s</p>
+        <p>reasonable expectations”); Fla. State Bar Ass’n, Comm. on Prof’l Ethics Op. 88-12, 1988 WL 281590, at *2 (1988)</p>
+        <p>(stating that disclosure of a temporary lawyer depends “on whether the client would likely consider the information</p>
+        <p>material”);.</p>
+        <p>44 For a discussion of what client notice and informed consent under Rule 1.6 may require, see section B.</p>
+        <p>45 MODEL RULES R. 3.3(a) reads: “A lawyer shall not knowingly: (1) make a false statement of fact or law to a</p>
+        <p>tribunal or fail to correct a false statement of material fact or law previously made to the tribunal by the lawyer; (2)</p>
+        <p>fail to disclose to the tribunal legal authority in the controlling jurisdiction known to the lawyer to be directly</p>
+        <p>adverse to the position of the client and not disclosed by opposing counsel; or (3) offer evidence that the lawyer</p>
+        <p>knows to be false. If a lawyer, the lawyer’s client, or a witness called by the lawyer, has offered material evidence</p>
+        <p>and the lawyer comes to know of its falsity, the lawyer shall take reasonable remedial measures, including, if</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 10</p>
+        <p>lawyer shall not engage in “conduct involving dishonesty, fraud, deceit or misrepresentation.”</p>
+        <p>Even an unintentional misstatement to a court can involve a misrepresentation under Rule 8.4(c).</p>
+        <p>Therefore, output from a GAI tool must be carefully reviewed to ensure that the assertions made</p>
+        <p>to the court are not false.</p>
+        <p>Issues that have arisen to date with lawyers’ use of GAI outputs include citations to</p>
+        <p>nonexistent opinions, inaccurate analysis of authority, and use of misleading arguments.46</p>
+        <p>Some courts have responded by requiring lawyers to disclose their use of GAI.47 As a</p>
+        <p>matter of competence, as previously discussed, lawyers should review for accuracy all GAI</p>
+        <p>outputs. In judicial proceedings, duties to the tribunal likewise require lawyers, before submitting</p>
+        <p>materials to a court, to review these outputs, including analysis and citations to authority, and to</p>
+        <p>correct errors, including misstatements of law and fact, a failure to include controlling legal</p>
+        <p>authority, and misleading arguments.</p>
+        <p>E. Supervisory Responsibilities</p>
+        <p>Model Rules 5.1 and 5.3 address the ethical duties of lawyers charged with managerial and</p>
+        <p>supervisory responsibilities and set forth those lawyers’ responsibilities with regard to the firm,</p>
+        <p>subordinate lawyers, and nonlawyers. Managerial lawyers must create effective measures to ensure</p>
+        <p>that all lawyers in the firm conform to the rules of professional conduct,48 and supervisory lawyers</p>
+        <p>must supervise subordinate lawyers and nonlawyer assistants to ensure that subordinate lawyers</p>
+        <p>and nonlawyer assistants conform to the rules.49 These responsibilities have implications for the</p>
+        <p>use of GAI tools by lawyers and nonlawyers.</p>
+        <p>Managerial lawyers must establish clear policies regarding the law firm’s permissible use</p>
+        <p>of GAI, and supervisory lawyers must make reasonable efforts to ensure that the firm’s lawyers</p>
+        <p>and nonlawyers comply with their professional obligations when using GAI tools.50 Supervisory</p>
+        <p>obligations also include ensuring that subordinate lawyers and nonlawyers are trained,51 including</p>
+        <p>in the ethical and practical use of the GAI tools relevant to their work as well as on risks associated</p>
+        <p>with relevant GAI use.52 Training could include the basics of GAI technology, the capabilities and</p>
+        <p>limitations of the tools, ethical issues in use of GAI and best practices for secure data handling,</p>
+        <p>privacy, and confidentiality.</p>
+        <p>necessary, disclosure to the tribunal. A lawyer may refuse to offer evidence, other than the testimony of a defendant</p>
+        <p>in a criminal matter, that the lawyer reasonably believes is false.”</p>
+        <p>46 See DC Bar Op. 388 (2024).</p>
+        <p>47 Lawyers should consult with the applicable court’s local rules to ensure that they comply with those rules with</p>
+        <p>respect to AI use. As noted in footnote 4, no one opinion could address every ethics issue presented when a lawyer</p>
+        <p>uses GAI. For example, depending on the facts, issues relating to Model Rule 3.4(c) could be presented.</p>
+        <p>48 See MODEL RULES R. 1.0(c) for the definition of firm.</p>
+        <p>49 ABA Formal Op. 08-451, supra note 15.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">50 MODEL RULES R. 5.1.</h2>
+        <p>51 See ABA Comm. on Ethics &amp; Prof’l Responsibility, Formal Op. 467 (2014).</p>
+        <p>52 See generally, MODEL RULES R. 1.1, cmt. [8]. One training suggestion is that all materials produced by GAI tools</p>
+        <p>be marked as such when stored in any client or firm file so future users understand potential fallibility of the work.</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 11</p>
+        <p>Lawyers have additional supervisory obligations insofar as they rely on others outside the</p>
+        <p>law firm to employ GAI tools in connection with the legal representation. Model Rule 5.3(b)</p>
+        <p>imposes a duty on lawyers with direct supervisory authority over a nonlawyer to make “reasonable</p>
+        <p>efforts to ensure that” the nonlawyer’s conduct conforms with the professional obligations of the</p>
+        <p>lawyer. Earlier opinions recognize that when outsourcing legal and nonlegal services to third-party</p>
+        <p>providers, lawyers must ensure, for example, that the third party will do the work capably and</p>
+        <p>protect the confidentiality of information relating to the representation.53 These opinions note the</p>
+        <p>importance of: reference checks and vendor credentials; understanding vendor’s security policies</p>
+        <p>and protocols; familiarity with vendor’s hiring practices; using confidentiality agreements;</p>
+        <p>understanding the vendor’s conflicts check system to screen for adversity among firm clients; and</p>
+        <p>the availability and accessibility of a legal forum for legal relief for violations of the vendor</p>
+        <p>agreement. These concepts also apply to GAI providers and tools.</p>
+        <p>Earlier opinions regarding technological innovations and other innovations in legal</p>
+        <p>practice are instructive when considering a lawyer’s use of a GAI tool that requires the disclosure</p>
+        <p>and storage of information relating to the representation.54 In particular, opinions developed to</p>
+        <p>address cloud computing and outsourcing of legal and nonlegal services suggest that lawyers</p>
+        <p>should:</p>
+        <p>• ensure that the [GAI tool] is configured to preserve the confidentiality and security of</p>
+        <p>information, that the obligation is enforceable, and that the lawyer will be notified in</p>
+        <p>the event of a breach or service of process regarding production of client</p>
+        <p>information;55</p>
+        <p>• investigate the [GAI tool’s] reliability, security measures, and policies, including</p>
+        <p>limitations on the [the tool’s] liability;56</p>
+        <p>• determine whether the [GAI tool] retains information submitted by the lawyer before</p>
+        <p>and after the discontinuation of services or asserts proprietary rights to the</p>
+        <p>information;57 and</p>
+        <p>• understand the risk that [GAI tool servers] are subject to their own failures and may</p>
+        <p>be an attractive target of cyber-attacks.58</p>
+        <p>F. Fees</p>
+        <p>Model Rule 1.5, which governs lawyers’ fees and expenses, applies to representations in</p>
+        <p>which a lawyer charges the client for the use of GAI. Rule 1.5(a) requires a lawyer’s fees and</p>
+        <p>expenses to be reasonable and includes a non-exclusive list of criteria for evaluating whether a fee</p>
+        <p>53 ABA Formal Op. 08-451, supra note 15; ABA Formal. Op. 477R, supra note 6.</p>
+        <p>54 See ABA Formal Op. 08-451, supra note 15.</p>
+        <p>55 Fla. Bar Advisory Op. 12-3 (2013).</p>
+        <p>56 Id. citing Iowa State Bar Ass’n Comm. on Ethics &amp; Practice Guidelines Op. 11-01 (2011) [hereinafter Iowa Ethics</p>
+        <p>Opinion 11-01].</p>
+        <p>57 Fla. Bar Advisory Op. 24-1, supra note 4; Fla. Bar Advisory Op. 12-3, supra note 55; Iowa Ethics Opinion 11-01,</p>
+        <p>supra note 56.</p>
+        <p>58 Fla. Bar Advisory Op. 12-3, supra note 55; See generally Melissa Heikkila, Three Ways AI Chatbots are a</p>
+        <p>Security Disaster, MIT TECHNOLOGY REVIEW (Apr. 3, 2023),</p>
+        <p>www.technologyreview.com/2023/04/03/1070893/three-ways-ai-chatbots-are-a-security-disaster/.</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 12</p>
+        <p>or expense is reasonable.59 Rule 1.5(b) requires a lawyer to communicate to a client the basis on</p>
+        <p>which the lawyer will charge for fees and expenses unless the client is a regularly represented</p>
+        <p>client and the terms are not changing. The required information must be communicated before or</p>
+        <p>within a reasonable time of commencing the representation, preferably in writing. Therefore,</p>
+        <p>before charging the client for the use of the GAI tools or services, the lawyer must explain the</p>
+        <p>basis for the charge, preferably in writing.</p>
+        <p>GAI tools may provide lawyers with a faster and more efficient way to render legal services</p>
+        <p>to their clients, but lawyers who bill clients an hourly rate for time spent on a matter must bill for</p>
+        <p>their actual time. ABA Formal Ethics Opinion 93-379 explained, “the lawyer who has agreed to</p>
+        <p>bill on the basis of hours expended does not fulfill her ethical duty if she bills the client for more</p>
+        <p>time than she has actually expended on the client’s behalf.”60 If a lawyer uses a GAI tool to draft</p>
+        <p>a pleading and expends 15 minutes to input the relevant information into the GAI program, the</p>
+        <p>lawyer may charge for the 15 minutes as well as for the time the lawyer expends to review the</p>
+        <p>resulting draft for accuracy and completeness. As further explained in Opinion 93-379, “If a lawyer</p>
+        <p>has agreed to charge the client on [an hourly] basis and it turns out that the lawyer is particularly</p>
+        <p>efficient in accomplishing a given result, it nonetheless will not be permissible to charge the client</p>
+        <p>for more hours than were actually expended on the matter,”61 because “[t]he client should only be</p>
+        <p>charged a reasonable fee for the legal services performed.”62 The “goal should be solely to</p>
+        <p>compensate the lawyer fully for time reasonably expended, an approach that if followed will not</p>
+        <p>take advantage of the client.”63</p>
+        <p>The factors set forth in Rule 1.5(a) also apply when evaluating the reasonableness of</p>
+        <p>charges for GAI tools when the lawyer and client agree on a flat or contingent fee.64 For example,</p>
+        <p>if using a GAI tool enables a lawyer to complete tasks much more quickly than without the tool,</p>
+        <p>it may be unreasonable under Rule 1.5 for the lawyer to charge the same flat fee when using the</p>
+        <p>GAI tool as when not using it. “A fee charged for which little or no work was performed is an</p>
+        <p>unreasonable fee.”65</p>
+        <p>The principles set forth in ABA Formal Opinion 93-379 also apply when a lawyer charges</p>
+        <p>GAI work as an expense. Rule 1.5(a) requires that disbursements, out-of-pocket expenses, or</p>
+        <p>additional charges be reasonable. Formal Opinion 93-379 explained that a lawyer may charge the</p>
+        <p>59 The listed considerations are (1) the time and labor required, the novelty and difficulty of the questions involved,</p>
+        <p>and the skill requisite to perform the legal service properly; (2) the likelihood, if apparent to the client, that the</p>
+        <p>acceptance of the particular employment will preclude other employment by the lawyer; (3) the fee customarily</p>
+        <p>charged in the locality for similar legal services; (4) the amount involved and the results obtained; (5) the time</p>
+        <p>limitations imposed by the client or by the circumstances; (6) the nature and length of the professional relationship</p>
+        <p>with the client; (7) the experience, reputation, and ability of the lawyer or lawyers performing the services; and (8)</p>
+        <p>whether the fee is fixed or contingent.</p>
+        <p>60 ABA Comm. on Ethics &amp; Prof’l Responsibility, Formal Op. 93-379, at 6 (1993) [hereinafter ABA Formal Op. 93-</p>
+        <p>379].</p>
+        <p>61 Id.</p>
+        <p>62 Id. at 5.</p>
+        <p>63 Id.</p>
+        <p>64 See, e.g., Williams Cos. v. Energy Transfer LP, 2022 Del. Ch. LEXIS 207, 2022 WL 3650176 (Del. Ch. Aug. 25,</p>
+        <p>2022) (applying same principles to contingency fee).</p>
+        <p>65 Att’y Grievance Comm’n v. Monfried, 794 A.2d 92, 103 (Md. 2002) (finding that a lawyer violated Rule 1.5 by</p>
+        <p>charging a flat fee of $1,000 for which the lawyer did little or no work).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 13</p>
+        <p>client for disbursements incurred in providing legal services to the client. For example, a lawyer</p>
+        <p>typically may bill to the client the actual cost incurred in paying a court reporter to transcribe a</p>
+        <p>deposition or the actual cost to travel to an out-of-town hearing.66 Absent contrary disclosure to</p>
+        <p>the client, the lawyer should not add a surcharge to the actual cost of such expenses and should</p>
+        <p>pass along to the client any discounts the lawyer receives from a third-party provider.67 At the same</p>
+        <p>time, lawyers may not bill clients for general office overhead expenses including the routine costs</p>
+        <p>of “maintaining a library, securing malpractice insurance, renting of office space, purchasing</p>
+        <p>utilities, and the like.”68 Formal Opinion 93-379 noted, “[i]n the absence of disclosure to a client</p>
+        <p>in advance of the engagement to the contrary,” such overhead should be “subsumed within” the</p>
+        <p>lawyer’s charges for professional services.69</p>
+        <p>In applying the principles set out in ABA Formal Ethics Opinion 93-379 to a lawyer’s use</p>
+        <p>of a GAI tool, lawyers should analyze the characteristics and uses of each GAI tool, because the</p>
+        <p>types, uses, and cost of GAI tools and services vary significantly. To the extent a particular tool or</p>
+        <p>service functions similarly to equipping and maintaining a legal practice, a lawyer should consider</p>
+        <p>its cost to be overhead and not charge the client for its cost absent a contrary disclosure to the client</p>
+        <p>in advance. For example, when a lawyer uses a GAI tool embedded in or added to the lawyer’s</p>
+        <p>word processing software to check grammar in documents the lawyer drafts, the cost of the tool</p>
+        <p>should be considered to be overhead. In contrast, when a lawyer uses a third-party provider’s GAI</p>
+        <p>service to review thousands of voluminous contracts for a particular client and the provider charges</p>
+        <p>the lawyer for using the tool on a per-use basis, it would ordinarily be reasonable for the lawyer to</p>
+        <p>bill the client as an expense for the actual out-of-pocket expense incurred for using that tool.</p>
+        <p>As acknowledged in ABA Formal Opinion 93-379, perhaps the most difficult issue is</p>
+        <p>determining how to charge clients for providing in-house services that are not required to be</p>
+        <p>included in general office overhead and for which the lawyer seeks reimbursement. The opinion</p>
+        <p>concluded that lawyers may pass on reasonable charges for “photocopying, computer research, . .</p>
+        <p>. and similar items” rather than absorbing these expenses as part of the lawyers’ overhead as many</p>
+        <p>lawyers would do.70 For example, a lawyer may agree with the client in advance on the specific</p>
+        <p>rate for photocopying, such as $0.15 per page. Absent an advance agreement, the lawyer “is</p>
+        <p>obliged to charge the client no more than the direct cost associated with the service (i.e., the actual</p>
+        <p>cost of making a copy on the photocopy machine) plus a reasonable allocation of overhead</p>
+        <p>expenses directly associated with the provision of the service (e.g., the salary of the photocopy</p>
+        <p>machine operator).”71</p>
+        <p>66 ABA Formal Op. 93-379 at 7.</p>
+        <p>67 Id. at 8.</p>
+        <p>68 Id. at 7.</p>
+        <p>69 Id.</p>
+        <p>70 Id. at 8.</p>
+        <p>71 Id. Opinion 93-379 also explained, “It is not appropriate for the Committee, in addressing ethical standards, to opine</p>
+        <p>on the various accounting issues as to how one calculates direct cost and what may or may not be included in allocated</p>
+        <p>overhead. These are questions which properly should be reserved for our colleagues in the accounting profession.</p>
+        <p>Rather, it is the responsibility of the Committee to explain the principles it draws from the mandate of Model Rule</p>
+        <p>1.5’s injunction that fees be reasonable. Any reasonable calculation of direct costs as well as any reasonable allocation</p>
+        <p>of related overhead should pass ethical muster. On the other hand, in the absence of an agreement to the contrary, it is</p>
+        <p>impermissible for a lawyer to create an additional source of profit for the law firm beyond that which is contained in</p>
+        <p>the provision of professional services themselves. The lawyer’s stock in trade is the sale of legal services, not</p>
+        <p>photocopy paper, tuna fish sandwiches, computer time or messenger services.” Id.</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 14</p>
+        <p>These same principles apply when a lawyer uses a proprietary, in-house GAI tool in</p>
+        <p>rendering legal services to a client. A firm may have made a substantial investment in developing</p>
+        <p>a GAI tool that is relatively unique and that enables the firm to perform certain work more quickly</p>
+        <p>or effectively. The firm may agree in advance with the client about the specific rates to be charged</p>
+        <p>for using a GAI tool, just as it would agree in advance on its legal fees. But not all in-house GAI</p>
+        <p>tools are likely to be so special or costly to develop, and the firm may opt not to seek the client’s</p>
+        <p>agreement on expenses for using the technology. Absent an agreement, the firm may charge the</p>
+        <p>client no more than the direct cost associated with the tool (if any) plus a reasonable allocation of</p>
+        <p>expenses directly associated with providing the GAI tool, while providing appropriate disclosures</p>
+        <p>to the client consistent with Formal Opinion 93-379. The lawyer must ensure that the amount</p>
+        <p>charged is not duplicative of other charges to this or other clients.</p>
+        <p>Finally, on the issue of reasonable fees, in addition to the time lawyers spend using various</p>
+        <p>GAI tools and services, lawyers also will expend time to gain knowledge about those tools and</p>
+        <p>services. Rule 1.1 recognizes that “[c]ompetent representation requires the legal knowledge, skill,</p>
+        <p>thoroughness and preparation reasonably necessary for the representation.” Comment [8] explains</p>
+        <p>that “[t]o maintain the requisite knowledge and skill [to be competent], a lawyer should keep</p>
+        <p>abreast of changes in the law and its practice, including the benefits and risks associated with</p>
+        <p>relevant technology, engaging in continuing study and education and comply with all continuing</p>
+        <p>legal education requirements to which the lawyer is subject.”72 Lawyers must remember that they</p>
+        <p>may not charge clients for time necessitated by their own inexperience.73 Therefore, a lawyer may</p>
+        <p>not charge a client to learn about how to use a GAI tool or service that the lawyer will regularly</p>
+        <p>use for clients because lawyers must maintain competence in the tools they use, including but not</p>
+        <p>limited to GAI technology. However, if a client explicitly requests that a specific GAI tool be used</p>
+        <p>in furtherance of the matter and the lawyer is not knowledgeable in using that tool, it may be</p>
+        <p>appropriate for the lawyer to bill the client to gain the knowledge to use the tool effectively. Before</p>
+        <p>billing the client, the lawyer and the client should agree upon any new billing practices or billing</p>
+        <p>terms relating to the GAI tool and, preferably, memorialize the new agreement.</p>
+        <p>III. Conclusion</p>
+        <p>Lawyers using GAI tools have a duty of competence, including maintaining relevant</p>
+        <p>technological competence, which requires an understanding of the evolving nature of GAI. In</p>
+        <p>72 MODEL RULES R. 1.1, cmt. [8] (emphasis added); see also ABA Comm. on Ethics &amp; Prof’l Responsibility, Formal</p>
+        <p>Op. 498 (2021).</p>
+        <p>73 Heavener v. Meyers, 158 F. Supp. 2d 1278 (E.D. Okla. 2001) (five hundred hours for straightforward Fourth</p>
+        <p>Amendment excessive-force claim and nineteen hours for research on Eleventh Amendment defense indicated</p>
+        <p>excessive billing due to counsel’s inexperience); In re Poseidon Pools of Am., Inc., 180 B.R. 718 (Bankr. E.D.N.Y.</p>
+        <p>1995) (denying compensation for various document revisions; “we note that given the numerous times throughout</p>
+        <p>the Final Application that Applicant requests fees for revising various documents, Applicant fails to negate the</p>
+        <p>obvious possibility that such a plethora of revisions was necessitated by a level of competency less than that</p>
+        <p>reflected by the Applicant’s billing rates”); Att’y Grievance Comm’n v. Manger, 913 A.2d 1 (Md. 2006) (“While it</p>
+        <p>may be appropriate to charge a client for case-specific research or familiarization with a unique issue involved in a</p>
+        <p>case, general education or background research should not be charged to the client.”); In re Hellerud, 714 N.W.2d 38</p>
+        <p>(N.D. 2006) (reduction in hours, fee refund of $5,651.24, and reprimand for lawyer unfamiliar with North Dakota</p>
+        <p>probate work who charged too many hours at too high a rate for simple administration of cash estate; “it is</p>
+        <p>counterintuitive to charge a higher hourly rate for knowing less about North Dakota law”).</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>Formal Opinion 512 15</p>
+        <p>using GAI tools, lawyers also have other relevant ethical duties, such as those relating to</p>
+        <p>confidentiality, communication with a client, meritorious claims and contentions, candor toward</p>
+        <p>the tribunal, supervisory responsibilities regarding others in the law office using the technology</p>
+        <p>and those outside the law office providing GAI services, and charging reasonable fees. With the</p>
+        <p>ever-evolving use of technology by lawyers and courts, lawyers must be vigilant in complying</p>
+        <p>with the Rules of Professional Conduct to ensure that lawyers are adhering to their ethical</p>
+        <p>responsibilities and that clients are protected.</p>
+        <p>______________________________________________________________________________</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">AMERICAN BAR ASSOCIATION STANDING COMMITTEE ON</h2>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">ETHICS AND PROFESSIONAL RESPONSIBILITY</h2>
+        <p>321 N. Clark Street, Chicago, Illinois 60654-4714 Telephone (312) 988-5328</p>
+        <p>CHAIR: Bruce Green, New York, NY ■ Mark A. Armitage, Detroit, MI ■ Matthew Corbin,</p>
+        <p>Olathe, KS ■ Robinjit Kaur Eagleson, Lansing, MI ■ Brian Shannon Faughnan, Memphis,</p>
+        <p>TN ■ Hilary P. Gerzhoy, Washington, D.C. ■ Wendy Muchman, Chicago, IL ■ Tim Pierce,</p>
+        <p>Madison, WI ■ Hon. Jennifer A. Rymell, Fort Worth, TX ■ Charles Vigil, Albuquerque, NM</p>
+        <p>CENTER FOR PROFESSIONAL RESPONSIBILITY: Mary McDermott, Lead Senior</p>
+        <p>Counsel</p>
+        <p>©2024 by the American Bar Association. All rights reserved.</p>
+    </div>
+<footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        
+        async function checkout(pack) {
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.buy-btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            let body = { pack: pack };
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/create-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
+                }
+                
+                // Redirect to Stripe checkout
+                window.location.href = data.checkout_url;
+                
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        }
+    </script>
+</body>
 
-<!-- Content goes here -->
+</html>

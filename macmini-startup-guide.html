@@ -1,12 +1,1442 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac Mini Startup Guide | LawTasksAI</title>
+    <meta name="description" content="AI-powered legal task automation for lawyers, paralegals and staff. 200+ specialized tasks for research, drafting, case management and more. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LawTasksAI",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.",
+        "url": "https://lawtasksai.com",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Pack",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "50 credits — approximately 50 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Standard Pack",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "description": "250 credits — approximately 250 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Bulk Pack",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "description": "750 credits — approximately 750 legal task executions"
+            }
+        ],
+        "featureList": [
+            "202 AI-powered legal tasks",
+            "100% local processing — all AI runs on your machine, nothing sent to LawTasksAI servers",
+            "Privacy-focused architecture designed for attorney confidentiality",
+            "Use with cloud AI (Claude, ChatGPT) or local AI (OpenClaw + Ollama) for full Rule 1.6 compliance",
+            "Works with OpenClaw, Claude Desktop, Cursor, and MCP-compatible apps",
+            "Prepaid credits — no subscription required",
+            "VirusTotal-verified releases",
+            "Built by a former trial attorney with 21 years of practice"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Solo attorneys, small law firms, legal professionals"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            color: #2563eb;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Pain Points */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pain-card {
+            padding: 30px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+        
+        .pain-card p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+        
+        /* Solutions */
+        .solutions {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .solution-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        
+        .credibility blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .credibility cite {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        /* Email Signup */
+        .signup {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .signup p {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .signup-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .signup-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .credits {
+            font-size: 1.1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-card .per-credit {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card li {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .buy-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .buy-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        .mobile-overlay.active { display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .credibility blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">MAC MINI
+STARTUP & CONFIGURATION GUIDE
+OpenClaw · Ollama · Tailscale · Signal · Remote Access
+Confidential Personal Reference  |  March 2026</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">About This Guide
+This guide walks through the complete setup of your Mac Mini 24GB for professional use with OpenClaw, local AI models via Ollama, and secure communications. It incorporates security hardening, attorney-client confidentiality practices, remote access configuration, and recommended communications protocols established in your planning session.
+Follow each phase in order. Steps marked ⚠ have security implications and should not be skipped.</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Phase</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Description</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Unboxing & Physical Setup</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">First Boot & macOS Configuration</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Security Hardening</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Tailscale VPN</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ollama & Local AI Models</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">OpenClaw Installation & Configuration</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 7</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Remote Access — Tailscale + VNC</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 8</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Secure Communications — Signal</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 9</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Communications Platform Reference</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Phase 10</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ongoing Maintenance & Protocols</td>
+          </tr>
+        </table>
+        <h1>Phase 1 — Unboxing & Physical Setup</h1>
+        <p>Complete these steps before pressing the power button.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open the box</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Remove the Mac Mini unit, power cable, and documentation packet. Peel all plastic film from the top and sides of the unit.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Choose placement</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Position the Mac Mini with at least 2–3 inches of clearance on all sides, especially behind the rear vent. Do not place inside an enclosure.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Connect peripherals first</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Connect your HyperX keyboard via USB, your monitor via HDMI or USB-C, and a mouse if available. Do this before plugging in power.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Connect power</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Plug the power cable into the back of the Mac Mini and into the wall outlet. Do not press the power button yet.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Key remapping note</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Your HyperX keyboard will work normally. Windows key = Command (⌘). Alt key = Option (⌥). The keyboard layout is otherwise identical.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">⚠  IMPORTANT:
+Do not power on until all peripherals are connected. macOS first boot runs a display configuration check — having the monitor connected prevents a blank-screen issue.</th>
+          </tr>
+        </table>
+        <h1>Phase 2 — First Boot & macOS Configuration</h1>
+        <p>Press the power button (back-right corner of the unit). The Apple logo and progress bar will appear. Follow the macOS Setup Assistant:</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Power on</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Press the power button on the back-right corner of the Mac Mini. Wait for the Apple logo and progress bar.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Language & Region</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Select English (United States) and your time zone (Mountain Time for Colorado Springs).</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">WiFi</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Connect to your home network. Use a wired Ethernet connection if available — more stable for large model downloads later.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Apple ID</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Sign in with your Apple ID or create one. This enables Find My Mac, iMessage, and iCloud. Required for machine security.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Create user account</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Use a strong, unique password you have not used elsewhere. This is the macOS login password. Write it down and store it securely.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Decline unnecessary services</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Screen Time: skip. Siri: skip (optional — disable if privacy is a concern). iCloud Drive: enable cautiously — never sync sensitive work files to iCloud.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">7</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">macOS updates</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">When Setup Assistant completes, go to System Settings → General → Software Update. Install all available updates before proceeding to Phase 3.</td>
+          </tr>
+        </table>
+        <h1>Phase 3 — System Security Hardening</h1>
+        <p>Complete all items in this phase before installing any software. These controls protect the host machine and are prerequisites for confidential work.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">FileVault — Full Disk Encryption</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → Privacy & Security → FileVault → Turn On. Encrypts all data at rest with AES-256. Store the recovery key in a secure location offline. Required for any machine handling confidential work.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Screen Lock — Immediate</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → Lock Screen → set 'Require password after screen saver begins or display is off' to Immediately. Also set screen saver to activate after 1 minute: System Settings → Screen Saver.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Find My Mac — Remote Wipe</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → [Your Name] → Find My → Find My Mac → On. This enables remote lock and wipe from icloud.com/find if the machine is ever lost or stolen.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Startup Security</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Restart into Recovery Mode by holding the power button. Open Startup Security Utility. Set to Full Security. This prevents booting from unauthorized external media.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Firewall</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → Network → Firewall → On. Enable 'Block all incoming connections' except for services you explicitly need. This prevents unsolicited inbound connections.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Disable Remote Login (SSH)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → General → Sharing → Remote Login → Off. SSH will not be needed; all remote access will go through Tailscale + VNC (configured in Phase 7).</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">7</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">iCloud sync — sensitive files</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → [Your Name] → iCloud → iCloud Drive: do not enable Desktop & Documents folders sync. Never sync work research, client files, or confidential documents to iCloud.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">⚠  IMPORTANT:
+Do not skip FileVault. Without it, anyone with physical access to the Mac Mini can read all data regardless of your login password.</th>
+          </tr>
+        </table>
+        <h1>Phase 4 — Tailscale VPN</h1>
+        <p>Tailscale creates an encrypted private network between all your devices using WireGuard. It is the foundation of your secure remote access setup and must be installed before configuring VNC or OpenClaw gateway access.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Download Tailscale</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Go to tailscale.com/download and download the macOS app, or install via the Mac App Store. Both are identical.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Sign in</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open Tailscale and sign in with your existing Tailscale account. The Mac Mini will appear as a new device in your tailnet.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify device appears</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open tailscale.com/admin in your browser. Confirm the Mac Mini appears in your device list with an assigned Tailscale IP (typically 100.x.x.x). Note this IP — you will use it for VNC connections.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Enable auto-start</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">In the Tailscale menu bar icon, ensure 'Launch at Login' is checked. Tailscale should always be running — this removes any risk of forgetting to start it before a remote session.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify existing devices</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Your Windows machine and GCP VM should already appear in the Tailscale admin console. Confirm they show as connected. All three devices can now reach each other securely.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">ℹ  NOTE:
+Tailscale's coordination servers see connection metadata (which devices connected, when) but never the content of your traffic. All data travels peer-to-peer over WireGuard — appropriate for professional use including confidential work.</th>
+          </tr>
+        </table>
+        <h1>Phase 5 — Ollama & Local AI Models</h1>
+        <p>Ollama is the runtime engine that serves local LLMs. Your 24GB unified memory handles DeepSeek R1 14B comfortably — approximately 9GB model weight with room for macOS overhead and context window.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Install Ollama</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Go to ollama.com and download the macOS app. Drag to Applications and launch. Ollama installs a menu bar icon and background service.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Pull primary model</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open Terminal and run: ollama pull deepseek-r1:14b — This is DeepSeek-R1-Distill-Qwen-14B. Download is approximately 9GB. Suitable for reasoning, research, and land title work.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Pull secondary model</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: ollama pull qwen3:14b — Approximately 9GB. A strong general-purpose alternative. Both models can be installed simultaneously; Ollama loads one at a time.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify localhost binding</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: curl http://localhost:11434 — should respond with 'Ollama is running'. Then run: curl http://0.0.0.0:11434 — should fail or timeout. Ollama must NOT be accessible from the network directly.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Configure auto-start</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Ollama starts automatically at login by default after installation. Verify this in System Settings → General → Login Items — Ollama should appear in the list.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Test a model</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: ollama run deepseek-r1:14b — Type a test prompt. First run loads the model into memory (10–30 seconds). Subsequent prompts are fast. Exit with /bye.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Model</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Disk Size</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">deepseek-r1:14b (primary)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~9 GB</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">qwen3:14b (secondary)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~9 GB</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Combined (both installed)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~18 GB</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Available for system + context</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">~6 GB remaining of 24 GB</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">⚠  IMPORTANT:
+Never expose Ollama's port (11434) to the public internet. If curl http://0.0.0.0:11434 succeeds, edit the Ollama launch configuration to bind only to 127.0.0.1. Access from remote machines should only be via Tailscale.</th>
+          </tr>
+        </table>
+        <h1>Phase 6 — OpenClaw Installation & Configuration</h1>
+        <p>OpenClaw is the AI orchestration layer that routes your prompts to the appropriate model. Configure it to use your local Ollama model as primary, with the Anthropic API as a cloud fallback for non-confidential sessions only.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Install Node.js 22</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Go to nodejs.org and download the LTS installer for macOS. Install. Verify in Terminal: node --version (should show v22.x.x).</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Install OpenClaw</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">In Terminal run: npm install -g openclaw@latest — This installs the OpenClaw CLI globally. Run: openclaw --version to verify.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run onboarding wizard</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: openclaw setup — Follow the prompts. When asked for your primary model, enter: ollama/deepseek-r1:14b — When asked for cloud API, enter your Anthropic API key but mark it as optional/fallback.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify config location</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Main config: ~/.openclaw/openclaw.json — Privileged config: ~/.openclaw/openclaw-privileged.json — The privileged config should have NO cloud API keys.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Create privileged config</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Copy openclaw.json to openclaw-privileged.json. Edit the copy: remove all cloud API keys. This config is for use with confidential work — local model only, nothing leaves the machine.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Restrict config permissions</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">In Terminal run: chmod 600 ~/.openclaw/openclaw-privileged.json — and: chmod 700 ~/.openclaw/logs — This prevents other processes from reading your configuration or log files.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">7</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Restrict Ollama log permissions</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: chmod 700 ~/.openclaw/logs — OpenClaw logs may capture prompt content. Restrict access to your user only. Purge logs periodically.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">8</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Set Anthropic API spending limit</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Log into console.anthropic.com. Set a hard daily spending limit of $5–$10. This prevents runaway costs from misconfigured agent loops.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">9</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Configure auto-start</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Create a launchd service to start the OpenClaw gateway at boot. Run: openclaw gateway --install-service — or configure manually in ~/Library/LaunchAgents/.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">⚠  IMPORTANT:
+Never use openclaw.json (with cloud API keys) for sessions involving confidential client data, privileged work product, or sensitive research. Switch to openclaw-privileged.json for those sessions. Any prompt sent via cloud API is transmitted to Anthropic's servers.</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">ℹ  NOTE:
+Privileged session workflow: (1) Start OpenClaw with: openclaw --config ~/.openclaw/openclaw-privileged.json (2) Confirm model shows as local in the status display. (3) Complete work. (4) Return to standard config.</th>
+          </tr>
+        </table>
+        <h1>Phase 7 — Remote Access (Tailscale + VNC)</h1>
+        <p>This configuration allows you to view and control the Mac Mini desktop from your Windows machine, Linux machines, or any other device — securely, over your Tailscale private network.</p>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">7A — Enable Screen Sharing on the Mac Mini</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Enable Screen Sharing</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">System Settings → General → Sharing → Screen Sharing → On. This activates the Mac's built-in VNC server.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Set VNC password</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">In Screen Sharing settings, click 'Computer Settings' and set a VNC password. Use at least 8 characters (macOS limit). Note: Tailscale provides the main security layer here — the VNC password is a secondary control.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Note your Tailscale IP</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">In the Tailscale menu bar icon, note the Mac Mini's Tailscale IP (100.x.x.x). This is the address you will use to connect from remote machines. Never use the local LAN IP (192.168.x.x) for remote connections outside your home network.</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">7B — Install RealVNC Viewer on Remote Machines</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Windows machines</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Go to realvnc.com/en/connect/download/viewer and download RealVNC Viewer for Windows. Install. Free — no account required for basic use.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Linux machines</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Download RealVNC Viewer for Linux from the same page, or install via: sudo apt install realvnc-vnc-viewer (Debian/Ubuntu). Free.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Connect</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open RealVNC Viewer. In the address bar enter the Mac Mini's Tailscale IP (e.g. 100.x.x.x). Enter the VNC password when prompted. You now see the Mac Mini desktop.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify Tailscale is active first</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Before connecting, always confirm Tailscale is connected on BOTH machines. The Tailscale icon should show as active. If not connected, reconnect before opening the VNC session.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">⚠  IMPORTANT:
+SECURITY RULE: Never open a VNC session on a public or shared network (coffee shop, hotel, airport, client office) without Tailscale active on both machines. Without Tailscale, your screen content — including all documents and client data — travels unencrypted and is readable by anyone on the same network.</th>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Tool</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Appropriate for Confidential Work?</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Tailscale + RealVNC Viewer</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">✅ Yes — encrypted tunnel, no third-party relay</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Chrome Remote Desktop</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">❌ No — routes through Google's servers</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Parsec</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">❌ No — routes through Parsec's corporate servers</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">TeamViewer (free)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">❌ No — routes through TeamViewer's servers</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">AnyDesk</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">❌ No — routes through AnyDesk's servers</td>
+          </tr>
+        </table>
+        <h1>Phase 8 — Signal (Secure Messaging)</h1>
+        <p>Signal is the recommended secure messaging platform for professional communications involving confidential matters. Install it on all devices you use for work.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">1</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Install on Mac</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Go to signal.org/download and download the macOS app. Drag to Applications. Signal requires linking to your phone — install on your iPhone first if not already done.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">2</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Install on iPhone</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Download Signal from the App Store. Register with your phone number. This is the primary account — the Mac app links to it.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">3</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Link Mac to iPhone</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Open Signal on Mac. Open Signal on iPhone → Settings → Linked Devices → Link New Device. Scan the QR code shown on the Mac. The Mac app is now synced.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">4</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Configure disappearing messages</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">For contacts handling confidential matters: open each conversation → conversation name at top → Disappearing Messages → set a timer (1 week is a reasonable default for professional use). This auto-deletes messages from both devices.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">5</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Disable Secure Backups</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Settings → Privacy → Backups → do not enable. With backups off, message history exists only on your devices and is never stored on Signal's servers. This is the zero server-side storage configuration.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">6</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Enable Note to Self</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Signal includes a 'Note to Self' conversation — a private encrypted scratchpad. Useful for secure self-messaging of sensitive notes or temporary data.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">7</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Encourage colleagues</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Signal is only as useful as the colleagues you can reach on it. Ask Harrison, Bret, and other colleagues handling confidential matters to install Signal. Setup takes under 5 minutes.</td>
+          </tr>
+        </table>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">✅  RECOMMENDATION:
+Signal's data retention: phone number, account creation date, and last connection timestamp only. When subpoenaed, Signal has only ever been able to produce those two data points. Message content, contact lists, group memberships, and call logs are never stored on Signal's servers.</th>
+          </tr>
+        </table>
+        <h1>Phase 9 — Communications Platform Reference</h1>
+        <p>Use this table as a quick reference when deciding which platform to use for a given communication.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Use Case</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Use This</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Notes</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Confidential client matters, work product, privileged communications</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Signal</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Enable disappearing messages. Disable Secure Backups.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Colleague coordination — non-sensitive</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Signal or iMessage</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">iMessage acceptable Apple-to-Apple only.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Any communication that could affect legal exposure</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Signal only</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">No exceptions.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Community discussion, technical forums, public coordination</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Discord</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Assume public. Never share sensitive details.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Casual personal use</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">iMessage / Signal</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">iMessage convenient; Signal preferred for privacy.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Standard text messaging (SMS)</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Avoid for work</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Carriers retain records. No encryption.</td>
+          </tr>
+        </table>
+        <h3 style="color:#3d3d5c;margin-top:1.5rem;">Why Telegram and Discord Are Not Appropriate for Confidential Work</h3>
+        <p>Telegram: Regular chats and ALL group chats are stored unencrypted on Telegram's servers. Only manually activated 'Secret Chats' use end-to-end encryption, and this mode is not available for groups. Telegram's reputation for security significantly exceeds its actual security architecture.</p>
+        <p>Discord: No end-to-end encryption at any tier. All messages are stored on Discord's servers and readable by Discord. Discord has experienced multiple significant data breaches. Appropriate for community and casual communication only — never for work product or client matters.</p>
+        <h1>Phase 10 — Ongoing Maintenance & Protocols</h1>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">10A — Recurring Security Tasks</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Step</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Action</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Details</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">On every update</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Update OpenClaw</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: npm update -g openclaw — Apply immediately. Security patches have addressed critical vulnerabilities including remote code execution. Never skip updates.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Weekly</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Check for vulnerabilities</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Run: npm audit in the OpenClaw directory to check for dependency vulnerabilities. Review any new ClawHub skills before use.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Monthly</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Security review</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Review OpenClaw log files for unexpected activity. Purge logs containing sensitive content. Verify Ollama still binds to localhost only. Check Tailscale device list for unrecognized devices.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">When adding skills</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Audit before installing</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Read the full skill source before installing any OpenClaw skill. Reject any skill requesting unexpected permissions (shell.execute, fs.read_root). A prior supply chain attack infected ~10% of skills in the community registry.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">After any incident</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Rotate credentials</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Rotate API keys, invalidate auth tokens, review logs, assess what data was accessible.</td>
+          </tr>
+        </table>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">10B — Machine Loss or Theft Protocol</h2>
+        <p>If the Mac Mini is lost, stolen, or compromised, execute these steps immediately and in this order:</p>
+        <ul>
+        <li>Remote lock or wipe via icloud.com/find. Lock immediately. Wipe only if confident data cannot be recovered another way.</li>
+        <li>Revoke the device in your Tailscale admin console (tailscale.com/admin). This immediately cuts off network access from the compromised machine.</li>
+        <li>Rotate all cloud API keys: Anthropic console and any other services configured in OpenClaw. Assume all keys on the machine are compromised.</li>
+        <li>Invalidate or rotate the OpenClaw auth token. Update the token on all other devices.</li>
+        <li>Assess what data was on the machine, whether it was protected by FileVault, and whether any professional notification obligations apply.</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">10C — Remote Session Pre-Flight Checklist</h2>
+        <p>Before opening any remote desktop session, verify the following:</p>
+        <ul>
+        <li>Tailscale is connected and shows active on the remote machine</li>
+        <li>Tailscale is connected and shows active on the Mac Mini (check tailscale.com/admin)</li>
+        <li>You are using RealVNC Viewer — not Chrome Remote Desktop, Parsec, or any relay-based tool</li>
+        <li>The computer you are working from is your own trusted and secured device</li>
+        <li>If the session will involve confidential work: OpenClaw is running with the privileged (local-only) config</li>
+        </ul>
+        <h2 style="color:#1a5c3a;margin-top:2rem;">10D — Quick Reference Commands</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+          <tr>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Command</th>
+            <th style="background:#1a1a2e;color:#fff;padding:0.6rem 0.8rem;text-align:left;">Purpose</th>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">ollama list</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Show installed models</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">ollama run deepseek-r1:14b</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Start a local model session</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">ollama pull <model></td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Download a new model</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">curl http://localhost:11434</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Verify Ollama is running (should respond)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">openclaw status</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Show OpenClaw gateway status and active model</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">openclaw --config ~/.openclaw/openclaw-privileged.json</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Start OpenClaw in privileged (local-only) mode</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">npm update -g openclaw</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Update OpenClaw to latest version</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">chmod 700 ~/.openclaw/logs</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Restrict log file permissions</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">tailscale status</td>
+            <td style="border:1px solid #ccc;padding:0.6rem 0.8rem;vertical-align:top;">Show Tailscale connection status and device IPs</td>
+          </tr>
+        </table>
+        <p>This document is a personal reference guide. Review applicable professional rules and consult with qualified counsel regarding specific obligations.</p>
+    </div>
+<footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        
+        async function checkout(pack) {
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.buy-btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            let body = { pack: pack };
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/create-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
+                }
+                
+                // Redirect to Stripe checkout
+                window.location.href = data.checkout_url;
+                
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        }
+    </script>
+</body>
 
-<!-- Content goes here -->
+</html>

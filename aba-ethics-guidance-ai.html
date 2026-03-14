@@ -1,12 +1,878 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABA Ethics Guidance on AI Tools for Lawyers | LawTasksAI</title>
+    <meta name="description" content="AI-powered legal task automation for lawyers, paralegals and staff. 200+ specialized tasks for research, drafting, case management and more. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LawTasksAI",
+        "applicationCategory": "BusinessApplication",
+        "description": "AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality. Works with OpenClaw, Claude Desktop, and any MCP-compatible AI assistant.",
+        "url": "https://lawtasksai.com",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter Pack",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "50 credits — approximately 50 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Standard Pack",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "description": "250 credits — approximately 250 legal task executions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Bulk Pack",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "description": "750 credits — approximately 750 legal task executions"
+            }
+        ],
+        "featureList": [
+            "202 AI-powered legal tasks",
+            "100% local processing — all AI runs on your machine, nothing sent to LawTasksAI servers",
+            "Privacy-focused architecture designed for attorney confidentiality",
+            "Use with cloud AI (Claude, ChatGPT) or local AI (OpenClaw + Ollama) for full Rule 1.6 compliance",
+            "Works with OpenClaw, Claude Desktop, Cursor, and MCP-compatible apps",
+            "Prepaid credits — no subscription required",
+            "VirusTotal-verified releases",
+            "Built by a former trial attorney with 21 years of practice"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Solo attorneys, small law firms, legal professionals"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            color: #2563eb;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Pain Points */
+        .pain-points {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pain-card {
+            padding: 30px;
+            background: #fef2f2;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .pain-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+        
+        .pain-card p {
+            color: #7f1d1d;
+            font-size: 0.95rem;
+        }
+        
+        /* Solutions */
+        .solutions {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .solution-card {
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .solution-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 60px 0;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        
+        .credibility blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        .credibility cite {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        /* Email Signup */
+        .signup {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .signup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .signup p {
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .signup-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .signup-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .credits {
+            font-size: 1.1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-card .per-credit {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-card li {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .buy-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .buy-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        .mobile-overlay.active { display: block; }
+        
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .credibility blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+    <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
+        <p>2/25/26, 6:23 AM ABA issues first ethics guidance on a lawyer’s use of AI tools</p>
+        <p>July 29, 2024</p>
+        <p>ABA issues first ethics guidance</p>
+        <p>on a lawyer’s use of AI tools</p>
+        <p>Share:</p>
+        <p>   </p>
+        <p>CHICAGO, July 29, 2024 — The American Bar Association Standing Committee</p>
+        <p>on Ethics and Professional Responsibility released today its first formal opinion</p>
+        <p>covering the growing use of generative artificial intelligence (GAI) in the</p>
+        <p>practice of law, pointing out that model rules related to competency, informed</p>
+        <p>consent, confidentiality and fees principally apply.</p>
+        <p>Formal Opinion 512 states that to ensure clients are protected, lawyers and law</p>
+        <p>firms using GAI must “fully consider their applicable ethical obligations,” which</p>
+        <p>includes duties to provide competent legal representation, to protect client</p>
+        <p>information, to communicate with clients and to charge reasonable fees</p>
+        <p>consistent with time spent using GAI.</p>
+        <p>“This opinion identifies some ethical issues involving the use of GAI tools and</p>
+        <p>offers general guidance for lawyers attempting to navigate this emerging</p>
+        <p>landscape,” the formal opinion said. It added that the ABA committee and state</p>
+        <p>and local bar association ethics committees will likely continue to “offer</p>
+        <p>updated guidance on professional conduct issues relevant to specific GAI tools</p>
+        <p>as they develop.”</p>
+        <p>The 15-page opinion specifically outlined that lawyers should be mindful of a</p>
+        <p>host of model rules in the ABA Model Rules of Professional Conduct, including:</p>
+        <p>Model Rule 1.1 (Competence). This obligates lawyers to provide</p>
+        <p>competent representation to clients and requires they exercise the</p>
+        <p>“legal knowledge, skill, thoroughness and preparation reasonably</p>
+        <p>necessary for the representation.” In addition, the model rule states</p>
+        <p>https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/ 1/3</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>2/25/26, 6:23 AM ABA issues first ethics guidance on a lawyer’s use of AI tools</p>
+        <p>lawyers should understand “the benefits and risks associated” with the</p>
+        <p>technologies used to deliver legal services to clients.</p>
+        <p>Model Rule 1.6 (Confidentiality of Information). Under this model rule,</p>
+        <p>a lawyer using GAI must be cognizant of the duty to keep confidential</p>
+        <p>all information relating to the representation of a client, regardless of</p>
+        <p>its source, unless the client gives informed consent. Other model rules</p>
+        <p>require lawyers to extend similar protections to former and</p>
+        <p>prospective clients’ information.</p>
+        <p>Model Rule 1.4 (Communications). This model rule addresses lawyers’</p>
+        <p>duty to communicate with their clients and builds on lawyers’ legal</p>
+        <p>obligations as fiduciaries, which include “the duty of an attorney to</p>
+        <p>advise the client promptly whenever he has any information to give</p>
+        <p>which it is important the client should receive.” Of particular relevance</p>
+        <p>to GAI, Model Rule 1.4(a)(2) states that a lawyer shall “reasonably</p>
+        <p>consult” with the client about the means by which the client’s</p>
+        <p>objectives are to be accomplished.</p>
+        <p>Model Rule 1.5 (Fees). This rule requires a lawyer’s fees and expenses</p>
+        <p>to be reasonable and includes criteria for evaluating whether a fee or</p>
+        <p>expense is reasonable. The formal opinion notes that if a lawyer uses a</p>
+        <p>GAI tool to draft a pleading and expends 15 minutes to input the</p>
+        <p>relevant information into the program, the lawyer may charge for that</p>
+        <p>time as well as for the time necessary to review the resulting draft for</p>
+        <p>accuracy and completeness. But, in most circumstances, the lawyer</p>
+        <p>cannot charge a client for learning how to work a GAI tool.</p>
+        <p>“With the ever-evolving use of technology by lawyers and courts, lawyers must</p>
+        <p>be vigilant in complying with the Rules of Professional Conduct to ensure that</p>
+        <p>lawyers are adhering to their ethical responsibilities and that clients are</p>
+        <p>protected,” Formal Opinion 512 concluded.</p>
+        <p>The standing committee periodically issues ethics opinions to guide lawyers,</p>
+        <p>courts and the public in interpreting and applying ABA model ethics rules to</p>
+        <p>https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/ 2/3</p>
+        <hr style="border:none;border-top:1px dashed #ccc;margin:2rem 0;">
+        <p>2/25/26, 6:23 AM ABA issues first ethics guidance on a lawyer’s use of AI tools</p>
+        <p>specific issues of legal practice, client-lawyer relationships and judicial</p>
+        <p>behavior. Other recent ABA ethics opinions are available here.</p>
+        <p>The ABA is the largest voluntary association of lawyers in the world. As the</p>
+        <p>national voice of the legal profession, the ABA works to improve the</p>
+        <p>administration of justice, promotes programs that assist lawyers and judges</p>
+        <p>in their work, accredits law schools, provides continuing legal education,</p>
+        <p>and works to build public understanding around the world of the</p>
+        <p>importance of the rule of law. View our privacy statement online. Follow</p>
+        <p>the latest ABA news at www.americanbar.org/news and on X (formerly</p>
+        <p>Twitter) @ABANews.</p>
+        <p>American Bar Association |</p>
+        <p>/content/aba-cms-dotorg/en/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools</p>
+        <p>https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/ 3/3</p>
+    </div>
+<footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        
+        async function checkout(pack) {
+            // Find the button and disable it
+            const buttons = document.querySelectorAll('.buy-btn');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            let body = { pack: pack };
+            
+            try {
+                const response = await fetch(`${API_BASE}/checkout/create-session`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(body)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
+                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
+                    buttons.forEach(btn => btn.disabled = false);
+                    return;
+                }
+                
+                // Redirect to Stripe checkout
+                window.location.href = data.checkout_url;
+                
+            } catch (error) {
+                console.error('Checkout error:', error);
+                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
+                buttons.forEach(btn => btn.disabled = false);
+            }
+        }
+    </script>
+</body>
 
-<!-- Content goes here -->
+</html>
