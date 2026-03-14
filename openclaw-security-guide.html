@@ -1,12 +1,452 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Security Guide for Legal Professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-light: #3d3d5c;
+    --ink-faint: #6b6b8a;
+    --parchment: #faf9f6;
+    --parchment-warm: #f5f0e8;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --gold-pale: #f5ecd7;
+    --crimson: #8b1a1a;
+    --crimson-bg: #fdf2f2;
+    --forest: #1a5c3a;
+    --forest-bg: #f0f7f3;
+    --navy: #1a2744;
+    --navy-light: #2d4a7a;
+    --navy-bg: #f0f4fa;
+    --rule: #d4c5a0;
+    --code-bg: #f8f6f1;
+    --sidebar: #2c2438;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== MAIN SITE HEADER NAVIGATION ===== */
+.main-header {
+    padding: 20px 0;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-header .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links > a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+}
+
+.nav-links > a:hover {
+    color: #2563eb;
+}
+
+.header-cta {
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    background: #2563eb;
+    color: white !important;
+}
+
+.header-cta:hover {
+    background: #1d4ed8;
+    color: white !important;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.dropdown-toggle:hover {
+    color: #2563eb;
+}
+
+.dropdown-toggle::after {
+    content: '▾';
+    font-size: 0.75rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 200;
+    padding-top: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 300;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a2e;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+}
+.mobile-overlay.active { display: block; }
+
+/* Mobile responsive for header */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 80px 32px 32px;
+        gap: 0;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+        z-index: 200;
+        align-items: flex-start;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links > a {
+        padding: 14px 0;
+        font-size: 1.05rem;
+        border-bottom: 1px solid #f3f4f6;
+        width: 100%;
+    }
+    
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-toggle {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding-left: 15px;
+        margin-top: 0;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown.mobile-open .dropdown-menu {
+        display: block;
+    }
+    
+    .header-cta {
+        width: 100%;
+        text-align: center;
+        margin-top: 16px;
+    }
+}
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', 'Georgia', serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.72;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2238 60%, var(--sidebar) 100%);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 120px,
+      rgba(255,255,255,0.015) 120px,
+      rgba(255,255,255,0.015) 121px
+    );
+    pointer-events: none;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .header-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-badge {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-light);
+    border: 1px solid rgba(184,134,11,0.4);
+    padding: 0.3em 1em;
+    border-radius: 2px;
+    margin-bottom: 1.4rem;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .header-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== MAIN SITE HEADER ============================== -->
+<header class="main-header">
+    <div class="container">
+        <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="skills.html">Tasks</a>
+            <a href="sample.html">Samples</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Get Started</span>
+                <div class="dropdown-menu">
+                    <a href="getting-started.html">Getting Started Guide</a>
+                    <a href="requirements.html">System Requirements</a>
+                    <a href="download.html">Download</a>
+                    <a href="index.html#pricing">Get Credits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">ABA 1.6</span>
+                <div class="dropdown-menu">
+                    <a href="security.html">Rule 1.6 &amp; Security</a>
+                    <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                    <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                    <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                    <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                    <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                    <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                    <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Support</span>
+                <div class="dropdown-menu">
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                    <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                    <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                    <a href="macmini-security-checklist.html">Security Checklist</a>
+                    <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                    <a href="secure-communications-reference.html">Secure Communications</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="index.html#pricing" class="header-cta">Get Credits</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-overlay" id="overlay"></div>
+    </div>
 </header>
 
-<!-- Content goes here -->
+<!-- ============================== DOCUMENT HEADER ============================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">Client Security Guide</div>
+    <h1 class="header-title">Securing OpenClaw for<br>Your Legal Practice</h1>
+    <p class="header-subtitle">A plain-language guide to protecting client confidentiality when running AI assistants — on your office computer or in the cloud.</p>
+  </div>
+</header>
+
+<div style="padding: 3rem 2rem; max-width: 880px; margin: 0 auto; text-align: center;">
+  <h2 style="color: var(--ink); font-family: 'Cormorant Garamond', serif; margin-bottom: 1rem;">Coming Soon</h2>
+  <p style="color: var(--ink-light); font-size: 1.1rem; line-height: 1.7;">
+    This comprehensive OpenClaw security guide is currently being prepared. It will cover local security hardening, cloud deployment best practices, and specific configurations for legal professionals to ensure compliance with ABA Model Rule 1.6.
+  </p>
+  <div style="margin-top: 2rem; padding: 1.5rem; background: var(--gold-pale); border-left: 4px solid var(--gold); border-radius: 6px; text-align: left;">
+    <h3 style="color: var(--ink); font-family: 'Cormorant Garamond', serif; margin-bottom: 0.5rem;">Topics to be covered:</h3>
+    <ul style="color: var(--ink-light); margin-left: 1.5rem; line-height: 1.8;">
+      <li>Local system encryption and access controls</li>
+      <li>Network security and firewall configuration</li>
+      <li>API key management and secure storage</li>
+      <li>Cloud deployment with GCP best practices</li>
+      <li>Audit logging and monitoring setup</li>
+      <li>Incident response procedures</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    
+    function toggleNav() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+    
+    hamburger.addEventListener('click', toggleNav);
+    overlay.addEventListener('click', toggleNav);
+    
+    // Mobile dropdown toggle
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.parentElement.classList.toggle('mobile-open');
+            });
+        });
+    }
+    
+    // Close nav when clicking a link
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) toggleNav();
+        });
+    });
+</script>
+
+</body>
+</html>

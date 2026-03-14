@@ -1,12 +1,576 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
-
-<!-- Content goes here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - LawTasksAI</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .last-updated {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #4b5563;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            margin-left: 20px;
+            color: #4b5563;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #1a1a2e;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .contact {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 24px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>    
+    <div class="container">
+        <div class="content">
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last Updated: February 14, 2026</p>
+            
+            <div class="highlight">
+                <strong>Quick Summary:</strong> You're purchasing credits to use our AI-powered legal task automation service. You get access to the tools and methodologies, but you don't own the underlying prompts or systems. Your documents stay private. Use it responsibly and don't share your license key.
+            </div>
+            
+            <h2>1. What You're Getting</h2>
+            <p>When you purchase credits from LawTasksAI, you receive:</p>
+            <ul>
+                <li><strong>Access License:</strong> A non-exclusive, non-transferable license to use our AI task automation service</li>
+                <li><strong>Task Credits:</strong> Prepaid credits that let you execute legal tasks through our platform</li>
+                <li><strong>Expert Frameworks:</strong> Access to professionally designed task methodologies for 200+ legal workflows</li>
+                <li><strong>Integration Tools:</strong> Software to connect our service with your AI assistant (OpenClaw, Claude Desktop, etc.)</li>
+            </ul>
+            
+            <h2>2. What You're NOT Getting</h2>
+            <p>To be crystal clear:</p>
+            <ul>
+                <li>You <strong>do not own</strong> the task prompts, methodologies, or system architecture</li>
+                <li>You <strong>cannot resell, redistribute, or share</strong> our task frameworks</li>
+                <li>You <strong>cannot reverse-engineer</strong> our service to create competing products</li>
+                <li>Your license is for <strong>your use only</strong> — not for resale or third-party service provision</li>
+            </ul>
+            
+            <h2>3. Two Types of Tasks</h2>
+            
+            <h3>Server-Side Tasks (159 tasks)</h3>
+            <p>Research, deadline calculations, court rules, legal lookups, and form generation run on our servers. You send a query, we return results. The task logic never leaves our infrastructure.</p>
+            
+            <h3>Local Execution Tasks (43 tasks)</h3>
+            <p>Document analysis tasks (deposition summaries, contract review, etc.) run locally on your machine to protect client confidentiality. You receive the expert framework, and your AI assistant applies it to documents that <strong>never leave your computer</strong>.</p>
+            
+            <p><strong>Important:</strong> Local execution tasks deliver the framework to you. While we trust you to use it ethically, copying or distributing these frameworks violates this agreement and will result in license termination.</p>
+            
+            <h2>4. Credits & Pricing</h2>
+            <ul>
+                <li>One credit = one task execution</li>
+                <li>Credits <strong>never expire</strong></li>
+                <li>Credits are <strong>non-refundable</strong> after purchase</li>
+                <li>Server-side tasks charge when you execute them</li>
+                <li>Local tasks charge when you download the framework</li>
+                <li>You can check your balance anytime through the service</li>
+            </ul>
+            
+            <h2>5. Your Data & Privacy</h2>
+            <p>We take your privacy seriously:</p>
+            <ul>
+                <li><strong>Documents stay private:</strong> Local execution tasks process documents entirely on your machine</li>
+                <li><strong>Query data:</strong> Server-side tasks receive your queries to execute the task. We don't store query content beyond what's necessary for processing</li>
+                <li><strong>Usage logs:</strong> We track credit usage, task types, and timestamps for billing and service improvement</li>
+                <li><strong>No sale:</strong> We will never sell your data to third parties</li>
+                <li><strong>Compliance:</strong> You remain responsible for ABA Model Rule 1.6 compliance when using our service</li>
+            </ul>
+            
+            <h2>6. Lawyer's Duties</h2>
+            <p>LawTasksAI is a tool, not a lawyer. You're still responsible for:</p>
+            <ul>
+                <li>Reviewing all AI-generated content for accuracy</li>
+                <li>Meeting ethical obligations to clients</li>
+                <li>Supervising use of AI tools in your practice</li>
+                <li>Ensuring compliance with local bar rules regarding AI use</li>
+                <li>Protecting client confidential information</li>
+            </ul>
+            
+            <p><strong>This is software, not legal advice.</strong> AI makes mistakes. Always review, verify, and use professional judgment.</p>
+            
+            <h2>7. Prohibited Uses</h2>
+            <p>You agree NOT to:</p>
+            <ul>
+                <li>Share your license key with others</li>
+                <li>Use the service to provide legal services if you're not licensed to practice law</li>
+                <li>Attempt to extract, copy, or reverse-engineer our task prompts or systems</li>
+                <li>Use the service for illegal purposes or to violate others' rights</li>
+                <li>Abuse the service with excessive automated requests</li>
+                <li>Resell access to LawTasksAI as part of another service</li>
+            </ul>
+            
+            <h2>8. License Termination</h2>
+            <p>We may terminate your license immediately if you:</p>
+            <ul>
+                <li>Violate these terms</li>
+                <li>Abuse the service</li>
+                <li>Share your credentials</li>
+                <li>Use the service for prohibited purposes</li>
+            </ul>
+            
+            <p>Upon termination, you lose access to the service. Remaining credits are forfeited (no refunds).</p>
+            
+            <h2>9. Updates & Changes</h2>
+            <ul>
+                <li>We continuously improve our tasks. You get updates automatically.</li>
+                <li>We may modify pricing for future credit purchases (existing credits unaffected)</li>
+                <li>We may update these terms. Continued use means you accept the new terms.</li>
+                <li>We'll notify you of major changes via email if you're subscribed to updates</li>
+            </ul>
+            
+            <h2>10. Disclaimers & Limitations</h2>
+            <p><strong>Service provided "as is":</strong></p>
+            <ul>
+                <li>We don't guarantee 100% uptime (though we try!)</li>
+                <li>AI output may contain errors — always review</li>
+                <li>Legal rules change — you're responsible for current law</li>
+                <li>We're not liable for decisions you make based on AI output</li>
+            </ul>
+            
+            <p><strong>Limitation of liability:</strong> Our total liability to you is limited to the amount you paid for credits. We're not responsible for consequential damages, lost profits, or legal malpractice claims.</p>
+            
+            <h2>11. Intellectual Property</h2>
+            <p>LawTasksAI owns all rights to:</p>
+            <ul>
+                <li>Task prompts and methodologies</li>
+                <li>Software and integration tools</li>
+                <li>Branding and visual design</li>
+                <li>System architecture and databases</li>
+            </ul>
+            
+            <p>You retain ownership of:</p>
+            <ul>
+                <li>Documents you upload or process</li>
+                <li>Work product you create using our tools</li>
+                <li>Your client files and data</li>
+            </ul>
+            
+            <h2>12. Governing Law</h2>
+            <p>These terms are governed by Colorado law. Any disputes will be resolved in Colorado Springs, Colorado.</p>
+            
+            <h2>13. Contact & Support</h2>
+            <p>Questions about these terms? Need help?</p>
+            <ul>
+                <li>Email: <a href="mailto:support@lawtasksai.com">support@lawtasksai.com</a></li>
+                <li>Web: <a href="https://lawtasksai.com">lawtasksai.com</a></li>
+            </ul>
+            
+            <div class="contact">
+                <p><strong>By purchasing credits, you agree to these terms.</strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #6b7280;">If you don't agree, don't purchase. Once you buy credits, you're bound by this agreement.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer style="padding: 40px 0; background: #f9fafb; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280; font-size: 0.9rem; margin-top: 60px;">
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p style="margin-top: 10px;"><a href="terms.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Terms of Service</a> · <a href="privacy.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Privacy Policy</a> · <a href="security.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+</body>
+</html>

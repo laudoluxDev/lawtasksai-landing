@@ -1,12 +1,818 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
-
-<!-- Content goes here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule 1.6 & Security - LawTasksAI</title>
+    <meta name="description" content="Learn how LawTasksAI protects your client data with local execution, encryption, and Rule 1.6 compliance.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white !important;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Section */
+        .content {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #1a1a2e;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            color: #1a1a2e;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+        
+        .content ul {
+            margin: 15px 0 15px 30px;
+            color: #4b5563;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .security-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .security-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .security-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .checksum-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        
+        .contact-cta {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .contact-cta h3 {
+            margin: 0 0 15px 0;
+            color: white;
+        }
+        
+        .contact-cta p {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .contact-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        footer a:hover {
+            color: #2563eb;
+        }
+        
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .powered-by a {
+            color: #2563eb;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>    
+    <section class="hero">
+        <div class="container">
+            <h1>Rule 1.6 & Security</h1>
+            <p>Your client data is protected with local execution, encryption, and ethical AI practices built for legal professionals.</p>
+        </div>
+    </section>
+    
+    <section class="content" style="padding-top: 0;">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="highlight-box" style="background: #f0fdf4; border-left-color: #059669; margin-top: 30px;">
+                    <h3 style="color: #059669; margin-top: 0;">🛡️ We Never See Your Client Data</h3>
+                    <p style="font-size: 1.05rem; margin-bottom: 10px;"><strong>LawTasksAI never receives your documents or queries. We deliver expert analysis frameworks — your AI assistant does the processing.</strong></p>
+                    <p>For document analysis tasks, everything runs on your computer — documents are never transmitted to LawTasksAI servers. For other tasks, we process legal questions (not client files). We do not see or store case documents, client names, or matter details. Ever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content">
+        <div class="container">
+            <div class="content-wrapper">
+                <h2>Understanding Privacy: Two Layers</h2>
+                
+                <p>Many attorneys ask: "Is LawTasksAI Rule 1.6 compliant?" The answer requires understanding two separate systems working together:</p>
+                
+                <div class="highlight-box" style="background: #fef3c7; border-left-color: #f59e0b;">
+                    <h3 style="color: #92400e;">⚠️ Important: Privacy Has Two Parts</h3>
+                    <p><strong>Layer 1: LawTasksAI</strong> (our software) never receives your documents. Files stay on your machine.</p>
+                    <p><strong>Layer 2: Your AI Assistant</strong> (Claude Desktop, ChatGPT, OpenClaw, etc.) processes your prompts and may send data to its cloud provider.</p>
+                    <p><strong>For full Rule 1.6 compliance, you need both layers to be private.</strong> See recommendations below.</p>
+                </div>
+                
+                <h2>Layer 1: LawTasksAI (Our Architecture)</h2>
+                
+                <p>LawTasksAI is designed with attorney confidentiality as the foundation. Here's what we do and don't collect:</p>
+                
+                <div class="highlight-box">
+                    <h3>🔒 Our Privacy Commitment</h3>
+                    <p><strong>We never see your data:</strong> Your questions, documents, and results are never sent to LawTasksAI servers. We only validate your license and deliver expert analysis frameworks.</p>
+                    <p><strong>Your AI does the processing:</strong> The framework is applied by your AI assistant. If you use a cloud AI provider, your data is sent to them. For confidential work, use a local LLM or a provider with a zero data retention agreement.</p>
+                    <p><strong>Data retention:</strong> We don't receive, store, or have access to your queries or results. We don't sell your information.</p>
+                </div>
+                
+                <h3>What We Collect</h3>
+                <ul>
+                    <li><strong>Account Information:</strong> Email, name, and payment details (processed securely via Stripe)</li>
+                    <li><strong>Usage Data:</strong> Which tasks you run, credit consumption, and aggregate usage patterns</li>
+                    <li><strong>Technical Data:</strong> Device type, operating system, app version for debugging and support</li>
+                </ul>
+                
+                <h3>What You Transmit to Us</h3>
+                <p><strong>LawTasksAI never receives your documents or queries.</strong> The only things your device sends to LawTasksAI are:</p>
+                <ul>
+                    <li><strong>Your license key</strong> — to verify your account and deduct credits</li>
+                    <li><strong>Task ID</strong> — which expert framework to deliver</li>
+                </ul>
+                <p><strong>Your questions, documents, and results are never sent to LawTasksAI.</strong> Our server validates your license and delivers the expert analysis framework. Your AI assistant handles all processing. If using a cloud AI provider, review their data retention policies.</p>
+                
+                <h2>Layer 2: Your AI Assistant (The Missing Piece)</h2>
+                
+                <p><strong>This is where confidentiality decisions actually happen.</strong></p>
+                
+                <p>LawTasksAI doesn't work alone — it integrates with an AI assistant like Claude Desktop, ChatGPT, or OpenClaw. When you upload a document or send a prompt:</p>
+                
+                <ol>
+                    <li>Your AI assistant receives your prompt/document first</li>
+                    <li>It may send data to its cloud provider (Anthropic, OpenAI, etc.)</li>
+                    <li>The AI assistant calls LawTasksAI to execute the task</li>
+                    <li>Results flow back through the same path</li>
+                </ol>
+                
+                <div class="highlight-box" style="background: #fee2e2; border-left-color: #dc2626;">
+                    <h3 style="color: #991b1b;">⚠️ Critical Understanding</h3>
+                    <p><strong>If you use a cloud AI assistant (Claude Desktop, ChatGPT, etc.), your documents and prompts may be sent to that provider's servers — regardless of LawTasksAI's local execution.</strong></p>
+                    <p>LawTasksAI is designed for privacy, but full Rule 1.6 compliance requires BOTH layers to be private.</p>
+                </div>
+                
+                <h3>Current AI Provider Policies</h3>
+                <ul>
+                    <li><strong>Anthropic (Claude):</strong> Processes prompts/documents on their servers — review their current data retention policies</li>
+                    <li><strong>OpenAI (ChatGPT):</strong> Processes prompts/documents on their servers — review their current data retention policies</li>
+                    <li><strong>OpenClaw with cloud LLM:</strong> Same as above — depends on the LLM provider</li>
+                    <li><strong>OpenClaw with local LLM:</strong> Everything stays on your machine (full confidentiality)</li>
+                </ul>
+                
+                <h3>Rule 1.6 Considerations</h3>
+                <p>Most state bar associations require attorneys using cloud AI to:</p>
+                <ol>
+                    <li>Understand the provider's data handling practices</li>
+                    <li>Ensure reasonable security measures are in place</li>
+                    <li>Obtain informed client consent (in many jurisdictions)</li>
+                    <li>Document your due diligence</li>
+                </ol>
+                
+                <h2>Recommendations for Full Confidentiality</h2>
+                
+                <div class="security-grid">
+                    <div class="security-card" style="background: #f0fdf4; border: 2px solid #059669;">
+                        <h4 style="color: #059669;">✅ Option 1: Local AI (Highest Security)</h4>
+                        <p><strong>Best for:</strong> Highly confidential matters, privileged documents, discovery materials</p>
+                        <p><strong>Setup:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Install OpenClaw on your computer</li>
+                            <li>Configure with local LLM (Ollama + Llama 3.1 70B or 405B)</li>
+                            <li>Install LawTasksAI via /skill install</li>
+                            <li>All processing happens offline</li>
+                        </ul>
+                        <p><strong>Pros:</strong> Full Rule 1.6 compliance, no third-party exposure</p>
+                        <p><strong>Cons:</strong> Requires powerful hardware (32GB+ RAM)</p>
+                        <p><a href="/local-setup.html" style="color: #059669; text-decoration: underline; font-weight: 600;">→ See Complete Local Setup Guide</a></p>
+                    </div>
+                    <div class="security-card" style="background: #fef3c7; border: 2px solid #f59e0b;">
+                        <h4 style="color: #92400e;">⚠️ Option 2: Cloud AI with Safeguards</h4>
+                        <p><strong>Best for:</strong> Non-privileged documents, general legal research, drafting</p>
+                        <p><strong>Setup:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Use Claude Desktop or ChatGPT Business/Enterprise tier</li>
+                            <li>Review provider's data processing agreements</li>
+                            <li>Obtain informed client consent</li>
+                            <li>Document your due diligence</li>
+                        </ul>
+                        <p><strong>Pros:</strong> Easy to use, powerful AI, no hardware requirements</p>
+                        <p><strong>Cons:</strong> Data leaves your control, third-party risk</p>
+                    </div>
+                    <div class="security-card" style="background: #dbeafe; border: 2px solid #2563eb;">
+                        <h4 style="color: #1e40af;">🎯 Option 3: Hybrid (Recommended)</h4>
+                        <p><strong>Best for:</strong> Most solo and small firm attorneys</p>
+                        <p><strong>Strategy:</strong></p>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li><strong>Confidential/privileged:</strong> Local AI setup</li>
+                            <li><strong>General research/drafting:</strong> Cloud AI</li>
+                            <li><strong>Client intake, non-privileged:</strong> Cloud AI with consent</li>
+                        </ul>
+                        <p><strong>Implementation:</strong> Set up both environments, train staff on when to use each, create internal policy</p>
+                        <p style="font-style: italic; color: #4b5563;">This is what I do in my practice.</p>
+                    </div>
+                </div>
+                
+                <h3>Quick Decision Matrix</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background: #f3f4f6;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Your Setup</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Documents</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Prompts</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Confidentiality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Claude Desktop + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to Anthropic</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to Anthropic</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ Anthropic's policy applies</td>
+                        </tr>
+                        <tr style="background: #fafbfc;">
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>ChatGPT + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to OpenAI</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to OpenAI</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ OpenAI's policy applies</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>OpenClaw + Cloud LLM + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to LLM provider</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sent to LLM provider</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">⚠️ Provider's policy applies</td>
+                        </tr>
+                        <tr style="background: #f0fdf4;">
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>OpenClaw + Local LLM + LawTasksAI</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Stay local</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">Stay local</td>
+                            <td style="padding: 12px; border: 1px solid #e5e7eb;">✅ Fully confidential</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Architecture Overview</h2>
+                
+                <p>LawTasksAI includes <strong>200+ AI-powered legal skills</strong>. <strong>Your data is never sent to LawTasksAI</strong> — we deliver expert frameworks, your AI assistant applies them.</p>
+                
+                <div class="security-grid">
+                    <div class="security-card">
+                        <h4>🔒 100% Local Execution</h4>
+                        <p>Your questions, documents, and results are never sent to LawTasksAI. You choose which AI model processes your work — a local LLM for maximum privacy, or a cloud provider with appropriate data protections.</p>
+                    </div>
+                    <div class="security-card">
+                        <h4>📦 What Our Server Does</h4>
+                        <p>Our server only validates your license key and delivers the expert analysis framework. It never sees your questions, documents, or results. Think of it like downloading a template — the work happens on your end.</p>
+                    </div>
+                </div>
+                
+                <h3>What Your Device Sends to Us</h3>
+                <p>The only data transmitted to LawTasksAI servers is:</p>
+                <ul>
+                    <li>Your license key (for authentication and credit deduction)</li>
+                    <li>The task ID (which expert framework to retrieve)</li>
+                    <li>That's it — no questions, no documents, no results</li>
+                </ul>
+                
+                <h2>Encryption & Security</h2>
+                
+                <h3>Data in Transit</h3>
+                <p>All API communication uses <strong>TLS 1.2 or higher</strong> encryption. Data transmitted between your device and our servers is protected with industry-standard encryption protocols.</p>
+                
+                <h3>Data at Rest</h3>
+                <p>Task outputs are delivered directly to your device. Only account information (email, credit balance) is stored in our secure database. We do not see or store case documents, client names, or matter details.</p>
+                
+                <h3>Third-Party Services</h3>
+                <ul>
+                    <li><strong>Stripe:</strong> Payment processing (PCI-DSS compliant)</li>
+                    <li><strong>OpenAI / Anthropic / other AI providers:</strong> Only involved if YOU choose to use their AI model on your machine (your choice, not ours)</li>
+                    <li><strong>Google Cloud:</strong> Infrastructure hosting with enterprise-grade security</li>
+                </ul>
+                
+                <h2>Compatibility with Security Tools</h2>
+                
+                <h3>Works with Prompt Guard & ClawSec</h3>
+                <p>If you use security skills like <strong>Prompt Guard</strong> or <strong>ClawSec</strong> to protect your AI assistant, LawTasksAI works seamlessly alongside them. Our loader skill simply makes secure API calls to retrieve results — it does not modify system files, inject prompts into other skills, or alter your agent's configuration in any way.</p>
+                
+                <h3>Why Our Approach Is Safer</h3>
+                <p>A recent <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/" target="_blank" style="color: #2563eb; text-decoration: underline;">Snyk security analysis</a> of nearly 4,000 publicly available AI skills found that <strong>7.1% contained critical security flaws</strong> — including exposed credentials, prompt injection vulnerabilities, and unauthorized code execution.</p>
+                
+                <p>LawTasksAI avoids these risks entirely:</p>
+                
+                <div class="security-grid">
+                    <div class="security-card">
+                        <h4>🛡️ Typical Public Skills</h4>
+                        <p>Full skill code runs on your machine. If compromised, it can access your files, inject malicious prompts, or exfiltrate data. 7.1% of public skills have critical flaws.</p>
+                    </div>
+                    <div class="security-card">
+                        <h4>✅ LawTasksAI Approach</h4>
+                        <p>A thin loader fetches an expert analysis framework from our server and your AI applies it. No executable code, no system access, no hidden behavior.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🔐 Supply Chain Security</h3>
+                    <p>Every LawTasksAI release is scanned by 70+ antivirus engines via VirusTotal before publication. Our loader contains no executable code beyond a simple API call — there is nothing to exploit. Your documents and client data remain completely isolated from our skill logic.</p>
+                </div>
+                
+                <h2>Your Responsibilities</h2>
+                
+                <p>While we provide secure infrastructure, you play a critical role in protecting your data:</p>
+                <ul>
+                    <li><strong>Consider using a local AI model</strong> (like Ollama via OpenClaw) for highly sensitive documents — this keeps everything 100% on your machine with no cloud AI involved</li>
+                    <li><strong>Keep your device secure</strong> with updated antivirus software and strong passwords</li>
+                    <li><strong>Don't share your account</strong> — each attorney should have their own login</li>
+                </ul>
+                
+                <div class="contact-cta">
+                    <h3>Security Concerns?</h3>
+                    <p>If you discover a security vulnerability or have questions about our data practices, contact us immediately.</p>
+                    <a href="mailto:security@lawtasksai.com" class="contact-button">security@lawtasksai.com</a>
+                </div>
+                
+                <h2>Related Policies</h2>
+                <p>For more details on how we handle your data:</p>
+                <ul>
+                    <li><a href="terms.html" style="color: #2563eb; text-decoration: underline;">Terms of Service</a> — Legal terms governing your use of LawTasksAI</li>
+                    <li><a href="privacy.html" style="color: #2563eb; text-decoration: underline;">Privacy Policy</a> — Comprehensive data collection and usage policy</li>
+                </ul>
+                
+                <p style="margin-top: 40px; color: #9ca3af; font-size: 0.9rem;">Last updated: February 2026</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+</body>
+</html>

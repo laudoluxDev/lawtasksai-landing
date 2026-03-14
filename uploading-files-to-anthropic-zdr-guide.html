@@ -1,12 +1,961 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uploading Files to Anthropic's Claude for Analysis — A ZDR Guide for Legal Professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2234;
+    --navy-light: #263044;
+    --gold: #c8a45c;
+    --gold-light: #e6d4a8;
+    --cream: #faf8f4;
+    --cream-dark: #f0ece4;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --red-soft: #a63d40;
+    --green-soft: #3d7a5f;
+    --border: #d8d2c4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== MAIN SITE HEADER NAVIGATION ===== */
+.main-header {
+    padding: 20px 0;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-header .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links > a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+}
+
+.nav-links > a:hover {
+    color: #2563eb;
+}
+
+.header-cta {
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    background: #2563eb;
+    color: white !important;
+}
+
+.header-cta:hover {
+    background: #1d4ed8;
+    color: white !important;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.dropdown-toggle:hover {
+    color: #2563eb;
+}
+
+.dropdown-toggle::after {
+    content: '▾';
+    font-size: 0.75rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 200;
+    padding-top: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 300;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a2e;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+}
+.mobile-overlay.active { display: block; }
+
+/* Mobile responsive for header */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 80px 32px 32px;
+        gap: 0;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+        z-index: 200;
+        align-items: flex-start;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links > a {
+        padding: 14px 0;
+        font-size: 1.05rem;
+        border-bottom: 1px solid #f3f4f6;
+        width: 100%;
+    }
+    
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-toggle {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding-left: 15px;
+        margin-top: 0;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown.mobile-open .dropdown-menu {
+        display: block;
+    }
+    
+    .header-cta {
+        width: 100%;
+        text-align: center;
+        margin-top: 16px;
+    }
+}
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  /* Document Header */
+  header:not(.main-header) {
+    background: var(--navy);
+    color: white;
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header:not(.main-header)::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 40px,
+      rgba(200,164,92,0.03) 40px,
+      rgba(200,164,92,0.03) 80px
+    );
+  }
+
+  header:not(.main-header) .inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  header:not(.main-header) .label {
+    font-family: 'Source Sans 3', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  header:not(.main-header) h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    max-width: 650px;
+  }
+
+  header:not(.main-header) .subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  .gold-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.5rem 0;
+  }
+
+  /* Main Content */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
+  h2 .num {
+    color: var(--gold);
+    margin-right: 0.3rem;
+  }
+
+  p {
+    margin-bottom: 1.15rem;
+    color: var(--text);
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.25rem;
+    line-height: 1.75;
+  }
+
+  /* Comparison Cards */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0 2.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .comparison { grid-template-columns: 1fr; }
+    header:not(.main-header) h1 { font-size: 1.8rem; }
+  }
+
+  .method-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .method-card.caution {
+    border-top: 3px solid var(--red-soft);
+  }
+
+  .method-card.recommended {
+    border-top: 3px solid var(--green-soft);
+  }
+
+  .method-card .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+
+  .method-card.caution .badge {
+    background: rgba(166,61,64,0.1);
+    color: var(--red-soft);
+  }
+
+  .method-card.recommended .badge {
+    background: rgba(61,122,95,0.1);
+    color: var(--green-soft);
+  }
+
+  .method-card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .method-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+  }
+
+  .method-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .method-card .verdict {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .method-card.caution .verdict { color: var(--red-soft); }
+  .method-card.recommended .verdict { color: var(--green-soft); }
+
+  /* Diagram */
+  .diagram {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0 2.5rem;
+    text-align: center;
+  }
+
+  .diagram-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .flow-box {
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .flow-box.app { background: var(--cream-dark); color: var(--navy); border: 1px solid var(--border); }
+  .flow-box.action { background: var(--navy); color: white; }
+  .flow-box.result-good { background: rgba(61,122,95,0.1); color: var(--green-soft); border: 1px solid rgba(61,122,95,0.25); }
+  .flow-box.result-bad { background: rgba(166,61,64,0.1); color: var(--red-soft); border: 1px solid rgba(166,61,64,0.25); }
+
+  .flow-arrow {
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+
+  .flow-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .flow-divider {
+    width: 100%;
+    max-width: 560px;
+    margin: 0.75rem auto;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .callout::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gold);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .callout h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .callout p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  .exception-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .exception-card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .exception-card .what {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--cream-dark);
+    line-height: 1.7;
+  }
+
+  .exception-card .example-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+  }
+
+  .exception-card .example-item {
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 0.85rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--cream-dark);
+  }
+
+  .exception-card .example-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .classifier-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .classifier-box h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .classifier-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .analogy {
+    background: var(--cream-dark);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .lawyer-note {
+    background: rgba(200,164,92,0.1);
+    border: 1px solid rgba(200,164,92,0.3);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+  }
+
+  .lawyer-note h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .lawyer-note p {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* Checklist */
+  .checklist {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .checklist h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gold);
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+
+  /* Footer */
+  footer {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .disclaimer {
+    background: var(--cream-dark);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .disclaimer strong {
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== MAIN SITE HEADER ============================== -->
+<header class="main-header">
+    <div class="container">
+        <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="skills.html">Tasks</a>
+            <a href="sample.html">Samples</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Get Started</span>
+                <div class="dropdown-menu">
+                    <a href="getting-started.html">Getting Started Guide</a>
+                    <a href="requirements.html">System Requirements</a>
+                    <a href="download.html">Download</a>
+                    <a href="index.html#pricing">Get Credits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">ABA 1.6</span>
+                <div class="dropdown-menu">
+                    <a href="security.html">Rule 1.6 &amp; Security</a>
+                    <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                    <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                    <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                    <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                    <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                    <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                    <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Support</span>
+                <div class="dropdown-menu">
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                    <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                    <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                    <a href="macmini-security-checklist.html">Security Checklist</a>
+                    <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                    <a href="secure-communications-reference.html">Secure Communications</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="index.html#pricing" class="header-cta">Get Credits</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-overlay" id="overlay"></div>
+    </div>
 </header>
 
-<!-- Content goes here -->
+<header>
+  <div class="inner">
+    <div class="label">Guidance for Legal Professionals</div>
+    <h1>Uploading Files to Anthropic's Claude for Analysis Under Zero Data Retention</h1>
+    <div class="gold-rule"></div>
+    <p class="subtitle">Understanding the two methods of sending documents to Claude — and why the distinction matters for protecting client confidentiality under Rule&nbsp;1.6.</p>
+  </div>
+</header>
+
+<main>
+
+  <p class="lead">If your firm uses an application built on Anthropic's Claude API to analyze documents such as depositions, contracts, or correspondence, it is critical to understand that <strong>not all methods of sending files to Claude are covered by a Zero Data Retention agreement.</strong> The way the application is built determines whether your client's data is protected.</p>
+
+  <h2><span class="num">I.</span> The Two Methods of Sending Documents</h2>
+
+  <p>There are two fundamentally different ways a software application can deliver a document to Claude for analysis. Though the end result may look the same to you as the user, the underlying mechanics — and the data retention implications — are very different.</p>
+
+  <div class="comparison">
+    <div class="method-card caution">
+      <span class="badge">Use with Caution</span>
+      <h3>The Files API</h3>
+      <p>Think of this as uploading an attachment to a cloud drive. Your document is sent to Anthropic's servers, where it is <strong>stored</strong> and can be referenced across multiple conversations over time.</p>
+      <p>Because the file persists on Anthropic's infrastructure, this method falls <strong>outside</strong> Zero Data Retention coverage.</p>
+      <p class="verdict">⬤&ensp;NOT covered by ZDR</p>
+    </div>
+    <div class="method-card recommended">
+      <span class="badge">Recommended for ZDR</span>
+      <h3>Inline via the Messages API</h3>
+      <p>Instead of uploading the file for storage, the application extracts the document's text (or encodes the PDF) and sends it directly within the conversation request — similar to pasting text into a message.</p>
+      <p>Claude reads the content, responds, and <strong>nothing is retained.</strong> The data passes through and is discarded.</p>
+      <p class="verdict">⬤&ensp;Covered by ZDR</p>
+    </div>
+  </div>
+
+  <h2><span class="num">II.</span> How It Works in Practice</h2>
+
+  <p>To make this concrete, imagine your firm's application needs to analyze a 50-page deposition transcript. Here is how each method moves the data:</p>
+
+  <div class="diagram">
+    <div class="diagram-title">Data Flow Comparison</div>
+
+    <div class="flow-label">Method A — Files API (Not ZDR-Eligible)</div>
+    <div class="flow">
+      <span class="flow-box app">Your App</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-box action">Uploads file to Anthropic</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-box result-bad">File is stored on servers</span>
+    </div>
+
+    <div class="flow-divider"></div>
+
+    <div class="flow-label">Method B — Inline via Messages API (ZDR-Eligible)</div>
+    <div class="flow">
+      <span class="flow-box app">Your App</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-box action">Sends content in the request</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-box result-good">Processed &amp; discarded</span>
+    </div>
+  </div>
+
+  <p>The key difference: in Method A, the document lives on Anthropic's servers until it is deleted. In Method B, the content exists only for the duration of the request and is not retained afterward.</p>
+
+  <h2><span class="num">III.</span> The Practical Tradeoff</h2>
+
+  <p>The ZDR-eligible approach (Method B) has one practical consequence worth understanding: because the document is not stored on Anthropic's side, each time you want to ask Claude a new question about the same deposition, the application must send the full document text again.</p>
+
+  <p>For a well-designed application, this happens automatically and invisibly — you would not notice any difference as a user. It may result in modestly higher usage costs, as the application transmits the document content with every request. But it is the architecture that keeps your client's data within ZDR protection.</p>
+
+  <p>This is a design decision your developer makes when building the application. It is not something you would toggle on or off yourself.</p>
+
+  <h2><span class="num">IV.</span> Important Caveats</h2>
+
+  <div class="callout">
+    <h3>ZDR Does Not Mean Zero Risk</h3>
+    <p>Even under a valid ZDR agreement using eligible endpoints, Anthropic retains the right to store inputs and outputs in two narrow circumstances. These carve-outs do not make ZDR inadequate, but you should not represent to clients that Anthropic stores absolutely nothing under any circumstances. The accurate statement is that Anthropic does not retain data except in narrow, defined situations. That distinction is worth documenting.</p>
+  </div>
+
+  <div class="exception-card">
+    <h3>Exception 1: Where Required by Law</h3>
+    <p class="what">If a court order, subpoena, or other legal obligation compels Anthropic to produce data, they retain the ability to do so. This is the same kind of carve-out you would find in virtually any cloud vendor or SaaS agreement — no company will contractually promise to violate a legal obligation.</p>
+    <div class="example-label">Examples</div>
+    <div class="example-item">Anthropic receives a federal subpoena in connection with a criminal investigation into one of its users. Law enforcement believes someone used Claude to help plan a fraud scheme, and the subpoena demands all records associated with that user's API account during a specific time period. Anthropic needs the legal ability to comply — even for ZDR accounts.</div>
+    <div class="example-item">A regulatory agency issues a lawful data preservation order while investigating potential violations. Anthropic must be able to honor that order rather than destroy responsive material.</div>
+    <div class="example-item">In practice, this exception is not about Anthropic deciding on its own to keep your data. It is about Anthropic not being forced to choose between honoring your ZDR agreement and complying with the law.</div>
+  </div>
+
+  <div class="callout" style="margin-top: 0;">
+    <h3>Critical Clarification: This Exception Is Primarily Forward-Looking</h3>
+    <p>An important question arises: if ZDR means data is discarded immediately after processing, how can Anthropic hand anything over in response to a subpoena that arrives after the fact? The answer is that, in most cases, <strong>it cannot</strong>. You cannot produce what you do not have, and that is well-established law. A party served with a subpoena or discovery request is not sanctioned for failing to produce documents it never retained or that were destroyed under a routine, good-faith retention policy that predated the obligation to preserve.</p>
+    <p>The "required by law" carve-out is therefore best understood as serving three practical functions:</p>
+  </div>
+
+  <div class="exception-card" style="margin-top: 0; border-top: none; border-radius: 0 0 8px 8px;">
+    <div class="example-label">Function 1 — Prospective Preservation</div>
+    <div class="example-item">The most practical function of this carve-out is to allow Anthropic to begin <em>retaining</em> data going forward once a legal obligation arises. For example, if Anthropic receives a litigation hold notice or a preservation order related to a specific account, the carve-out gives Anthropic the contractual right to start capturing and storing that account's inputs and outputs from that point on — even though the account is covered by ZDR. Without this language, a ZDR customer could argue that Anthropic breached the ZDR contract by preserving their data, even in response to a court order.</div>
+    <div class="example-label" style="margin-top: 1.25rem;">Function 2 — Data Already Retained for Other Reasons</div>
+    <div class="example-item">Some data may still exist even on a ZDR account. If content was flagged by the safety classifier (Exception 2), it may have been stored for up to two years. Account metadata, billing records, and safety classifier logs are also retained outside of ZDR. A subpoena could reach any of that existing material.</div>
+    <div class="example-label" style="margin-top: 1.25rem;">Function 3 — National Security and Surveillance Orders</div>
+    <div class="example-item">Certain legal processes — such as National Security Letters or FISA court orders — can compel prospective collection and may include gag orders preventing the provider from notifying the account holder. The carve-out ensures Anthropic can comply with these without being in breach of the ZDR agreement.</div>
+  </div>
+
+  <div class="lawyer-note" style="margin-top: 1.5rem;">
+    <h3>What This Means for Your Risk Assessment</h3>
+    <p>The forward-looking nature of this exception may provide some comfort: for past conversations that were processed and discarded under ZDR before any legal obligation arose, that data is gone. The carve-out is not a backdoor to wholesale data retention. It is a contractual mechanism that allows Anthropic to comply with legal obligations without breaching its ZDR commitments — primarily by preserving data <em>going forward</em> from the point a legal obligation attaches. This is a useful point to include in client disclosures when explaining how ZDR works.</p>
+  </div>
+
+  <div class="exception-card">
+    <h3>Exception 2: Usage Policy Violations</h3>
+    <p class="what">Before Claude processes any request, Anthropic runs it through an automated safety screening system — essentially a content filter. If that filter determines the content violates Anthropic's usage policy, Anthropic may store both the input and the output for <strong>up to two years</strong> so it can investigate misuse, enforce its policies, and potentially report illegal activity.</p>
+    <div class="example-label">Examples</div>
+    <div class="example-item">Someone uses the API to ask Claude to generate instructions for synthesizing a controlled substance. The safety system flags this as a policy violation, and Anthropic retains the input and output to investigate and potentially suspend the account.</div>
+    <div class="example-item">A user submits requests designed to generate realistic phishing emails impersonating a financial institution. The content is flagged, and Anthropic preserves the record for enforcement purposes.</div>
+    <div class="example-item">A user submits content involving the exploitation of minors. Even if submitted in an analytical or legal context — for example, a prosecutor using Claude to help organize evidence in a child exploitation case — the safety classifier is automated and may flag it based on the nature of the content itself, regardless of the user's legitimate purpose. In that scenario, Anthropic could retain the data for up to two years.</div>
+  </div>
+
+  <div class="lawyer-note">
+    <h3>Why Exception 2 Matters for Legal Practitioners</h3>
+    <p>The safety filter does not know you are a prosecutor, a defense attorney, or a compliance officer working a difficult case. It responds to content patterns. If your firm handles matters involving subject matter that could trigger safety flags — child exploitation, terrorism, weapons, fraud schemes — there is a nonzero chance that legitimately submitted legal material could be flagged and retained, even under ZDR.</p>
+    <p style="margin-top: 0.75rem;">This does not mean you cannot use Claude for that work. It means you should factor this possibility into your risk assessment and your client disclosures, particularly for matters involving sensitive or extreme subject matter.</p>
+  </div>
+
+  <div class="classifier-box">
+    <h3>A Note on Safety Classifier Results</h3>
+    <p>Separate from the two exceptions above, Anthropic <em>always</em> retains a record of the safety filter's assessment — meaning a notation such as "this request was reviewed and passed" or "this request was flagged." Importantly, this is the filter's score or classification, <strong>not</strong> the actual text of your client's document.</p>
+    <div class="analogy">Think of it like an airport security log that records "bag scanned, no issues detected" without recording what was inside the bag. The log confirms a screening occurred; it does not contain the screened content.</div>
+  </div>
+
+  <h2><span class="num">V.</span> What to Ask Your Developer or Vendor</h2>
+
+  <div class="checklist">
+    <h3>Due Diligence Checklist</h3>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Does the application send document content <strong>inline with the Messages API</strong>, or does it use the <strong>Files API</strong> to upload and store documents on Anthropic's servers?</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Does the application use <strong>any</strong> Anthropic API features that fall outside ZDR eligibility (e.g., batch processing, the Files API, or other persistent storage features)?</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Can the developer provide <strong>written confirmation</strong> that the application is architected to use only ZDR-eligible endpoints for all client data?</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Is prompt caching enabled? If so, understand that while Anthropic states it may be compatible with ZDR (because raw text is not stored), cached data does persist for a short window (5–60 minutes).</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Has your organization executed a <strong>ZDR addendum</strong> with Anthropic? The agreement must be in place — ZDR is not a default setting.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon"></div>
+      <div>Do you have a process for <strong>periodically re-verifying</strong> that the application's architecture still conforms to ZDR requirements as Anthropic updates its API offerings?</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="disclaimer">
+    <strong>Disclaimer.</strong> This document is provided for informational purposes only and does not constitute legal advice. The information herein reflects publicly available guidance from Anthropic and published bar ethics opinions as of early 2026. Attorneys should consult with a qualified legal ethics professional and an IT security advisor to assess compliance with Rule 1.6 and other applicable obligations in their specific jurisdiction and practice context. Anthropic's API features and ZDR eligibility may change — always verify current terms directly with Anthropic.
+  </div>
+</footer>
+
+<script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    
+    function toggleNav() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+    
+    hamburger.addEventListener('click', toggleNav);
+    overlay.addEventListener('click', toggleNav);
+    
+    // Mobile dropdown toggle
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.parentElement.classList.toggle('mobile-open');
+            });
+        });
+    }
+    
+    // Close nav when clicking a link
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) toggleNav();
+        });
+    });
+</script>
+
+</body>
+</html>

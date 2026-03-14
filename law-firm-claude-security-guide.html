@@ -1,12 +1,1238 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Firm Security Guide — Anthropic Claude Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian: #0f1118;
+  --charcoal: #1c1f2e;
+  --slate: #2d3148;
+  --steel: #5a5f7a;
+  --silver: #8b90a8;
+  --mist: #c8cad8;
+  --cloud: #e8e9f0;
+  --snow: #f6f6f9;
+  --white: #ffffff;
+  --amber: #c6922a;
+  --amber-light: #e8b84a;
+  --amber-glow: #fdf5e3;
+  --ruby: #a63d40;
+  --ruby-glow: #fdf0f0;
+  --emerald: #2d6a4f;
+  --emerald-glow: #edf7f1;
+  --sapphire: #2c5282;
+  --sapphire-glow: #edf2fa;
+  --royal: #4a3880;
+  --royal-glow: #f3f0fa;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+
+/* ===== MAIN SITE HEADER NAVIGATION ===== */
+.main-header {
+    padding: 20px 0;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-header .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links > a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+}
+
+.nav-links > a:hover {
+    color: #2563eb;
+}
+
+.header-cta {
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    background: #2563eb;
+    color: white !important;
+}
+
+.header-cta:hover {
+    background: #1d4ed8;
+    color: white !important;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.dropdown-toggle:hover {
+    color: #2563eb;
+}
+
+.dropdown-toggle::after {
+    content: '▾';
+    font-size: 0.75rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 200;
+    padding-top: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 300;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1a1a2e;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+}
+.mobile-overlay.active { display: block; }
+
+/* Mobile responsive for header */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 80px 32px 32px;
+        gap: 0;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+        z-index: 200;
+        align-items: flex-start;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links > a {
+        padding: 14px 0;
+        font-size: 1.05rem;
+        border-bottom: 1px solid #f3f4f6;
+        width: 100%;
+    }
+    
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-toggle {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding-left: 15px;
+        margin-top: 0;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown.mobile-open .dropdown-menu {
+        display: block;
+    }
+    
+    .header-cta {
+        width: 100%;
+        text-align: center;
+        margin-top: 16px;
+    }
+}
+body{
+  font-family:'DM Sans','Helvetica Neue',sans-serif;
+  background:var(--snow);color:var(--charcoal);
+  line-height:1.74;font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  background:var(--obsidian);
+  color:var(--white);
+  position:relative;overflow:hidden;
+}
+.masthead::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(74,56,128,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(44,82,130,0.12) 0%, transparent 50%);
+  pointer-events:none;
+}
+.masthead-inner{
+  max-width:920px;margin:0 auto;
+  padding:3rem 2rem 2.8rem;position:relative;z-index:1;
+}
+.masthead-eyebrow{
+  font-size:.68rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.2em;color:var(--amber-light);
+  margin-bottom:1.2rem;
+}
+.masthead h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:2.6rem;font-weight:800;line-height:1.12;
+  margin-bottom:.7rem;letter-spacing:-.01em;
+}
+.masthead-sub{
+  font-size:1.05rem;font-weight:300;color:var(--mist);
+  max-width:660px;line-height:1.65;
+}
+.masthead-bar{
+  position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--royal),var(--sapphire),var(--amber));
+}
+
+/* ===== CRITICAL WARNING BANNER ===== */
+.critical-banner{
+  background:var(--ruby-glow);
+  border-bottom:1px solid #e8c5c5;
+  padding:1.2rem 2rem;
+}
+.critical-inner{
+  max-width:920px;margin:0 auto;
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.critical-icon{
+  flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  background:var(--ruby);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;font-weight:700;margin-top:.1rem;
+}
+.critical-text{font-size:.9rem;color:#5a2a2a;line-height:1.6}
+.critical-text strong{color:var(--ruby)}
+
+/* ===== NAV STRIP ===== */
+.nav-strip{
+  background:var(--white);border-bottom:1px solid var(--cloud);
+  padding:.65rem 2rem;position:sticky;top:0;z-index:100;
+  overflow-x:auto;white-space:nowrap;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.nav-strip-inner{max-width:920px;margin:0 auto;display:flex;gap:.3rem;flex-wrap:nowrap}
+.nav-strip a{
+  display:inline-block;padding:.35rem .75rem;
+  font-size:.76rem;font-weight:500;color:var(--steel);
+  text-decoration:none;border-radius:4px;transition:all .15s;
+  white-space:nowrap;
+}
+.nav-strip a:hover{background:var(--sapphire-glow);color:var(--sapphire)}
+.nav-strip .sep{color:var(--cloud);padding:0 .15rem;align-self:center;font-size:.7rem}
+
+/* ===== MAIN ===== */
+.main{max-width:920px;margin:0 auto;padding:2rem 2rem 4rem}
+
+/* ===== TYPOGRAPHY ===== */
+h2{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.85rem;font-weight:700;color:var(--obsidian);
+  margin:3rem 0 .9rem;padding-bottom:.45rem;
+  border-bottom:2px solid var(--amber);line-height:1.2;
+}
+h2:first-child{margin-top:0}
+h3{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.3rem;font-weight:500;color:var(--sapphire);
+  margin:2rem 0 .5rem;line-height:1.3;
+}
+h4{
+  font-size:.92rem;font-weight:700;color:var(--charcoal);
+  margin:1.4rem 0 .3rem;text-transform:uppercase;letter-spacing:.04em;
+}
+p{margin-bottom:.95rem}
+a{color:var(--sapphire);text-underline-offset:2px}
+
+/* ===== PRODUCT CARDS ===== */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1.25rem 0}
+.product-card{
+  background:var(--white);border:1px solid var(--cloud);
+  border-radius:8px;padding:1.3rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.03);
+  position:relative;overflow:hidden;
+}
+.product-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.product-card.card-web::before{background:var(--sapphire)}
+.product-card.card-desktop::before{background:var(--royal)}
+.product-card.card-code::before{background:var(--emerald)}
+.product-card.card-work::before{background:var(--amber)}
+.product-card h4{margin-top:.2rem;text-transform:none;letter-spacing:0;font-size:1rem}
+.product-card p{font-size:.88rem;color:var(--steel);margin-bottom:.5rem}
+.card-tag{
+  display:inline-block;font-size:.68rem;font-weight:600;
+  padding:.2em .65em;border-radius:3px;text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.tag-consumer{background:#fce4e4;color:var(--ruby)}
+.tag-commercial{background:#e3f0e8;color:var(--emerald)}
+.tag-depends{background:#fdf5e3;color:#8a6a1a}
+
+/* ===== RISK TABLE ===== */
+.risk-matrix{
+  width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.88rem;
+}
+.risk-matrix th{
+  background:var(--charcoal);color:var(--white);
+  padding:.65rem .9rem;text-align:left;
+  font-size:.76rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.risk-matrix td{
+  padding:.6rem .9rem;border-bottom:1px solid var(--cloud);
+  vertical-align:top;
+}
+.risk-matrix tr:nth-child(even) td{background:rgba(0,0,0,.015)}
+.risk-high{color:var(--ruby);font-weight:700}
+.risk-med{color:#a67c1a;font-weight:600}
+.risk-low{color:var(--emerald);font-weight:600}
+
+/* ===== CALLOUTS ===== */
+.callout{
+  padding:1rem 1.2rem;border-radius:5px;margin:1.15rem 0;
+  font-size:.9rem;line-height:1.6;border-left:4px solid;
+}
+.callout-ruby{background:var(--ruby-glow);border-color:var(--ruby)}
+.callout-amber{background:var(--amber-glow);border-color:var(--amber)}
+.callout-emerald{background:var(--emerald-glow);border-color:var(--emerald)}
+.callout-sapphire{background:var(--sapphire-glow);border-color:var(--sapphire)}
+.callout-label{
+  font-weight:700;font-size:.75rem;text-transform:uppercase;
+  letter-spacing:.07em;display:block;margin-bottom:.25rem;
+}
+.callout-ruby .callout-label{color:var(--ruby)}
+.callout-amber .callout-label{color:#8a6a1a}
+.callout-emerald .callout-label{color:var(--emerald)}
+.callout-sapphire .callout-label{color:var(--sapphire)}
+
+/* ===== CODE ===== */
+code{
+  font-family:'IBM Plex Mono',monospace;font-size:.83em;
+  background:var(--cloud);padding:.12em .35em;border-radius:3px;
+}
+pre{
+  background:var(--charcoal);color:#d8d6ce;
+  padding:1.15rem 1.4rem;border-radius:6px;overflow-x:auto;
+  margin:1rem 0 1.15rem;font-family:'IBM Plex Mono',monospace;
+  font-size:.8rem;line-height:1.7;
+}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.cm{color:#6b7394}
+.st{color:#8ec07c}
+.kw{color:#c9a0dc}
+.vl{color:#e8c476}
+
+/* ===== DECISION FLOWCHART ===== */
+.flow{
+  background:var(--white);border:1px solid var(--cloud);
+  border-radius:8px;padding:1.5rem;margin:1.25rem 0;
+  box-shadow:0 2px 8px rgba(0,0,0,.03);
+}
+.flow-title{
+  font-family:'Playfair Display',serif;font-size:1.1rem;
+  font-weight:700;margin-bottom:1rem;color:var(--obsidian);
+  text-align:center;
+}
+.flow-step{
+  display:flex;gap:.8rem;align-items:flex-start;margin:.7rem 0;
+}
+.flow-q{
+  flex-shrink:0;width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.78rem;color:#fff;
+}
+.flow-q.q{background:var(--sapphire)}
+.flow-q.yes{background:var(--emerald)}
+.flow-q.no{background:var(--ruby)}
+.flow-body{flex:1;font-size:.9rem;line-height:1.55}
+.flow-body strong{color:var(--obsidian)}
+.flow-arrow{
+  text-align:center;color:var(--silver);font-size:1.1rem;margin:.15rem 0;
+}
+
+/* ===== COMPARISON BOX ===== */
+.compare-box{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--cloud);border-radius:8px;
+  overflow:hidden;margin:1.15rem 0;
+}
+.compare-side{padding:1.1rem 1.3rem;font-size:.88rem}
+.compare-side.side-bad{background:#fdf5f5;border-right:1px solid var(--cloud)}
+.compare-side.side-good{background:#f0f7f3}
+.compare-side h4{font-size:.75rem;margin-top:0}
+.compare-side h4.bad-h{color:var(--ruby)}
+.compare-side h4.good-h{color:var(--emerald)}
+
+/* ===== CHECKLIST ===== */
+.checklist{list-style:none;margin:.9rem 0}
+.checklist li{
+  padding:.4rem 0 .4rem 1.9rem;position:relative;
+  font-size:.9rem;line-height:1.5;
+}
+.checklist li::before{
+  content:'☐';position:absolute;left:.2rem;top:.35rem;
+  color:var(--amber);font-size:1.05rem;
+}
+
+/* ===== REFERENCE CARDS ===== */
+.ref-card{
+  background:var(--white);border:1px solid var(--cloud);
+  border-radius:6px;padding:1rem 1.2rem;margin:.75rem 0;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.ref-card-header{font-weight:700;font-size:.9rem;color:var(--sapphire);margin-bottom:.25rem}
+.ref-card-body{font-size:.86rem;color:var(--steel);line-height:1.55}
+.ref-card-body a{color:var(--sapphire)}
+
+/* ===== TIER BADGE ===== */
+.tier{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:600;padding:.25em .7em;
+  border-radius:4px;margin:.15rem .2rem;
+}
+.tier-free{background:#f0e0e0;color:var(--ruby)}
+.tier-pro{background:#e8dff5;color:var(--royal)}
+.tier-team{background:#e3f0e8;color:var(--emerald)}
+.tier-ent{background:#dce8f5;color:var(--sapphire)}
+
+/* ===== SECTION DIVIDER ===== */
+.divider{
+  height:1px;background:linear-gradient(90deg,transparent,var(--cloud),transparent);
+  margin:2.5rem 0;
+}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:var(--obsidian);color:rgba(255,255,255,.55);
+  padding:2.5rem 2rem;font-size:.8rem;line-height:1.7;
+}
+.footer-inner{max-width:920px;margin:0 auto}
+.footer-inner a{color:var(--amber-light)}
+.footer-heading{
+  font-family:'Playfair Display',serif;font-size:1rem;
+  color:rgba(255,255,255,.8);margin-bottom:.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:700px){
+  .masthead h1{font-size:1.9rem}
+  .product-grid{grid-template-columns:1fr}
+  .compare-box{grid-template-columns:1fr}
+  .compare-side.side-bad{border-right:none;border-bottom:1px solid var(--cloud)}
+  .main{padding:1.5rem 1rem 3rem}
+  .critical-inner{flex-direction:column}
+  .nav-strip{display:none}
+}
+@media print{
+  .nav-strip{display:none}
+  .masthead{padding:1.5rem;background:#1c1f2e!important;-webkit-print-color-adjust:exact}
+  pre{white-space:pre-wrap;word-break:break-all}
+  .callout,.flow,.product-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== MAIN SITE HEADER ============================== -->
+<header class="main-header">
+    <div class="container">
+        <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="skills.html">Tasks</a>
+            <a href="sample.html">Samples</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Get Started</span>
+                <div class="dropdown-menu">
+                    <a href="getting-started.html">Getting Started Guide</a>
+                    <a href="requirements.html">System Requirements</a>
+                    <a href="download.html">Download</a>
+                    <a href="index.html#pricing">Get Credits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">ABA 1.6</span>
+                <div class="dropdown-menu">
+                    <a href="security.html">Rule 1.6 &amp; Security</a>
+                    <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                    <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                    <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                    <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                    <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                    <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                    <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Support</span>
+                <div class="dropdown-menu">
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                    <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                    <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                    <a href="macmini-security-checklist.html">Security Checklist</a>
+                    <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                    <a href="secure-communications-reference.html">Secure Communications</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="index.html#pricing" class="header-cta">Get Credits</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-overlay" id="overlay"></div>
+    </div>
 </header>
 
-<!-- Content goes here -->
+<!-- ============================== MASTHEAD ============================== -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-eyebrow">Law Firm AI Security Guide &mdash; February 2026</div>
+    <h1>Securing Anthropic Claude<br>for Your Legal Practice</h1>
+    <p class="masthead-sub">
+      A comprehensive guide to data privacy, client confidentiality, and security configuration across Claude.ai, Claude Desktop, and Claude Code &mdash; with specific guidance on handling confidential client files.
+    </p>
+  </div>
+  <div class="masthead-bar"></div>
+</header>
+
+<!-- ============================== CRITICAL BANNER ============================== -->
+<div class="critical-banner">
+  <div class="critical-inner">
+    <div class="critical-icon">!</div>
+    <div class="critical-text">
+      <strong>Not all Claude plans protect client data equally.</strong> As of September 2025, consumer plans (Free, Pro, Max) may use your conversations to train AI models by default. Before uploading any confidential client files to <em>any</em> Claude product, confirm you are on the correct plan tier and your privacy settings are properly configured. This guide explains exactly how.
+    </div>
+  </div>
+</div>
+
+<!-- ============================== NAV STRIP ============================== -->
+<nav class="nav-strip" aria-label="Page navigation">
+  <div class="nav-strip-inner">
+    <a href="#products">Claude Products</a><span class="sep">·</span>
+    <a href="#ethics">Ethics Obligations</a><span class="sep">·</span>
+    <a href="#tiers">Plan Tiers &amp; Risk</a><span class="sep">·</span>
+    <a href="#decision">Decision Flowchart</a><span class="sep">·</span>
+    <a href="#files">Handling Client Files</a><span class="sep">·</span>
+    <a href="#consumer">Consumer Settings</a><span class="sep">·</span>
+    <a href="#commercial">Commercial Setup</a><span class="sep">·</span>
+    <a href="#code">Claude Code</a><span class="sep">·</span>
+    <a href="#firm-policy">Firm Policy</a><span class="sep">·</span>
+    <a href="#checklist">Checklists</a><span class="sep">·</span>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<!-- ============================== MAIN ============================== -->
+<div class="main">
+
+<!-- ============================================ SECTION 1 ============================================ -->
+<h2 id="products">Understanding the Claude Product Landscape</h2>
+
+<p>Anthropic offers several ways to use Claude. Each has different privacy characteristics. Understanding which product you are using &mdash; and which terms govern it &mdash; is the essential first step.</p>
+
+<div class="product-grid">
+  <div class="product-card card-web">
+    <h4>Claude.ai (Website)</h4>
+    <p>The browser-based chat interface at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>. You type prompts, upload files, and receive responses. All processing happens on Anthropic&rsquo;s servers.</p>
+    <span class="card-tag tag-consumer">Consumer Terms (Free/Pro/Max)</span><br>
+    <span class="card-tag tag-commercial">Commercial Terms (Team/Enterprise)</span>
+  </div>
+  <div class="product-card card-desktop">
+    <h4>Claude Desktop App</h4>
+    <p>A native application for Mac and Windows. Despite running locally, all prompts and files are sent to Anthropic&rsquo;s servers for processing. The app is a convenience wrapper &mdash; not a local AI.</p>
+    <span class="card-tag tag-consumer">Same terms as your claude.ai plan</span>
+  </div>
+  <div class="product-card card-code">
+    <h4>Claude Code (CLI)</h4>
+    <p>A command-line tool for agentic coding that can read, write, and execute code on your machine. It sends your code and prompts to Anthropic&rsquo;s servers. Data policies depend on your account type.</p>
+    <span class="card-tag tag-depends">Terms vary by plan</span>
+  </div>
+  <div class="product-card card-work">
+    <h4>Claude for Work (Team/Enterprise)</h4>
+    <p>Business plans accessed through the same claude.ai interface but governed by Anthropic&rsquo;s <strong>Commercial Terms</strong>. These provide significantly stronger data protections than consumer plans.</p>
+    <span class="card-tag tag-commercial">Commercial Terms</span>
+  </div>
+</div>
+
+<div class="callout callout-ruby">
+  <span class="callout-label">Critical Distinction</span>
+  <strong>The Claude Desktop app does NOT process data locally.</strong> Everything you type or upload is sent to Anthropic&rsquo;s cloud servers. The &ldquo;desktop&rdquo; label may suggest local processing, but it is functionally identical to using claude.ai in a browser. Treat it with the same caution.
+</div>
+
+<!-- ============================================ SECTION 2 ============================================ -->
+<h2 id="ethics">Your Ethical Obligations (ABA Formal Opinion 512)</h2>
+
+<p>In July 2024, the ABA Standing Committee on Ethics and Professional Responsibility published <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">Formal Opinion 512</a>, its first formal guidance on lawyers&rsquo; use of generative AI. The opinion maps existing Model Rules to AI tools and creates specific obligations around data handling.</p>
+
+<div class="ref-card">
+  <div class="ref-card-header">Model Rule 1.6 &mdash; Confidentiality</div>
+  <div class="ref-card-body">Before entering any client information into an AI tool, you must evaluate the risk of disclosure to others both inside and outside your firm. This includes understanding whether the tool &ldquo;learns&rdquo; from inputs and could surface client information in responses to other users. &nbsp; <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/" target="_blank" rel="noopener">Read the ABA announcement &rarr;</a></div>
+</div>
+<div class="ref-card">
+  <div class="ref-card-header">Model Rule 1.1 &mdash; Competence</div>
+  <div class="ref-card-body">You must have a reasonable understanding of the capabilities and limitations of AI tools you use &mdash; including how they handle data. &ldquo;Boilerplate consent in engagement letters will not be adequate.&rdquo;</div>
+</div>
+<div class="ref-card">
+  <div class="ref-card-header">Model Rules 5.1 &amp; 5.3 &mdash; Supervision</div>
+  <div class="ref-card-body">Managerial lawyers must establish clear firm-wide policies on AI use, provide training on ethical risks, and ensure that both lawyer and non-lawyer staff comply when using AI tools.</div>
+</div>
+
+<p>In practical terms, Opinion 512 requires you to answer three questions before using any Claude product with client data:</p>
+
+<ol style="margin:0 0 1rem 1.5rem;font-size:.93rem">
+  <li style="margin-bottom:.4rem"><strong>Can the AI provider access or retain my client&rsquo;s information?</strong></li>
+  <li style="margin-bottom:.4rem"><strong>Could my client&rsquo;s information be used to train AI models that serve other users?</strong></li>
+  <li style="margin-bottom:.4rem"><strong>Have I implemented adequate safeguards to prevent unauthorized disclosure?</strong></li>
+</ol>
+
+<p>The answers depend entirely on which Claude plan tier you are using.</p>
+
+<!-- ============================================ SECTION 3 ============================================ -->
+<h2 id="tiers">Plan Tiers: A Risk-Based Comparison</h2>
+
+<div class="callout callout-amber">
+  <span class="callout-label">Warning &mdash; Misleading Plan Names</span>
+  The name &ldquo;Pro&rdquo; suggests professional or business-grade privacy. It does not. Claude Pro is a <em>consumer</em> plan. Similarly, some &ldquo;Team&rdquo; accounts may still fall under consumer terms depending on how they were provisioned. Always verify which Terms of Service govern your account.
+</div>
+
+<table class="risk-matrix">
+  <thead>
+    <tr>
+      <th>Consideration</th>
+      <th><span class="tier tier-free">Free</span> <span class="tier tier-pro">Pro / Max</span></th>
+      <th><span class="tier tier-team">Team</span> <span class="tier tier-ent">Enterprise</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Governing terms</strong></td>
+      <td>Consumer Terms of Service</td>
+      <td>Commercial Terms of Service</td>
+    </tr>
+    <tr>
+      <td><strong>Data used for AI training?</strong></td>
+      <td><span class="risk-high">Yes, by default (opt-out available)</span></td>
+      <td><span class="risk-low">Never (regardless of settings)</span></td>
+    </tr>
+    <tr>
+      <td><strong>Data retention</strong></td>
+      <td>30 days (opt-out) or <span class="risk-high">5 years (opt-in)</span></td>
+      <td><span class="risk-low">Configurable; API: 7 days default</span></td>
+    </tr>
+    <tr>
+      <td><strong>Zero Data Retention option?</strong></td>
+      <td><span class="risk-high">No</span></td>
+      <td><span class="risk-low">Available (API/Enterprise)</span></td>
+    </tr>
+    <tr>
+      <td><strong>Employee access to conversations</strong></td>
+      <td>Trust &amp; Safety team on flagged content</td>
+      <td>Trust &amp; Safety only; Primary Owner controls</td>
+    </tr>
+    <tr>
+      <td><strong>SSO / SAML integration</strong></td>
+      <td><span class="risk-high">Not available</span></td>
+      <td><span class="risk-low">Enterprise: Yes</span></td>
+    </tr>
+    <tr>
+      <td><strong>Custom retention controls</strong></td>
+      <td><span class="risk-high">No</span></td>
+      <td><span class="risk-low">Enterprise: Yes (min 30 days)</span></td>
+    </tr>
+    <tr>
+      <td><strong>Data Processing Addendum (DPA)</strong></td>
+      <td><span class="risk-high">Not available</span></td>
+      <td><span class="risk-low">Available</span></td>
+    </tr>
+    <tr>
+      <td><strong>BAA (HIPAA) available?</strong></td>
+      <td><span class="risk-high">No</span></td>
+      <td><span class="risk-low">Enterprise: Yes</span></td>
+    </tr>
+    <tr>
+      <td><strong>Safe for confidential client files?</strong></td>
+      <td><span class="risk-high">Not recommended</span></td>
+      <td><span class="risk-low">Yes, with proper configuration</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============================================ DECISION FLOW ============================================ -->
+<h2 id="decision">Decision Flowchart: Can I Use Claude for This Client File?</h2>
+
+<div class="flow">
+  <div class="flow-title">Before Uploading Any Confidential Client Document</div>
+
+  <div class="flow-step">
+    <div class="flow-q q">Q1</div>
+    <div class="flow-body"><strong>Does the file contain any client-identifiable information, privileged communications, or confidential case details?</strong></div>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <div class="flow-q no">No</div>
+    <div class="flow-body">You may use any Claude plan. General legal research, public document analysis, and de-identified data carry minimal risk. Proceed with normal caution.</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-q yes">Yes</div>
+    <div class="flow-body">Continue to Q2 &darr;</div>
+  </div>
+
+  <div class="flow-arrow">↓</div>
+
+  <div class="flow-step">
+    <div class="flow-q q">Q2</div>
+    <div class="flow-body"><strong>Are you on a Claude for Work (Team/Enterprise) plan governed by Anthropic&rsquo;s Commercial Terms?</strong></div>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <div class="flow-q yes">Yes</div>
+    <div class="flow-body">Your data will <strong>not</strong> be used for training. Proceed to Q3.</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-q no">No</div>
+    <div class="flow-body"><span class="risk-high"><strong>STOP.</strong> Do not upload the file.</span> Consumer plans (Free/Pro/Max) may use your data for model training. Even with opt-out, data is retained for 30 days and Anthropic&rsquo;s Trust &amp; Safety team may access flagged content. This is unlikely to satisfy your obligations under Model Rule 1.6.</div>
+  </div>
+
+  <div class="flow-arrow">↓</div>
+
+  <div class="flow-step">
+    <div class="flow-q q">Q3</div>
+    <div class="flow-body"><strong>Have you obtained informed consent from the client to use AI tools in their matter?</strong> (Opinion 512 says boilerplate engagement letter consent is not sufficient.)</div>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <div class="flow-q yes">Yes</div>
+    <div class="flow-body">You may proceed with the upload. Follow the file-handling procedures in the next section.</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-q no">No</div>
+    <div class="flow-body">Obtain specific informed consent before proceeding. Document it in the client file.</div>
+  </div>
+</div>
+
+<!-- ============================================ FILE HANDLING ============================================ -->
+<h2 id="files">Handling Confidential Client Files in Claude</h2>
+
+<p>When you upload a document to Claude &mdash; whether through the website, the desktop app, or Claude Code &mdash; the file is transmitted to Anthropic&rsquo;s servers for processing. Understanding this data flow is essential.</p>
+
+<h3>How File Processing Works</h3>
+
+<div class="compare-box">
+  <div class="compare-side side-bad">
+    <h4 class="bad-h">What Many People Assume</h4>
+    <p>&ldquo;The file stays on my computer and Claude reads it locally.&rdquo;</p>
+    <p>&ldquo;The Desktop app processes everything on my machine.&rdquo;</p>
+    <p>&ldquo;Only the text I type gets sent to Anthropic.&rdquo;</p>
+  </div>
+  <div class="compare-side side-good">
+    <h4 class="good-h">What Actually Happens</h4>
+    <p>The entire file is uploaded to Anthropic&rsquo;s servers for the AI to process.</p>
+    <p>The Desktop app is a wrapper &mdash; all processing happens in Anthropic&rsquo;s cloud.</p>
+    <p>Files, images, and all context in the conversation are transmitted.</p>
+  </div>
+</div>
+
+<h3>Rules for Client Files</h3>
+
+<div class="callout callout-ruby">
+  <span class="callout-label">Non-Negotiable</span>
+  Never upload client files to a Free, Pro, or Max account. These are consumer plans where data may be used for AI training and retained for up to 5 years. This applies regardless of whether you use the website, desktop app, or Claude Code logged into a consumer account.
+</div>
+
+<h4>On a Claude for Work (Team/Enterprise) Account:</h4>
+<ul class="checklist">
+  <li>Confirm your account is governed by Anthropic&rsquo;s <strong>Commercial Terms</strong> (check with your firm administrator or account Primary Owner)</li>
+  <li>Verify that the &ldquo;Help improve Claude&rdquo; setting is <strong>off</strong> at the organization level (Enterprise admins control this)</li>
+  <li>Review Anthropic&rsquo;s subprocessor list and Data Processing Addendum</li>
+  <li>Before uploading, consider: does this file need to be uploaded in full, or can you redact identifying details first?</li>
+  <li>Use Claude Projects to isolate client matters &mdash; do not mix clients in a single conversation</li>
+  <li>Delete conversations containing client files after you have extracted the analysis you need</li>
+  <li>Document your use of AI in the matter file, including what was uploaded and when</li>
+</ul>
+
+<h4>Claude Code with Client Source Material:</h4>
+<ul class="checklist">
+  <li>Claude Code reads files from your local filesystem and sends their content to Anthropic&rsquo;s servers</li>
+  <li>If using a consumer plan (Free/Pro/Max), Claude Code data follows consumer retention and training policies</li>
+  <li>If using a commercial API key, Claude Code data follows commercial terms (no training, shorter retention)</li>
+  <li>Check which API key Claude Code is using: run <code>/config</code> in the CLI to verify</li>
+  <li>For maximum protection, use Claude Code with a commercial API key that has Zero Data Retention enabled</li>
+</ul>
+
+<!-- ============================================ CONSUMER SETTINGS ============================================ -->
+<h2 id="consumer">If You Must Use a Consumer Plan: Minimum Safety Settings</h2>
+
+<p>If your firm is evaluating Claude before committing to a commercial plan, or if individual attorneys use personal accounts for non-client work, these settings are the <strong>absolute minimum</strong> configuration required.</p>
+
+<div class="callout callout-amber">
+  <span class="callout-label">Reminder</span>
+  Even with these settings, consumer plans are <strong>not recommended</strong> for confidential client information. These steps reduce risk for general legal research and non-client tasks only.
+</div>
+
+<h3>Step 1: Disable Model Training</h3>
+<pre><code><span class="cm">Navigate to:</span>
+  claude.ai → Settings → Privacy &amp; Data Controls
+
+<span class="cm">Set the following:</span>
+  <span class="kw">"Help improve Claude"</span>  →  <span class="vl">OFF</span>
+
+<span class="cm">This prevents your conversations from being used</span>
+<span class="cm">to train future AI models. Without this step, data</span>
+<span class="cm">retention extends from 30 days to 5 YEARS.</span></code></pre>
+
+<h3>Step 2: Disable Memory (If Available)</h3>
+<pre><code><span class="cm">Navigate to:</span>
+  claude.ai → Settings → Memory
+
+<span class="cm">Set:</span>
+  <span class="kw">Memory</span>  →  <span class="vl">OFF</span>
+
+<span class="cm">Memory stores information about you across conversations.</span>
+<span class="cm">If you discuss client matters in one conversation, that</span>
+<span class="cm">context could surface in another.</span></code></pre>
+
+<h3>Step 3: Delete Conversations After Use</h3>
+<p>Deleted conversations are removed from your history immediately and from Anthropic&rsquo;s backend systems within 30 days. Deleted chats are excluded from training regardless of your settings. Make it a habit to delete any conversation that contained sensitive information.</p>
+
+<h3>Step 4: Review the Claude Desktop App</h3>
+<p>The Desktop app inherits the privacy settings of your claude.ai account. There are no separate privacy controls in the app itself. Ensure your web account settings are configured before using the desktop app.</p>
+
+<!-- ============================================ COMMERCIAL SETUP ============================================ -->
+<h2 id="commercial">Recommended Configuration: Claude for Work (Commercial Plans)</h2>
+
+<p>For any law firm handling confidential client information, Anthropic&rsquo;s commercial plans are the appropriate choice. These are governed by separate <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">Commercial Terms of Service</a> that explicitly prohibit model training on your data.</p>
+
+<h3>Enterprise Plan Security Features</h3>
+
+<table class="risk-matrix">
+  <thead>
+    <tr><th>Feature</th><th>What It Does</th><th>Why Lawyers Need It</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SSO/SAML</strong></td>
+      <td>Integrates with your firm&rsquo;s identity provider (Okta, Azure AD, etc.)</td>
+      <td>Ensures only authorized personnel access Claude; enables central deprovisioning</td>
+    </tr>
+    <tr>
+      <td><strong>SCIM Provisioning</strong></td>
+      <td>Automatically adds/removes users based on your directory</td>
+      <td>Prevents former employees from retaining access</td>
+    </tr>
+    <tr>
+      <td><strong>Custom Retention</strong></td>
+      <td>Set organization-wide data retention periods (min 30 days)</td>
+      <td>Align with your firm&rsquo;s document retention policy</td>
+    </tr>
+    <tr>
+      <td><strong>Data Processing Addendum</strong></td>
+      <td>Contractual commitment on data handling</td>
+      <td>Required to demonstrate &ldquo;reasonable efforts&rdquo; under Rule 1.6</td>
+    </tr>
+    <tr>
+      <td><strong>Admin Console</strong></td>
+      <td>Central control over user settings, feedback, and data exports</td>
+      <td>Supervisory obligation under Rules 5.1/5.3</td>
+    </tr>
+    <tr>
+      <td><strong>Audit Logging</strong></td>
+      <td>Records of who accessed what and when</td>
+      <td>Evidence of ongoing security monitoring; eDiscovery readiness</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>API with Zero Data Retention</h3>
+<p>For the highest level of protection, Anthropic offers a <strong>Zero Data Retention (ZDR)</strong> addendum for eligible API customers. Under ZDR, Anthropic does not store your inputs or outputs except where required by law or to combat misuse. This is the gold standard for firms handling highly sensitive matters.</p>
+
+<div class="ref-card">
+  <div class="ref-card-body">
+    <a href="https://privacy.claude.com/en/articles/8956058-i-have-a-zero-data-retention-agreement-with-anthropic-what-products-does-it-apply-to" target="_blank" rel="noopener">Anthropic: What products does Zero Data Retention apply to? &rarr;</a>
+  </div>
+</div>
+
+<!-- ============================================ CLAUDE CODE ============================================ -->
+<h2 id="code">Claude Code: Special Considerations</h2>
+
+<p>Claude Code is a command-line tool that operates directly on your filesystem. It can read files, write code, execute commands, and interact with your development environment. This creates unique risks in a law firm context.</p>
+
+<h3>What Claude Code Can Access</h3>
+<ul class="checklist">
+  <li>Any file in the working directory (and subdirectories) that you grant it access to</li>
+  <li>Code repositories, configuration files, and environment variables</li>
+  <li>Terminal output and system information</li>
+  <li>All of this content is sent to Anthropic&rsquo;s servers for processing</li>
+</ul>
+
+<h3>Data Policies by Account Type</h3>
+
+<table class="risk-matrix">
+  <thead>
+    <tr><th>Account Type</th><th>Training?</th><th>Retention</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="tier tier-free">Free</span> <span class="tier tier-pro">Pro / Max</span></td>
+      <td><span class="risk-high">Default ON (opt-out available)</span></td>
+      <td>30 days (opt-out) / 5 years (opt-in)</td>
+    </tr>
+    <tr>
+      <td><span class="tier tier-team">Team</span> <span class="tier tier-ent">Enterprise</span></td>
+      <td><span class="risk-low">Never</span></td>
+      <td>Configurable by admin</td>
+    </tr>
+    <tr>
+      <td><strong>Commercial API Key</strong></td>
+      <td><span class="risk-low">Never</span></td>
+      <td>7 days (standard) / 0 days (ZDR)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout callout-emerald">
+  <span class="callout-label">Best Practice for Law Firms</span>
+  Run Claude Code with a <strong>commercial API key</strong> rather than a consumer account login. This ensures your code and file contents are governed by Commercial Terms with no training and minimal retention. Verify your configuration with <code>/config</code> in the Claude Code CLI.
+</div>
+
+<h3>Preventing Accidental Exposure</h3>
+<pre><code><span class="cm"># Create a .claudeignore file in your project root</span>
+<span class="cm"># (similar to .gitignore) to exclude sensitive files:</span>
+
+<span class="cm"># Client documents</span>
+<span class="st">/client-files/</span>
+<span class="st">*.pdf</span>
+<span class="st">*.docx</span>
+
+<span class="cm"># Credentials and secrets</span>
+<span class="st">.env</span>
+<span class="st">*.pem</span>
+<span class="st">*.key</span>
+
+<span class="cm"># Database files</span>
+<span class="st">*.sqlite</span>
+<span class="st">*.db</span></code></pre>
+
+<!-- ============================================ FIRM POLICY ============================================ -->
+<h2 id="firm-policy">Developing Your Firm&rsquo;s AI Usage Policy</h2>
+
+<p>ABA Formal Opinion 512 and Model Rules 5.1/5.3 require firms to establish clear policies governing AI use. Your policy should address, at minimum, the following areas:</p>
+
+<h3>1. Approved Tools and Plans</h3>
+<p>Specify which Claude products and plan tiers are approved for firm use. Consumer plans should be restricted to non-client research only. Maintain a list of approved AI tools and review it quarterly.</p>
+
+<h3>2. Data Classification</h3>
+<p>Define categories of information and which can be used with AI tools:</p>
+
+<table class="risk-matrix">
+  <thead>
+    <tr><th>Category</th><th>Examples</th><th>Claude Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Public</strong></td>
+      <td>Published case law, statutes, public filings</td>
+      <td><span class="risk-low">Any plan</span></td>
+    </tr>
+    <tr>
+      <td><strong>Internal</strong></td>
+      <td>Firm templates, administrative documents, CLE notes</td>
+      <td><span class="risk-med">Commercial plan preferred</span></td>
+    </tr>
+    <tr>
+      <td><strong>Confidential</strong></td>
+      <td>Client communications, draft pleadings, contracts under review</td>
+      <td><span class="risk-high">Commercial plan only; client consent required</span></td>
+    </tr>
+    <tr>
+      <td><strong>Highly Sensitive</strong></td>
+      <td>M&amp;A materials, trade secrets, medical records, sealed documents</td>
+      <td><span class="risk-high">Enterprise + ZDR only; specific written consent</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>3. Client Disclosure and Consent</h3>
+<p>Draft a specific AI disclosure for engagement letters that goes beyond boilerplate language. Opinion 512 requires clients to understand how AI tools will be used in their matter, including what information may be processed by third-party AI services. Keep signed consent forms in the client file.</p>
+
+<h3>4. Training and Supervision</h3>
+<p>All attorneys and staff who use Claude must complete training covering: the difference between consumer and commercial plans, what information may and may not be entered, how to verify output accuracy, and how to report suspected data exposure. Document completion and refresh annually.</p>
+
+<h3>5. Incident Response</h3>
+<p>If confidential client data is inadvertently uploaded to a consumer Claude account:</p>
+<ol style="margin:0 0 1rem 1.5rem;font-size:.93rem">
+  <li style="margin-bottom:.35rem">Delete the conversation immediately (removed from backend within 30 days)</li>
+  <li style="margin-bottom:.35rem">Document the incident, including what was uploaded and the account type</li>
+  <li style="margin-bottom:.35rem">Assess whether the &ldquo;Help improve Claude&rdquo; setting was on &mdash; if so, data may already be in training pipelines</li>
+  <li style="margin-bottom:.35rem">Contact Anthropic support to request data deletion if the setting was on</li>
+  <li style="margin-bottom:.35rem">Evaluate notification obligations under your jurisdiction&rsquo;s rules</li>
+  <li style="margin-bottom:.35rem">Review whether client notification is required under Model Rule 1.4</li>
+</ol>
+
+<!-- ============================================ CHECKLISTS ============================================ -->
+<h2 id="checklist">Security Checklists</h2>
+<p>Print and complete these checklists with your IT administrator or developer. Retain the completed versions as documentation of your &ldquo;reasonable efforts&rdquo; under Model Rule 1.6.</p>
+
+<h3>Firm-Wide Configuration</h3>
+<ul class="checklist">
+  <li>Determined which Claude plan(s) are in use across the firm</li>
+  <li>Confirmed that accounts used for client work are on Commercial Terms (Team/Enterprise)</li>
+  <li>Verified that &ldquo;Help improve Claude&rdquo; training toggle is OFF for all accounts</li>
+  <li>Reviewed Anthropic&rsquo;s Commercial Terms, Privacy Policy, and Data Processing Addendum</li>
+  <li>Written AI usage policy is in place and distributed to all personnel</li>
+  <li>Client consent language for AI use has been drafted and approved</li>
+  <li>AI usage training has been completed by all attorneys and staff</li>
+  <li>Incident response procedure for accidental data exposure is documented</li>
+  <li>Quarterly review of AI tools and policies is scheduled</li>
+</ul>
+
+<h3>Individual Account Settings (Consumer Plans &mdash; Non-Client Work Only)</h3>
+<ul class="checklist">
+  <li>&ldquo;Help improve Claude&rdquo; is toggled <strong>OFF</strong> in Settings → Privacy</li>
+  <li>Memory is <strong>OFF</strong> (or managed carefully)</li>
+  <li>Conversations containing any sensitive content are deleted after use</li>
+  <li>No client files have been uploaded to this account</li>
+  <li>Two-factor authentication is enabled on the account</li>
+</ul>
+
+<h3>Claude Code Configuration</h3>
+<ul class="checklist">
+  <li>Verified API key type in use (<code>/config</code>) &mdash; commercial key for client-adjacent work</li>
+  <li>Created <code>.claudeignore</code> to exclude client files and credentials</li>
+  <li>Environment variables and <code>.env</code> files are excluded from Claude Code&rsquo;s context</li>
+  <li>Claude Code is not run in directories containing unrelated client files</li>
+  <li>Staff understand that Claude Code sends file contents to Anthropic&rsquo;s servers</li>
+</ul>
+
+<h3>Enterprise Plan Administration</h3>
+<ul class="checklist">
+  <li>SSO/SAML is configured with the firm&rsquo;s identity provider</li>
+  <li>SCIM provisioning is active for automated user management</li>
+  <li>Custom data retention period is set to align with firm retention policy</li>
+  <li>Organization-wide training opt-out is confirmed in admin console</li>
+  <li>User feedback settings are configured (review before enabling)</li>
+  <li>Data export capabilities have been tested for eDiscovery readiness</li>
+  <li>DPA is signed and on file</li>
+</ul>
+
+<!-- ============================================ RESOURCES ============================================ -->
+<h2 id="resources">Resources &amp; References</h2>
+
+<h3>ABA Ethics Guidance</h3>
+<div class="ref-card">
+  <div class="ref-card-header">ABA Formal Opinion 512 &mdash; Generative Artificial Intelligence Tools (July 2024)</div>
+  <div class="ref-card-body">
+    <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">Full Opinion (PDF)</a> &nbsp;|&nbsp;
+    <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/" target="_blank" rel="noopener">ABA Announcement</a> &nbsp;|&nbsp;
+    <a href="https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-october/aba-ethics-opinion-generative-ai-offers-useful-framework/" target="_blank" rel="noopener">ABA Analysis</a>
+  </div>
+</div>
+<div class="ref-card">
+  <div class="ref-card-header">Related ABA Opinions</div>
+  <div class="ref-card-body">
+    <strong>Formal Opinion 477R</strong> &mdash; Securing Communication of Protected Client Information<br>
+    <strong>Formal Opinion 08-451</strong> &mdash; Outsourcing Legal and Nonlegal Support Services<br>
+    <strong>Formal Opinion 93-379</strong> &mdash; Billing for Professional Fees, Disbursements and Other Expenses
+  </div>
+</div>
+<div class="ref-card">
+  <div class="ref-card-header">State-Level AI Guidance</div>
+  <div class="ref-card-body">
+    California, Florida (Advisory Opinion 24-1), New York, New Jersey, Texas, Pennsylvania, Kentucky, Michigan, Missouri, and West Virginia have all issued jurisdiction-specific guidance. Colorado practitioners should check the Colorado Bar Association for state-specific requirements.
+  </div>
+</div>
+
+<h3>Anthropic Documentation</h3>
+<div class="ref-card">
+  <div class="ref-card-body">
+    <a href="https://www.anthropic.com/news/updates-to-our-consumer-terms" target="_blank" rel="noopener">Consumer Terms &amp; Privacy Policy Updates (Sept 2025)</a><br>
+    <a href="https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data" target="_blank" rel="noopener">Data Retention: How long does Anthropic store data?</a><br>
+    <a href="https://privacy.claude.com/en/articles/8956058-i-have-a-zero-data-retention-agreement-with-anthropic-what-products-does-it-apply-to" target="_blank" rel="noopener">Zero Data Retention: Which products does it apply to?</a><br>
+    <a href="https://privacy.claude.com/en/articles/10458704-how-does-anthropic-protect-the-personal-data-of-claude-users" target="_blank" rel="noopener">How Anthropic protects personal data</a><br>
+    <a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener">Claude Code: Data usage documentation</a><br>
+    <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">Commercial Terms of Service</a><br>
+    <a href="https://support.claude.com/en/articles/9265372-who-owns-and-manages-the-data-of-my-team" target="_blank" rel="noopener">Claude for Work: Data ownership and management</a>
+  </div>
+</div>
+
+<h3>Third-Party Analysis</h3>
+<div class="ref-card">
+  <div class="ref-card-body">
+    <a href="https://caseclerk.ai/blog/is-anthropic-claude-enterprise-safe-for-law-firms-confidentiality-data-retention-and-admin-controls-for-2025" target="_blank" rel="noopener">CaseClerk: Is Claude Enterprise Safe for Law Firms? (2025)</a><br>
+    <a href="https://amstlegal.com/anthropics-claude-ai-updated-terms-explained/" target="_blank" rel="noopener">AMST Legal: Claude AI Updates &mdash; Impact on Privacy &amp; Confidentiality</a><br>
+    <a href="https://www.gerrishlegal.com/blog/claude-ai-updates-explained-privacy-and-confidentiality-at-stake" target="_blank" rel="noopener">Gerrish Legal: Claude AI Updates Explained</a><br>
+    <a href="https://thebarexaminer.ncbex.org/article/fall-2024/generative-artificial-intelligence-tools/" target="_blank" rel="noopener">NCBE Bar Examiner: ABA Formal Opinion 512 Analysis</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="callout callout-sapphire">
+  <span class="callout-label">Final Note</span>
+  AI data policies change frequently. Anthropic has updated its terms multiple times in 2025 alone. Designate someone in your firm to monitor Anthropic&rsquo;s <a href="https://privacy.claude.com" target="_blank" rel="noopener">Privacy Center</a> and update this guide as policies evolve. Security is not a one-time configuration &mdash; it is an ongoing obligation.
+</div>
+
+</div><!-- end .main -->
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-heading">Law Firm Security Guide &mdash; Anthropic Claude Products</div>
+    <p>Prepared for law firm use. This document is provided for informational purposes and does not constitute legal advice. Ethical obligations described herein are based on the ABA Model Rules of Professional Conduct and <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">ABA Formal Opinion 512</a> (July 2024). Anthropic product details reflect publicly available documentation as of February 2026; consult Anthropic&rsquo;s current terms and your jurisdiction&rsquo;s specific rules for binding authority.</p>
+    <p style="margin-top:.75rem;font-size:.72rem;color:rgba(255,255,255,.35)">Last updated: February 2026 &nbsp;|&nbsp; Review scheduled: May 2026</p>
+  </div>
+</footer>
+
+
+<script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    
+    function toggleNav() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+    
+    hamburger.addEventListener('click', toggleNav);
+    overlay.addEventListener('click', toggleNav);
+    
+    // Mobile dropdown toggle
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.parentElement.classList.toggle('mobile-open');
+            });
+        });
+    }
+    
+    // Close nav when clicking a link
+    navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) toggleNav();
+        });
+    });
+</script>
+
+</body>
+</html>

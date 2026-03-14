@@ -1,12 +1,797 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local AI Setup Guide - LawTasksAI</title>
+    <meta name="description" content="Step-by-step guide to setting up LawTasksAI with a fully private, local AI assistant for Rule 1.6 compliance.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #2563eb;
+        }
+        
+        .back-link {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: #2563eb;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px 0;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Content */
+        .content {
+            padding: 60px 0;
+        }
+        
+        .content h2 {
+            font-size: 1.75rem;
+            color: #1a1a2e;
+            margin: 40px 0 20px 0;
+        }
+        
+        .content h3 {
+            font-size: 1.35rem;
+            color: #2563eb;
+            margin: 30px 0 16px 0;
+        }
+        
+        .content p {
+            margin-bottom: 16px;
+            color: #4b5563;
+            font-size: 1.05rem;
+        }
+        
+        .content ul, .content ol {
+            margin: 16px 0 16px 24px;
+            color: #4b5563;
+        }
+        
+        .content li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        
+        .highlight-box.success {
+            background: #f0fdf4;
+            border-left-color: #059669;
+        }
+        
+        .highlight-box.success h3 {
+            color: #059669;
+        }
+        
+        .highlight-box.warning {
+            background: #fef3c7;
+            border-left-color: #f59e0b;
+        }
+        
+        .highlight-box.warning h3 {
+            color: #92400e;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #2563eb;
+            color: white;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .step-header h3 {
+            margin: 0;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #1f2937;
+        }
+        
+        pre {
+            background: #1a1a2e;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .specs-table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .specs-table td {
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .specs-table tr:nth-child(even) {
+            background: #fafbfc;
+        }
+        
+        .screenshot {
+            width: 100%;
+            max-width: 700px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #2563eb;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            color: white !important;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            color: white !important;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+            color: white !important;
+        }
+        
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 40px 0;
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>    
+    <section class="hero">
+        <div class="container">
+            <div class="badge">✅ Full Rule 1.6 Compliance</div>
+            <h1>Local AI Setup Guide</h1>
+            <p class="subtitle">Run LawTasksAI with complete confidentiality — everything stays on your computer, nothing goes to the cloud.</p>
+        </div>
+    </section>
+    
+    <section class="content">
+        <div class="container">
+            
+            <div class="highlight-box success">
+                <h3>🛡️ Why Local AI?</h3>
+                <p><strong>When you use cloud AI assistants (Claude Desktop, ChatGPT), your documents and prompts are sent to third-party servers.</strong> Even though LawTasksAI processes documents locally, your AI assistant is still uploading data to Anthropic, OpenAI, or similar providers.</p>
+                <p><strong>A local AI setup eliminates this entirely.</strong> Your documents, prompts, and AI processing all happen on your computer. No internet connection required (except for initial setup and license verification). Full attorney-client privilege protection.</p>
+            </div>
+            
+            <h2>What You're Building</h2>
+            
+            <p>By the end of this guide, you'll have:</p>
+            <ul>
+                <li><strong>OpenClaw</strong> — A local AI assistant that runs on your computer</li>
+                <li><strong>Ollama</strong> — Software that runs large language models locally</li>
+                <li><strong>Llama 3.1</strong> — A powerful, free, open-source AI model (70B or 405B)</li>
+                <li><strong>LawTasksAI</strong> — Integrated and ready to process confidential documents privately</li>
+            </ul>
+            
+            <p><strong>Time required:</strong> 30-60 minutes (depending on download speeds)</p>
+            <p><strong>Cost:</strong> $0 (all software is free and open-source)</p>
+            
+            <h2>Hardware Requirements</h2>
+            
+            <div class="highlight-box warning">
+                <h3>⚠️ Important: You Need a Powerful Computer</h3>
+                <p>Running AI models locally requires significant RAM. Check your computer specs before starting.</p>
+            </div>
+            
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>RAM Required</th>
+                        <th>Performance</th>
+                        <th>Recommended For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Llama 3.1 8B</strong></td>
+                        <td>8GB</td>
+                        <td>Basic</td>
+                        <td>Simple tasks, testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Llama 3.1 70B</strong></td>
+                        <td>32GB+</td>
+                        <td>Excellent</td>
+                        <td>Most legal work</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>Llama 3.1 405B</strong></td>
+                        <td>64GB+</td>
+                        <td>Best-in-class</td>
+                        <td>Complex analysis, large documents</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p><strong>How to check your RAM:</strong></p>
+            <ul>
+                <li><strong>Windows:</strong> Press <code>Win + Pause/Break</code> or right-click "This PC" → Properties</li>
+                <li><strong>Mac:</strong> Apple menu → About This Mac</li>
+                <li><strong>Linux:</strong> Run <code>free -h</code> in terminal</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>💡 Tip:</strong> If you don't have enough RAM, you can still use LawTasksAI with cloud AI for non-confidential work, and rent a powerful cloud server (AWS, GCP) when you need local processing for sensitive documents. This is still more private than using Claude/ChatGPT.</p>
+            </div>
+            
+            <h2>Step-by-Step Setup</h2>
+            
+            <!-- Step 1 -->
+            <div class="step-header">
+                <span class="step-number">1</span>
+                <h3>Install OpenClaw</h3>
+            </div>
+            
+            <p>OpenClaw is a local AI assistant that connects to your local AI models. It's like having Claude Desktop or ChatGPT, but everything runs on your computer.</p>
+            
+            <p><strong>For Windows:</strong></p>
+            <ol>
+                <li>Go to <a href="https://openclaw.ai" target="_blank">openclaw.ai</a></li>
+                <li>Click "Download for Windows"</li>
+                <li>Run the installer</li>
+                <li>Follow the setup wizard</li>
+            </ol>
+            
+            <p><strong>For Mac:</strong></p>
+            <ol>
+                <li>Go to <a href="https://openclaw.ai" target="_blank">openclaw.ai</a></li>
+                <li>Click "Download for Mac"</li>
+                <li>Open the .dmg file and drag OpenClaw to Applications</li>
+                <li>Launch OpenClaw (you may need to allow it in System Preferences → Security)</li>
+            </ol>
+            
+            <p><strong>For Linux:</strong></p>
+            <pre><code># Install via npm (requires Node.js 18+)
+npm install -g openclaw
 
-<!-- Content goes here -->
+# Or download the .deb/.rpm from openclaw.ai
+</code></pre>
+            
+            <p><strong>Verify installation:</strong> Open OpenClaw. You should see a chat interface. Type <code>/status</code> to confirm it's running.</p>
+            
+            <!-- Step 2 -->
+            <div class="step-header">
+                <span class="step-number">2</span>
+                <h3>Install Ollama</h3>
+            </div>
+            
+            <p>Ollama is the software that runs AI models on your computer. Think of it like a local AI engine.</p>
+            
+            <p><strong>For Windows & Mac:</strong></p>
+            <ol>
+                <li>Go to <a href="https://ollama.com" target="_blank">ollama.com</a></li>
+                <li>Click "Download"</li>
+                <li>Run the installer</li>
+                <li>Ollama will start automatically as a background service</li>
+            </ol>
+            
+            <p><strong>For Linux:</strong></p>
+            <pre><code>curl -fsSL https://ollama.com/install.sh | sh
+</code></pre>
+            
+            <p><strong>Verify installation:</strong></p>
+            <ul>
+                <li><strong>Windows/Mac:</strong> You should see an Ollama icon in your system tray</li>
+                <li><strong>All platforms:</strong> Open terminal/command prompt and run: <code>ollama --version</code></li>
+            </ul>
+            
+            <!-- Step 3 -->
+            <div class="step-header">
+                <span class="step-number">3</span>
+                <h3>Download the AI Model</h3>
+            </div>
+            
+            <p>Now you'll download the actual AI "brain" that will process your legal work. We recommend Llama 3.1 — it's free, powerful, and designed for professional use.</p>
+            
+            <div class="highlight-box warning">
+                <h3>⚠️ Large Download Warning</h3>
+                <p><strong>Llama 3.1 70B:</strong> ~40GB download<br>
+                <strong>Llama 3.1 405B:</strong> ~230GB download</p>
+                <p>This may take several hours on a typical internet connection. Do this overnight or during downtime.</p>
+            </div>
+            
+            <p><strong>Open your terminal/command prompt and run:</strong></p>
+            
+            <p><strong>For 32GB+ RAM (Recommended):</strong></p>
+            <pre><code>ollama pull llama3.1:70b
+</code></pre>
+            
+            <p><strong>For 64GB+ RAM (Best Performance):</strong></p>
+            <pre><code>ollama pull llama3.1:405b
+</code></pre>
+            
+            <p><strong>For 8-16GB RAM (Testing Only):</strong></p>
+            <pre><code>ollama pull llama3.1:8b
+</code></pre>
+            
+            <p>You'll see a progress bar. Go get coffee. ☕</p>
+            
+            <p><strong>Verify the model works:</strong></p>
+            <pre><code>ollama run llama3.1:70b
+
+# You should see a chat prompt. Type a test question:
+>>> What is attorney-client privilege?
+
+# Press Ctrl+D to exit when done
+</code></pre>
+            
+            <!-- Step 4 -->
+            <div class="step-header">
+                <span class="step-number">4</span>
+                <h3>Configure OpenClaw to Use Your Local Model</h3>
+            </div>
+            
+            <p>Now we tell OpenClaw to use the local AI model instead of sending data to the cloud.</p>
+            
+            <p><strong>In OpenClaw:</strong></p>
+            <ol>
+                <li>Type <code>/config</code></li>
+                <li>Look for the <strong>model</strong> setting</li>
+                <li>Set it to: <code>ollama/llama3.1:70b</code> (or whichever model you downloaded)</li>
+            </ol>
+            
+            <p><strong>Or edit the config file directly:</strong></p>
+            <ul>
+                <li><strong>Windows:</strong> <code>%USERPROFILE%\.openclaw\config.yml</code></li>
+                <li><strong>Mac/Linux:</strong> <code>~/.openclaw/config.yml</code></li>
+            </ul>
+            
+            <p>Add or update this section:</p>
+            <pre><code>model: ollama/llama3.1:70b
+providers:
+  ollama:
+    baseUrl: http://localhost:11434
+</code></pre>
+            
+            <p><strong>Restart OpenClaw</strong> for changes to take effect.</p>
+            
+            <p><strong>Test it:</strong> In OpenClaw, type: <code>What is the statute of limitations for fraud in California?</code></p>
+            
+            <p>The response should come from your local model (you may notice it's slightly slower than cloud AI, but everything is private).</p>
+            
+            <!-- Step 5 -->
+            <div class="step-header">
+                <span class="step-number">5</span>
+                <h3>Install LawTasksAI</h3>
+            </div>
+            
+            <p>Now you're ready to add LawTasksAI skills to your local setup.</p>
+            
+            <p><strong>In OpenClaw, type:</strong></p>
+            <pre><code>/skill install lawtasksai
+</code></pre>
+            
+            <p>You'll be prompted for your license key (starts with <code>lt_</code>). Enter it.</p>
+            
+            <p><strong>Don't have a license yet?</strong> Purchase credits at <a href="https://lawtasksai.com" target="_blank">lawtasksai.com</a>. You'll receive your license key via email instantly.</p>
+            
+            <p><strong>Verify installation:</strong></p>
+            <pre><code>/skill list
+</code></pre>
+            
+            <p>You should see <code>lawtasksai</code> in the list.</p>
+            
+            <!-- Step 6 -->
+            <div class="step-header">
+                <span class="step-number">6</span>
+                <h3>Test Your Private Setup</h3>
+            </div>
+            
+            <p>Let's make sure everything works and nothing is going to the cloud.</p>
+            
+            <p><strong>Test 1: Check Your Connection</strong></p>
+            <p>In OpenClaw, type: <code>/status</code></p>
+            <p>Look for the model line. It should show <code>ollama/llama3.1:70b</code> (or your chosen model).</p>
+            
+            <p><strong>Test 2: Disconnect Your Internet</strong></p>
+            <ol>
+                <li>Turn off Wi-Fi or unplug ethernet</li>
+                <li>In OpenClaw, ask: <code>Summarize the attorney-client privilege doctrine</code></li>
+                <li>You should still get a response (proving it's running locally)</li>
+                <li>Reconnect to the internet</li>
+            </ol>
+            
+            <p><strong>Test 3: Run a LawTasksAI Document Task</strong></p>
+            <p>In OpenClaw, type: <code>What legal document tasks do you have?</code></p>
+            <p>The AI should list available tasks. Try one that processes documents locally, like:</p>
+            <ul>
+                <li><code>Analyze this deposition transcript</code> (attach a PDF)</li>
+                <li><code>Summarize this contract</code> (attach a Word doc)</li>
+                <li><code>Review this discovery response</code> (attach a document)</li>
+            </ul>
+            
+            <p>The document will be processed entirely on your machine. LawTasksAI will only send a license verification request (not the document contents).</p>
+            
+            <div class="highlight-box success">
+                <h3>🎉 You're Done!</h3>
+                <p><strong>Congratulations!</strong> You now have a fully private, Rule 1.6 compliant AI legal assistant. Your documents never leave your computer. Your prompts never go to the cloud. Everything stays local.</p>
+            </div>
+            
+            <h2>Troubleshooting</h2>
+            
+            <h3>Problem: "Model not found" or "Connection refused"</h3>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Make sure Ollama is running (check system tray for Ollama icon)</li>
+                <li>Verify the model downloaded correctly: <code>ollama list</code></li>
+                <li>Check that OpenClaw config points to <code>http://localhost:11434</code></li>
+                <li>Restart Ollama service</li>
+            </ul>
+            
+            <h3>Problem: Responses are very slow</h3>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>You may not have enough RAM. Check system monitor while running.</li>
+                <li>Try a smaller model: <code>ollama pull llama3.1:8b</code></li>
+                <li>Close other applications to free up memory</li>
+                <li>Consider upgrading your hardware or using a smaller model for routine tasks</li>
+            </ul>
+            
+            <h3>Problem: "License key invalid" when using LawTasksAI</h3>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>You need an internet connection for license verification (just not for AI processing)</li>
+                <li>Check that your license key starts with <code>lt_</code></li>
+                <li>Verify your key at <a href="https://lawtasksai.com" target="_blank">lawtasksai.com</a></li>
+                <li>Email support@lawtasksai.com if issues persist</li>
+            </ul>
+            
+            <h3>Problem: OpenClaw crashes or freezes</h3>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Your model may be too large for your RAM. Use <code>llama3.1:8b</code> instead.</li>
+                <li>Check logs: <code>/logs</code> in OpenClaw or check <code>~/.openclaw/logs/</code></li>
+                <li>Restart OpenClaw and try a simpler prompt first</li>
+            </ul>
+            
+            <h2>Performance Tips</h2>
+            
+            <h3>Speed Up Responses</h3>
+            <ul>
+                <li><strong>Use GPU acceleration</strong> if you have a compatible NVIDIA GPU (requires CUDA setup)</li>
+                <li><strong>Quantized models:</strong> Smaller, faster models that sacrifice a bit of quality: <code>ollama pull llama3.1:70b-q4</code></li>
+                <li><strong>Adjust context window:</strong> Smaller context = faster responses but less memory</li>
+            </ul>
+            
+            <h3>Save Disk Space</h3>
+            <p>Models are stored in:</p>
+            <ul>
+                <li><strong>Windows:</strong> <code>C:\Users\YourName\.ollama\models</code></li>
+                <li><strong>Mac:</strong> <code>~/.ollama/models</code></li>
+                <li><strong>Linux:</strong> <code>~/.ollama/models</code></li>
+            </ul>
+            <p>Delete unused models: <code>ollama rm llama3.1:8b</code></p>
+            
+            <h3>Batch Processing</h3>
+            <p>For large document review projects, consider:</p>
+            <ul>
+                <li>Processing documents overnight (schedule with OpenClaw cron)</li>
+                <li>Breaking large PDFs into smaller chunks</li>
+                <li>Using the 405B model for the most critical analysis, 70B for routine work</li>
+            </ul>
+            
+            <h2>Comparing Cloud vs. Local</h2>
+            
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Cloud AI (Claude/ChatGPT)</th>
+                        <th>Local AI (This Setup)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Privacy</strong></td>
+                        <td>⚠️ Data sent to third-party</td>
+                        <td>✅ Everything stays local</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed</strong></td>
+                        <td>✅ Very fast</td>
+                        <td>⚠️ Depends on your hardware</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost</strong></td>
+                        <td>$20-60/month</td>
+                        <td>$0/month (after hardware)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Setup</strong></td>
+                        <td>✅ 5 minutes</td>
+                        <td>⚠️ 30-60 minutes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hardware Required</strong></td>
+                        <td>✅ Any computer</td>
+                        <td>⚠️ 32GB+ RAM recommended</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rule 1.6 Compliance</strong></td>
+                        <td>⚠️ Requires client consent</td>
+                        <td>✅ Fully compliant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internet Required</strong></td>
+                        <td>✅ Yes (always)</td>
+                        <td>⚠️ Only for license check</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quality</strong></td>
+                        <td>✅ Best-in-class</td>
+                        <td>✅ Excellent (with 70B+)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Upgrading to GPU Acceleration (Advanced)</h2>
+            
+            <p>If you have an NVIDIA GPU, you can dramatically speed up local AI processing:</p>
+            
+            <ol>
+                <li>Install NVIDIA CUDA Toolkit: <a href="https://developer.nvidia.com/cuda-downloads" target="_blank">developer.nvidia.com/cuda-downloads</a></li>
+                <li>Verify GPU is detected: <code>nvidia-smi</code></li>
+                <li>Ollama will automatically use GPU if available</li>
+                <li>Check GPU usage while running: <code>nvidia-smi</code> in a separate terminal</li>
+            </ol>
+            
+            <p><strong>Performance boost:</strong> 5-10x faster responses with a modern GPU.</p>
+            
+            <h2>Need Help?</h2>
+            
+            <p>If you get stuck:</p>
+            <ul>
+                <li><strong>Email us:</strong> <a href="mailto:support@lawtasksai.com">support@lawtasksai.com</a> — we'll walk you through it</li>
+                <li><strong>OpenClaw docs:</strong> <a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a></li>
+                <li><strong>Ollama docs:</strong> <a href="https://github.com/ollama/ollama" target="_blank">github.com/ollama/ollama</a></li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h3>💼 Want Professional Setup?</h3>
+                <p>We offer white-glove setup services for law firms. We'll remotely configure your systems, train your staff, and ensure everything works perfectly. Email <a href="mailto:support@lawtasksai.com">support@lawtasksai.com</a> for pricing.</p>
+            </div>
+            
+            <h2>What's Next?</h2>
+            
+            <p>Now that you have a fully private setup:</p>
+            <ul>
+                <li><strong>Explore the task catalog:</strong> <a href="skills.html">lawtasksai.com/skills</a></li>
+                <li><strong>Read the security documentation:</strong> <a href="security.html">lawtasksai.com/security</a></li>
+                <li><strong>Create a usage policy:</strong> Document when to use local vs. cloud AI</li>
+                <li><strong>Train your team:</strong> Show paralegals and associates how to use the system</li>
+            </ul>
+            
+            <p style="margin-top: 40px;"><a href="index.html" class="btn">Back to LawTasksAI Home</a> <a href="security.html" class="btn btn-secondary">Security Overview</a></p>
+            
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+</body>
+</html>

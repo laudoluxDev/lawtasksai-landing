@@ -1,12 +1,836 @@
-<header style="background:#1a1a2e;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
-  <a href="index.html" style="color:#b8860b;font-weight:bold;font-size:1.1rem;text-decoration:none;">LawTasksAI</a>
-  <nav style="display:flex;gap:1.5rem;font-size:0.9rem;">
-    <a href="skills.html" style="color:#e8e4da;text-decoration:none;">Tasks</a>
-    <a href="sample.html" style="color:#e8e4da;text-decoration:none;">Samples</a>
-    <a href="getting-started.html" style="color:#e8e4da;text-decoration:none;">Get Started</a>
-    <a href="security.html" style="color:#e8e4da;text-decoration:none;">ABA 1.6</a>
-    <a href="index.html#pricing" style="color:#b8860b;text-decoration:none;font-weight:bold;">Get Credits</a>
-  </nav>
-</header>
-
-<!-- Content goes here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download LawTasksAI - Your Account</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+            min-height: 100vh;
+        }
+        
+        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+        
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+        }
+        
+        .logo span { color: #2563eb; }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links > a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links > a:hover {
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            background: #2563eb;
+            color: white;
+        }
+        
+        .header-cta:hover {
+            background: #1d4ed8;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        
+        .dropdown-toggle:hover {
+            color: #2563eb;
+        }
+        
+        .dropdown-toggle::after {
+            content: '▾';
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 8px 0;
+            z-index: 200;
+            padding-top: 8px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            color: #2563eb;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 300;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a2e;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        main { padding: 40px 24px; }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+        
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        /* Login Form */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover { border-color: #2563eb; color: #2563eb; }
+        .tab.active { border-color: #2563eb; background: #eff6ff; color: #2563eb; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus { outline: none; border-color: #2563eb; }
+        
+        .input-hint {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 16px;
+        }
+        
+        .btn:hover { background: #1d4ed8; }
+        .btn:disabled { background: #9ca3af; cursor: not-allowed; }
+        
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+        
+        .btn-secondary:hover { background: #eff6ff; }
+        
+        .message {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: none;
+        }
+        
+        .message.success { background: #ecfdf5; border: 1px solid #10b981; color: #065f46; display: block; }
+        .message.error { background: #fef2f2; border: 1px solid #ef4444; color: #991b1b; display: block; }
+        
+        /* Dashboard styles */
+        #dashboard { display: none; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .license-box {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .license-key {
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #1a1a2e;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            padding: 8px 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        
+        .copy-btn:hover { background: #1d4ed8; }
+        
+        /* Purchase History */
+        .purchases-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        
+        .purchases-table th,
+        .purchases-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .purchases-table th {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        .purchases-table td {
+            color: #4b5563;
+        }
+        
+        .invoice-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .invoice-link:hover { text-decoration: underline; }
+        
+        .logout-btn {
+            color: #6b7280;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .logout-btn:hover { color: #ef4444; }
+        
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+        
+        footer a { color: #6b7280; }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 32px 32px;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+                z-index: 200;
+                align-items: flex-start;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links > a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f3f4f6;
+                width: 100%;
+            }
+            
+            .dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                width: 100%;
+                padding: 14px 0;
+                border-bottom: 1px solid #f3f4f6;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.mobile-open .dropdown-menu {
+                display: block;
+            }
+            
+            .header-cta {
+                width: 100%;
+                text-align: center;
+                margin-top: 16px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .license-box { flex-direction: column; }
+            .purchases-table { font-size: 0.85rem; }
+            .purchases-table th, .purchases-table td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="sample.html">Samples</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>    
+    <main>
+        <!-- Login Section -->
+        <div id="login-section">
+            <div class="card">
+                <h1>Access Your Account</h1>
+                <p class="subtitle">Download your skill loader or check your balance.</p>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="email">Look up by Email</div>
+                    <div class="tab" data-tab="key">I have my License Key</div>
+                </div>
+                
+                <div id="tab-email" class="tab-content active">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@lawfirm.com">
+                    <p class="input-hint">The email you used when purchasing credits</p>
+                    <button class="btn" onclick="loginByEmail()">Access My Account</button>
+                </div>
+                
+                <div id="tab-key" class="tab-content">
+                    <label for="license-key-input">License Key</label>
+                    <input type="text" id="license-key-input" placeholder="lt_xxxxxxxxxxxxxxxx">
+                    <p class="input-hint">Your license key starts with <code>lt_</code></p>
+                    <button class="btn" onclick="loginByKey()">Access My Account</button>
+                </div>
+                
+                <div id="login-message" class="message"></div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Section (shown after login) -->
+        <div id="dashboard">
+            <div class="card">
+                <h2>👋 Welcome back!</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="credits-balance">—</div>
+                        <div class="stat-label">Credits Remaining</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-purchased">—</div>
+                        <div class="stat-label">Total Purchased</div>
+                    </div>
+                </div>
+                
+                <label>Your License Key</label>
+                <div class="license-box">
+                    <span class="license-key" id="display-license-key">—</span>
+                    <button class="copy-btn" onclick="copyLicenseKey()">Copy</button>
+                </div>
+                
+                <button class="btn" onclick="downloadLoader()">📥 Download Skill Loader</button>
+                <a href="https://lawtasksai.com/#pricing" class="btn btn-secondary" style="display: block; text-align: center; text-decoration: none; margin-top: 12px;">Buy More Credits</a>
+            </div>
+            
+            <div class="card">
+                <h2>Purchase History</h2>
+                <table class="purchases-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Credits</th>
+                            <th>Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchases-body">
+                        <tr><td colspan="4" style="text-align: center; color: #9ca3af;">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+        <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+    </footer>
+    
+    <script>
+        // Mobile nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+        
+        // Close nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+    
+    <script>
+        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+        let currentLicenseKey = null;
+        
+        // Check if already logged in (license key in localStorage)
+        window.onload = function() {
+            const savedKey = localStorage.getItem('lawtasksai_license_key');
+            if (savedKey) {
+                currentLicenseKey = savedKey;
+                loadDashboard();
+            }
+        };
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+                hideMessage();
+            });
+        });
+        
+        function showMessage(text, type) {
+            const msg = document.getElementById('login-message');
+            msg.textContent = text;
+            msg.className = 'message ' + type;
+        }
+        
+        function hideMessage() {
+            document.getElementById('login-message').className = 'message';
+        }
+        
+        async function loginByEmail() {
+            const email = document.getElementById('email').value.trim();
+            if (!email) {
+                showMessage('Please enter your email address.', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/recover-license`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentLicenseKey = data.license_key;
+                    localStorage.setItem('lawtasksai_license_key', currentLicenseKey);
+                    loadDashboard();
+                } else {
+                    const data = await response.json();
+                    showMessage(data.detail || 'No account found with that email.', 'error');
+                }
+            } catch (error) {
+                showMessage('Error connecting to server. Please try again.', 'error');
+            }
+        }
+        
+        async function loginByKey() {
+            const key = document.getElementById('license-key-input').value.trim();
+            if (!key) {
+                showMessage('Please enter your license key.', 'error');
+                return;
+            }
+            if (!key.startsWith('lt_')) {
+                showMessage('License key should start with "lt_"', 'error');
+                return;
+            }
+            
+            try {
+                // Validate key by checking balance
+                const response = await fetch(`${API_BASE}/v1/credits/balance`, {
+                    headers: { 'Authorization': `Bearer ${key}` }
+                });
+                
+                if (response.ok) {
+                    currentLicenseKey = key;
+                    localStorage.setItem('lawtasksai_license_key', currentLicenseKey);
+                    loadDashboard();
+                } else {
+                    showMessage('Invalid license key. Please check and try again.', 'error');
+                }
+            } catch (error) {
+                showMessage('Error connecting to server. Please try again.', 'error');
+            }
+        }
+        
+        async function loadDashboard() {
+            // Show dashboard, hide login
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('logout-btn').style.display = 'block';
+            
+            // Display license key
+            document.getElementById('display-license-key').textContent = currentLicenseKey;
+            
+            // Load balance
+            try {
+                const response = await fetch(`${API_BASE}/v1/credits/balance`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('credits-balance').textContent = data.credits_balance;
+                }
+            } catch (e) {
+                document.getElementById('credits-balance').textContent = '?';
+            }
+            
+            // Load purchase history
+            try {
+                const response = await fetch(`${API_BASE}/v1/account/purchases`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const purchases = await response.json();
+                    renderPurchases(purchases);
+                } else {
+                    document.getElementById('purchases-body').innerHTML = 
+                        '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchase history available.</td></tr>';
+                }
+            } catch (e) {
+                document.getElementById('purchases-body').innerHTML = 
+                    '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">Could not load purchase history.</td></tr>';
+            }
+            
+            // Load total purchased
+            try {
+                const response = await fetch(`${API_BASE}/v1/account/stats`, {
+                    headers: { 'Authorization': `Bearer ${currentLicenseKey}` }
+                });
+                if (response.ok) {
+                    const stats = await response.json();
+                    document.getElementById('total-purchased').textContent = stats.total_purchased || '—';
+                }
+            } catch (e) {
+                document.getElementById('total-purchased').textContent = '—';
+            }
+        }
+        
+        function renderPurchases(purchases) {
+            const tbody = document.getElementById('purchases-body');
+            if (!purchases || purchases.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchases yet.</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = purchases.map(p => `
+                <tr>
+                    <td>${new Date(p.date).toLocaleDateString()}</td>
+                    <td>${p.description}</td>
+                    <td>+${p.credits}</td>
+                    <td>${p.invoice_url ? `<a href="${p.invoice_url}" target="_blank" class="invoice-link">Download</a>` : '—'}</td>
+                </tr>
+            `).join('');
+        }
+        
+        function copyLicenseKey() {
+            navigator.clipboard.writeText(currentLicenseKey);
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        }
+        
+        function downloadLoader() {
+            window.location.href = `${API_BASE}/download/loader/${currentLicenseKey}`;
+        }
+        
+        function logout() {
+            localStorage.removeItem('lawtasksai_license_key');
+            currentLicenseKey = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+        }
+        
+        // Enter key support
+        document.getElementById('email').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginByEmail();
+        });
+        document.getElementById('license-key-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginByKey();
+        });
+    </script>
+</body>
+</html>
