@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Security Guide for Legal Professionals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-light: #3d3d5c;
+    --ink-faint: #6b6b8a;
+    --parchment: #faf9f6;
+    --parchment-warm: #f5f0e8;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --gold-pale: #f5ecd7;
+    --crimson: #8b1a1a;
+    --crimson-bg: #fdf2f2;
+    --forest: #1a5c3a;
+    --forest-bg: #f0f7f3;
+    --navy: #1a2744;
+    --navy-light: #2d4a7a;
+    --navy-bg: #f0f4fa;
+    --rule: #d4c5a0;
+    --code-bg: #f8f6f1;
+    --sidebar: #2c2438;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', 'Georgia', serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.72;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2238 60%, var(--sidebar) 100%);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 120px,
+      rgba(255,255,255,0.015) 120px,
+      rgba(255,255,255,0.015) 121px
+    );
+    pointer-events: none;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .header-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-badge {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-light);
+    border: 1px solid rgba(184,134,11,0.4);
+    padding: 0.3em 1em;
+    border-radius: 2px;
+    margin-bottom: 1.4rem;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .header-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  /* ===== ETHICS BANNER ===== */
+  .ethics-banner {
+    background: var(--gold-pale);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.5rem 2rem;
+  }
+  .ethics-banner-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .ethics-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-top: 0.15rem;
+  }
+  .ethics-text {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+  .ethics-text strong { color: var(--ink); }
+  .ethics-text a {
+    color: var(--navy-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(45,74,122,0.3);
+    text-underline-offset: 2px;
+  }
+  .ethics-text a:hover { text-decoration-color: var(--navy-light); }
+
+  /* ===== LAYOUT ===== */
+  .page-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: 0;
+    min-height: 100vh;
+  }
+
+  /* ===== SIDE NAV ===== */
+  .side-nav {
+    padding: 2rem 1.25rem 2rem 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--rule);
+  }
+  .side-nav-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    padding: 0 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+  .side-nav a {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1.45;
+    transition: all 0.15s;
+  }
+  .side-nav a:hover {
+    background: var(--gold-pale);
+    color: var(--ink);
+  }
+  .side-nav a.indent { padding-left: 1.5rem; font-size: 0.78rem; color: var(--ink-faint); }
+  .side-nav .nav-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 0.75rem 0.75rem;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main-content {
+    padding: 2.5rem 2.5rem 4rem 2.5rem;
+    max-width: 760px;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h2 {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3rem 0 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--gold);
+    line-height: 1.2;
+  }
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 2rem 0 0.6rem;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.5rem 0 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  p { margin-bottom: 1rem; }
+
+  a {
+    color: var(--navy-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(45,74,122,0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s;
+  }
+  a:hover { text-decoration-color: var(--navy-light); }
+
+  /* ===== CALLOUT BOXES ===== */
+  .callout {
+    padding: 1.1rem 1.3rem;
+    border-radius: 4px;
+    margin: 1.25rem 0;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    border-left: 4px solid;
+  }
+  .callout-danger {
+    background: var(--crimson-bg);
+    border-color: var(--crimson);
+  }
+  .callout-danger .callout-label { color: var(--crimson); }
+  .callout-success {
+    background: var(--forest-bg);
+    border-color: var(--forest);
+  }
+  .callout-success .callout-label { color: var(--forest); }
+  .callout-info {
+    background: var(--navy-bg);
+    border-color: var(--navy-light);
+  }
+  .callout-info .callout-label { color: var(--navy-light); }
+  .callout-warning {
+    background: #fffbf0;
+    border-color: var(--gold);
+  }
+  .callout-warning .callout-label { color: var(--gold); }
+
+  .callout-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ===== CODE BLOCKS ===== */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.06);
+    color: var(--ink);
+  }
+
+  pre {
+    background: #2b2b3d;
+    color: #e0ddd5;
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1rem 0 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    border: 1px solid rgba(0,0,0,0.15);
+  }
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+  .code-comment { color: #7a7a8e; }
+  .code-string { color: #98c379; }
+  .code-keyword { color: #c678dd; }
+  .code-value { color: #e5c07b; }
+
+  /* ===== COMPARISON TABLE ===== */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+  }
+  .comparison-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .comparison-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    vertical-align: top;
+  }
+  .comparison-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+  .comparison-table .check { color: var(--forest); font-weight: 700; }
+  .comparison-table .cross { color: var(--crimson); font-weight: 700; }
+
+  /* ===== RULE REFERENCE CARDS ===== */
+  .rule-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    margin: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .rule-card-header {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .rule-card-body {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* ===== STEP BLOCKS ===== */
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin: 1.25rem 0;
+    align-items: flex-start;
+  }
+  .step-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+  .step-content { flex: 1; }
+  .step-content p:last-child { margin-bottom: 0; }
+
+  /* ===== CHECKLIST ===== */
+  .checklist {
+    list-style: none;
+    margin: 1rem 0;
+  }
+  .checklist li {
+    padding: 0.45rem 0 0.45rem 2rem;
+    position: relative;
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0.25rem;
+    color: var(--gold);
+    font-size: 1.1rem;
+    top: 0.35rem;
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    padding: 2.5rem 2rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  .footer-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .footer-inner a { color: var(--gold-light); }
+  .footer-rule {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .side-nav {
+      display: none;
+    }
+    .main-content { padding: 2rem 1.25rem 3rem; }
+    .header-title { font-size: 2rem; }
+    .ethics-banner-inner { flex-direction: column; }
+  }
+
+  /* Print */
+  @media print {
+    .side-nav { display: none; }
+    .page-layout { grid-template-columns: 1fr; }
+    .site-header { padding: 2rem; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    .callout { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== HEADER ============================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">Client Security Guide</div>
+    <h1 class="header-title">Securing OpenClaw for<br>Your Legal Practice</h1>
+    <p class="header-subtitle">A plain-language guide to protecting client confidentiality when running AI assistants &mdash; on your office computer or in the cloud.</p>
+  </div>
+</header>
+
+<!-- ============================== ETHICS BANNER ============================== -->
+<div class="ethics-banner">
+  <div class="ethics-banner-inner">
+    <div class="ethics-icon">⚖</div>
+    <div class="ethics-text">
+      <strong>This guide is grounded in ABA Formal Opinion 512</strong> (July 29, 2024), the first formal ethics guidance on lawyers&rsquo; use of generative AI. Opinion 512 requires you to implement adequate safeguards for client data when using AI tools and to understand how those tools handle confidential information. &nbsp;
+      <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/" target="_blank" rel="noopener">Read the ABA announcement</a> &nbsp;|&nbsp;
+      <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">Read the full Opinion (PDF)</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== PAGE LAYOUT ============================== -->
+<div class="page-layout">
+
+  <!-- Side Nav -->
+  <nav class="side-nav" aria-label="Table of contents">
+    <div class="side-nav-title">Contents</div>
+    <a href="#why">Why This Matters to You</a>
+    <a href="#ethics">Your Ethical Obligations</a>
+    <a href="#ethics-rules" class="indent">Key Model Rules</a>
+    <a href="#ethics-action" class="indent">What This Means in Practice</a>
+    <div class="nav-divider"></div>
+    <a href="#local">Scenario A: Local System</a>
+    <a href="#local-encrypt" class="indent">Encrypt Your Machine</a>
+    <a href="#local-network" class="indent">Lock Down the Network</a>
+    <a href="#local-keys" class="indent">Protect API Keys</a>
+    <a href="#local-updates" class="indent">Updates &amp; Backups</a>
+    <div class="nav-divider"></div>
+    <a href="#cloud">Scenario B: GCP Cloud VM</a>
+    <a href="#cloud-ssh" class="indent">SSH &amp; Access Control</a>
+    <a href="#cloud-firewall" class="indent">Firewall Rules</a>
+    <a href="#cloud-keys" class="indent">Secrets Management</a>
+    <a href="#cloud-logging" class="indent">Logging &amp; Monitoring</a>
+    <div class="nav-divider"></div>
+    <a href="#comparison">Local vs. Cloud Comparison</a>
+    <a href="#checklist">Security Checklist</a>
+    <a href="#resources">Further Reading</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- ============================================================ -->
+    <h2 id="why">Why This Matters to You</h2>
+
+    <p>OpenClaw is a powerful AI assistant that can help with legal research, document drafting, calendar management, and more. But because it processes text you give it &mdash; potentially including client names, case details, and privileged communications &mdash; it must be treated with the same care as any system that handles confidential client information.</p>
+
+    <p>This guide explains, in plain language, what you need to do to keep your clients&rsquo; information safe, whether OpenClaw runs on your office computer or on a virtual machine in Google&rsquo;s cloud. You don&rsquo;t need to understand the technical details yourself &mdash; your developer handles implementation &mdash; but you <em>do</em> need to understand what protections are in place and why they matter.</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Important</span>
+      This guide addresses <em>security configuration</em> &mdash; protecting the system that runs OpenClaw. It does not address whether specific uses of AI comply with all applicable ethical rules. You should also review your obligations regarding competence, client communication, supervision, and billing before using any AI tool in your practice.
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="ethics">Your Ethical Obligations Under ABA Formal Opinion 512</h2>
+
+    <p>In July 2024, the ABA Standing Committee on Ethics and Professional Responsibility published <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">Formal Opinion 512</a>, its first formal guidance on lawyers&rsquo; use of generative AI. The opinion maps existing Model Rules of Professional Conduct onto the new reality of AI-assisted legal work.</p>
+
+    <h3 id="ethics-rules">The Model Rules That Apply to AI Security</h3>
+
+    <div class="rule-card">
+      <div class="rule-card-header">Model Rule 1.1 &mdash; Competence</div>
+      <div class="rule-card-body">You must have a reasonable understanding of the capabilities <em>and limitations</em> of any AI tool you use. You don&rsquo;t need to become a technologist, but you must understand enough to evaluate whether the tool is appropriate and whether adequate safeguards are in place.</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card-header">Model Rule 1.6 &mdash; Confidentiality of Information</div>
+      <div class="rule-card-body">You must make &ldquo;reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation of a client.&rdquo; Before entering any client information into an AI tool, you must evaluate the risk that it could be disclosed to or accessed by others &mdash; both inside and outside your firm. This includes understanding whether the AI tool &ldquo;learns&rdquo; from your inputs and might surface that information to other users.</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card-header">Model Rule 1.4 &mdash; Communication</div>
+      <div class="rule-card-body">If asked by a client how you conducted your work, or whether AI was used, you must answer truthfully. Some engagement agreements or outside-counsel guidelines may require affirmative disclosure. Opinion 512 suggests that boilerplate consent in engagement letters is <em>not</em> adequate &mdash; informed consent should be specific.</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card-header">Model Rules 5.1 &amp; 5.3 &mdash; Supervision</div>
+      <div class="rule-card-body">You must establish clear policies regarding the firm&rsquo;s permissible use of AI, provide training on ethical and practical risks, and ensure that both lawyers and non-lawyer assistants conform to the rules when using AI tools.</div>
+    </div>
+
+    <h3 id="ethics-action">What This Means for Your OpenClaw Setup</h3>
+
+    <p>Opinion 512&rsquo;s confidentiality requirements translate directly into security measures. Specifically, you need to be able to answer &ldquo;yes&rdquo; to all of the following:</p>
+
+    <ul class="checklist">
+      <li>Is the system that runs OpenClaw protected from unauthorized access?</li>
+      <li>Are the AI provider API keys (OpenAI, Anthropic, etc.) stored securely and not exposed?</li>
+      <li>If running in the cloud, is access restricted to authorized personnel only?</li>
+      <li>Is client data transmitted over encrypted connections?</li>
+      <li>Do you understand whether the AI provider retains or trains on your inputs?</li>
+      <li>Have you reviewed the AI provider&rsquo;s Terms of Service and privacy policy?</li>
+      <li>Do you have a documented process for what happens if the system is compromised?</li>
+    </ul>
+
+    <p>The sections below explain exactly how your developer implements each of these protections.</p>
+
+    <!-- ============================================================ -->
+    <h2 id="local">Scenario A: Running OpenClaw on Your Office Computer</h2>
+
+    <p>A &ldquo;local&rdquo; or &ldquo;closed system&rdquo; setup means OpenClaw runs directly on a computer in your office, not in the cloud. This is the most private option because your data never leaves your network &mdash; but it still requires proper security.</p>
+
+    <h3 id="local-encrypt">1. Encrypt Your Machine</h3>
+
+    <p>Full-disk encryption ensures that if your computer is stolen or accessed without authorization, the data on it &mdash; including any OpenClaw conversation history and cached files &mdash; is unreadable.</p>
+
+    <div class="step">
+      <div class="step-number">A</div>
+      <div class="step-content">
+        <p><strong>Mac (FileVault):</strong> Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; FileVault</strong> and turn it on. Your Mac will encrypt the entire drive. Save the recovery key in a secure location (not on the Mac itself).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">B</div>
+      <div class="step-content">
+        <p><strong>Windows (BitLocker):</strong> Go to <strong>Settings &rarr; Privacy &amp; Security &rarr; Device Encryption</strong> (or search for &ldquo;BitLocker&rdquo;). Turn it on and save your recovery key to your Microsoft account or print it and store it securely.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Why This Matters</span>
+      Under Model Rule 1.6, a stolen unencrypted laptop containing client-related AI conversation logs would constitute a failure to make &ldquo;reasonable efforts&rdquo; to prevent unauthorized access.
+    </div>
+
+    <h3 id="local-network">2. Lock Down the Network</h3>
+
+    <p>OpenClaw uses a web-based interface that runs on a &ldquo;port&rdquo; on your computer &mdash; think of it like a door. By default, that door might be open to anyone on your office Wi-Fi network.</p>
+
+    <p><strong>What your developer configures:</strong></p>
+    <ul class="checklist">
+      <li>OpenClaw listens only on <code>localhost</code> (127.0.0.1), meaning only your computer can access it &mdash; not other devices on the network</li>
+      <li>Your operating system firewall is enabled and blocks all incoming connections to the OpenClaw port</li>
+      <li>If you need to access OpenClaw from another device (e.g., your phone), your developer sets up a VPN or SSH tunnel rather than opening the port to the network</li>
+    </ul>
+
+    <pre><code><span class="code-comment"># Your developer ensures OpenClaw binds to localhost only:</span>
+<span class="code-keyword">HOST</span>=<span class="code-string">127.0.0.1</span>    <span class="code-comment"># Only this computer can connect</span>
+<span class="code-keyword">PORT</span>=<span class="code-value">3000</span>          <span class="code-comment"># The "door" number</span>
+
+<span class="code-comment"># NOT this (which allows anyone on the network):</span>
+<span class="code-keyword">HOST</span>=<span class="code-string">0.0.0.0</span>       <span class="code-comment"># ← DANGEROUS for a law office</span></code></pre>
+
+    <h3 id="local-keys">3. Protect Your API Keys</h3>
+
+    <p>OpenClaw connects to AI services (like OpenAI or Anthropic) using &ldquo;API keys&rdquo; &mdash; essentially passwords that grant access to those services and are tied to your billing account. If someone obtains your API key, they can use the AI service at your expense and potentially access conversation data.</p>
+
+    <p><strong>What your developer configures:</strong></p>
+    <ul class="checklist">
+      <li>API keys are stored in a protected <code>.env</code> file with restricted read permissions &mdash; only your user account can read it</li>
+      <li>Keys are never placed directly in code, configuration files that get shared, or anywhere visible</li>
+      <li>If you use a version control system (like Git), the <code>.env</code> file is explicitly excluded</li>
+    </ul>
+
+    <div class="callout callout-danger">
+      <span class="callout-label">Critical</span>
+      Never share your API keys via email, Slack, or any unencrypted channel. If you need to provide a key to your developer, use a secure method such as a password manager&rsquo;s sharing feature or an encrypted message.
+    </div>
+
+    <h3 id="local-updates">4. Keep Everything Updated</h3>
+
+    <ul class="checklist">
+      <li>Enable automatic operating system updates</li>
+      <li>Update OpenClaw when new versions are released (your developer can set up notifications)</li>
+      <li>Run antivirus/anti-malware software</li>
+      <li>Back up your system regularly &mdash; but ensure backups are also encrypted</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="cloud">Scenario B: Running OpenClaw on a Google Cloud Platform (GCP) VM</h2>
+
+    <p>A &ldquo;cloud&rdquo; setup means OpenClaw runs on a virtual computer managed by Google, accessible over the internet. This is convenient (always-on, accessible from anywhere) but requires more rigorous security because the system is internet-facing.</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Ethics Note</span>
+      Under Opinion 512, running client-adjacent AI tools on third-party cloud infrastructure means you are effectively outsourcing data handling. The ABA guidance on outsourcing (Formal Opinions 08-451 and 477R) applies: you must understand the vendor&rsquo;s security practices, use confidentiality agreements where appropriate, and maintain reasonable oversight.
+    </div>
+
+    <h3 id="cloud-ssh">1. SSH &amp; Access Control</h3>
+
+    <p>&ldquo;SSH&rdquo; stands for Secure Shell &mdash; it&rsquo;s the encrypted channel your developer uses to manage the cloud server. Think of it as a secure remote-control connection. Properly configuring SSH is the single most important step in cloud security.</p>
+
+    <p><strong>What your developer configures:</strong></p>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <p><strong>Key-based authentication only.</strong> Instead of passwords (which can be guessed), your developer uses a cryptographic key pair. The private key stays on their machine; the public key goes on the server. No password ever crosses the internet.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <p><strong>Password login is disabled entirely.</strong> Even if an attacker discovers the server&rsquo;s address, they cannot attempt password guesses &mdash; the server will simply refuse.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <p><strong>Root access is disabled.</strong> &ldquo;Root&rdquo; is the all-powerful administrator account. Your developer creates a separate, limited account and disables direct root login. This means even if the limited account were compromised, the attacker would face an additional barrier.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <p><strong>Automatic ban on repeated failures.</strong> Software called Fail2Ban monitors login attempts and automatically blocks IP addresses that fail multiple times &mdash; stopping brute-force attacks before they get anywhere.</p>
+      </div>
+    </div>
+
+    <pre><code><span class="code-comment"># Key settings your developer applies in /etc/ssh/sshd_config:</span>
+<span class="code-keyword">PasswordAuthentication</span> <span class="code-value">no</span>       <span class="code-comment"># No password guessing</span>
+<span class="code-keyword">PermitRootLogin</span> <span class="code-value">no</span>             <span class="code-comment"># No all-powerful access</span>
+<span class="code-keyword">MaxAuthTries</span> <span class="code-value">3</span>                  <span class="code-comment"># Lock out after 3 failures</span>
+<span class="code-keyword">ClientAliveInterval</span> <span class="code-value">300</span>        <span class="code-comment"># Disconnect idle sessions</span></code></pre>
+
+    <h3 id="cloud-firewall">2. Firewall Rules</h3>
+
+    <p>A firewall controls which &ldquo;doors&rdquo; (ports) on the server are open to the internet. Your developer configures this both at the GCP level (VPC firewall rules) and on the server itself.</p>
+
+    <p><strong>What your developer configures:</strong></p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Port</th>
+          <th>Purpose</th>
+          <th>Who Can Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>22</code> (SSH)</td>
+          <td>Developer management access</td>
+          <td>Only your developer&rsquo;s IP address</td>
+        </tr>
+        <tr>
+          <td><code>443</code> (HTTPS)</td>
+          <td>OpenClaw web interface</td>
+          <td>Only your office IP address (or via VPN)</td>
+        </tr>
+        <tr>
+          <td>All others</td>
+          <td>&mdash;</td>
+          <td><strong>Blocked</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code><span class="code-comment"># GCP firewall rule — allows HTTPS only from your office:</span>
+gcloud compute firewall-rules create allow-openclaw \
+  <span class="code-keyword">--direction</span>=INGRESS \
+  <span class="code-keyword">--action</span>=ALLOW \
+  <span class="code-keyword">--rules</span>=<span class="code-string">tcp:443</span> \
+  <span class="code-keyword">--source-ranges</span>=<span class="code-string">"YOUR_OFFICE_IP/32"</span> \
+  <span class="code-keyword">--target-tags</span>=<span class="code-string">openclaw-server</span>
+
+<span class="code-comment"># On-server firewall (UFW) — belt and suspenders:</span>
+sudo ufw default deny incoming
+sudo ufw allow from YOUR_OFFICE_IP to any port 443
+sudo ufw allow from DEVELOPER_IP to any port 22
+sudo ufw enable</code></pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Plain English</span>
+      Imagine your server is a building. The firewall locks every door except two: one for your developer (SSH) and one for you (the web interface). Both doors are further restricted so that only people coming from recognized addresses can enter.
+    </div>
+
+    <h3 id="cloud-keys">3. Secrets Management on GCP</h3>
+
+    <p>Google Cloud provides a dedicated service called <strong>Secret Manager</strong> for storing sensitive values like API keys. This is significantly more secure than storing keys in a file on the server.</p>
+
+    <pre><code><span class="code-comment"># Your developer stores each key in GCP Secret Manager:</span>
+gcloud secrets create openai-api-key \
+  <span class="code-keyword">--data-file</span>=<span class="code-string">./openai-key.txt</span>
+
+<span class="code-comment"># The application retrieves it at runtime — the key</span>
+<span class="code-comment"># never sits in a file on disk:</span>
+gcloud secrets versions access latest \
+  <span class="code-keyword">--secret</span>=<span class="code-string">openai-api-key</span></code></pre>
+
+    <p><strong>Why this is better than a <code>.env</code> file:</strong></p>
+    <ul class="checklist">
+      <li>Keys are encrypted at rest by Google&rsquo;s infrastructure</li>
+      <li>Access is controlled by IAM (Identity and Access Management) &mdash; only the OpenClaw service account can read the keys</li>
+      <li>Every access is logged, creating an audit trail</li>
+      <li>Keys can be rotated without redeploying the application</li>
+    </ul>
+
+    <h3 id="cloud-logging">4. Logging &amp; Monitoring</h3>
+
+    <p>Opinion 512 requires you to make &ldquo;reasonable efforts&rdquo; to prevent unauthorized access. Logging provides the evidence that those efforts are in place, and alerts you if something goes wrong.</p>
+
+    <p><strong>What your developer configures:</strong></p>
+    <ul class="checklist">
+      <li><strong>GCP Cloud Audit Logs</strong> &mdash; records every login, configuration change, and secret access</li>
+      <li><strong>Alerting policies</strong> &mdash; emails you and your developer if there are repeated failed login attempts, unexpected access from new IP addresses, or any access to secret keys outside of normal operations</li>
+      <li><strong>Log retention</strong> &mdash; logs are retained for a minimum of 1 year (configurable per your firm&rsquo;s retention policy)</li>
+    </ul>
+
+    <div class="callout callout-success">
+      <span class="callout-label">Best Practice</span>
+      Ask your developer to set up a monthly security summary email. This gives you documented evidence of ongoing monitoring &mdash; valuable both for your own peace of mind and as proof of &ldquo;reasonable efforts&rdquo; under Model Rule 1.6.
+    </div>
+
+    <!-- ============================================================ -->
+    <h2 id="comparison">Local vs. Cloud: Side-by-Side Comparison</h2>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Consideration</th>
+          <th>Local (Office Computer)</th>
+          <th>GCP Cloud VM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data location</strong></td>
+          <td>On your premises</td>
+          <td>Google data center (you choose region)</td>
+        </tr>
+        <tr>
+          <td><strong>Internet exposure</strong></td>
+          <td>None (if configured correctly)</td>
+          <td>Internet-facing; requires firewall</td>
+        </tr>
+        <tr>
+          <td><strong>Access from outside office</strong></td>
+          <td>Requires VPN setup</td>
+          <td>Available anywhere (with IP restriction)</td>
+        </tr>
+        <tr>
+          <td><strong>Uptime</strong></td>
+          <td>Only when computer is on</td>
+          <td>24/7 with 99.95% SLA</td>
+        </tr>
+        <tr>
+          <td><strong>Physical security</strong></td>
+          <td>Your responsibility</td>
+          <td>Google&rsquo;s data center security</td>
+        </tr>
+        <tr>
+          <td><strong>Secrets management</strong></td>
+          <td>.env file with restricted permissions</td>
+          <td>GCP Secret Manager (encrypted, audited)</td>
+        </tr>
+        <tr>
+          <td><strong>Audit logging</strong></td>
+          <td>Basic OS logs</td>
+          <td>Comprehensive Cloud Audit Logs</td>
+        </tr>
+        <tr>
+          <td><strong>Outsourcing concerns (Opinion 512)</strong></td>
+          <td>Minimal &mdash; data stays local</td>
+          <td>Must review Google Cloud ToS and DPA</td>
+        </tr>
+        <tr>
+          <td><strong>Estimated monthly cost</strong></td>
+          <td>$0 (uses existing hardware)</td>
+          <td>$15&ndash;$50/month</td>
+        </tr>
+        <tr>
+          <td><strong>Best for</strong></td>
+          <td>Solo practitioners; highest sensitivity</td>
+          <td>Firms needing 24/7 access; multiple users</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ============================================================ -->
+    <h2 id="checklist">Security Checklist</h2>
+
+    <p>Print this page and confirm each item with your developer. Keep the completed checklist on file as documentation of your &ldquo;reasonable efforts.&rdquo;</p>
+
+    <h3>General (Both Scenarios)</h3>
+    <ul class="checklist">
+      <li>All AI provider API keys are stored securely (not hardcoded, not emailed)</li>
+      <li>You have reviewed the Terms of Service and Privacy Policy for each AI provider (OpenAI, Anthropic, etc.)</li>
+      <li>You understand whether the AI provider retains or trains on your input data</li>
+      <li>You have a key rotation schedule (every 90 days recommended)</li>
+      <li>You have an incident response plan (what to do if keys are leaked or the system is breached)</li>
+      <li>Your firm has a written AI usage policy that addresses OpenClaw</li>
+      <li>Staff who use OpenClaw have been trained on what information may and may not be entered</li>
+    </ul>
+
+    <h3>Local System</h3>
+    <ul class="checklist">
+      <li>Full-disk encryption is enabled (FileVault or BitLocker)</li>
+      <li>OpenClaw binds to <code>localhost</code> only</li>
+      <li>OS firewall is enabled and blocks incoming connections to the OpenClaw port</li>
+      <li>Automatic OS updates are enabled</li>
+      <li>Antivirus software is running and up to date</li>
+      <li>Computer requires a password/biometric to unlock from sleep</li>
+    </ul>
+
+    <h3>GCP Cloud VM</h3>
+    <ul class="checklist">
+      <li>SSH uses key-based authentication only (passwords disabled)</li>
+      <li>Root login is disabled; a non-root admin account is used</li>
+      <li>Fail2Ban is installed and active</li>
+      <li>GCP firewall rules restrict SSH to developer IP only</li>
+      <li>GCP firewall rules restrict HTTPS to your office IP (or VPN range)</li>
+      <li>API keys are stored in GCP Secret Manager (not in files on the VM)</li>
+      <li>Cloud Audit Logs are enabled with alerting policies</li>
+      <li>HTTPS/TLS is configured for the web interface (no unencrypted HTTP)</li>
+      <li>Google Cloud Data Processing Addendum (DPA) is reviewed and on file</li>
+      <li>Monthly security summary reports are scheduled</li>
+    </ul>
+
+    <!-- ============================================================ -->
+    <h2 id="resources">Further Reading &amp; Resources</h2>
+
+    <h3>ABA Ethics Guidance</h3>
+    <div class="rule-card">
+      <div class="rule-card-header">ABA Formal Opinion 512 &mdash; Generative Artificial Intelligence Tools</div>
+      <div class="rule-card-body">
+        <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">Read the full opinion (PDF)</a><br>
+        <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/" target="_blank" rel="noopener">ABA News announcement (July 29, 2024)</a>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card-header">Related ABA Opinions</div>
+      <div class="rule-card-body">
+        <strong>Formal Opinion 477R</strong> &mdash; Securing Communication of Protected Client Information (technology &amp; cloud security)<br>
+        <strong>Formal Opinion 08-451</strong> &mdash; Outsourcing Legal and Nonlegal Support Services
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card-header">State-Level AI Guidance</div>
+      <div class="rule-card-body">
+        Several states have issued their own guidance, including California, Florida (Advisory Opinion 24-1), New York, New Jersey, Texas, and Pennsylvania. Check your state bar for jurisdiction-specific requirements.
+      </div>
+    </div>
+
+    <h3>AI Provider Security &amp; Privacy</h3>
+    <div class="rule-card">
+      <div class="rule-card-body">
+        <a href="https://openai.com/enterprise-privacy" target="_blank" rel="noopener">OpenAI Enterprise Privacy</a> &mdash; Data usage, retention, and API data policies<br>
+        <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> &mdash; How Claude handles data via the API<br>
+        <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener">Google Cloud Data Processing Addendum</a> &mdash; Required review for cloud deployments
+      </div>
+    </div>
+
+    <h3>OpenClaw Security</h3>
+    <div class="rule-card">
+      <div class="rule-card-body">
+        <a href="https://github.com/open-claw/open-claw" target="_blank" rel="noopener">OpenClaw GitHub Repository</a> &mdash; Source code, security advisories, and release notes<br>
+        <a href="https://docs.open-claw.com/security" target="_blank" rel="noopener">OpenClaw Security Documentation</a> &mdash; Official hardening guide
+      </div>
+    </div>
+
+    <div class="callout callout-info" style="margin-top: 2rem;">
+      <span class="callout-label">Questions?</span>
+      If anything in this guide is unclear, or if you need to verify that a specific measure is in place, please contact your developer. Security is an ongoing process, not a one-time setup &mdash; schedule a quarterly review to ensure everything remains current.
+    </div>
+
+  </main>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-rule">OpenClaw Security Guide for Legal Professionals</div>
+    <p>Prepared for your firm by your OpenClaw skills developer. This document is provided for informational purposes and does not constitute legal advice. Security configurations should be verified by a qualified professional. Ethical obligations described herein are based on the ABA Model Rules of Professional Conduct and <a href="https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-512.pdf" target="_blank" rel="noopener">ABA Formal Opinion 512</a> (July 2024); consult your jurisdiction&rsquo;s specific rules for binding authority.</p>
+    <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.4);">Last updated: February 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
