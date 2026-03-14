@@ -929,41 +929,114 @@
     </script>
     <script>
         const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
-        
-        async function checkout(pack) {
-            // Find the button and disable it
-            const buttons = document.querySelectorAll('.buy-btn');
-            buttons.forEach(btn => btn.disabled = true);
-            
-            let body = { pack: pack };
-            
+
+        // Open the attorney info modal before checkout
+        function checkout(pack) {
+            document.getElementById('checkoutModal').style.display = 'flex';
+            document.getElementById('checkoutPack').value = pack;
+            document.getElementById('checkoutError').textContent = '';
+            document.getElementById('checkoutSubmitBtn').disabled = false;
+            document.getElementById('checkoutSubmitBtn').textContent = 'Continue to Payment →';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        async function submitCheckout() {
+            const pack = document.getElementById('checkoutPack').value;
+            const attorney_name = document.getElementById('co_attorney_name').value.trim();
+            const bar_jurisdiction = document.getElementById('co_bar_jurisdiction').value.trim();
+            const bar_number = document.getElementById('co_bar_number').value.trim();
+            const firm_name = document.getElementById('co_firm_name').value.trim();
+            const email = document.getElementById('co_email').value.trim();
+            const attestation = document.getElementById('co_attestation').checked;
+            const errEl = document.getElementById('checkoutError');
+
+            // Validate required fields
+            if (!attorney_name) { errEl.textContent = 'Please enter your name.'; return; }
+            if (!bar_jurisdiction) { errEl.textContent = 'Please enter your bar jurisdiction.'; return; }
+            if (!bar_number) { errEl.textContent = 'Please enter your bar number.'; return; }
+            if (!email || !email.includes('@')) { errEl.textContent = 'Please enter a valid email address.'; return; }
+            if (!attestation) { errEl.textContent = 'You must certify that you are a licensed attorney in good standing.'; return; }
+
+            const btn = document.getElementById('checkoutSubmitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Connecting to payment…';
+            errEl.textContent = '';
+
             try {
                 const response = await fetch(`${API_BASE}/checkout/create-session`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(body)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pack, email, attorney_name, bar_jurisdiction, bar_number, firm_name, attestation })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (!response.ok) {
-                    const errorMessage = data.detail || data.error || data.message || 'Failed to create checkout session';
-                    alert(errorMessage + '\n\nIf this persists, contact support@lawtasksai.com');
-                    buttons.forEach(btn => btn.disabled = false);
+                    errEl.textContent = data.detail || data.error || data.message || 'Failed to create checkout session. Please try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Continue to Payment →';
                     return;
                 }
-                
-                // Redirect to Stripe checkout
+
                 window.location.href = data.checkout_url;
-                
+
             } catch (error) {
                 console.error('Checkout error:', error);
-                alert('Something went wrong connecting to our payment system.\n\nPlease try again or contact support@lawtasksai.com');
-                buttons.forEach(btn => btn.disabled = false);
+                errEl.textContent = 'Something went wrong. Please try again or contact support@lawtasksai.com';
+                btn.disabled = false;
+                btn.textContent = 'Continue to Payment →';
             }
         }
     </script>
+
+    <!-- Attorney Info Modal -->
+    <div id="checkoutModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center; padding:1rem;">
+        <div style="background:#fff; border-radius:12px; padding:2rem; max-width:480px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); position:relative;">
+            <button onclick="closeCheckoutModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#6b7280;">✕</button>
+            <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:0.25rem; color:#1a1a2e;">Complete Your Purchase</h2>
+            <p style="font-size:0.88rem; color:#6b7280; margin-bottom:1.25rem;">LawTasksAI is exclusively for licensed attorneys. Please provide your bar information before proceeding to payment.</p>
+
+            <input type="hidden" id="checkoutPack">
+
+            <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; color:#374151; margin-bottom:0.3rem;">Attorney Name <span style="color:#dc2626;">*</span></label>
+                    <input id="co_attorney_name" type="text" placeholder="Jane A. Smith" style="width:100%; padding:0.6rem 0.75rem; border:1px solid #d1d5db; border-radius:6px; font-size:0.95rem; box-sizing:border-box;">
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                    <div>
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#374151; margin-bottom:0.3rem;">Bar Jurisdiction <span style="color:#dc2626;">*</span></label>
+                        <input id="co_bar_jurisdiction" type="text" placeholder="e.g. Colorado, TX" style="width:100%; padding:0.6rem 0.75rem; border:1px solid #d1d5db; border-radius:6px; font-size:0.95rem; box-sizing:border-box;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#374151; margin-bottom:0.3rem;">Bar Number <span style="color:#dc2626;">*</span></label>
+                        <input id="co_bar_number" type="text" placeholder="12345" style="width:100%; padding:0.6rem 0.75rem; border:1px solid #d1d5db; border-radius:6px; font-size:0.95rem; box-sizing:border-box;">
+                    </div>
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; color:#374151; margin-bottom:0.3rem;">Law Firm Name <span style="font-weight:400; color:#9ca3af;">(optional)</span></label>
+                    <input id="co_firm_name" type="text" placeholder="Smith & Associates, LLC" style="width:100%; padding:0.6rem 0.75rem; border:1px solid #d1d5db; border-radius:6px; font-size:0.95rem; box-sizing:border-box;">
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; color:#374151; margin-bottom:0.3rem;">Email Address <span style="color:#dc2626;">*</span></label>
+                    <input id="co_email" type="email" placeholder="jane@smithlaw.com" style="width:100%; padding:0.6rem 0.75rem; border:1px solid #d1d5db; border-radius:6px; font-size:0.95rem; box-sizing:border-box;">
+                </div>
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:0.9rem; margin-top:0.25rem;">
+                    <label style="display:flex; align-items:flex-start; gap:0.6rem; cursor:pointer;">
+                        <input id="co_attestation" type="checkbox" style="margin-top:3px; flex-shrink:0; width:16px; height:16px; accent-color:#16a34a;">
+                        <span style="font-size:0.85rem; color:#166534; line-height:1.5;">I certify that I am a licensed attorney in good standing with the bar identified above, and that I will use LawTasksAI in accordance with applicable rules of professional conduct.</span>
+                    </label>
+                </div>
+            </div>
+
+            <p id="checkoutError" style="color:#dc2626; font-size:0.85rem; margin-top:0.75rem; min-height:1.2em;"></p>
+
+            <button id="checkoutSubmitBtn" onclick="submitCheckout()" style="width:100%; margin-top:0.5rem; padding:0.85rem; background:#2563eb; color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Continue to Payment →</button>
+            <p style="text-align:center; font-size:0.78rem; color:#9ca3af; margin-top:0.75rem;">🔒 Secured by Stripe · Your bar information is stored securely and never sold.</p>
+        </div>
+    </div>
 </body>
 </html>
