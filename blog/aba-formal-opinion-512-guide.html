@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABA Formal Opinion 512: A Practical Guide for Solo and Small Firm Attorneys Using AI — LawTasksAI</title>
+    <meta name="description" content="The ABA issued Formal Opinion 512 in July 2024 on generative AI tools. Here's what it actually requires — competence, confidentiality, client consent, supervision, and fees — without the academic framing.">
+    <link rel="canonical" href="https://lawtasksai.com/blog/aba-formal-opinion-512-guide.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "ABA Formal Opinion 512: A Practical Guide for Solo and Small Firm Attorneys Using AI",
+        "datePublished": "2026-03-15",
+        "author": { "@type": "Organization", "name": "LawTasksAI" },
+        "publisher": { "@type": "Organization", "name": "LawTasksAI", "url": "https://lawtasksai.com" },
+        "description": "The ABA issued Formal Opinion 512 in July 2024 on generative AI tools. Here's what it actually requires — competence, confidentiality, client consent, supervision, and fees — without the academic framing."
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        header { padding: 20px 0; background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
+        .logo span { color: #2563eb; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links > a:hover, .nav-links > a.active { color: #2563eb; }
+        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; background: #2563eb; color: white !important; transition: all 0.2s; }
+        .header-cta:hover { background: #1d4ed8; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: #4b5563; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+        .dropdown-toggle:hover { color: #2563eb; }
+        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 300; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
+        .mobile-overlay.active { display: block; }
+        .post-hero { padding: 48px 0 32px; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+        .post-hero .container { max-width: 800px; }
+        .post-series { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 12px; }
+        .post-series a { color: #2563eb; text-decoration: none; }
+        .post-series a:hover { text-decoration: underline; }
+        .post-hero h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.25; margin-bottom: 16px; }
+        .post-meta { font-size: 0.9rem; color: #6b7280; }
+        .post-body { padding: 48px 0 80px; }
+        .post-body .container { max-width: 800px; }
+        .post-content { font-size: 1.05rem; line-height: 1.8; color: #374151; }
+        .post-content h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; }
+        .post-content h3 { font-size: 1.15rem; font-weight: 600; color: #1a1a2e; margin: 28px 0 12px; }
+        .post-content p { margin-bottom: 20px; }
+        .post-content ul, .post-content ol { margin: 0 0 20px 24px; }
+        .post-content li { margin-bottom: 8px; }
+        .post-content a { color: #2563eb; text-decoration: underline; }
+        .post-content a:hover { color: #1d4ed8; }
+        .post-content strong { color: #1a1a2e; font-weight: 600; }
+        .callout { border-left: 4px solid #2563eb; background: #eff6ff; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+        .callout.warning { border-color: #f59e0b; background: #fffbeb; }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .callout strong { display: block; margin-bottom: 4px; }
+
+        /* Checklist */
+        .checklist { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 28px 32px; margin: 28px 0; }
+        .checklist h3 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem; }
+        .checklist ul { list-style: none; margin: 0; padding: 0; }
+        .checklist li { padding: 6px 0 6px 28px; position: relative; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #f3f4f6; }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li::before { content: '☐'; position: absolute; left: 0; color: #2563eb; font-size: 1rem; }
+
+        .post-cta { background: #1a1a2e; color: white; border-radius: 12px; padding: 36px; margin: 48px 0 0; text-align: center; }
+        .post-cta h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .post-cta p { color: #9ca3af; margin-bottom: 20px; font-size: 0.95rem; }
+        .post-cta a { display: inline-block; background: #2563eb; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .post-cta a:hover { background: #1d4ed8; }
+        .back-link { margin-bottom: 32px; }
+        .back-link a { color: #6b7280; text-decoration: none; font-size: 0.9rem; }
+        .back-link a:hover { color: #2563eb; }
+        footer { background: #1a1a2e; color: #9ca3af; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #9ca3af; text-decoration: none; }
+        footer a:hover { color: white; }
+        footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: white; flex-direction: column; padding: 80px 32px 32px; gap: 0; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 200; align-items: flex-start; }
+            .nav-links.active { display: flex; }
+            .nav-links > a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid #f3f4f6; width: 100%; }
+            .dropdown { width: 100%; }
+            .dropdown-toggle { width: 100%; padding: 14px 0; border-bottom: 1px solid #f3f4f6; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.mobile-open .dropdown-menu { display: block; }
+            .header-cta { margin-top: 16px; text-align: center; width: 100%; }
+            .post-hero h1 { font-size: 1.7rem; }
+            .checklist { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="/skills.html">Tasks</a>
+            <a href="/sample.html">Samples</a>
+            <a href="/blog/" class="active">Blog</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Get Started</span>
+                <div class="dropdown-menu">
+                    <a href="/getting-started.html">Getting Started Guide</a>
+                    <a href="/requirements.html">System Requirements</a>
+                    <a href="/download.html">Download</a>
+                    <a href="/index.html#pricing">Get Credits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">ABA 1.6</span>
+                <div class="dropdown-menu">
+                    <a href="/security.html">Rule 1.6 &amp; Security</a>
+                    <a href="/law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                    <a href="/openclaw-security-guide.html">OpenClaw Security Guide</a>
+                    <a href="/zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                    <a href="/uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                    <a href="/aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                    <a href="/aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                    <a href="/client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Support</span>
+                <div class="dropdown-menu">
+                    <a href="/index.html#faq">FAQ</a>
+                    <a href="/getting-started.html">Getting Started</a>
+                    <a href="/macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                    <a href="/openclaw-windows-install.html">Windows Install Guide</a>
+                    <a href="/openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                    <a href="/macmini-security-checklist.html">Security Checklist</a>
+                    <a href="/vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                    <a href="/secure-communications-reference.html">Secure Communications</a>
+                    <a href="/terms.html">Terms of Service</a>
+                    <a href="/privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="/index.html#pricing" class="header-cta">Get Credits</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+<div class="post-hero">
+    <div class="container">
+        <div class="post-series"><a href="/blog/">Blog</a> · AI for Attorneys · Rule 1.6 &amp; Privacy</div>
+        <h1>ABA Formal Opinion 512: A Practical Guide for Solo and Small Firm Attorneys Using AI</h1>
+        <div class="post-meta">March 15, 2026 &nbsp;·&nbsp; 9 min read</div>
+    </div>
+</div>
+
+<div class="post-body">
+    <div class="container">
+        <div class="back-link"><a href="/blog/">← Back to Blog</a></div>
+
+        <div class="post-content">
+
+            <p>The ABA's Standing Committee on Ethics and Professional Responsibility issued Formal Opinion 512 on July 29, 2024. If you're using generative AI tools in your practice — or planning to — this opinion is required reading. It won't tell you exactly what to do, but it tells you what questions you must be able to answer.</p>
+
+            <p>Here's a practical breakdown of what Opinion 512 actually requires, without the academic framing.</p>
+
+            <h2>What the Opinion Covers</h2>
+
+            <p>Opinion 512 addresses the use of generative AI tools — tools like Claude, ChatGPT, and legal-specific AI products — in the context of client representation. It works through the major applicable ethics rules: competence (Rule 1.1), confidentiality (Rule 1.6), communication and consent (Rule 1.4), supervision (Rules 5.1 and 5.3), meritorious claims (Rule 3.1), candor toward the tribunal (Rule 3.3), and fees (Rule 1.5).</p>
+
+            <p>The opinion is deliberately general. It acknowledges that AI tools are "a rapidly moving target" and that specific guidance will continue to evolve. What it provides is a framework — a set of questions you need to be able to answer before you use any AI tool on client matters.</p>
+
+            <h2>Competence: You Don't Need to Be a Tech Expert, But You Can't Be Ignorant</h2>
+
+            <p>Rule 1.1 requires "the legal knowledge, skill, thoroughness and preparation reasonably necessary for the representation," including understanding "the benefits and risks associated with the technologies used."</p>
+
+            <p>Opinion 512's position: you don't need to become an AI engineer. You need a reasonable understanding of what the tool does, what its limitations are, and what can go wrong. Practically, that means being able to answer:</p>
+
+            <ul>
+                <li>Does this tool hallucinate? How often, and on what kinds of tasks?</li>
+                <li>What happens to my client's data when I submit a prompt?</li>
+                <li>How do I verify the output before relying on it?</li>
+                <li>Am I using this tool for a task it's actually suited for?</li>
+            </ul>
+
+            <div class="callout warning">
+                <p><strong>On Hallucinations</strong> Studies of leading legal AI tools found hallucination rates between 17% and 33%. That's not a reason to avoid AI — it's a reason to verify output. The obligation is independent review proportionate to the task, not blind acceptance of whatever the model produces.</p>
+            </div>
+
+            <p>Importantly, the opinion notes that as AI tools become more capable and widespread, the duty of competence may eventually <em>require</em> their use — just as lawyers are now expected to know how to use email and electronic research tools. Getting fluent with AI now is part of staying competent.</p>
+
+            <h2>Confidentiality: The Hard Part</h2>
+
+            <p>This is where most attorneys have gaps, and it's the most consequential section for day-to-day practice.</p>
+
+            <p>Rule 1.6 requires "reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation." Before inputting client information into any AI tool, you must evaluate the risks. The opinion lists the factors:</p>
+
+            <ul>
+                <li>Likelihood of disclosure or unauthorized access</li>
+                <li>Sensitivity of the information</li>
+                <li>Difficulty of implementing safeguards</li>
+                <li>Extent to which safeguards would impair your ability to represent the client</li>
+            </ul>
+
+            <p>What this means in practice: you cannot use a consumer-tier AI product for confidential client work without doing the analysis — and for most such products, that analysis will not come out in your favor. Consumer AI plans typically retain your data, may use it for model training, and give you no contractual data processing commitments.</p>
+
+            <div class="callout">
+                <p><strong>The Cross-Contamination Risk</strong> Opinion 512 specifically flags self-learning models: a self-learning AI tool into which you input client information could surface that information in response to prompts from a different user on an unrelated matter. This is another reason why "no training" commitments from AI providers matter — and why you should verify them contractually, not just trust the marketing.</p>
+            </div>
+
+            <h2>Client Consent: Boilerplate Doesn't Cut It</h2>
+
+            <p>Rule 1.4 requires communication sufficient for clients to make informed decisions about their representation. Opinion 512 states that <strong>boilerplate consent is not sufficient</strong> — a generic clause in an engagement letter saying you may use technology does not meet the standard.</p>
+
+            <p>Informed consent requires disclosure of what tool is being used, how it handles client data, and what the client is agreeing to. That conversation needs to happen specifically, not buried in standardized language most clients don't read.</p>
+
+            <p>The practical implication: your engagement letters likely need updating. The conversation about AI tool use should happen when the representation begins, not after you've already run a client document through a model.</p>
+
+            <h2>Supervision: Managing Staff AI Use Is Your Problem</h2>
+
+            <p>Rules 5.1 and 5.3 place managerial obligations on supervising lawyers. You are responsible for ensuring that attorneys and non-attorney staff comply with the ethics rules — including in their use of AI tools.</p>
+
+            <p>Opinion 512 is clear that you cannot simply tell associates to use AI responsibly and consider the obligation discharged. You need a firm policy addressing:</p>
+
+            <ul>
+                <li>Which tools are approved</li>
+                <li>What kinds of tasks they can be used for</li>
+                <li>What work cannot be submitted to AI tools</li>
+                <li>How output must be verified before relying on it</li>
+                <li>How billing works when AI assists in the work</li>
+            </ul>
+
+            <p>For solo practitioners, the supervision obligation applies to yourself: you need a conscious, documented approach, not just informal habits.</p>
+
+            <h2>Fees: Passing AI Costs Through Requires Thought</h2>
+
+            <p>Rule 1.5 prohibits unreasonable fees. Opinion 512 raises the fee question without resolving it definitively — the guidance is still developing. But the basic framework: if AI dramatically reduces the time required for a task, billing the same hours as if the work were done manually may be unreasonable. And charging clients for AI tool costs as disbursements requires the same scrutiny as other expenses.</p>
+
+            <p>This isn't a reason to avoid AI. It's a reason to think carefully about your billing practices and update your engagement letter language to address AI-assisted work.</p>
+
+            <h2>The Practical Checklist</h2>
+
+            <p>Opinion 512 boils down to these questions, which every solo and small firm attorney should be able to answer:</p>
+
+            <div class="checklist">
+                <h3>Competence — Rule 1.1</h3>
+                <ul>
+                    <li>Do I understand how this AI tool works, including its failure modes?</li>
+                    <li>Am I independently verifying output before relying on it?</li>
+                    <li>Am I staying current as the tools evolve?</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>Confidentiality — Rule 1.6</h3>
+                <ul>
+                    <li>Have I reviewed the provider's data retention and training policies?</li>
+                    <li>Have I executed a data processing agreement with the provider?</li>
+                    <li>Is the data handling configuration appropriate for the sensitivity of this matter?</li>
+                    <li>Have I considered local AI options for the most sensitive work?</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>Client Consent — Rule 1.4</h3>
+                <ul>
+                    <li>Have I disclosed my AI tool use to clients specifically, not just generically?</li>
+                    <li>Has the client given informed consent for their documents to be processed by this tool?</li>
+                    <li>Is my engagement letter updated to address AI?</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>Supervision — Rules 5.1 / 5.3</h3>
+                <ul>
+                    <li>Do I have a firm AI usage policy?</li>
+                    <li>Does it address which tools are approved, for what tasks, with what verification requirements?</li>
+                </ul>
+            </div>
+
+            <div class="checklist">
+                <h3>Fees — Rule 1.5</h3>
+                <ul>
+                    <li>Are my billing practices for AI-assisted work reasonable given the time saved?</li>
+                    <li>Have I updated my engagement letter to address AI-related costs?</li>
+                </ul>
+            </div>
+
+            <p>Opinion 512 isn't designed to stop attorneys from using AI — the opposite, in fact. It positions AI fluency as part of the evolving duty of competence. What it requires is that you approach these tools with the same professional deliberateness you bring to any other consequential decision in a representation.</p>
+
+        </div>
+
+        <div class="post-cta">
+            <h3>Built by a former trial attorney who knows what these rules require</h3>
+            <p>LawTasksAI's privacy-first architecture never receives client documents — designed from the ground up for Rule 1.6 compliance.</p>
+            <a href="/security.html">See the Architecture →</a>
+        </div>
+
+        <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e5e7eb;">
+            <p style="font-size:0.9rem; color:#6b7280; margin-bottom:16px;"><strong>Further Reading</strong></p>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
+                <li><a href="/aba-formal-opinion-512.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ ABA Formal Opinion 512 — Full Text</a></li>
+                <li><a href="/aba-ethics-guidance-ai.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ ABA Ethics Guidance on AI (full reference)</a></li>
+                <li><a href="/blog/zero-data-retention-rule-1-6.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Blog: Zero Data Retention and Rule 1.6 — What Attorneys Need to Know</a></li>
+                <li><a href="/zdr-aba-compliance-guide.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Full ZDR &amp; ABA Compliance Guide</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="/index.html">Home</a>
+            <a href="/skills.html">Tasks</a>
+            <a href="/blog/">Blog</a>
+            <a href="/security.html">Rule 1.6 &amp; Security</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); overlay.classList.toggle('active'); });
+    overlay.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); overlay.classList.remove('active'); });
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function() { this.closest('.dropdown').classList.toggle('mobile-open'); });
+    });
+</script>
+</body>
+</html>

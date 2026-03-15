@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Data Retention and Rule 1.6: What Every Attorney Using AI Needs to Know — LawTasksAI</title>
+    <meta name="description" content="Most attorneys don't realize that using the Anthropic API doesn't mean zero data retention. Here's the difference between the three retention tiers and why it matters for Rule 1.6 compliance.">
+    <link rel="canonical" href="https://lawtasksai.com/blog/zero-data-retention-rule-1-6.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Zero Data Retention and Rule 1.6: What Every Attorney Using AI Needs to Know",
+        "datePublished": "2026-03-15",
+        "author": { "@type": "Organization", "name": "LawTasksAI" },
+        "publisher": { "@type": "Organization", "name": "LawTasksAI", "url": "https://lawtasksai.com" },
+        "description": "Most attorneys don't realize that using the Anthropic API doesn't mean zero data retention. Here's the difference between the three retention tiers and why it matters for Rule 1.6 compliance."
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header { padding: 20px 0; background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
+        .logo span { color: #2563eb; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links > a:hover, .nav-links > a.active { color: #2563eb; }
+        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; background: #2563eb; color: white !important; transition: all 0.2s; }
+        .header-cta:hover { background: #1d4ed8; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: #4b5563; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+        .dropdown-toggle:hover { color: #2563eb; }
+        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 300; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
+        .mobile-overlay.active { display: block; }
+
+        /* Post layout */
+        .post-hero { padding: 48px 0 32px; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+        .post-hero .container { max-width: 800px; }
+        .post-series { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 12px; }
+        .post-series a { color: #2563eb; text-decoration: none; }
+        .post-series a:hover { text-decoration: underline; }
+        .post-hero h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.25; margin-bottom: 16px; }
+        .post-meta { font-size: 0.9rem; color: #6b7280; }
+
+        .post-body { padding: 48px 0 80px; }
+        .post-body .container { max-width: 800px; }
+        .post-content { font-size: 1.05rem; line-height: 1.8; color: #374151; }
+        .post-content h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; }
+        .post-content h3 { font-size: 1.15rem; font-weight: 600; color: #1a1a2e; margin: 28px 0 12px; }
+        .post-content p { margin-bottom: 20px; }
+        .post-content ul, .post-content ol { margin: 0 0 20px 24px; }
+        .post-content li { margin-bottom: 8px; }
+        .post-content a { color: #2563eb; text-decoration: underline; }
+        .post-content a:hover { color: #1d4ed8; }
+        .post-content strong { color: #1a1a2e; font-weight: 600; }
+
+        /* Callout boxes */
+        .callout { border-left: 4px solid #2563eb; background: #eff6ff; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+        .callout.warning { border-color: #f59e0b; background: #fffbeb; }
+        .callout.success { border-color: #10b981; background: #ecfdf5; }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .callout strong { display: block; margin-bottom: 4px; }
+
+        /* Retention table */
+        .table-wrap { overflow-x: auto; margin: 28px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: #1a1a2e; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+        td { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        tr:nth-child(even) td { background: #f9fafb; }
+        .tag-best { display: inline-block; background: #d1fae5; color: #065f46; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .tag-ok { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .tag-risk { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+
+        /* CTA box */
+        .post-cta { background: #1a1a2e; color: white; border-radius: 12px; padding: 36px; margin: 48px 0 0; text-align: center; }
+        .post-cta h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .post-cta p { color: #9ca3af; margin-bottom: 20px; font-size: 0.95rem; }
+        .post-cta a { display: inline-block; background: #2563eb; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .post-cta a:hover { background: #1d4ed8; }
+
+        /* Back link */
+        .back-link { margin-bottom: 32px; }
+        .back-link a { color: #6b7280; text-decoration: none; font-size: 0.9rem; }
+        .back-link a:hover { color: #2563eb; }
+
+        /* Footer */
+        footer { background: #1a1a2e; color: #9ca3af; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #9ca3af; text-decoration: none; }
+        footer a:hover { color: white; }
+        footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: white; flex-direction: column; padding: 80px 32px 32px; gap: 0; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 200; align-items: flex-start; }
+            .nav-links.active { display: flex; }
+            .nav-links > a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid #f3f4f6; width: 100%; }
+            .dropdown { width: 100%; }
+            .dropdown-toggle { width: 100%; padding: 14px 0; border-bottom: 1px solid #f3f4f6; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.mobile-open .dropdown-menu { display: block; }
+            .header-cta { margin-top: 16px; text-align: center; width: 100%; }
+            .post-hero h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="/skills.html">Tasks</a>
+            <a href="/sample.html">Samples</a>
+            <a href="/blog/" class="active">Blog</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Get Started</span>
+                <div class="dropdown-menu">
+                    <a href="/getting-started.html">Getting Started Guide</a>
+                    <a href="/requirements.html">System Requirements</a>
+                    <a href="/download.html">Download</a>
+                    <a href="/index.html#pricing">Get Credits</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">ABA 1.6</span>
+                <div class="dropdown-menu">
+                    <a href="/security.html">Rule 1.6 &amp; Security</a>
+                    <a href="/law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                    <a href="/openclaw-security-guide.html">OpenClaw Security Guide</a>
+                    <a href="/zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                    <a href="/uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                    <a href="/aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                    <a href="/aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                    <a href="/client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Support</span>
+                <div class="dropdown-menu">
+                    <a href="/index.html#faq">FAQ</a>
+                    <a href="/getting-started.html">Getting Started</a>
+                    <a href="/macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                    <a href="/openclaw-windows-install.html">Windows Install Guide</a>
+                    <a href="/openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                    <a href="/macmini-security-checklist.html">Security Checklist</a>
+                    <a href="/vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                    <a href="/secure-communications-reference.html">Secure Communications</a>
+                    <a href="/terms.html">Terms of Service</a>
+                    <a href="/privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="/index.html#pricing" class="header-cta">Get Credits</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+<div class="post-hero">
+    <div class="container">
+        <div class="post-series"><a href="/blog/">Blog</a> · AI for Attorneys · Rule 1.6 &amp; Privacy</div>
+        <h1>Zero Data Retention and Rule 1.6: What Every Attorney Using AI Needs to Know</h1>
+        <div class="post-meta">March 15, 2026 &nbsp;·&nbsp; 8 min read</div>
+    </div>
+</div>
+
+<div class="post-body">
+    <div class="container">
+        <div class="back-link"><a href="/blog/">← Back to Blog</a></div>
+
+        <div class="post-content">
+
+            <p>If you've started using AI tools in your practice — or you're thinking about it — you've probably heard the phrase "zero data retention" thrown around. You may have also wondered whether it actually matters, and whether using Claude or ChatGPT puts you sideways with Model Rule 1.6.</p>
+
+            <p>The short answer: it depends on how you've set things up, and most attorneys are running a configuration they haven't fully thought through. Here's what you actually need to know.</p>
+
+            <h2>What Rule 1.6 Requires in the AI Context</h2>
+
+            <p>Model Rule 1.6 requires lawyers to make <strong>"reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation."</strong> That language — "reasonable efforts" — is doing a lot of work, and the ABA gave it significant texture in Formal Opinion 512 (July 2024).</p>
+
+            <p>Opinion 512 makes clear that before inputting client information into any AI tool, you must evaluate the risks that the information will be disclosed to or accessed by others. That evaluation is fact-specific: it depends on the sensitivity of the matter, the client, the task, and which AI tool you're using. There's no blanket answer. But there are better and worse configurations — and understanding the difference is itself part of your competence obligation under Rule 1.1.</p>
+
+            <h2>The Three Retention Tiers You Need to Understand</h2>
+
+            <p>Not all AI usage is equal from a confidentiality standpoint. With Anthropic's Claude as an example, there are three meaningfully different configurations:</p>
+
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>Configuration</th>
+                        <th>Retention</th>
+                        <th>Used for Training?</th>
+                        <th>Rule 1.6 Risk</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Consumer plans</strong> (Free, Pro, Max)</td>
+                        <td>30 days default; up to 5 years if opted in</td>
+                        <td>Yes, by default</td>
+                        <td><span class="tag-risk">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial API</strong> (standard, no addendum)</td>
+                        <td>7 days</td>
+                        <td>Never</td>
+                        <td><span class="tag-ok">Moderate</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial API + ZDR addendum</strong></td>
+                        <td>Immediately discarded</td>
+                        <td>Never</td>
+                        <td><span class="tag-best">Lowest available</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="callout warning">
+                <p><strong>Common Misconception</strong> Using the Anthropic API, Claude Desktop, or Claude Code does <em>not</em> automatically give you ZDR. ZDR is a separate contractual arrangement that must be specifically negotiated with Anthropic's sales team. Without the signed addendum, you're on standard 7-day retention.</p>
+            </div>
+
+            <h2>Why the Seven-Day Window Is a Real Legal Risk</h2>
+
+            <p>For many practice areas, seven days may be defensible. But consider the scenarios that actually matter to litigators and transactional lawyers:</p>
+
+            <p><strong>Subpoenas and legal process.</strong> During the seven-day window, client data processed through the AI exists on Anthropic's servers. Opposing counsel could theoretically serve a third-party subpoena on Anthropic for your API logs — arguing they contain relevant evidence about how work product was prepared. Under ZDR, there is nothing to produce because nothing exists.</p>
+
+            <p><strong>Government access.</strong> Data sitting on a third-party server is potentially reachable via court order, search warrant, grand jury subpoena, or national security letter directed at Anthropic — not at your firm. That creates complications around privilege assertions you don't control.</p>
+
+            <p><strong>Infrastructure breach.</strong> Enterprise-grade infrastructure with encryption at rest dramatically reduces this risk, but low probability is not zero probability. Under ZDR, a breach yields nothing.</p>
+
+            <div class="callout success">
+                <p><strong>The Core Principle</strong> Data that does not exist cannot be subpoenaed, breached, or accessed by anyone. For high-stakes litigation, M&amp;A work, or any matter where the fact that AI was used could itself become an issue, ZDR eliminates a concrete exposure that standard API retention does not.</p>
+            </div>
+
+            <h2>The Interface Gap: Why This Matters Practically</h2>
+
+            <p>Here's where most attorneys hit a wall. The claude.ai web interface and desktop app — the easy, intuitive products — <strong>do not support ZDR at all</strong>, regardless of your plan tier. Even if you've negotiated a ZDR addendum with Anthropic, that coverage only applies to direct API calls, not the chat interface.</p>
+
+            <p>This means a law firm that wants ZDR protection has three practical paths:</p>
+
+            <ol>
+                <li><strong>Local AI.</strong> Run an open-source model entirely on your own hardware via something like OpenClaw with Ollama. Nothing leaves your machine. The tradeoff is that local models aren't yet at frontier-model quality for complex legal reasoning, and you need capable hardware.</li>
+                <li><strong>Custom application.</strong> A developer builds a simple interface that calls the API with your ZDR-enabled key. You get a familiar chat experience while every request is covered by ZDR.</li>
+                <li><strong>OpenClaw or similar platform.</strong> A configurable AI assistant that routes requests through your commercial API key with ZDR coverage — giving you a conversational interface with skills tailored to legal work, without the chat interface's retention problem.</li>
+            </ol>
+
+            <h2>What ZDR Doesn't Fix</h2>
+
+            <p>ZDR is the strongest technical safeguard available, but it doesn't complete your Rule 1.6 analysis on its own. ABA Opinion 512 is clear that compliance requires a holistic approach:</p>
+
+            <ul>
+                <li>ZDR handles the confidentiality technology problem, but <strong>informed consent</strong> (Rule 1.4) still requires disclosure to clients that AI tools are being used — even when data isn't retained.</li>
+                <li>ZDR doesn't create an audit trail — in fact, it eliminates one. Firms with supervisory obligations (Rules 5.1/5.3) need to build their own logging at the application layer if they need records of what was submitted.</li>
+                <li>ZDR doesn't verify AI output accuracy. Your competence obligation under Rule 1.1 still requires independent review of anything the AI produces.</li>
+            </ul>
+
+            <h2>How to Actually Get ZDR</h2>
+
+            <p>ZDR is not a toggle in a settings panel. You contact Anthropic's sales team, identify yourself as a law firm, state that you need ZDR for client confidentiality under ABA ethics obligations, and negotiate a ZDR addendum that supplements your commercial terms. You also separately execute a Data Processing Addendum (DPA). The process isn't instant, but regulated industries are the primary target audience and firms with meaningful API usage generally qualify.</p>
+
+            <p>The legal profession's AI adoption is accelerating fast. Opinion 512 sets the framework, and the technology exists to satisfy it — but only if you've deliberately configured things that way. Understanding the difference between consumer plans, standard API retention, and ZDR isn't optional for attorneys using AI on client matters. It's the bare minimum of technological competence that Rule 1.1 now requires.</p>
+
+        </div>
+
+        <div class="post-cta">
+            <h3>LawTasksAI is built for Rule 1.6 compliance</h3>
+            <p>A thin-client architecture that never receives your documents or client data — designed to work within a properly configured, privacy-first AI setup.</p>
+            <a href="/security.html">See How It Works →</a>
+        </div>
+
+        <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e5e7eb;">
+            <p style="font-size:0.9rem; color:#6b7280; margin-bottom:16px;"><strong>Further Reading</strong></p>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
+                <li><a href="/zdr-aba-compliance-guide.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Full ZDR &amp; ABA Compliance Guide (deep reference)</a></li>
+                <li><a href="/aba-formal-opinion-512.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ ABA Formal Opinion 512 (full text)</a></li>
+                <li><a href="/blog/aba-formal-opinion-512-guide.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Blog: ABA Formal Opinion 512 — A Practical Guide</a></li>
+                <li><a href="/security.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Rule 1.6 &amp; Security — LawTasksAI Architecture</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="/index.html">Home</a>
+            <a href="/skills.html">Tasks</a>
+            <a href="/blog/">Blog</a>
+            <a href="/security.html">Rule 1.6 &amp; Security</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); overlay.classList.toggle('active'); });
+    overlay.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); overlay.classList.remove('active'); });
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function() { this.closest('.dropdown').classList.toggle('mobile-open'); });
+    });
+</script>
+</body>
+</html>
