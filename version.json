@@ -1,0 +1,21 @@
+{
+  "product": "LawTasksAI",
+  "publisher": "Laudo Lux, LLC",
+  "published": "2026-03-15T09:33:00-06:00",
+  "disclaimer_added": "2026-03-15",
+  "blog_launched": "2026-03-15",
+  "posts": [
+    {
+      "title": "Zero Data Retention and Rule 1.6: What Every Attorney Using AI Needs to Know",
+      "url": "https://lawtasksai.com/blog/zero-data-retention-rule-1-6.html",
+      "published": "2026-03-15"
+    },
+    {
+      "title": "ABA Formal Opinion 512: A Practical Guide for Solo and Small Firm Attorneys Using AI",
+      "url": "https://lawtasksai.com/blog/aba-formal-opinion-512-guide.html",
+      "published": "2026-03-15"
+    }
+  ],
+  "gpg_key": "777E5734A76FA02D",
+  "note": "All commits from this point forward are GPG signed by key 777E5734A76FA02D (LawTasksAI <hello@lawtasksai.com>)"
+}
