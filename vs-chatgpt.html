@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1GZ4XTPKZR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1GZ4XTPKZR');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Not Just Use ChatGPT for Legal Research? — LawTasksAI</title>
+    <meta name="description" content="ChatGPT is a general-purpose tool. LawTasksAI is purpose-built legal research software with 206 jurisdiction-specific task templates. Here's the honest difference.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafbfc;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
+        .logo span { color: #2563eb; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-links > a:hover { color: #2563eb; }
+        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; background: #2563eb; color: white; }
+        .header-cta:hover { background: #1d4ed8; }
+        .dropdown { position: relative; }
+        .dropdown-toggle { color: #4b5563; text-decoration: none; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+        .dropdown-toggle:hover { color: #2563eb; }
+        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 300; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
+        .mobile-overlay.active { display: block; }
+
+        /* Hero */
+        .page-hero {
+            padding: 72px 0 56px;
+            text-align: center;
+            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
+        }
+        .page-hero h1 {
+            font-size: 2.6rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+        .page-hero h1 span { color: #2563eb; }
+        .page-hero p { font-size: 1.2rem; color: #6b7280; max-width: 580px; margin: 0 auto; }
+
+        /* Sections */
+        .content-section { padding: 64px 0; }
+        .content-section.white { background: white; }
+        .content-section.gray { background: #f9fafb; }
+
+        .section-label {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            color: #2563eb; margin-bottom: 12px;
+        }
+        .section-title { font-size: 1.85rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+        .section-subtitle { font-size: 1.05rem; color: #6b7280; margin-bottom: 36px; max-width: 680px; }
+
+        /* Problem cards */
+        .problem-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+        }
+        .problem-card {
+            background: white; border-radius: 12px; padding: 28px; border: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+        .problem-card:hover { border-color: #2563eb; box-shadow: 0 4px 16px rgba(37,99,235,0.08); transform: translateY(-2px); }
+        .problem-icon { font-size: 2rem; margin-bottom: 12px; }
+        .problem-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .problem-card p { font-size: 0.93rem; color: #4b5563; line-height: 1.65; }
+        .problem-card .vs-note {
+            margin-top: 14px; padding: 10px 14px; background: #eff6ff; border-radius: 6px;
+            font-size: 0.88rem; color: #1d4ed8; font-weight: 500;
+        }
+
+        /* Is / Is Not */
+        .is-isnot-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+        }
+        .is-box, .isnot-box {
+            border-radius: 12px; padding: 32px;
+        }
+        .is-box { background: #f0fdf4; border: 2px solid #22c55e; }
+        .isnot-box { background: #fef2f2; border: 2px solid #ef4444; }
+        .is-box h3 { color: #15803d; font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+        .isnot-box h3 { color: #b91c1c; font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+        .is-item, .isnot-item {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.93rem;
+        }
+        .is-item .icon { color: #16a34a; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .isnot-item .icon { color: #dc2626; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .is-item p, .isnot-item p { color: #374151; line-height: 1.55; }
+
+        /* Comparison table */
+        .compare-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #e5e7eb; }
+        table.compare {
+            width: 100%; border-collapse: collapse; font-size: 0.93rem;
+        }
+        table.compare thead {
+            background: #1a1a2e; color: white;
+        }
+        table.compare thead th {
+            padding: 14px 20px; text-align: left; font-weight: 600;
+        }
+        table.compare thead th:first-child { width: 30%; }
+        table.compare thead th.lta-col { color: #60a5fa; }
+        table.compare tbody tr { border-bottom: 1px solid #e5e7eb; }
+        table.compare tbody tr:last-child { border-bottom: none; }
+        table.compare tbody tr:nth-child(even) { background: #f9fafb; }
+        table.compare tbody td { padding: 14px 20px; color: #374151; vertical-align: top; }
+        table.compare tbody td:first-child { font-weight: 600; color: #1a1a2e; }
+        table.compare tbody td.generic { color: #6b7280; }
+        table.compare tbody td.lta { color: #1d4ed8; font-weight: 500; }
+
+        /* When to use */
+        .use-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .use-card {
+            background: white; border-radius: 12px; padding: 28px; border: 1px solid #e5e7eb;
+        }
+        .use-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb; }
+        .use-card h3.chatgpt { border-color: #9ca3af; color: #6b7280; }
+        .use-card h3.lta { border-color: #2563eb; color: #2563eb; }
+        .use-card h3.both { border-color: #8b5cf6; color: #7c3aed; }
+        .use-card ul { list-style: none; padding: 0; }
+        .use-card li { font-size: 0.9rem; color: #4b5563; padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; }
+        .use-card li::before { content: '→'; color: #9ca3af; flex-shrink: 0; }
+        .use-card.lta-card li::before { color: #2563eb; }
+        .use-card.both-card li::before { color: #8b5cf6; }
+
+        /* CTA */
+        .bottom-cta {
+            padding: 80px 0; text-align: center; background: linear-gradient(180deg, #f9fafb 0%, white 100%);
+        }
+        .bottom-cta h2 { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
+        .bottom-cta p { color: #6b7280; margin-bottom: 32px; font-size: 1.1rem; }
+        .cta-button {
+            display: inline-block; background: #2563eb; color: white;
+            padding: 16px 36px; border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 1.1rem; transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+        .cta-button:hover {
+            background: #1d4ed8; transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Disclaimer */
+        .disclaimer-bar {
+            background: #1a1a2e; border-top: 3px solid #f59e0b; padding: 20px 0;
+        }
+        .disclaimer-bar p {
+            font-size: 0.85rem; color: #d1d5db; text-align: center; max-width: 800px; margin: 0 auto;
+            line-height: 1.65;
+        }
+        .disclaimer-bar strong { color: #fbbf24; }
+
+        /* Footer */
+        footer {
+            padding: 40px 0; background: #f9fafb; border-top: 1px solid #e5e7eb;
+            text-align: center; color: #6b7280; font-size: 0.9rem;
+        }
+        footer a { color: #6b7280; text-decoration: none; margin: 0 15px; }
+        footer a:hover { color: #2563eb; }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 1.8rem; }
+            .is-isnot-grid { grid-template-columns: 1fr; }
+            .use-grid { grid-template-columns: 1fr; }
+            .hamburger { display: block; }
+            .nav-links {
+                display: none; position: fixed; top: 0; right: 0;
+                width: 280px; height: 100vh; background: white;
+                flex-direction: column; padding: 80px 32px 32px; gap: 0;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 200;
+                align-items: flex-start;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links > a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid #f3f4f6; width: 100%; }
+            .dropdown { width: 100%; }
+            .dropdown-toggle { width: 100%; padding: 14px 0; border-bottom: 1px solid #f3f4f6; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.mobile-open .dropdown-menu { display: block; }
+            .header-cta { width: 100%; text-align: center; margin-top: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="skills.html">Tasks</a>
+                <a href="task-library.html">Task Library</a>
+                <a href="sample.html">Samples</a>
+                <a href="vs-chatgpt.html">Why Not ChatGPT?</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Get Started</span>
+                    <div class="dropdown-menu">
+                        <a href="getting-started.html">Getting Started Guide</a>
+                        <a href="requirements.html">System Requirements</a>
+                        <a href="download.html">Download</a>
+                        <a href="index.html#pricing">Get Credits</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">ABA 1.6</span>
+                    <div class="dropdown-menu">
+                        <a href="security.html">Rule 1.6 &amp; Security</a>
+                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
+                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
+                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Support</span>
+                    <div class="dropdown-menu">
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="getting-started.html">Getting Started</a>
+                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
+                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
+                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
+                        <a href="macmini-security-checklist.html">Security Checklist</a>
+                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
+                        <a href="secure-communications-reference.html">Secure Communications</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-overlay" id="overlay"></div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Why Not Just Use <span>ChatGPT</span> for Legal Research?</h1>
+            <p>It's a fair question. Here's the honest answer.</p>
+        </div>
+    </section>
+
+    <!-- Section 1: The Real Problem -->
+    <section class="content-section gray">
+        <div class="container">
+            <div class="section-label">The Honest Comparison</div>
+            <h2 class="section-title">Generic AI Is a General Tool. LawTasksAI Is Purpose-Built.</h2>
+            <p class="section-subtitle">
+                This isn't about ChatGPT being bad. It's the same distinction as using Google Maps vs. a general search engine for directions — one is built for the specific job, the other is built for everything. For legal research, that difference matters.
+            </p>
+
+            <div class="problem-grid">
+
+                <div class="problem-card">
+                    <div class="problem-icon">🗺️</div>
+                    <h3>Generic AI Doesn't Know Jurisdiction</h3>
+                    <p>Ask a generic AI about the statute of limitations for medical malpractice and it will give you an answer — the same answer whether you're in Texas or California, even though those states have entirely different rules. Jurisdiction isn't baked in; it's something you have to remember to specify every single time.</p>
+                    <div class="vs-note">LawTasksAI tasks are built with jurisdiction-specific rules embedded. The template knows to ask which state — and applies the right framework automatically.</div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🎲</div>
+                    <h3>Generic AI Output Varies Every Time</h3>
+                    <p>Ask a generic AI the same question twice and you may get different answers — different structure, different emphasis, different citations. That's not a bug, it's how general-purpose language models work. But for legal research workflows, inconsistency creates unpredictable results.</p>
+                    <div class="vs-note">Every LawTasksAI task follows a fixed expert framework. The same question produces the same organized structure every time — consistent sections, consistent citation format, consistent output.</div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🔍</div>
+                    <h3>Generic AI Doesn't Know What It Doesn't Know</h3>
+                    <p>A generic AI will answer the question you asked. It won't tell you to check tolling provisions, examine discovery cutoff rules, or verify whether an exception applies — unless you already know to ask. The gaps in your question become gaps in the output.</p>
+                    <div class="vs-note">LawTasksAI task templates are engineered to surface the right questions automatically. The framework checks what needs to be checked — including the issues you didn't think to raise.</div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">📄</div>
+                    <h3>Generic AI Delivers Walls of Text</h3>
+                    <p>Generic AI gives you prose. Useful prose, sometimes — but unstructured output that you then have to organize, parse, and reformat before it can be used in a workflow. That's extra work, not saved work.</p>
+                    <div class="vs-note">LawTasksAI delivers structured output: organized sections, cited statutes, checklists, and calendar-ready dates — formatted for attorney review from the first output.</div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">⚖️</div>
+                    <h3>Generic AI Can't Be Updated When the Law Changes</h3>
+                    <p>When a legislature amends a statute or a court issues a rule change, a generic AI doesn't know — and you'd have no way of knowing that its answer is now outdated. There's no update mechanism. You're working from whatever was in the training data.</p>
+                    <div class="vs-note">When a statute or rule changes, LawTasksAI updates the relevant task template. Every user gets the corrected framework immediately — no action required on your end.</div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🧰</div>
+                    <h3>The Right Tool for the Right Job</h3>
+                    <p>A hammer is excellent at driving nails. That doesn't make it bad at everything else — but you wouldn't use it as a level or a measuring tape. Generic AI is excellent at general writing and reasoning tasks. Legal research with jurisdiction-specific rules is a specialized function that benefits from a specialized tool.</p>
+                    <div class="vs-note">LawTasksAI is the legal research tool. Use generic AI for what it's good at. Use specialized software for what it's built for.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: What It Is / Is Not -->
+    <section class="content-section white">
+        <div class="container">
+            <div class="section-label">Clarity on What LawTasksAI Is</div>
+            <h2 class="section-title">What LawTasksAI Is — and Isn't</h2>
+            <p class="section-subtitle">Short, clear, no ambiguity.</p>
+
+            <div class="is-isnot-grid">
+                <div class="is-box">
+                    <h3>✓ LawTasksAI IS:</h3>
+                    <div class="is-item">
+                        <span class="icon">✓</span>
+                        <p><strong>A software tool</strong> — like Westlaw, LexisNexis, or a specialized legal calculator. Software that structures your research workflow.</p>
+                    </div>
+                    <div class="is-item">
+                        <span class="icon">✓</span>
+                        <p><strong>206 purpose-built task templates</strong> engineered for specific legal research functions — statute lookups, deadline calculations, rule summaries, document scaffolding.</p>
+                    </div>
+                    <div class="is-item">
+                        <span class="icon">✓</span>
+                        <p><strong>Structured output organized for attorney review</strong> — not raw AI responses, but organized sections with cited statutes and clear frameworks.</p>
+                    </div>
+                    <div class="is-item">
+                        <span class="icon">✓</span>
+                        <p><strong>Jurisdiction-aware</strong> — templates built with state-specific rules so you're not starting from a generic national answer.</p>
+                    </div>
+                    <div class="is-item">
+                        <span class="icon">✓</span>
+                        <p><strong>Updated when rules change</strong> — task templates are maintained so output reflects current frameworks.</p>
+                    </div>
+                </div>
+
+                <div class="isnot-box">
+                    <h3>✗ LawTasksAI IS NOT:</h3>
+                    <div class="isnot-item">
+                        <span class="icon">✗</span>
+                        <p><strong>Legal advice, legal services, or legal counsel</strong> — it is software. It surfaces information. Licensed attorneys apply professional judgment.</p>
+                    </div>
+                    <div class="isnot-item">
+                        <span class="icon">✗</span>
+                        <p><strong>A replacement for Westlaw or LexisNexis</strong> — primary source databases are essential for comprehensive research. LawTasksAI is a workflow tool, not a database.</p>
+                    </div>
+                    <div class="isnot-item">
+                        <span class="icon">✗</span>
+                        <p><strong>Practicing law or providing legal counsel</strong> — no attorney-client relationship is formed. The software doesn't make legal judgments; it structures research output.</p>
+                    </div>
+                    <div class="isnot-item">
+                        <span class="icon">✗</span>
+                        <p><strong>A substitute for attorney judgment</strong> — output is structured material for review by a licensed professional, not finished product. Every result requires attorney review.</p>
+                    </div>
+                    <div class="isnot-item">
+                        <span class="icon">✗</span>
+                        <p><strong>Infallible</strong> — like any software tool, verify critical details. LawTasksAI structures the workflow; attorneys confirm the analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Comparison Table -->
+    <section class="content-section gray">
+        <div class="container">
+            <div class="section-label">Side-by-Side</div>
+            <h2 class="section-title">How They Compare</h2>
+            <p class="section-subtitle">A direct look at what differentiates purpose-built legal software from a general AI assistant.</p>
+
+            <div class="compare-table-wrap">
+                <table class="compare">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Generic AI (ChatGPT / Claude)</th>
+                            <th class="lta-col">LawTasksAI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jurisdiction awareness</td>
+                            <td class="generic">Generic — same answer everywhere unless you specify</td>
+                            <td class="lta">Built-in rules per jurisdiction, baked into each template</td>
+                        </tr>
+                        <tr>
+                            <td>Output consistency</td>
+                            <td class="generic">Varies every time — different structure, different emphasis</td>
+                            <td class="lta">Fixed expert framework — consistent structure every run</td>
+                        </tr>
+                        <tr>
+                            <td>Knows what to check</td>
+                            <td class="generic">Only surfaces what you think to ask about</td>
+                            <td class="lta">Checks and flags the right issues automatically</td>
+                        </tr>
+                        <tr>
+                            <td>Output format</td>
+                            <td class="generic">Unstructured prose that needs reformatting</td>
+                            <td class="lta">Organized sections, checklists, cited statutes</td>
+                        </tr>
+                        <tr>
+                            <td>Law change updates</td>
+                            <td class="generic">No mechanism — training data may be outdated</td>
+                            <td class="lta">Task templates updated; all users get fixes immediately</td>
+                        </tr>
+                        <tr>
+                            <td>Designed for</td>
+                            <td class="generic">General writing, reasoning, and summarization</td>
+                            <td class="lta">Legal research workflows — 206 specific use cases</td>
+                        </tr>
+                        <tr>
+                            <td>What it is</td>
+                            <td class="generic">General-purpose AI assistant</td>
+                            <td class="lta">Specialized legal research software tool</td>
+                        </tr>
+                        <tr>
+                            <td>Output intended for</td>
+                            <td class="generic">Direct use, depending on task</td>
+                            <td class="lta">Structured research material for attorney review</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: When to Use Each -->
+    <section class="content-section white">
+        <div class="container">
+            <div class="section-label">Practical Guidance</div>
+            <h2 class="section-title">When to Use Which Tool</h2>
+            <p class="section-subtitle">The best answer isn't "either/or" — it's knowing which tool fits which task.</p>
+
+            <div class="use-grid">
+                <div class="use-card">
+                    <h3 class="chatgpt">Use ChatGPT / Claude for:</h3>
+                    <ul>
+                        <li>Drafting emails and client correspondence</li>
+                        <li>Brainstorming arguments or strategy</li>
+                        <li>Summarizing non-legal content</li>
+                        <li>General writing and editing tasks</li>
+                        <li>Explaining concepts in plain language</li>
+                        <li>Formatting and style work</li>
+                    </ul>
+                </div>
+
+                <div class="use-card lta-card">
+                    <h3 class="lta">Use LawTasksAI for:</h3>
+                    <ul>
+                        <li>Statute of limitations lookups by jurisdiction</li>
+                        <li>Filing and response deadline calculations</li>
+                        <li>Jurisdiction-specific rule summaries</li>
+                        <li>Structured research output and checklists</li>
+                        <li>Elements of claim frameworks</li>
+                        <li>Discovery deadline and procedure scaffolding</li>
+                    </ul>
+                </div>
+
+                <div class="use-card both-card">
+                    <h3 class="both">Use Both Together:</h3>
+                    <ul>
+                        <li>LawTasksAI for jurisdiction-specific framework</li>
+                        <li>Your AI assistant to apply it to specific facts</li>
+                        <li>LawTasksAI for structure, ChatGPT for prose</li>
+                        <li>LawTasksAI to surface the right questions</li>
+                        <li>ChatGPT to draft the memo from the output</li>
+                        <li>Each tool doing what it's built for</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bottom-cta">
+        <div class="container">
+            <h2>See the Difference in 3 Minutes</h2>
+            <p>Try the $20 trial pack — 10 tasks, credits never expire.</p>
+            <a href="index.html#pricing" class="cta-button">Start With 10 Tasks — $20</a>
+        </div>
+    </section>
+
+    <!-- Disclaimer bar -->
+    <div class="disclaimer-bar">
+        <div class="container">
+            <p><strong>Software Disclaimer:</strong> LawTasksAI is a software tool, not a law firm. It does not provide legal advice, legal services, or legal counsel. Output from LawTasksAI tasks is structured research material for review and use by licensed legal professionals applying their own judgment.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="display:inline-block; max-width:700px; margin:0 auto 16px; padding:10px 18px; background:#1a1a2e; border:1px solid #f59e0b; border-radius:6px; text-align:left;">
+                <span style="font-size:0.78rem; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.05em; margin-right:6px;">&#9888; Not Legal Advice</span><span style="font-size:0.78rem; color:#e2e4ed;">The information on this site is technical and educational in nature. It is not legal advice and should not be relied upon as such. Always consult a licensed attorney for guidance specific to your situation.</span>
+            </div>
+            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="security.html">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+
+        function toggleNav() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        hamburger.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.parentElement.classList.toggle('mobile-open');
+                });
+            });
+        }
+
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) toggleNav();
+            });
+        });
+    </script>
+</body>
+</html>
