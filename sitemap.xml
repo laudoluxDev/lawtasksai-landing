@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core pages -->
   <url><loc>https://lawtasksai.com/</loc><lastmod>2026-03-17</lastmod><priority>1.0</priority></url>
   <url><loc>https://lawtasksai.com/getting-started.html</loc><lastmod>2026-03-17</lastmod><priority>0.9</priority></url>
   <url><loc>https://lawtasksai.com/task-library.html</loc><lastmod>2026-03-17</lastmod><priority>0.9</priority></url>
@@ -7,7 +8,32 @@
   <url><loc>https://lawtasksai.com/skills.html</loc><lastmod>2026-03-17</lastmod><priority>0.8</priority></url>
   <url><loc>https://lawtasksai.com/sample.html</loc><lastmod>2026-03-17</lastmod><priority>0.8</priority></url>
   <url><loc>https://lawtasksai.com/download.html</loc><lastmod>2026-03-17</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lawtasksai.com/getting-started-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://lawtasksai.com/requirements.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/local-setup.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+
+  <!-- Security & compliance guides -->
   <url><loc>https://lawtasksai.com/security.html</loc><lastmod>2026-03-17</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/openclaw-security-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/openclaw-security-reference.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/law-firm-claude-security-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/client-matter-isolation-procedures.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/secure-communications-reference.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+
+  <!-- ABA ethics & compliance -->
+  <url><loc>https://lawtasksai.com/aba-ethics-guidance-ai.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/aba-formal-opinion-512.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/zdr-aba-compliance-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.7</priority></url>
+  <url><loc>https://lawtasksai.com/uploading-files-to-anthropic-zdr-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+
+  <!-- Setup guides -->
+  <url><loc>https://lawtasksai.com/macmini-startup-guide.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lawtasksai.com/macmini-security-checklist.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lawtasksai.com/openclaw-mac-vs-windows.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lawtasksai.com/openclaw-windows-install.html</loc><lastmod>2026-03-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://lawtasksai.com/vps-security-hardening-manual.html</loc><lastmod>2026-03-18</lastmod><priority>0.5</priority></url>
+
+  <!-- Legal -->
   <url><loc>https://lawtasksai.com/terms.html</loc><lastmod>2026-03-17</lastmod><priority>0.4</priority></url>
   <url><loc>https://lawtasksai.com/privacy.html</loc><lastmod>2026-03-17</lastmod><priority>0.4</priority></url>
 </urlset>
