@@ -382,12 +382,12 @@
                 <div class="platform-card">
                     <div class="badge">For Claude Users</div>
                     <h3>Claude Desktop</h3>
-                    <p class="desc">If you already use Claude (by Anthropic), you can add LawTasksAI via MCP configuration. <strong>Note:</strong> Requires manual config file editing.</p>
+                    <p class="desc">If you already use Claude (by Anthropic), you can add LawTasksAI via MCP configuration. <strong>Note:</strong> Requires Python and a one-time config setup. We include an installer script to make this easier.</p>
                     <ol>
                         <li>Download <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> if you haven't</li>
-                        <li>Download the <a href="/download" target="_blank">LawTasksAI MCP server</a></li>
-                        <li>Edit your Claude config file (see <a href="https://docs.anthropic.com/en/docs/build-with-claude/mcp" target="_blank">Anthropic's MCP docs</a>)</li>
-                        <li>Add LawTasksAI server with your license key</li>
+                        <li>Download the <a href="/download" target="_blank">LawTasksAI MCP server</a> from your Account Page</li>
+                        <li>Open a terminal and run: <code>cd lawtasksai-mcp && python install.py</code></li>
+                        <li>The installer sets up everything and backs up your existing config</li>
                         <li>Restart Claude Desktop and start asking legal questions</li>
                     </ol>
                 </div>
@@ -606,7 +606,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">I'm not technical. Can I still use this?</div>
-                    <div class="faq-a">Absolutely. If you can install an app on your computer and type a question, you can use LawTasksAI. Our most popular platform (Claude Desktop) works just like a chat app. No coding, no command line, no technical knowledge required.</div>
+                    <div class="faq-a">Absolutely. The OpenClaw platform works just like a chat app — no coding, no command line, no technical knowledge required. Claude Desktop requires Python and a one-time setup, but we include an installer script to make it easy.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Can I use my license key on multiple computers?</div>
