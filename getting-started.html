@@ -380,16 +380,16 @@
                 </div>
                 
                 <div class="platform-card">
-                    <div class="badge">For Claude Users</div>
-                    <h3>Claude Desktop</h3>
-                    <p class="desc">If you already use Claude (by Anthropic), you can add LawTasksAI via MCP configuration. <strong>Note:</strong> Requires Python and a one-time config setup. We include an installer script to make this easier.</p>
+                    <div class="badge">Claude · Cursor · Windsurf · Any MCP Client</div>
+                    <h3>MCP-Compatible AI Clients</h3>
+                    <p class="desc">Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible app. <strong>Note:</strong> Requires Python and a one-time setup. The installer auto-detects your app(s) and configures everything.</p>
                     <ol>
-                        <li>Download <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> if you haven't</li>
                         <li>Download the <a href="/download" target="_blank">LawTasksAI MCP server</a> from your Account Page</li>
-                        <li>Open a terminal and run: <code>cd ~/Downloads/lawtasksai/claude-desktop && python3 install.py</code></li>
-                        <li>The installer sets up everything and backs up your existing config</li>
+                        <li>Extract the zip — you'll see a folder called <code>lawtasksai</code></li>
+                        <li>Open a terminal and run: <code>cd ~/Downloads/lawtasksai/mcp && python3 install.py</code></li>
+                        <li>The installer detects your MCP client(s), installs packages, and backs up existing configs</li>
                         <li><strong>Mac users:</strong> macOS will ask <em>"python3 would like to access files in your Downloads folder"</em> — click <strong>Allow</strong>. This is a one-time security prompt.</li>
-                        <li>Restart Claude Desktop and start asking legal questions</li>
+                        <li>Restart your MCP client and start asking legal questions</li>
                     </ol>
                 </div>
                 
@@ -544,7 +544,7 @@
                                         <li style="margin-bottom: 6px;">If the download is a <code>.zip</code> file, double-click it to unzip</li>
                                         <li style="margin-bottom: 6px;">Open <strong>Terminal</strong> (Command + Space → type Terminal → Enter)</li>
                                         <li style="margin-bottom: 0;">Paste this and press Enter:<br>
-                                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 8px 12px; border-radius: 6px; margin-top: 4px; font-size: 0.88rem;">cp -r ~/Downloads/lawtasksai ~/.openclaw/skills/</code></li>
+                                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 8px 12px; border-radius: 6px; margin-top: 4px; font-size: 0.88rem;">cp -r ~/Downloads/lawtasksai/openclaw ~/.openclaw/skills/lawtasksai</code></li>
                                     </ol>
                                 </div>
                                 <p style="font-size: 0.88rem; color: #92400e;">After copying, restart OpenClaw so it picks up the new skill.</p>
