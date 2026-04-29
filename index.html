@@ -32,6 +32,13 @@
         "offers": [
             {
                 "@type": "Offer",
+                "name": "Peek",
+                "price": "5.00",
+                "priceCurrency": "USD",
+                "description": "5 tasks — take a peek"
+            },
+            {
+                "@type": "Offer",
                 "name": "Trial Pack",
                 "price": "20.00",
                 "priceCurrency": "USD",
@@ -858,6 +865,18 @@
             <p style="text-align: center; color: #6b7280; margin-bottom: 10px;">No subscriptions. Purchase credits for task access. One credit = one task. Credits never expire.*</p>
             <p style="text-align: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 40px;">By purchasing, you agree to our <a href="terms.html" target="_blank" style="color: #2563eb; text-decoration: underline;">Terms of Service</a></p>
             <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Peek</h3>
+                    <div class="price">$5</div>
+                    <div class="credits">5 tasks</div>
+                    <p class="per-credit">$1.00 per task</p>
+                    <ul>
+                        <li>✓ Access to all 200+ tasks</li>
+                        <li>✓ Credits never expire</li>
+                        <li>✓ Try it risk-free</li>
+                    </ul>
+                    <button onclick="checkout('peek')" class="buy-btn">Take a Peek</button>
+                </div>
                 <div class="pricing-card" id="trial-card">
                     <h3>Trial</h3>
                     <div class="price">$20</div>
