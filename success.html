@@ -18,507 +18,290 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--accent:#2563eb;}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;color:#1a1a2e;background:#fafbfc;min-height:100vh;display:flex;flex-direction:column;}
+        .container{max-width:720px;margin:0 auto;padding:0 24px;}
+
+        /* ── Header ── */
+        header{padding:16px 0;background:white;border-bottom:1px solid #e5e7eb;}
+        .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+        .logo{font-size:1.35rem;font-weight:700;color:#1a1a2e;text-decoration:none;white-space:nowrap;}
+        .logo span{color:var(--accent);}
+        .header-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+        .header-links a{
+            font-size:0.82rem;font-weight:500;text-decoration:none;padding:6px 12px;
+            border-radius:6px;transition:background 0.15s,color 0.15s;white-space:nowrap;
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background: #fafbfc;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        .header-links a.plain{color:#6b7280;}
+        .header-links a.plain:hover{background:#f3f4f6;color:#1a1a2e;}
+        .header-links a.cta{
+            background:var(--accent);color:white;
         }
-        
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        header {
-            padding: 20px 0;
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: #2563eb;
-        }
-        
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 24px;
-        }
-        
-        .success-card {
-            background: white;
-            border-radius: 12px;
-            padding: 48px;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            max-width: 680px;
-            width: 100%;
-        }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #10b981;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-        
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 1.75rem;
-            margin-bottom: 12px;
-            color: #1a1a2e;
-        }
-        
-        .subtitle {
-            color: #6b7280;
-            margin-bottom: 32px;
-        }
-        
-        .details {
-            background: #f9fafb;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 32px;
-            text-align: left;
-        }
-        
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-        
-        .detail-label {
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-        
-        .detail-value {
-            font-weight: 600;
-            color: #1a1a2e;
-        }
-        
-        .license-key {
-            font-family: monospace;
-            font-size: 0.85rem;
-            background: #e5e7eb;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #2563eb;
-            color: white;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background 0.2s;
-            width: 100%;
-        }
-        
-        .download-btn:hover {
-            background: #1d4ed8;
-        }
-        
-        .download-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .instructions {
-            margin-top: 32px;
-            text-align: left;
-        }
-        
-        .instructions h3 {
-            font-size: 1rem;
-            margin-bottom: 12px;
-            color: #1a1a2e;
-        }
-        
-        .instructions ol {
-            margin-left: 20px;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
-        }
-        
-        .instructions code {
-            background: #f3f4f6;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-        
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #e5e7eb;
-            border-top-color: #2563eb;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .error {
-            color: #dc2626;
-            background: #fef2f2;
-            padding: 16px;
-            border-radius: 8px;
-        }
-        
-        footer {
-            padding: 24px;
-            text-align: center;
-            color: #d1d5e8;
-            font-size: 0.85rem;
-        }
+        .header-links a.cta:hover{background:#1d4ed8;}
+
+        /* ── Main ── */
+        main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:48px 24px;}
+        .success-card{background:white;border-radius:12px;padding:40px 48px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.08);max-width:680px;width:100%;}
+
+        /* ── Success hero ── */
+        .success-icon{width:72px;height:72px;background:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+        .success-icon svg{width:36px;height:36px;color:white;}
+        h1{font-size:1.7rem;margin-bottom:8px;color:#1a1a2e;}
+        .subtitle{color:#6b7280;margin-bottom:28px;font-size:0.95rem;}
+
+        /* ── Details table ── */
+        .details{background:#f9fafb;border-radius:8px;padding:16px 20px;margin-bottom:24px;text-align:left;}
+        .detail-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #e5e7eb;}
+        .detail-row:last-child{border-bottom:none;}
+        .detail-label{color:#6b7280;font-size:0.88rem;}
+        .detail-value{font-weight:600;color:#1a1a2e;font-size:0.88rem;}
+        .license-key{font-family:monospace;font-size:0.82rem;background:#e5e7eb;padding:2px 7px;border-radius:4px;}
+
+        /* ── Download button ── */
+        .download-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:white;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;width:100%;transition:background 0.2s;margin-bottom:32px;}
+        .download-btn:hover{background:#1d4ed8;}
+        .download-btn svg{width:18px;height:18px;flex-shrink:0;}
+
+        /* ── Install section ── */
+        .install{text-align:left;}
+        .install-step-label{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+        .install h3{font-size:1rem;font-weight:600;color:#1a1a2e;margin-bottom:8px;}
+        .install p,
+        .install li{font-size:0.875rem;color:#6b7280;}
+        .install ul,
+        .install ol{margin-left:20px;}
+        .install li{margin-bottom:6px;}
+        .install code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:0.82rem;font-family:monospace;}
+        .install a{color:var(--accent);}
+
+        /* ── Tabs ── */
+        .tabs{display:flex;border-bottom:2px solid #e5e7eb;margin:20px 0 0;}
+        .tab-btn{flex:1;padding:9px 14px;font-size:0.875rem;font-weight:600;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;background:#f9fafb;color:#6b7280;cursor:pointer;border-radius:6px 6px 0 0;transition:all 0.15s;}
+        .tab-btn.active{background:white;color:var(--accent);border-bottom-color:var(--accent);}
+        .tab-panel{padding-top:20px;}
+
+        /* ── Code blocks ── */
+        .code-block{background:#1a1a2e;color:#34d399;padding:10px 14px;border-radius:6px;font-family:monospace;font-size:0.82rem;margin:8px 0 12px;line-height:1.6;white-space:pre-wrap;text-align:left;}
+
+        /* ── Privacy note ── */
+        .privacy-note{margin-top:24px;padding:14px 16px;background:#ecfdf5;border-radius:8px;border-left:4px solid #10b981;font-size:0.875rem;color:#065f46;}
+        .privacy-note strong{display:block;margin-bottom:2px;}
+
+        /* ── Loading / error ── */
+        .loading{display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px 0;}
+        .spinner{width:38px;height:38px;border:3px solid #e5e7eb;border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;}
+        @keyframes spin{to{transform:rotate(360deg);}}
+        .error{color:#dc2626;background:#fef2f2;padding:16px;border-radius:8px;text-align:left;font-size:0.9rem;}
+
+        /* ── Footer ── */
+        footer{padding:20px 24px;text-align:center;color:#9ca3af;font-size:0.82rem;}
+        footer a{color:#9ca3af;text-decoration:none;}
+        footer a:hover{color:#6b7280;}
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
-            <div class="nav-links" id="navLinks">
-                <a href="skills.html">Tasks</a>
-                <a href="sample.html">Samples</a>
-                <a href="task-library.html">Task Library</a>
-                <a href="vs-chatgpt.html">Why Not ChatGPT?</a>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">Get Started</span>
-                    <div class="dropdown-menu">
-                        <a href="getting-started.html">Getting Started Guide</a>
-                        <a href="requirements.html">System Requirements</a>
-                        <a href="download.html">Download</a>
-                        <a href="index.html#pricing">Get Credits</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">ABA 1.6</span>
-                    <div class="dropdown-menu">
-                        <a href="security.html">Rule 1.6 &amp; Security</a>
-                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
-                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
-                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
-                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
-                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
-                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
-                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">Support</span>
-                    <div class="dropdown-menu">
-                        <a href="index.html#faq">FAQ</a>
-                        <a href="getting-started.html">Getting Started</a>
-                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
-                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
-                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
-                        <a href="macmini-security-checklist.html">Security Checklist</a>
-                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
-                        <a href="secure-communications-reference.html">Secure Communications</a>
-                        <a href="terms.html">Terms of Service</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                    </div>
-                </div>
-                <a href="index.html#pricing" class="header-cta">Get Credits</a>
+            <div class="header-inner">
+                <a href="/" class="logo">LawTasks<span>AI</span></a>
+                <nav class="header-links">
+                    <a href="/support" class="plain">Support</a>
+                    <a href="/#faq" class="plain">FAQ</a>
+                    <a href="/#pricing" class="cta">Get More Credits</a>
+                </nav>
             </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="mobile-overlay" id="overlay"></div>
         </div>
-    </header>    
+    </header>
+
     <main>
         <div class="success-card">
+
+            <!-- Loading -->
             <div id="loading" class="loading">
                 <div class="spinner"></div>
-                <p>Loading your purchase details...</p>
+                <p style="color:#6b7280;font-size:0.9rem;">Loading your purchase details…</p>
             </div>
-            
-            <div id="content" style="display: none;">
+
+            <!-- Content -->
+            <div id="content" style="display:none;">
                 <div class="success-icon">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
                 </div>
-                
                 <h1>Purchase Complete!</h1>
-                <p class="subtitle">Your legal AI skills are ready to download.</p>
-                
+                <p class="subtitle">Your LawTasksAI skills are ready to download.</p>
+
                 <div class="details">
                     <div class="detail-row">
                         <span class="detail-label">Email</span>
-                        <span class="detail-value" id="email">-</span>
+                        <span class="detail-value" id="email">—</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Credits Purchased</span>
-                        <span class="detail-value" id="credits">-</span>
+                        <span class="detail-value" id="credits">—</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Total Credits</span>
-                        <span class="detail-value" id="total-credits">-</span>
+                        <span class="detail-label">Total Balance</span>
+                        <span class="detail-value" id="total-credits">—</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">License Key</span>
-                        <span class="detail-value license-key" id="license-key">-</span>
+                        <span class="detail-value license-key" id="license-key">—</span>
                     </div>
                 </div>
-                
+
                 <a href="#" id="download-btn" class="download-btn">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                     </svg>
-                    Download Your Skill
+                    Download Your LawTasksAI Skills
                 </a>
-                
-                <div class="instructions">
 
-                    <!-- ── Step 1: Extract ── -->
-                    <h3>Step 1 — Extract the ZIP</h3>
-                    <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 12px;">Double-click <code>lawtasksai.zip</code> to extract it. You'll see a folder called <code>lawtasksai</code> containing two things:</p>
-                    <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem; margin-bottom: 8px;">
+                <!-- Install Instructions -->
+                <div class="install">
+                    <div class="install-step-label">Step 1</div>
+                    <h3>Extract the ZIP</h3>
+                    <p style="margin-bottom:10px;">Double-click <code>lawtasksai.zip</code> to extract it. Inside you'll find two components:</p>
+                    <ul style="margin-bottom:6px;">
                         <li><code>lawtasksai/</code> — the <strong>OpenClaw skill</strong> (SKILL.md + config)</li>
-                        <li><code>lawtasksai/mcp/</code> — the <strong>MCP server</strong> for Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients</li>
+                        <li><code>lawtasksai/mcp/</code> — the <strong>MCP server</strong> for Claude Desktop, Cursor, Windsurf &amp; other MCP clients</li>
                     </ul>
-                    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 24px;">💡 Your license key is pre-configured in both — no manual entry needed.</p>
+                    <p style="margin-bottom:20px;font-size:0.82rem;">💡 Your license key is pre-configured in both — no manual entry needed.</p>
 
-                    <!-- ── Tab selector ── -->
-                    <div style="display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e5e7eb;">
-                        <button onclick="showTab('openclaw')" id="tab-openclaw"
-                            style="flex: 1; padding: 10px 16px; font-size: 0.9rem; font-weight: 600; border: none; border-bottom: 3px solid #2563eb; margin-bottom: -2px; background: white; color: #2563eb; cursor: pointer; border-radius: 6px 6px 0 0;">
-                            🤖 OpenClaw
-                        </button>
-                        <button onclick="showTab('mcp')" id="tab-mcp"
-                            style="flex: 1; padding: 10px 16px; font-size: 0.9rem; font-weight: 600; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: #f9fafb; color: #6b7280; cursor: pointer; border-radius: 6px 6px 0 0;">
-                            🔌 Claude Desktop &amp; MCP
-                        </button>
+                    <div class="install-step-label">Step 2</div>
+                    <h3>Choose your AI client</h3>
+
+                    <div class="tabs">
+                        <button class="tab-btn active" id="tab-openclaw" onclick="showTab('openclaw')">🤖 OpenClaw</button>
+                        <button class="tab-btn" id="tab-mcp" onclick="showTab('mcp')">🔌 Claude Desktop &amp; MCP</button>
                     </div>
 
-                    <!-- ── OpenClaw tab ── -->
-                    <div id="panel-openclaw" style="padding-top: 20px;">
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 12px;">OpenClaw is a self-hosted AI assistant that runs on your Mac, Windows PC, or Linux server. If you don't have OpenClaw yet, <a href="https://openclaw.ai" target="_blank" style="color: #2563eb;">download it here</a>.</p>
-                        <ol style="margin-left: 20px; color: #6b7280; font-size: 0.9rem;">
-                            <li style="margin-bottom: 8px;"><strong>Easy install (recommended):</strong> Open your OpenClaw chat and type:
-                                <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-top: 8px;">I just downloaded the LawTasksAI skill file to my Downloads folder. Please find it, unzip it if needed, and install it so I can use it.</div>
-                                <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">OpenClaw will find the folder and set everything up automatically.</p>
+                    <!-- OpenClaw panel -->
+                    <div class="tab-panel" id="panel-openclaw">
+                        <p style="margin-bottom:12px;">OpenClaw is a self-hosted AI assistant for Mac, Windows, and Linux. Don't have it yet? <a href="https://openclaw.ai" target="_blank">Download here.</a></p>
+                        <ol>
+                            <li>
+                                <strong>Easy install (recommended)</strong> — open your OpenClaw chat and type:
+                                <div class="code-block">I just downloaded the LawTasksAI skill file to my Downloads folder. Please find it, unzip it if needed, and install it so I can use it.</div>
+                                OpenClaw finds the folder and sets everything up automatically.
                             </li>
-                            <li style="margin-bottom: 8px;"><strong>Manual install (optional):</strong> Copy the <code>lawtasksai</code> folder into your OpenClaw skills directory:
-                                <ul style="margin-top: 8px; font-size: 0.85rem;">
-                                    <li><strong>Mac/Linux:</strong> <code>~/.openclaw/skills/lawtasksai/</code></li>
-                                    <li><strong>Windows:</strong> <code>C:\Users\YOU\.openclaw\skills\lawtasksai\</code></li>
-                                </ul>
-                                <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">Then restart OpenClaw so it picks up the new skill.</p>
+                            <li>
+                                <strong>Manual install</strong> — copy the <code>lawtasksai</code> folder into your skills directory:
+                                <div class="code-block">Mac/Linux:  ~/.openclaw/skills/lawtasksai/
+Windows:    C:\Users\YOU\.openclaw\skills\lawtasksai\</div>
+                                Then restart OpenClaw to pick up the new skill.
                             </li>
-                            <li><strong>Start using!</strong> Just ask for any legal task in your OpenClaw chat.</li>
+                            <li><strong>Start using</strong> — just ask for any legal task in chat.</li>
                         </ol>
                     </div>
 
-                    <!-- ── MCP tab ── -->
-                    <div id="panel-mcp" style="display: none; padding-top: 20px;">
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 16px;">The <code>lawtasksai/mcp/</code> folder contains a Python MCP server that works with <strong>Claude Desktop</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, and any other MCP stdio-compatible client.</p>
+                    <!-- MCP panel -->
+                    <div class="tab-panel" id="panel-mcp" style="display:none;">
+                        <p style="margin-bottom:16px;">The <code>lawtasksai/mcp/</code> folder is a Python MCP server compatible with <strong>Claude Desktop</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, and any MCP stdio client.</p>
 
-                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Requirements</h4>
-                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem; margin-bottom: 16px;">
-                            <li>Python 3.10 or later — <a href="https://www.python.org/downloads/" target="_blank" style="color: #2563eb;">download here</a></li>
-                            <li>Claude Desktop, Cursor, Windsurf, or another MCP-compatible client</li>
-                        </ul>
+                        <p style="margin-bottom:6px;"><strong>Requirements:</strong> Python 3.10+ &nbsp;(<a href="https://www.python.org/downloads/" target="_blank">download</a>)</p>
 
-                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option A — Automatic (recommended)</h4>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">Run the included installer — it detects all installed MCP clients and configures each one automatically:</p>
-                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 8px;">
-                            cd ~/Downloads/lawtasksai/mcp<br>
-                            pip3 install -r requirements.txt<br>
-                            python3 install.py
-                        </div>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">Then restart your MCP client and look for the <strong>lawtasksai</strong> tools.</p>
+                        <p style="margin-bottom:6px;font-weight:600;color:#1a1a2e;">Option A — Automatic installer (recommended)</p>
+                        <p style="margin-bottom:6px;">Detects and configures all installed MCP clients automatically:</p>
+                        <div class="code-block">cd ~/Downloads/lawtasksai/mcp
+pip3 install -r requirements.txt
+python3 install.py</div>
+                        <p style="margin-bottom:20px;">Restart your MCP client — look for the <strong>lawtasksai</strong> tools.</p>
 
-                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option B — Manual (Claude Desktop)</h4>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">1. Install dependencies:</p>
-                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 12px;">
-                            cd ~/Downloads/lawtasksai/mcp<br>
-                            pip3 install -r requirements.txt
-                        </div>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">2. Open your Claude Desktop config file:</p>
-                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.85rem; margin-bottom: 8px;">
-                            <li><strong>Mac:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
-                            <li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
-                        </ul>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">3. Add the following inside <code>"mcpServers"</code> (create the file if it doesn't exist):</p>
-                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; margin-bottom: 12px; white-space: pre-wrap;">{
+                        <p style="margin-bottom:6px;font-weight:600;color:#1a1a2e;">Option B — Manual (Claude Desktop)</p>
+                        <div class="code-block">cd ~/Downloads/lawtasksai/mcp
+pip3 install -r requirements.txt</div>
+                        <p style="margin-bottom:6px;">Open your config file:</p>
+                        <div class="code-block">Mac:     ~/Library/Application Support/Claude/claude_desktop_config.json
+Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
+                        <p style="margin-bottom:6px;">Add to <code>"mcpServers"</code>:</p>
+                        <div class="code-block">{
   "mcpServers": {
     "lawtasksai": {
       "command": "python3",
       "args": ["/full/path/to/lawtasksai/mcp/server.py"],
-      "env": {
-        "LAWTASKSAI_LICENSE_KEY": "YOUR_LICENSE_KEY"
-      }
+      "env": { "LAWTASKSAI_LICENSE_KEY": "YOUR_LICENSE_KEY" }
     }
   }
 }</div>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">Replace <code>/full/path/to/</code> with the actual path to your extracted folder, and <code>YOUR_LICENSE_KEY</code> with the key shown above.</p>
+                        <p style="margin-bottom:20px;">Replace the path and key with your actual values, then restart your client.</p>
 
-                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option B — Manual (Cursor / Windsurf)</h4>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">Open <strong>Settings → MCP Servers</strong> (or edit <code>cline_mcp_settings.json</code>) and add the same JSON block shown above.</p>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">The server is standard MCP stdio — any client that supports stdio transport will work.</p>
+                        <p style="margin-bottom:6px;font-weight:600;color:#1a1a2e;">Option B — Manual (Cursor / Windsurf)</p>
+                        <p style="margin-bottom:20px;">Go to <strong>Settings → MCP Servers</strong> and add the same JSON block above.</p>
 
-                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">4. Restart &amp; verify</h4>
-                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">After restarting your client, you should see these tools available:</p>
-                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.85rem; margin-bottom: 20px;">
-                            <li><code>lawtasksai_search</code> — find the right skill for any task</li>
-                            <li><code>lawtasksai_execute</code> — run a skill (costs 1 credit)</li>
-                            <li><code>lawtasksai_balance</code> — check remaining credits</li>
-                            <li><code>lawtasksai_categories</code> — browse all skill categories</li>
+                        <p style="margin-bottom:6px;font-weight:600;color:#1a1a2e;">Available tools after install</p>
+                        <ul style="margin-bottom:8px;">
+                            <li><code>lawtasksai_search</code> — find the right skill</li>
+                            <li><code>lawtasksai_execute</code> — run a skill (1 credit)</li>
+                            <li><code>lawtasksai_balance</code> — check credit balance</li>
+                            <li><code>lawtasksai_categories</code> — browse all categories</li>
                         </ul>
-                        <p style="font-size: 0.85rem; color: #6b7280;">Try asking: <em>"What's the SOL for medical malpractice in Texas?"</em></p>
                     </div>
 
-                    <!-- ── Example queries ── -->
-                    <h3 style="margin-top: 28px;">Example Queries</h3>
-                    <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem;">
-                        <li><strong>Research:</strong> "What's the SOL for medical malpractice in Texas?"</li>
-                        <li><strong>Deadlines:</strong> "Calculate response deadline for a complaint served March 1"</li>
-                        <li><strong>Documents:</strong> "Analyze this NDA" (paste or attach file)</li>
-                    </ul>
-
-                    <div style="margin-top: 20px; padding: 16px; background: #ecfdf5; border-radius: 8px; border-left: 4px solid #10b981;">
-                        <p style="font-size: 0.9rem; color: #065f46; margin: 0;">
-                            <strong>🔒 Your Data Never Touches Our Servers</strong><br>
-                            LawTasksAI delivers expert analysis frameworks — your AI assistant applies them locally. We never see your documents or queries. For confidential work, use a local LLM or a cloud provider with a zero data retention agreement.
-                        </p>
+                    <!-- Privacy note -->
+                    <div class="privacy-note">
+                        <strong>🔒 Your data never touches our servers.</strong>
+                        LawTasksAI delivers expert analysis frameworks — your AI applies them locally. We never see your documents or queries. For confidential work, use a local LLM or a provider with zero data retention.
                     </div>
                 </div>
-
-                <script>
-                function showTab(tab) {
-                    document.getElementById('panel-openclaw').style.display = tab === 'openclaw' ? 'block' : 'none';
-                    document.getElementById('panel-mcp').style.display = tab === 'mcp' ? 'block' : 'none';
-                    var btnOC = document.getElementById('tab-openclaw');
-                    var btnMCP = document.getElementById('tab-mcp');
-                    if (tab === 'openclaw') {
-                        btnOC.style.borderBottomColor = '#2563eb'; btnOC.style.color = '#2563eb'; btnOC.style.background = 'white';
-                        btnMCP.style.borderBottomColor = 'transparent'; btnMCP.style.color = '#6b7280'; btnMCP.style.background = '#f9fafb';
-                    } else {
-                        btnMCP.style.borderBottomColor = '#2563eb'; btnMCP.style.color = '#2563eb'; btnMCP.style.background = 'white';
-                        btnOC.style.borderBottomColor = 'transparent'; btnOC.style.color = '#6b7280'; btnOC.style.background = '#f9fafb';
-                    }
-                }
-                </script>
             </div>
-            
-            <div id="error" class="error" style="display: none;">
+
+            <!-- Error -->
+            <div id="error" class="error" style="display:none;">
                 <p>Something went wrong loading your purchase. Please contact <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a> with your payment confirmation.</p>
             </div>
+
         </div>
     </main>
-    
+
     <footer>
-        <div style="display:inline-block; max-width:700px; margin:0 auto 16px; padding:10px 18px; background:#1a1a2e; border:1px solid #f59e0b; border-radius:6px; text-align:left;">
-            <span style="font-size:0.78rem; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.05em; margin-right:6px;">&#9888; Not Legal Advice</span><span style="font-size:0.78rem; color:#e2e4ed;">LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
-        </div>
-        <p>&copy; 2026 Laudo Lux, LLC. All rights reserved. Questions? <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
+        <p>&copy; 2026 Laudo Lux, LLC &nbsp;·&nbsp; <a href="/terms">Terms</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
     </footer>
-    
+
     <script>
-        const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
-        
-        async function loadPurchaseDetails() {
-            const params = new URLSearchParams(window.location.search);
-            const sessionId = params.get('session_id');
-            
-            if (!sessionId) {
-                showError();
-                return;
-            }
-            
+    function showTab(tab) {
+        ['openclaw','mcp'].forEach(function(t) {
+            document.getElementById('panel-'+t).style.display = t===tab ? 'block' : 'none';
+            var btn = document.getElementById('tab-'+t);
+            btn.classList.toggle('active', t===tab);
+        });
+    }
+
+    const API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+
+    async function loadPurchaseDetails() {
+        const params = new URLSearchParams(window.location.search);
+        const sessionId = params.get('session_id');
+        if (!sessionId) { showError(); return; }
+
+        for (let attempt = 1; attempt <= 5; attempt++) {
             try {
-                const response = await fetch(`${API_BASE}/checkout/session/${sessionId}`);
-                
-                if (!response.ok) {
-                    throw new Error('Failed to load session');
-                }
-                
-                const data = await response.json();
-                
-                // Populate the page
-                document.getElementById('email').textContent = data.email;
-                document.getElementById('credits').textContent = data.credits_purchased;
-                document.getElementById('total-credits').textContent = data.total_credits;
-                document.getElementById('license-key').textContent = data.license_key;
-                
-                // Set download link
-                document.getElementById('download-btn').href = `${API_BASE}/download/loader/${data.license_key}`;
-                
-                // Show content
+                const resp = await fetch(`${API_BASE}/checkout/session/${sessionId}`);
+                if (!resp.ok) { if (attempt < 5) { await sleep(1500); continue; } throw new Error(); }
+                const data = await resp.json();
+                document.getElementById('email').textContent = data.email || '—';
+                document.getElementById('credits').textContent = data.credits_purchased || '—';
+                document.getElementById('total-credits').textContent = data.total_credits || '—';
+                document.getElementById('license-key').textContent = data.license_key || '—';
+                document.getElementById('download-btn').href = `${API_BASE}/download/loader?session_id=${sessionId}`;
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
-                
-            } catch (error) {
-                console.error('Error:', error);
-                showError();
-            }
+                return;
+            } catch(e) { if (attempt < 5) await sleep(1500); }
         }
-        
-        function showError() {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('error').style.display = 'block';
-        }
-        
-        // Load on page ready
-        loadPurchaseDetails();
+        showError();
+    }
+
+    function showError() {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+    }
+
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    loadPurchaseDetails();
     </script>
 </body>
 </html>
