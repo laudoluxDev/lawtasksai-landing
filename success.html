@@ -35,7 +35,7 @@
         }
         
         .container {
-            max-width: 600px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -71,7 +71,7 @@
             padding: 48px;
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            max-width: 500px;
+            max-width: 680px;
             width: 100%;
         }
         
@@ -326,40 +326,137 @@
                 </a>
                 
                 <div class="instructions">
-                    <h3>Installation Instructions:</h3>
-                    <ol>
-                        <li><strong>Extract the ZIP:</strong> Double-click <code>lawtasksai.zip</code> to extract it — you'll see a folder called <code>lawtasksai</code> containing your skill files.</li>
-                        <li><strong>Easy install (recommended):</strong> Open your OpenClaw chat and type:
-                            <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-top: 8px;">I just downloaded the LawTasksAI skill file to my Downloads folder. Please find it, unzip it if needed, and install it so I can use it.</div>
-                            <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">OpenClaw will find the folder and set everything up automatically.</p>
-                        </li>
-                        <li><strong>Manual install (optional):</strong> Copy the <code>lawtasksai</code> folder into your OpenClaw skills directory:
-                            <ul style="margin-top: 8px; font-size: 0.85rem;">
-                                <li><strong>Mac/Linux:</strong> <code>~/.openclaw/skills/lawtasksai/</code></li>
-                                <li><strong>Windows:</strong> <code>C:\Users\YOU\.openclaw\skills\lawtasksai\</code></li>
-                            </ul>
-                            <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">Then restart OpenClaw so it picks up the new skill.</p>
-                        </li>
-                        <li><strong>Start using!</strong> Just ask for any legal task</li>
-                    </ol>
-                    <p style="margin-top: 16px; font-size: 0.9rem; color: #6b7280;">
-                        💡 Your license key is already configured in the download — no setup needed!
-                    </p>
-                    
-                    <h3 style="margin-top: 24px;">Example Queries:</h3>
+
+                    <!-- ── Step 1: Extract ── -->
+                    <h3>Step 1 — Extract the ZIP</h3>
+                    <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 12px;">Double-click <code>lawtasksai.zip</code> to extract it. You'll see a folder called <code>lawtasksai</code> containing two things:</p>
+                    <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem; margin-bottom: 8px;">
+                        <li><code>lawtasksai/</code> — the <strong>OpenClaw skill</strong> (SKILL.md + config)</li>
+                        <li><code>lawtasksai/mcp/</code> — the <strong>MCP server</strong> for Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 24px;">💡 Your license key is pre-configured in both — no manual entry needed.</p>
+
+                    <!-- ── Tab selector ── -->
+                    <div style="display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e5e7eb;">
+                        <button onclick="showTab('openclaw')" id="tab-openclaw"
+                            style="flex: 1; padding: 10px 16px; font-size: 0.9rem; font-weight: 600; border: none; border-bottom: 3px solid #2563eb; margin-bottom: -2px; background: white; color: #2563eb; cursor: pointer; border-radius: 6px 6px 0 0;">
+                            🤖 OpenClaw
+                        </button>
+                        <button onclick="showTab('mcp')" id="tab-mcp"
+                            style="flex: 1; padding: 10px 16px; font-size: 0.9rem; font-weight: 600; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: #f9fafb; color: #6b7280; cursor: pointer; border-radius: 6px 6px 0 0;">
+                            🔌 Claude Desktop &amp; MCP
+                        </button>
+                    </div>
+
+                    <!-- ── OpenClaw tab ── -->
+                    <div id="panel-openclaw" style="padding-top: 20px;">
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 12px;">OpenClaw is a self-hosted AI assistant that runs on your Mac, Windows PC, or Linux server. If you don't have OpenClaw yet, <a href="https://openclaw.ai" target="_blank" style="color: #2563eb;">download it here</a>.</p>
+                        <ol style="margin-left: 20px; color: #6b7280; font-size: 0.9rem;">
+                            <li style="margin-bottom: 8px;"><strong>Easy install (recommended):</strong> Open your OpenClaw chat and type:
+                                <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-top: 8px;">I just downloaded the LawTasksAI skill file to my Downloads folder. Please find it, unzip it if needed, and install it so I can use it.</div>
+                                <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">OpenClaw will find the folder and set everything up automatically.</p>
+                            </li>
+                            <li style="margin-bottom: 8px;"><strong>Manual install (optional):</strong> Copy the <code>lawtasksai</code> folder into your OpenClaw skills directory:
+                                <ul style="margin-top: 8px; font-size: 0.85rem;">
+                                    <li><strong>Mac/Linux:</strong> <code>~/.openclaw/skills/lawtasksai/</code></li>
+                                    <li><strong>Windows:</strong> <code>C:\Users\YOU\.openclaw\skills\lawtasksai\</code></li>
+                                </ul>
+                                <p style="margin-top: 6px; font-size: 0.85rem; color: #6b7280;">Then restart OpenClaw so it picks up the new skill.</p>
+                            </li>
+                            <li><strong>Start using!</strong> Just ask for any legal task in your OpenClaw chat.</li>
+                        </ol>
+                    </div>
+
+                    <!-- ── MCP tab ── -->
+                    <div id="panel-mcp" style="display: none; padding-top: 20px;">
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 16px;">The <code>lawtasksai/mcp/</code> folder contains a Python MCP server that works with <strong>Claude Desktop</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, and any other MCP stdio-compatible client.</p>
+
+                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Requirements</h4>
+                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem; margin-bottom: 16px;">
+                            <li>Python 3.10 or later — <a href="https://www.python.org/downloads/" target="_blank" style="color: #2563eb;">download here</a></li>
+                            <li>Claude Desktop, Cursor, Windsurf, or another MCP-compatible client</li>
+                        </ul>
+
+                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option A — Automatic (recommended)</h4>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">Run the included installer — it detects all installed MCP clients and configures each one automatically:</p>
+                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 8px;">
+                            cd ~/Downloads/lawtasksai/mcp<br>
+                            pip3 install -r requirements.txt<br>
+                            python3 install.py
+                        </div>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">Then restart your MCP client and look for the <strong>lawtasksai</strong> tools.</p>
+
+                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option B — Manual (Claude Desktop)</h4>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">1. Install dependencies:</p>
+                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-bottom: 12px;">
+                            cd ~/Downloads/lawtasksai/mcp<br>
+                            pip3 install -r requirements.txt
+                        </div>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">2. Open your Claude Desktop config file:</p>
+                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.85rem; margin-bottom: 8px;">
+                            <li><strong>Mac:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+                            <li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">3. Add the following inside <code>"mcpServers"</code> (create the file if it doesn't exist):</p>
+                        <div style="background: #1a1a2e; color: #34d399; padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; margin-bottom: 12px; white-space: pre-wrap;">{
+  "mcpServers": {
+    "lawtasksai": {
+      "command": "python3",
+      "args": ["/full/path/to/lawtasksai/mcp/server.py"],
+      "env": {
+        "LAWTASKSAI_LICENSE_KEY": "YOUR_LICENSE_KEY"
+      }
+    }
+  }
+}</div>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">Replace <code>/full/path/to/</code> with the actual path to your extracted folder, and <code>YOUR_LICENSE_KEY</code> with the key shown above.</p>
+
+                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">Option B — Manual (Cursor / Windsurf)</h4>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">Open <strong>Settings → MCP Servers</strong> (or edit <code>cline_mcp_settings.json</code>) and add the same JSON block shown above.</p>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 20px;">The server is standard MCP stdio — any client that supports stdio transport will work.</p>
+
+                        <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: #1a1a2e;">4. Restart &amp; verify</h4>
+                        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 8px;">After restarting your client, you should see these tools available:</p>
+                        <ul style="margin-left: 20px; color: #6b7280; font-size: 0.85rem; margin-bottom: 20px;">
+                            <li><code>lawtasksai_search</code> — find the right skill for any task</li>
+                            <li><code>lawtasksai_execute</code> — run a skill (costs 1 credit)</li>
+                            <li><code>lawtasksai_balance</code> — check remaining credits</li>
+                            <li><code>lawtasksai_categories</code> — browse all skill categories</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: #6b7280;">Try asking: <em>"What's the SOL for medical malpractice in Texas?"</em></p>
+                    </div>
+
+                    <!-- ── Example queries ── -->
+                    <h3 style="margin-top: 28px;">Example Queries</h3>
                     <ul style="margin-left: 20px; color: #6b7280; font-size: 0.9rem;">
                         <li><strong>Research:</strong> "What's the SOL for medical malpractice in Texas?"</li>
                         <li><strong>Deadlines:</strong> "Calculate response deadline for a complaint served March 1"</li>
                         <li><strong>Documents:</strong> "Analyze this NDA" (paste or attach file)</li>
                     </ul>
-                    
+
                     <div style="margin-top: 20px; padding: 16px; background: #ecfdf5; border-radius: 8px; border-left: 4px solid #10b981;">
                         <p style="font-size: 0.9rem; color: #065f46; margin: 0;">
                             <strong>🔒 Your Data Never Touches Our Servers</strong><br>
-                            LawTasksAI delivers expert analysis frameworks — your AI assistant applies them. We never see your documents or queries. For confidential work, use a local LLM or a cloud provider with a zero data retention agreement.
+                            LawTasksAI delivers expert analysis frameworks — your AI assistant applies them locally. We never see your documents or queries. For confidential work, use a local LLM or a cloud provider with a zero data retention agreement.
                         </p>
                     </div>
                 </div>
+
+                <script>
+                function showTab(tab) {
+                    document.getElementById('panel-openclaw').style.display = tab === 'openclaw' ? 'block' : 'none';
+                    document.getElementById('panel-mcp').style.display = tab === 'mcp' ? 'block' : 'none';
+                    var btnOC = document.getElementById('tab-openclaw');
+                    var btnMCP = document.getElementById('tab-mcp');
+                    if (tab === 'openclaw') {
+                        btnOC.style.borderBottomColor = '#2563eb'; btnOC.style.color = '#2563eb'; btnOC.style.background = 'white';
+                        btnMCP.style.borderBottomColor = 'transparent'; btnMCP.style.color = '#6b7280'; btnMCP.style.background = '#f9fafb';
+                    } else {
+                        btnMCP.style.borderBottomColor = '#2563eb'; btnMCP.style.color = '#2563eb'; btnMCP.style.background = 'white';
+                        btnOC.style.borderBottomColor = 'transparent'; btnOC.style.color = '#6b7280'; btnOC.style.background = '#f9fafb';
+                    }
+                }
+                </script>
             </div>
             
             <div id="error" class="error" style="display: none;">
