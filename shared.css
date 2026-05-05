@@ -1,0 +1,356 @@
+/* ============================================================
+   LawTasksAI — shared.css
+   Canonical header, footer, base typography, and nav JS behaviour.
+   Loaded on every page. redesign.css supplements (index-only sections).
+   ============================================================ */
+
+/* ---- Variables (duplicate in redesign.css for pages that load both) ---- */
+:root {
+  --blue:        #2563eb;
+  --blue-dark:   #1d4ed8;
+  --blue-light:  #dbeafe;
+  --blue-xlight: #eff6ff;
+  --ink:         #0f172a;
+  --ink-2:       #1e293b;
+  --muted:       #64748b;
+  --muted-2:     #94a3b8;
+  --border:      #e2e8f0;
+  --bg:          #f8fafc;
+  --white:       #ffffff;
+  --green:       #16a34a;
+  --amber:       #f59e0b;
+  --red:         #dc2626;
+}
+
+/* ---- Base reset & typography ---- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;          /* 16px baseline — never go below this */
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+p, li {
+  font-size: 1rem;          /* body copy: 1rem minimum */
+  line-height: 1.7;
+}
+
+small, .small, figcaption, caption {
+  font-size: 0.875rem;      /* small/secondary text: 0.875rem minimum */
+}
+
+/* ---- Layout ---- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ============================================================
+   SHARED HEADER
+   ============================================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* For pages that use class="main-header" instead of bare <header> */
+header.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Document-style page headers (mastheads, site-header) are NOT nav headers */
+header.site-header,
+header.masthead {
+  position: static;
+  background: initial;
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 12px;
+}
+
+/* ---- Logo ---- */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
+}
+.logo span { color: var(--blue); }
+
+/* ---- Nav links ---- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-links > a,
+.nav-links .dropdown-toggle {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 7px 11px;
+  border-radius: 7px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-links > a:hover,
+.nav-links .dropdown-toggle:hover {
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* ---- Dropdown ---- */
+.dropdown { position: relative; }
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+.dropdown-toggle::after {
+  content: '▾';
+  font-size: 0.7rem;
+  opacity: 0.55;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  padding: 6px;
+  z-index: 200;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+
+.dropdown-menu a {
+  display: block;
+  padding: 9px 12px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+.dropdown-menu a:hover { background: var(--bg); color: var(--ink); }
+
+/* ---- CTA button in nav ---- */
+.header-cta {
+  padding: 9px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--blue);
+  color: white !important;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.header-cta:hover { background: var(--blue-dark); }
+
+/* ---- Hamburger ---- */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 300;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  margin: 4px 0;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* ---- Mobile overlay ---- */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 150;
+}
+.mobile-overlay.active { display: block; }
+
+/* ============================================================
+   SHARED FOOTER  (.site-footer-shared)
+   ============================================================ */
+footer.site-footer-shared {
+  background: var(--ink);
+  color: #64748b;
+  padding: 48px 0 32px;
+}
+
+footer.site-footer-shared .footer-disclaimer {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 32px;
+}
+
+footer.site-footer-shared .disclaimer-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+}
+
+footer.site-footer-shared .footer-disclaimer span {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+footer.site-footer-shared .footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+
+footer.site-footer-shared .footer-brand .logo {
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+}
+
+footer.site-footer-shared .footer-brand p {
+  font-size: 0.875rem;
+  color: #64748b;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+footer.site-footer-shared .footer-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+footer.site-footer-shared .footer-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.15s;
+}
+footer.site-footer-shared .footer-links a:hover { color: white; }
+
+footer.site-footer-shared .footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+footer.site-footer-shared .footer-bottom a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+footer.site-footer-shared .footer-bottom a:hover { color: white; }
+
+/* ============================================================
+   RESPONSIVE — header & footer
+   ============================================================ */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    padding: 72px 20px 28px;
+    gap: 0;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  .nav-links.active { display: flex; }
+
+  .nav-links > a,
+  .nav-links .dropdown-toggle {
+    width: 100%;
+    padding: 12px 6px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+  }
+
+  .dropdown { width: 100%; }
+  .dropdown:hover .dropdown-menu { display: none; }
+  .dropdown.mobile-open .dropdown-menu { display: block; }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-left: 10px;
+    border-radius: 0;
+  }
+
+  .header-cta { width: 100%; text-align: center; margin-top: 12px; }
+
+  footer.site-footer-shared .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+}

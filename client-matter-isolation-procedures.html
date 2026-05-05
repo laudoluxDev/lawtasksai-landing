@@ -694,61 +694,46 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
 <header>
-        <div class="container">
-            <a href="index.html" class="logo">LawTasks<span>AI</span></a>
-            <div class="nav-links" id="navLinks">
-                <a href="skills.html">Tasks</a>
-                <a href="sample.html">Samples</a>
-                <a href="task-library.html">Task Library</a>
-                <a href="vs-chatgpt.html">Why Not ChatGPT?</a>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">Get Started</span>
-                    <div class="dropdown-menu">
-                        <a href="getting-started.html">Getting Started Guide</a>
-                        <a href="requirements.html">System Requirements</a>
-                        <a href="download.html">Download</a>
-                        <a href="index.html#pricing">Get Credits</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">ABA 1.6</span>
-                    <div class="dropdown-menu">
-                        <a href="security.html">Rule 1.6 &amp; Security</a>
-                        <a href="law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
-                        <a href="openclaw-security-guide.html">OpenClaw Security Guide</a>
-                        <a href="zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
-                        <a href="uploading-files-to-anthropic-zdr-guide.html">Uploading Files to Anthropic ZDR</a>
-                        <a href="aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
-                        <a href="aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
-                        <a href="client-matter-isolation-procedures.html">Client Matter Isolation</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">Support</span>
-                    <div class="dropdown-menu">
-                        <a href="index.html#faq">FAQ</a>
-                        <a href="getting-started.html">Getting Started</a>
-                        <a href="macmini-startup-guide.html">Mac Mini Setup Guide</a>
-                        <a href="openclaw-windows-install.html">Windows Install Guide</a>
-                        <a href="openclaw-mac-vs-windows.html">Mac vs Windows</a>
-                        <a href="macmini-security-checklist.html">Security Checklist</a>
-                        <a href="vps-security-hardening-manual.html">VPS Hardening Manual</a>
-                        <a href="secure-communications-reference.html">Secure Communications</a>
-                        <a href="terms.html">Terms of Service</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                    </div>
-                </div>
-                <a href="index.html#pricing" class="header-cta">Get Credits</a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="mobile-overlay" id="overlay"></div>
+  <div class="container">
+    <div class="header-inner">
+      <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/task-library.html">Task Library</a>
+        <a href="/sample.html">Samples</a>
+        <a href="/vs-chatgpt.html">vs ChatGPT</a>
+        <div class="dropdown">
+          <span class="dropdown-toggle">ABA 1.6</span>
+          <div class="dropdown-menu">
+            <a href="/security.html">Rule 1.6 &amp; Security</a>
+            <a href="/law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+            <a href="/zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+            <a href="/aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+            <a href="/aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+          </div>
         </div>
-    </header>
+        <div class="dropdown">
+          <span class="dropdown-toggle">Support</span>
+          <div class="dropdown-menu">
+            <a href="/index.html#faq">FAQ</a>
+            <a href="/getting-started.html">Getting Started</a>
+            <a href="/download.html">Download</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+        <a href="/signup" class="header-cta">Try Free &rarr;</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-overlay" id="overlay"></div>
+    </div>
+  </div>
+</header>
     <div style="max-width:900px;margin:0 auto;padding:3rem 2rem;font-family:Georgia,serif;line-height:1.75;color:#1a1a2e;">
         <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
           <tr>
@@ -1022,15 +1007,31 @@ Two systems require isolation: (1) the Chroma vector database used for document 
         </table>
         <p>— End of Document —</p>
     </div>
-<footer>
-        <div class="container">
-        <div style="display:inline-block; max-width:700px; margin:0 auto 16px; padding:10px 18px; background:#1a1a2e; border:1px solid #f59e0b; border-radius:6px; text-align:left;">
-            <span style="font-size:0.78rem; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.05em; margin-right:6px;">&#9888; Not Legal Advice</span><span style="font-size:0.78rem; color:#e2e4ed;">LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
-        </div>
-            <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
-            <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:support@lawtasksai.com">Contact</a></p>
-        </div>
-    </footer>
+<footer class="site-footer-shared">
+  <div class="container">
+    <div class="footer-disclaimer">
+      <span class="disclaimer-label">&#9888; Not Legal Advice</span>
+      <span>LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+        <p>AI-powered legal workflows for attorneys and legal professionals.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/task-library.html">Task Library</a>
+        <a href="/getting-started.html">Getting Started</a>
+        <a href="/security.html">ABA Rule 1.6</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LawTasksAI &nbsp;&middot;&nbsp; <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
+    </div>
+  </div>
+</footer>
     
     <script>
         // Mobile nav
