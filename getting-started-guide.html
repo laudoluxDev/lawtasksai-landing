@@ -320,8 +320,46 @@
             a { color: #1a1a2e; }
         }
     </style>
+    <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/task-library.html">Task Library</a>
+        <a href="/sample.html">Samples</a>
+        <a href="/vs-chatgpt.html">vs ChatGPT</a>
+        <div class="dropdown">
+          <span class="dropdown-toggle">ABA 1.6</span>
+          <div class="dropdown-menu">
+            <a href="/security.html">Rule 1.6 &amp; Security</a>
+            <a href="/law-firm-claude-security-guide.html">Law Firm Claude Security Guide</a>
+            <a href="/zdr-aba-compliance-guide.html">ZDR ABA Compliance Guide</a>
+            <a href="/aba-formal-opinion-512.html">ABA Formal Opinion 512</a>
+            <a href="/aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span class="dropdown-toggle">Support</span>
+          <div class="dropdown-menu">
+            <a href="/index.html#faq">FAQ</a>
+            <a href="/getting-started.html">Getting Started</a>
+            <a href="/download.html">Download</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+        <a href="/signup" class="header-cta">Try Free &rarr;</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-overlay" id="overlay"></div>
+    </div>
+  </div>
+</header>
 
 <!-- Page 1: Cover -->
 <div class="page cover">
@@ -632,13 +670,75 @@
     <p class="cta-features"><a href="https://lawtasksai.com/skills" target="_blank">200+ legal tasks</a> • Pay-per-use • Private & secure</p>
 </div>
 
-<footer style="text-align: center; padding: 40px 0; background: #f9fafb; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem;">
-        <div style="display:inline-block; max-width:700px; margin:0 auto 16px; padding:10px 18px; background:#1a1a2e; border:1px solid #f59e0b; border-radius:6px; text-align:left;">
-            <span style="font-size:0.78rem; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.05em; margin-right:6px;">&#9888; Not Legal Advice</span><span style="font-size:0.78rem; color:#e2e4ed;">LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
-        </div>
-    <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
-    <p><a href="terms.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Terms of Service</a> · <a href="privacy.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Privacy Policy</a> · <a href="security.html" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Rule 1.6 &amp; Security</a> · <a href="mailto:support@lawtasksai.com" style="color: #6b7280; text-decoration: none; margin: 0 15px;">Contact</a></p>
+<footer class="site-footer-shared">
+  <div class="container">
+    <div class="footer-disclaimer">
+      <span class="disclaimer-label">&#9888; Not Legal Advice</span>
+      <span>LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
+        <p>AI-powered legal workflows for attorneys and legal professionals.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/task-library.html">Task Library</a>
+        <a href="/getting-started.html">Getting Started</a>
+        <a href="/security.html">ABA Rule 1.6</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LawTasksAI &nbsp;&middot;&nbsp; <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
+    </div>
+  </div>
 </footer>
 
+<script>
+(function() {
+  // ---- Shared mobile nav ----
+  var hamburger = document.getElementById('hamburger');
+  var navLinks  = document.getElementById('navLinks');
+  var overlay   = document.getElementById('overlay');
+  if (!hamburger || !navLinks || !overlay) return;
+
+  function toggleNav() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    overlay.classList.toggle('active');
+  }
+  hamburger.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', toggleNav);
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (navLinks.classList.contains('active')) toggleNav();
+    });
+  });
+
+  // Mobile dropdown tap
+  document.querySelectorAll('.dropdown-toggle').forEach(function(t) {
+    t.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.stopPropagation();
+        this.parentElement.classList.toggle('mobile-open');
+      }
+    });
+  });
+  if (window.innerWidth > 768) {
+    document.querySelectorAll('.dropdown').forEach(function(d) {
+      d.addEventListener('mouseenter', function() {
+        var m = d.querySelector('.dropdown-menu');
+        if (m) m.style.display = 'block';
+      });
+      d.addEventListener('mouseleave', function() {
+        var m = d.querySelector('.dropdown-menu');
+        if (m) m.style.display = '';
+      });
+    });
+  }
+})();
+</script>
 </body>
 </html>
