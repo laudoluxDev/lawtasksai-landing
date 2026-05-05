@@ -63,7 +63,7 @@
         }
         
         .nav-links > a {
-            color: #4b5563;
+            color: #374151;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
@@ -93,7 +93,7 @@
         }
         
         .dropdown-toggle {
-            color: #4b5563;
+            color: #374151;
             text-decoration: none;
             font-weight: 500;
             cursor: pointer;
@@ -110,7 +110,7 @@
         
         .dropdown-toggle::after {
             content: '▾';
-            font-size: 0.75rem;
+            font-size: 0.9rem;
         }
         
         .dropdown-menu {
@@ -135,7 +135,7 @@
         .dropdown-menu a {
             display: block;
             padding: 10px 16px;
-            color: #4b5563;
+            color: #374151;
             text-decoration: none;
             font-size: 0.9rem;
             transition: all 0.2s;
@@ -214,7 +214,7 @@
         }
         
         .subtitle {
-            color: #6b7280;
+            color: #374151;
             text-align: center;
             margin-bottom: 24px;
         }
@@ -235,7 +235,7 @@
             cursor: pointer;
             text-align: center;
             font-weight: 500;
-            color: #6b7280;
+            color: #374151;
             transition: all 0.2s;
         }
         
@@ -265,8 +265,8 @@
         input:focus { outline: none; border-color: #2563eb; }
         
         .input-hint {
-            font-size: 0.85rem;
-            color: #9ca3af;
+            font-size: 0.9rem;
+            color: #6b7280;
             margin-top: 6px;
         }
         
@@ -330,7 +330,7 @@
         
         .stat-label {
             font-size: 0.9rem;
-            color: #6b7280;
+            color: #374151;
             margin-top: 4px;
         }
         
@@ -359,7 +359,7 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             white-space: nowrap;
         }
         
@@ -382,12 +382,12 @@
         .purchases-table th {
             font-weight: 600;
             color: #374151;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
         }
         
         .purchases-table td {
-            color: #4b5563;
+            color: #374151;
         }
         
         .invoice-link {
@@ -399,7 +399,7 @@
         .invoice-link:hover { text-decoration: underline; }
         
         .logout-btn {
-            color: #6b7280;
+            color: #374151;
             background: none;
             border: none;
             cursor: pointer;
@@ -412,10 +412,10 @@
             padding: 40px 24px;
             text-align: center;
             color: #d1d5e8;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
         
-        footer a { color: #6b7280; }
+        footer a { color: #374151; }
         
         @media (max-width: 768px) {
             .hamburger {
@@ -484,7 +484,7 @@
         
         @media (max-width: 600px) {
             .license-box { flex-direction: column; }
-            .purchases-table { font-size: 0.85rem; }
+            .purchases-table { font-size: 0.9rem; }
             .purchases-table th, .purchases-table td { padding: 8px; }
         }
     </style>
@@ -519,7 +519,7 @@
             <a href="/privacy.html">Privacy Policy</a>
           </div>
         </div>
-        <a href="/signup" class="header-cta">Try Free &rarr;</a>
+        <a href="/#pricing" class="header-cta">Buy Credits</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -599,7 +599,7 @@
                         </tr>
                     </thead>
                     <tbody id="purchases-body">
-                        <tr><td colspan="4" style="text-align: center; color: #9ca3af;">Loading...</td></tr>
+                        <tr><td colspan="4" style="text-align: center; color: #6b7280;">Loading...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -788,11 +788,11 @@
                     renderPurchases(purchases);
                 } else {
                     document.getElementById('purchases-body').innerHTML = 
-                        '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchase history available.</td></tr>';
+                        '<tr><td colspan="4" style="text-align: center; color: #6b7280;">No purchase history available.</td></tr>';
                 }
             } catch (e) {
                 document.getElementById('purchases-body').innerHTML = 
-                    '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">Could not load purchase history.</td></tr>';
+                    '<tr><td colspan="4" style="text-align: center; color: #6b7280;">Could not load purchase history.</td></tr>';
             }
             
             // Load total purchased
@@ -812,7 +812,7 @@
         function renderPurchases(purchases) {
             const tbody = document.getElementById('purchases-body');
             if (!purchases || purchases.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #9ca3af;">No purchases yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #6b7280;">No purchases yet.</td></tr>';
                 return;
             }
             

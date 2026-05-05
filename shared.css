@@ -29,10 +29,10 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 1.0625rem;     /* 17px baseline */
+  font-size: 1.0625rem !important;  /* 17px baseline */
   font-weight: 450;
   line-height: 1.7;
-  color: var(--ink);
+  color: #0f172a !important;
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,7 +44,7 @@ p, li {
 }
 
 small, .small, figcaption, caption {
-  font-size: 0.875rem;      /* small/secondary text: 0.875rem minimum */
+  font-size: 0.95rem;      /* small/secondary text: 0.875rem minimum */
 }
 
 /* ---- Layout ---- */
@@ -144,7 +144,7 @@ header.masthead {
 }
 .dropdown-toggle::after {
   content: '▾';
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   opacity: 0.55;
 }
 
@@ -168,7 +168,7 @@ header.masthead {
   padding: 9px 12px;
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   border-radius: 6px;
   transition: all 0.15s;
 }
@@ -238,7 +238,7 @@ footer.site-footer-shared .footer-disclaimer {
 }
 
 footer.site-footer-shared .disclaimer-label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--amber);
   text-transform: uppercase;
@@ -247,7 +247,7 @@ footer.site-footer-shared .disclaimer-label {
 }
 
 footer.site-footer-shared .footer-disclaimer span {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: #94a3b8;
 }
 
@@ -266,7 +266,7 @@ footer.site-footer-shared .footer-brand .logo {
 }
 
 footer.site-footer-shared .footer-brand p {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: #64748b;
   max-width: 300px;
   line-height: 1.6;
@@ -282,7 +282,7 @@ footer.site-footer-shared .footer-links {
 footer.site-footer-shared .footer-links a {
   color: #64748b;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   transition: color 0.15s;
 }
 footer.site-footer-shared .footer-links a:hover { color: white; }
@@ -290,7 +290,7 @@ footer.site-footer-shared .footer-links a:hover { color: white; }
 footer.site-footer-shared .footer-bottom {
   border-top: 1px solid #1e293b;
   padding-top: 20px;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: #475569;
 }
 
