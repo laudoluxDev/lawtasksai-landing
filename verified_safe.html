@@ -18,8 +18,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/shared.css">
     <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; color: #1e293b; background: #fff; }
+        a { color: inherit; }
+
+        /* ── Header ── */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: #10b981; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #10b981; }
+        .hamburger { display: none; }
+        .mobile-overlay { display: none; }
+
+        /* ── Layout ── */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
         .vs-hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -326,25 +372,25 @@
     </div>
 </section>
 
-<footer class="site-footer-shared">
-  <div class="container">
-    <div class="footer-disclaimer">
-      <span class="disclaimer-label">&#9888; Not Professional Advice</span>
-      <span>LawTasksAI is software that assists Attorneys, paralegals, and legal professionals with their work. It is not a licensed professional service and does not provide professional advice. Always apply your own professional review and judgment to any output. Laudo Lux, LLC.</span>
-    </div>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
-        <p>AI-powered workflows for Attorneys, paralegals, and legal professionals.</p>
+<footer style="background:#0f172a;color:#94a3b8;padding:48px 24px 32px;margin-top:60px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <p style="font-size:0.82rem;color:#64748b;border:1px solid #1e293b;border-radius:8px;padding:12px 16px;margin-bottom:32px;">
+      &#9888; <strong style="color:#94a3b8;">Not Professional Advice</strong> &mdash;
+      LawTasksAI is software that assists Attorneys, paralegals, and legal professionals with administrative work. It is not a licensed professional service and does not provide professional advice. Always apply your own professional review and judgment. Laudo Lux, LLC.
+    </p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;margin-bottom:32px;">
+      <div>
+        <a href="/index.html" style="font-size:1.1rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-0.02em;">LawTasks<span>AI</span></a>
+        <p style="margin-top:8px;font-size:0.88rem;">AI-powered workflows for Attorneys, paralegals, and legal professionals.</p>
       </div>
-      <div class="footer-links">
-        <a href="/index.html">Home</a>
-        <a href="/verified_safe.html">Verified Safe</a>
-        <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="/index.html" style="color:#94a3b8;text-decoration:none;font-size:0.9rem;">Home</a>
+        <a href="/verified_safe.html" style="color:#94a3b8;text-decoration:none;font-size:0.9rem;">Verified Safe</a>
+        <a href="mailto:hello@lawtasksai.com" style="color:#94a3b8;text-decoration:none;font-size:0.9rem;">hello@lawtasksai.com</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Laudo Lux, LLC &nbsp;&middot;&nbsp; <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
+    <div style="border-top:1px solid #1e293b;padding-top:20px;font-size:0.82rem;color:#475569;">
+      &copy; 2026 Laudo Lux, LLC &nbsp;&middot;&nbsp; <a href="mailto:hello@lawtasksai.com" style="color:#475569;">hello@lawtasksai.com</a>
     </div>
   </div>
 </footer>
