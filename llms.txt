@@ -29,7 +29,7 @@ LawTasksAI provides 202 AI-powered legal tasks (skills) for solo attorneys and s
 | Standard | 250 | $20 | $0.08 |
 | Bulk | 750 | $50 | $0.067 |
 
-Most tasks cost 1-2 credits. Document analysis tasks cost 10-15 credits.
+Every task costs 1 credit.
 
 ## Example Tasks
 
