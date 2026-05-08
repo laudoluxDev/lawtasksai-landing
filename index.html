@@ -89,7 +89,7 @@
           .law-demo-dots span:nth-child(2){background:#f59e0b;}
           .law-demo-dots span:nth-child(3){background:#22c55e;}
           .law-demo-title { font-size:0.78rem;color:#94a3b8;letter-spacing:0.02em; }
-          .law-demo-body { padding:24px 22px 22px; min-height:148px; }
+          .law-demo-body { padding:24px 22px 22px; min-height:220px; }
           .law-demo-slide { display:none; flex-direction:column; gap:14px; }
           .law-demo-slide.active { display:flex; }
           .law-demo-prompt {
@@ -111,8 +111,15 @@
           .law-step-skill  { background:#1e293b; color:#94a3b8; }
           .law-step-skill strong { color:#e2e8f0; font-weight:600; }
           .law-product-name { color:#2563eb; font-weight:600; }
-          .law-step-output { background:#052e16; color:#86efac; }
-          .law-step-output .law-check { color:#22c55e; font-weight:700; flex-shrink:0; }
+          .law-step-output { background:#052e16; color:#86efac; flex-direction:column; gap:8px; align-items:stretch; }
+          .law-output-header { display:flex; align-items:center; gap:8px; }
+          .law-output-header .law-check { color:#22c55e; font-weight:700; flex-shrink:0; }
+          .law-output-detail { display:flex; flex-direction:column; gap:6px; padding-left:4px; }
+          .law-chips { display:flex; flex-wrap:wrap; gap:5px; }
+          .law-chip { background:#0f4c2a; color:#4ade80; font-size:0.72rem; padding:2px 8px; border-radius:20px; border:1px solid #166534; font-family:inherit; }
+          .law-chip-more { color:#86efac; background:transparent; border-color:#166534; }
+          .law-filename { font-size:0.75rem; color:#6ee7b7; letter-spacing:0.01em; }
+          .law-preview { font-size:0.75rem; color:#86efac; font-style:italic; line-height:1.5; opacity:0.85; }
           .law-demo-slide.phase-skill  .law-step-skill  { display:flex; }
           .law-demo-slide.phase-output .law-step-skill  { display:flex; }
           .law-demo-slide.phase-output .law-step-output { display:flex; }
@@ -151,8 +158,12 @@
                 <span>Loading <span class="law-product-name">LawTasksAI</span>: <strong>Demand Letter &mdash; Personal Injury</strong></span>
               </div>
               <div class="law-step law-step-output">
-                <span class="law-check">&#10003;</span>
-                <span><span class="law-product-name">LawTasksAI</span> response ready</span>
+                <div class="law-output-header"><span class="law-check">&#10003;</span><span><span class="law-product-name">LawTasksAI</span> response ready</span></div>
+                <div class="law-output-detail">
+                  <div class="law-chips"><span class="law-chip">Jurisdiction auto-set</span><span class="law-chip">Damages breakdown</span><span class="law-chip">30-day deadline</span><span class="law-chip law-chip-more">+ more</span></div>
+                  <div class="law-filename">&#128196; demand_letter_personal_injury_<span class="law-ts"></span>.docx</div>
+                  <div class="law-preview">&ldquo;Pursuant to Colorado Revised Statutes, demand is hereby made for $185,000 representing medical expenses, lost wages...&rdquo;</div>
+                </div>
               </div>
             </div>
             <div class="law-demo-slide" data-index="1">
@@ -165,8 +176,12 @@
                 <span>Loading <span class="law-product-name">LawTasksAI</span>: <strong>Statute of Limitations Analyzer</strong></span>
               </div>
               <div class="law-step law-step-output">
-                <span class="law-check">&#10003;</span>
-                <span><span class="law-product-name">LawTasksAI</span> response ready</span>
+                <div class="law-output-header"><span class="law-check">&#10003;</span><span><span class="law-product-name">LawTasksAI</span> response ready</span></div>
+                <div class="law-output-detail">
+                  <div class="law-chips"><span class="law-chip">Colorado SOL rules</span><span class="law-chip">Tolling exceptions</span><span class="law-chip">Discovery rule</span><span class="law-chip law-chip-more">+ more</span></div>
+                  <div class="law-filename">&#128196; sol_analysis_breach_of_contract_<span class="law-ts"></span>.docx</div>
+                  <div class="law-preview">&ldquo;Under C.R.S. &sect; 13-80-101, the applicable statute of limitations for breach of written contract is 3 years from...&rdquo;</div>
+                </div>
               </div>
             </div>
             <div class="law-demo-slide" data-index="2">
@@ -179,8 +194,12 @@
                 <span>Loading <span class="law-product-name">LawTasksAI</span>: <strong>Deposition Summary Writer</strong></span>
               </div>
               <div class="law-step law-step-output">
-                <span class="law-check">&#10003;</span>
-                <span><span class="law-product-name">LawTasksAI</span> response ready</span>
+                <div class="law-output-header"><span class="law-check">&#10003;</span><span><span class="law-product-name">LawTasksAI</span> response ready</span></div>
+                <div class="law-output-detail">
+                  <div class="law-chips"><span class="law-chip">Chronological order</span><span class="law-chip">Key admissions flagged</span><span class="law-chip">Credibility notes</span><span class="law-chip law-chip-more">+ more</span></div>
+                  <div class="law-filename">&#128196; deposition_summary_exhibit14_<span class="law-ts"></span>.docx</div>
+                  <div class="law-preview">&ldquo;Witness testified at lines 42–67 that he had not reviewed the contract prior to signing, contradicting earlier...&rdquo;</div>
+                </div>
               </div>
             </div>
           </div>
@@ -193,11 +212,20 @@
 
         <script>
         (function(){
+          var now = new Date();
+          var ts  = now.getFullYear().toString()
+                  + String(now.getMonth()+1).padStart(2,'0')
+                  + String(now.getDate()).padStart(2,'0')
+                  + '_'
+                  + String(now.getHours()).padStart(2,'0')
+                  + String(now.getMinutes()).padStart(2,'0');
+          document.querySelectorAll('.law-ts').forEach(function(el){ el.textContent = ts; });
+
           var slides = document.querySelectorAll('.law-demo-slide');
           var dots   = document.querySelectorAll('.law-demo-dot');
           if (!slides.length) return;
           var current = 0;
-          var PHASES = [800, 900, 1100, 2200];
+          var PHASES = [800, 900, 1100, 3500];
           function showSlide(idx) {
             slides.forEach(function(s,i){
               s.classList.toggle('active', i===idx);
