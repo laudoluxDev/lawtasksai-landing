@@ -491,8 +491,8 @@ header {
 /* ---- TRUST / PRIVACY ---- */
 .trust-section {
   padding: 96px 0;
-  background: var(--ink-2);
-  color: white;
+  background: color-mix(in srgb, var(--blue) 8%, white);
+  color: var(--ink);
 }
 .trust-inner {
   display: grid;
@@ -505,16 +505,17 @@ header {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
+  background: white;
+  border: 1px solid color-mix(in srgb, var(--blue) 25%, #e5e7eb);
   border-radius: 12px;
   padding: 16px 18px;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--blue) 10%, transparent);
 }
-.trust-badge:hover { background: rgba(255,255,255,0.08); }
+.trust-badge:hover { background: #f8faff; box-shadow: 0 4px 16px color-mix(in srgb, var(--blue) 15%, transparent); }
 .tbadge-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-.trust-badge h4 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 4px; }
-.trust-badge p  { font-size: 0.95rem; color: #94a3b8; line-height: 1.55; }
+.trust-badge h4 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.trust-badge p  { font-size: 0.95rem; color: var(--muted); line-height: 1.55; }
 
 .trust-stats-grid {
   display: grid;
