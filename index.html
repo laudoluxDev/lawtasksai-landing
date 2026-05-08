@@ -54,8 +54,8 @@
         <h1>Draft a demand letter<br>in <span class="accent">2 minutes.</span><br>Not 2 hours.</h1>
         <p class="hero-sub">200+ expert legal workflows. Pick a task, answer a few questions, get attorney-ready output &mdash; without writing a single prompt.</p>
         <div class="hero-actions">
-          <a href="/#pricing" class="btn-primary">Buy Credits &rarr;</a>
-          <a href="task-library.html" class="btn-secondary">Browse All 200+ Tasks</a>
+          <a href="/signup" class="btn-primary">Try Free &mdash; 5 Credits, No Card &rarr;</a>
+          <a href="task-library.html" class="btn-secondary">Browse All 206 Tasks</a>
         </div>
         <div class="hero-meta">
           <span class="hero-meta-item">5 free credits on signup</span>
@@ -65,72 +65,161 @@
       </div>
       <!-- Hero Visual -->
       <div class="hero-visual" aria-hidden="true">
-        <div class="hero-card">
-          <div class="hero-card-header">
-            <div class="hero-card-dots"><span></span><span></span><span></span></div>
-            <span class="hero-card-title">LawTasksAI &mdash; Demand Letter</span>
+        <style>
+          .law-demo-card {
+            background: #0f172a;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+            overflow: hidden;
+            font-family: 'Menlo','Monaco','Consolas',monospace;
+          }
+          .law-demo-header {
+            background: #1e293b;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #334155;
+          }
+          .law-demo-dots { display:flex; gap:6px; }
+          .law-demo-dots span { width:12px;height:12px;border-radius:50%;display:block; }
+          .law-demo-dots span:nth-child(1){background:#ef4444;}
+          .law-demo-dots span:nth-child(2){background:#f59e0b;}
+          .law-demo-dots span:nth-child(3){background:#22c55e;}
+          .law-demo-title { font-size:0.78rem;color:#94a3b8;letter-spacing:0.02em; }
+          .law-demo-body { padding:24px 22px 22px; min-height:148px; }
+          .law-demo-slide { display:none; flex-direction:column; gap:14px; }
+          .law-demo-slide.active { display:flex; }
+          .law-demo-prompt {
+            display:flex; align-items:baseline; gap:8px;
+            color:#e2e8f0; font-size:0.92rem; line-height:1.5;
+          }
+          .law-caret { color:#2563eb; font-weight:700; flex-shrink:0; }
+          .law-cursor { color:#2563eb; animation: lawblink 0.9s step-end infinite; }
+          .law-demo-slide.phase-skill .law-cursor,
+          .law-demo-slide.phase-output .law-cursor { display:none; }
+          @keyframes lawblink { 0%,100%{opacity:1} 50%{opacity:0} }
+          .law-step {
+            display:none; align-items:center; gap:10px;
+            font-size:0.83rem; line-height:1.5;
+            padding:8px 12px; border-radius:6px;
+            animation: lawFade 0.35s ease;
+          }
+          @keyframes lawFade { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+          .law-step-skill  { background:#1e293b; color:#94a3b8; }
+          .law-step-skill strong { color:#e2e8f0; font-weight:600; }
+          .law-step-output { background:#052e16; color:#86efac; }
+          .law-step-output .law-check { color:#22c55e; font-weight:700; flex-shrink:0; }
+          .law-demo-slide.phase-skill  .law-step-skill  { display:flex; }
+          .law-demo-slide.phase-output .law-step-skill  { display:flex; }
+          .law-demo-slide.phase-output .law-step-output { display:flex; }
+          .law-spinner {
+            width:13px;height:13px;
+            border:2px solid #334155;
+            border-top-color:#2563eb;
+            border-radius:50%;flex-shrink:0;
+            animation:lawspin 0.7s linear infinite;
+          }
+          .law-demo-slide.phase-output .law-spinner {
+            border-top-color:#22c55e;animation:none;border-color:#22c55e;
+          }
+          @keyframes lawspin { to{transform:rotate(360deg)} }
+          .law-demo-indicators { display:flex; gap:8px; justify-content:center; margin-top:14px; }
+          .law-demo-dot {
+            width:8px;height:8px;border-radius:50%;background:#cbd5e1;
+            cursor:pointer;transition:background 0.2s,transform 0.2s;
+          }
+          .law-demo-dot.active { background:#2563eb; transform:scale(1.3); }
+        </style>
+
+        <div class="law-demo-card">
+          <div class="law-demo-header">
+            <div class="law-demo-dots"><span></span><span></span><span></span></div>
+            <span class="law-demo-title">LawTasksAI</span>
           </div>
-          <div class="hero-card-body">
-            <div class="task-row done-row">
-              <span class="task-icon">&#128203;</span>
-              <div class="task-info">
-                <div class="task-name">Task selected: Demand Letter &mdash; Personal Injury</div>
-                <div class="task-status done">&#10003; Ready</div>
+          <div class="law-demo-body">
+            <div class="law-demo-slide" data-index="0">
+              <div class="law-demo-prompt">
+                <span class="law-caret">&gt;</span>
+                <span>Draft a demand letter for a personal injury claim</span><span class="law-cursor">|</span>
               </div>
-              <span class="task-time">:00</span>
-            </div>
-            <div class="task-row done-row">
-              <span class="task-icon">&#128172;</span>
-              <div class="task-info">
-                <div class="task-name">Answered 6 guided questions</div>
-                <div class="task-status done">&#10003; Complete</div>
+              <div class="law-step law-step-skill">
+                <span class="law-spinner"></span>
+                <span>Loading: <strong>Demand Letter &mdash; Personal Injury</strong></span>
               </div>
-              <span class="task-time">:45</span>
-            </div>
-            <div class="task-row active-row">
-              <span class="task-icon">&#9889;</span>
-              <div class="task-info">
-                <div class="task-name active-text">Generating attorney-ready output&hellip;</div>
-                <div class="task-status processing">Processing</div>
+              <div class="law-step law-step-output">
+                <span class="law-check">&#10003;</span>
+                <span>Attorney-ready demand letter generated</span>
               </div>
-              <span class="task-time">1:12</span>
             </div>
-            <div class="hero-output">
-              <div class="hero-output-label">&#10003; Output ready &mdash; 1 credit used</div>
-              <p>Demand letter drafted with damages breakdown, liability summary, settlement demand of $185,000, and 30-day response deadline. 847 words. Ready to review and send.</p>
+            <div class="law-demo-slide" data-index="1">
+              <div class="law-demo-prompt">
+                <span class="law-caret">&gt;</span>
+                <span>Research the statute of limitations in Colorado for breach of contract</span><span class="law-cursor">|</span>
+              </div>
+              <div class="law-step law-step-skill">
+                <span class="law-spinner"></span>
+                <span>Loading: <strong>Statute of Limitations Analyzer</strong></span>
+              </div>
+              <div class="law-step law-step-output">
+                <span class="law-check">&#10003;</span>
+                <span>Jurisdiction-verified deadline calculated</span>
+              </div>
             </div>
-            <div class="hero-timer">&#8987; Total time: 1 minute 58 seconds</div>
+            <div class="law-demo-slide" data-index="2">
+              <div class="law-demo-prompt">
+                <span class="law-caret">&gt;</span>
+                <span>Summarize deposition testimony from exhibit 14</span><span class="law-cursor">|</span>
+              </div>
+              <div class="law-step law-step-skill">
+                <span class="law-spinner"></span>
+                <span>Loading: <strong>Deposition Summary Writer</strong></span>
+              </div>
+              <div class="law-step law-step-output">
+                <span class="law-check">&#10003;</span>
+                <span>Structured deposition summary ready</span>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="law-demo-indicators">
+          <span class="law-demo-dot active" data-dot="0"></span>
+          <span class="law-demo-dot" data-dot="1"></span>
+          <span class="law-demo-dot" data-dot="2"></span>
+        </div>
+
+        <script>
+        (function(){
+          var slides = document.querySelectorAll('.law-demo-slide');
+          var dots   = document.querySelectorAll('.law-demo-dot');
+          if (!slides.length) return;
+          var current = 0;
+          var PHASES = [800, 900, 1100, 2200];
+          function showSlide(idx) {
+            slides.forEach(function(s,i){
+              s.classList.toggle('active', i===idx);
+              s.classList.remove('phase-skill','phase-output');
+            });
+            dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+            var s = slides[idx];
+            setTimeout(function(){ s.classList.add('phase-skill');  }, PHASES[0]);
+            setTimeout(function(){ s.classList.add('phase-output'); }, PHASES[0]+PHASES[1]);
+          }
+          function next() { current=(current+1)%slides.length; showSlide(current); }
+          showSlide(0);
+          setInterval(next, PHASES[0]+PHASES[1]+PHASES[2]+PHASES[3]);
+          dots.forEach(function(d,i){ d.addEventListener('click',function(){ current=i; showSlide(i); }); });
+        })();
+        </script>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<section class="social-proof">
-  <div class="container">
-    <p class="section-eyebrow">What attorneys are saying</p>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote">"Knocked out a statute of limitations research memo in under 3 minutes. Used to take me 45."</p>
-        <p class="attr">— Solo practitioner, personal injury &middot; Colorado</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote">"The jurisdiction-specific guardrails are what sold me. Generic AI gets Texas deadlines wrong. This doesn't."</p>
-        <p class="attr">— Family law attorney &middot; Texas</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote">"Finally &mdash; AI that actually understands discovery rules instead of making them up."</p>
-        <p class="attr">— Litigation associate, small firm &middot; New York</p>
-      </div>
-    </div>
-    <p class="testimonial-note">* Replace with verified testimonials from actual customers</p>
-  </div>
-</section>
+<!-- SOCIAL PROOF: hidden until real testimonials are collected -->
+<!-- <section class="social-proof"> ... </section> -->
 
 <!-- HOW IT WORKS -->
 <section class="how-it-works">
@@ -279,7 +368,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Try it risk-free</li>
+          <li>No credit card required</li>
         </ul>
         <button onclick="checkout('peek')" class="buy-btn">Take a Peek</button>
       </div>
@@ -291,7 +380,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Perfect for getting started</li>
+          <li>Try a full week of tasks</li>
         </ul>
         <button onclick="checkout('trial')" class="buy-btn">Get Started</button>
       </div>
@@ -303,7 +392,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Great for regular use</li>
+          <li>Covers a busy litigation month</li>
         </ul>
         <button onclick="checkout('essentials')" class="buy-btn">Get Credits</button>
       </div>
@@ -316,7 +405,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Best for active practices</li>
+          <li>Best for active practices &amp; small firms</li>
         </ul>
         <button onclick="checkout('accelerator')" class="buy-btn">Get Credits</button>
       </div>
@@ -331,7 +420,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Serious savings for busy firms</li>
+          <li>Covers a full quarter for busy practices</li>
         </ul>
         <button onclick="checkout('efficient')" class="buy-btn">Get Credits</button>
       </div>
@@ -343,7 +432,7 @@
         <ul class="pricing-perks">
           <li>Access to all 200+ tasks</li>
           <li>Credits never expire</li>
-          <li>Maximum value</li>
+          <li>Maximum value for high-volume firms</li>
         </ul>
         <button onclick="checkout('unstoppable')" class="buy-btn">Get Credits</button>
       </div>
