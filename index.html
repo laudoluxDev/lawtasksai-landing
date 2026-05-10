@@ -69,7 +69,8 @@
           .law-demo-card {
             background: #0f172a;
             border-radius: 12px;
-            width: 100%;
+            width: 480px;
+            min-width: 480px;
             max-width: 480px;
             box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
             overflow: hidden;
@@ -89,7 +90,7 @@
           .law-demo-dots span:nth-child(2){background:#f59e0b;}
           .law-demo-dots span:nth-child(3){background:#22c55e;}
           .law-demo-title { font-size:0.78rem;color:#94a3b8;letter-spacing:0.02em; }
-          .law-demo-body { padding:24px 22px 22px; min-height:220px; }
+          .law-demo-body { padding:24px 22px 22px; height:300px; overflow:hidden; }
           .law-demo-slide { display:none; flex-direction:column; gap:14px; }
           .law-demo-slide.active { display:flex; }
           .law-demo-prompt {
@@ -255,27 +256,33 @@
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">How it works</p>
-      <h2 class="section-title">Three steps. Attorney-ready output.</h2>
-      <p class="section-sub">No prompt engineering. No generic AI guessing. Just structured workflows built by legal experts.</p>
+      <h2 class="section-title">From Question to Professional Output in Seconds</h2>
+      <p class="section-sub">No setup wizards. No prompt libraries to memorize. Just open the task, answer a few questions, and get the output you need.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-number">1</div>
-        <div class="step-icon">&#128269;</div>
-        <h3>Pick your task</h3>
-        <p>Browse 200+ expert-built legal workflows &mdash; demand letters, SOL research, discovery drafts, deposition summaries, and more. Every one designed for a specific legal task.</p>
+        <div class="step-icon">&#128640;</div>
+        <h3>Install the Plugin</h3>
+        <p>Download LawTasksAI and install it in OpenClaw, Claude Desktop, or any MCP-compatible AI client. Takes under 5 minutes.</p>
       </div>
       <div class="step-card">
         <div class="step-number">2</div>
-        <div class="step-icon">&#128172;</div>
-        <h3>Answer a few questions</h3>
-        <p>The workflow guides you through exactly what it needs &mdash; jurisdiction, facts, parties, dates. No vague prompts. Structured inputs produce consistent, reliable output.</p>
+        <div class="step-icon">&#129302;</div>
+        <h3>206+ Tasks That Find Themselves</h3>
+        <p>Tell your AI what you need. It selects the right task automatically &mdash; from a library of 206+ purpose-built legal workflows. No browsing. No guessing. Just results.</p>
       </div>
       <div class="step-card">
         <div class="step-number">3</div>
+        <div class="step-icon">&#128172;</div>
+        <h3>Provide Your Details</h3>
+        <p>The task asks you the right questions &mdash; jurisdiction, facts, parties, dates. You fill in the specifics. No prompt engineering required.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
         <div class="step-icon">&#128196;</div>
-        <h3>Get your output</h3>
-        <p>Receive formatted, attorney-ready documents: research memos, draft letters, deadline calculations, discovery requests &mdash; organized for your review and signature.</p>
+        <h3>Get Attorney-Ready Output</h3>
+        <p>Receive formatted documents: demand letters, SOL research memos, discovery drafts, deposition summaries &mdash; organized for your review and signature.</p>
       </div>
     </div>
   </div>
@@ -389,6 +396,7 @@
     <p class="pricing-note">Credits never expire.* By purchasing, you agree to our <a href="terms.html" target="_blank">Terms of Service</a>.</p>
 
     <div class="pricing-grid">
+      <!-- PEEK TIER HIDDEN — testing only, restore when needed
       <div class="pricing-card">
         <div class="pricing-card-name">Peek</div>
         <div class="pricing-price">$5</div>
@@ -401,6 +409,7 @@
         </ul>
         <button onclick="checkout('peek')" class="buy-btn">Take a Peek</button>
       </div>
+      END PEEK TIER -->
       <div class="pricing-card" id="trial-card">
         <div class="pricing-card-name">Trial</div>
         <div class="pricing-price">$20</div>
