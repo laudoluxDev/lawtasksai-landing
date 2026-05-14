@@ -442,7 +442,7 @@ header {
 }
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
   position: relative;
 }
@@ -450,8 +450,8 @@ header {
   content: '';
   position: absolute;
   top: 34px;
-  left: calc(16.67% + 20px);
-  right: calc(16.67% + 20px);
+  left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
   height: 2px;
   background: linear-gradient(90deg, var(--blue-light), var(--blue), var(--blue-light));
   z-index: 0;

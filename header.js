@@ -42,6 +42,7 @@
     '            <a href="/aba-ethics-guidance-ai.html">ABA Ethics Guidance on AI</a>',
     '          </div>',
     '        </div>',
+    '        ' + navLink('/blog/', 'Blog'),
     '        <div class="dropdown">',
     '          <span class="dropdown-toggle">Support</span>',
     '          <div class="dropdown-menu">',
