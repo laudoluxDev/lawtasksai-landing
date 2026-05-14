@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local AI vs. Cloud AI: A Rule 1.6 Decision Framework for Attorneys — LawTasksAI</title>
+    <meta name="description" content="Before using any AI tool on client matters, attorneys must do a Rule 1.6 analysis. Here's a practical framework for deciding when local AI, cloud AI, or either is the right call.">
+    <link rel="canonical" href="https://lawtasksai.com/blog/local-ai-vs-cloud-ai-rule-1-6.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/shared.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Local AI vs. Cloud AI: A Rule 1.6 Decision Framework for Attorneys",
+        "datePublished": "2026-05-11",
+        "author": { "@type": "Organization", "name": "LawTasksAI" },
+        "publisher": { "@type": "Organization", "name": "LawTasksAI", "url": "https://lawtasksai.com" },
+        "description": "Before using any AI tool on client matters, attorneys must do a Rule 1.6 analysis. Here's a practical framework for deciding when local AI, cloud AI, or either is the right call."
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Post layout */
+        .post-hero { padding: 48px 0 32px; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+        .post-hero .container { max-width: 800px; }
+        .post-series { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 12px; }
+        .post-series a { color: #2563eb; text-decoration: none; }
+        .post-series a:hover { text-decoration: underline; }
+        .post-hero h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.25; margin-bottom: 16px; }
+        .post-meta { font-size: 0.9rem; color: #6b7280; }
+
+        .post-body { padding: 48px 0 80px; }
+        .post-body .container { max-width: 800px; }
+        .post-content { font-size: 1.05rem; line-height: 1.8; color: #374151; }
+        .post-content h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; }
+        .post-content h3 { font-size: 1.15rem; font-weight: 600; color: #1a1a2e; margin: 28px 0 12px; }
+        .post-content p { margin-bottom: 20px; }
+        .post-content ul, .post-content ol { margin: 0 0 20px 24px; }
+        .post-content li { margin-bottom: 8px; }
+        .post-content a { color: #2563eb; text-decoration: underline; }
+        .post-content a:hover { color: #1d4ed8; }
+        .post-content strong { color: #1a1a2e; font-weight: 600; }
+
+        /* Callout boxes */
+        .callout { border-left: 4px solid #2563eb; background: #eff6ff; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 28px 0; }
+        .callout.warning { border-color: #f59e0b; background: #fffbeb; }
+        .callout.success { border-color: #10b981; background: #ecfdf5; }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .callout strong { display: block; margin-bottom: 4px; }
+
+        /* Decision table */
+        .table-wrap { overflow-x: auto; margin: 28px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: #1a1a2e; color: white; padding: 12px 16px; text-align: left; font-weight: 600; }
+        td { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+        tr:nth-child(even) td { background: #f9fafb; }
+        .tag-best { display: inline-block; background: #d1fae5; color: #065f46; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .tag-ok { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .tag-risk { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+
+        /* CTA box */
+        .post-cta { background: #1a1a2e; color: white; border-radius: 12px; padding: 36px; margin: 48px 0 0; text-align: center; }
+        .post-cta h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .post-cta p { color: #c8cfe8; margin-bottom: 20px; font-size: 0.95rem; }
+        .post-cta a { display: inline-block; background: #2563eb; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .post-cta a:hover { background: #1d4ed8; }
+
+        /* Back link */
+        .back-link { margin-bottom: 32px; }
+        .back-link a { color: #6b7280; text-decoration: none; font-size: 0.9rem; }
+        .back-link a:hover { color: #2563eb; }
+
+        /* Footer */
+        footer { background: #1a1a2e; color: #d1d5e8; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #b8c4f0; text-decoration: none; }
+        footer a:hover { color: white; }
+        footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+
+        @media (max-width: 768px) {
+            .dropdown:hover            .dropdown.mobile-open            .post-hero h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+<script src="/header.js"></script>
+
+<div class="post-hero">
+    <div class="container">
+        <div class="post-series"><a href="/blog/">Blog</a> · AI for Attorneys · Rule 1.6 &amp; Privacy</div>
+        <h1>Local AI vs. Cloud AI: A Rule 1.6 Decision Framework for Attorneys</h1>
+        <div class="post-meta">May 11, 2026 &nbsp;·&nbsp; 7 min read</div>
+    </div>
+</div>
+
+<div class="post-body">
+    <div class="container">
+        <div class="back-link"><a href="/blog/">← Back to Blog</a></div>
+
+        <div class="post-content">
+
+            <p>You're considering an AI tool for your practice. Maybe you've seen colleagues using one, or you've tried a consumer product and recognized its potential. At some point you hit a question that stops most attorneys cold: <em>What happens to my client's data?</em></p>
+
+            <p>That question has a real answer — but the answer differs dramatically depending on whether you're looking at a cloud-based AI or a locally-run one. Understanding the distinction isn't just a technical matter. It's an ethics issue, and Rule 1.6 is the controlling authority.</p>
+
+            <h2>What Rule 1.6 Actually Requires</h2>
+
+            <p>ABA Model Rule 1.6(c) requires that attorneys <strong>"make reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation."</strong> The standard is <em>reasonable efforts</em> — not perfection, not absolute security, but a deliberate analysis of the risks.</p>
+
+            <p>ABA Formal Opinion 512 (July 2024) extended this obligation explicitly to AI tools. Before submitting client information to any AI system, you must evaluate the likelihood of disclosure, the sensitivity of the data, the difficulty of safeguards, and whether those safeguards would impair your representation. That analysis plays out very differently for cloud-based versus local AI.</p>
+
+            <h2>How Cloud AI Works — and Where the Risk Lives</h2>
+
+            <p>Cloud AI tools — including most of the well-known large language models — process your prompts on remote servers operated by third-party providers. When you type a prompt containing client facts, case details, or document content, that text leaves your machine, travels to the provider's infrastructure, and is processed there.</p>
+
+            <p>The Rule 1.6 risks concentrate at three points:</p>
+
+            <p><strong>Data retention.</strong> Many providers retain conversation history and user inputs for periods ranging from days to indefinitely. Even providers with "no training" commitments may still retain data for abuse monitoring, debugging, or other operational purposes. The key question is not whether they <em>claim</em> not to train on your data — it's what their terms of service and data processing addendum actually commit to, in writing.</p>
+
+            <p><strong>Model training.</strong> Consumer-tier plans for most major AI products default to using your conversations to improve their models. Legal-specific or enterprise tiers typically offer opt-out provisions or explicit commitments against training on your data. If you're using a consumer plan, check this before your next prompt involving a client matter.</p>
+
+            <p><strong>Third-party access.</strong> Cloud infrastructure involves multiple parties: the AI provider, their cloud hosting vendor, any subprocessors they engage. A provider's own data handling practices may be excellent while still exposing data to infrastructure partners whose practices you haven't vetted. Opinion 512 treats this chain of custody as part of your confidentiality analysis.</p>
+
+            <div class="callout warning">
+                <p><strong>For cloud AI to be Rule 1.6-compliant, you need:</strong> a legal-tier or enterprise subscription, a data processing agreement, explicit no-training commitments, and a clear picture of what the provider's subprocessors can access. That's achievable — but only if you've deliberately set it up that way.</p>
+            </div>
+
+            <h2>How Local AI Works — and What It Changes</h2>
+
+            <p>Local AI runs entirely on your own hardware. The model weights are downloaded to your machine; inference happens on your CPU or GPU; nothing leaves your network. There is no third-party server receiving your prompt. There is no provider to have a data processing agreement with, because there is no provider in the loop.</p>
+
+            <p>From a Rule 1.6 standpoint, local AI eliminates the third-party disclosure risk category entirely. Client information stays on your machine, subject to whatever security controls you've applied to your own infrastructure.</p>
+
+            <p>The practical tradeoffs are real, though:</p>
+
+            <ul>
+                <li><strong>Hardware requirements.</strong> Running capable local AI models requires a reasonably modern machine with sufficient RAM (16–32 GB is a common floor for useful models). More capable models need more resources.</li>
+                <li><strong>Model capability.</strong> Local models currently lag behind frontier cloud models on complex reasoning tasks. The gap is narrowing, but it exists. For straightforward drafting tasks, the gap may be irrelevant; for complex analysis, you may notice it.</li>
+                <li><strong>Setup complexity.</strong> Tools like Ollama have made local AI more accessible than it was two years ago, but it still requires more technical comfort than signing up for a web app.</li>
+            </ul>
+
+            <h2>The Decision Framework</h2>
+
+            <p>Not every client matter carries the same confidentiality weight. The Rule 1.6 analysis should be proportionate to the sensitivity of the information at stake.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>Task Sensitivity</th>
+                        <th>Examples</th>
+                        <th>Recommended Approach</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Lower</strong></td>
+                        <td>General legal research, drafting from public sources, template generation with no client facts</td>
+                        <td><span class="tag-ok">Any reputable cloud tool</span> with reasonable terms</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moderate</strong></td>
+                        <td>Drafting correspondence with general case posture, reviewing standard forms without identifying details</td>
+                        <td><span class="tag-ok">Cloud with verified DPA + no-training commitment</span>, or capable local model</td>
+                    </tr>
+                    <tr>
+                        <td><strong>High</strong></td>
+                        <td>Client-identifying documents, financial records, medical details, detailed case strategy, privileged communications</td>
+                        <td><span class="tag-best">Enterprise cloud with ZDR</span>, or <span class="tag-best">local AI</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Highly sensitive</strong></td>
+                        <td>Domestic violence, immigration status, sealed proceedings, corporate insider information</td>
+                        <td><span class="tag-best">Local AI</span> or strict zero-retention cloud only</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="callout success">
+                <p><strong>The framework isn't binary.</strong> You don't have to choose between cloud and local for your entire practice. You can use each where the risk calculus supports it — and many attorneys do exactly that.</p>
+            </div>
+
+            <h2>What This Means Practically</h2>
+
+            <p>A few concrete steps that follow from this analysis:</p>
+
+            <p><strong>Audit what you're currently using.</strong> If you're already using an AI tool, pull up its terms of service and find the section on data handling, retention, and training. If that section doesn't clearly say your data won't be used to train models, assume it will be.</p>
+
+            <p><strong>Get the right tier.</strong> Most reputable AI platforms offer professional or legal tiers specifically designed to provide the data handling commitments attorneys need. The upgrade cost is typically modest relative to what's at stake.</p>
+
+            <p><strong>Document your analysis.</strong> The ethics rules require <em>reasonable efforts</em>, which implies a conscious decision. Keep a brief memo to file explaining what AI tools you use for what kinds of tasks and why you've concluded the data handling is adequate. If the question ever comes up, you want to be able to show you thought about it.</p>
+
+            <p><strong>Consider local for your most sensitive work.</strong> Even if you use cloud AI for most tasks, having a local model available for high-sensitivity matters is increasingly practical and worth the setup investment.</p>
+
+            <p>The choice between local and cloud AI is less a technical decision than an ethical workflow decision. Rule 1.6 doesn't prohibit cloud AI — it requires that you do the analysis. Do it deliberately, document it, and revisit it as the tools and the guidance evolve.</p>
+
+        </div>
+
+        <div style="border:1px solid #e5e7eb; border-left:4px solid #f59e0b; background:#fffbeb; border-radius:0 8px 8px 0; padding:16px 20px; margin:40px 0 0; page-break-inside:avoid;">
+            <p style="margin:0; font-size:0.9rem; color:#374151;"><strong style="display:block; margin-bottom:4px; color:#92400e;">Not Legal Advice</strong>This article explains technical concepts and summarizes publicly available ethics guidance for informational purposes. LawTasksAI is a software product, not a law firm. Nothing here should be read as legal counsel or relied upon as a substitute for advice from a licensed attorney in your jurisdiction.</p>
+        </div>
+
+        <div class="post-cta">
+            <h3>LawTasksAI is built on a privacy-first architecture</h3>
+            <p>Designed to meet the Rule 1.6 standard without requiring you to become a data security expert.</p>
+            <a href="/security.html">See How It Works →</a>
+        </div>
+
+        <div style="margin-top:48px; padding-top:32px; border-top:1px solid #e5e7eb;">
+            <p style="font-size:0.9rem; color:#6b7280; margin-bottom:16px;"><strong>Further Reading</strong></p>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
+                <li><a href="/blog/zero-data-retention-rule-1-6.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Blog: Zero Data Retention and Rule 1.6</a></li>
+                <li><a href="/blog/aba-formal-opinion-512-guide.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Blog: ABA Formal Opinion 512 — A Practical Guide</a></li>
+                <li><a href="/security.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Rule 1.6 &amp; Security — LawTasksAI Architecture</a></li>
+                <li><a href="/zdr-aba-compliance-guide.html" style="color:#2563eb; text-decoration:none; font-size:0.95rem;">→ Full ZDR &amp; ABA Compliance Guide</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="/index.html">Home</a>
+            <a href="/skills.html">Tasks</a>
+            <a href="/blog/">Blog</a>
+            <a href="/security.html">Rule 1.6 &amp; Security</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+        </div>
+        <div style="display:inline-block; max-width:700px; margin:0 auto 16px; padding:10px 18px; background:#1a1a2e; border:1px solid #f59e0b; border-radius:6px; text-align:left;">
+            <span style="font-size:0.78rem; font-weight:700; color:#f59e0b; text-transform:uppercase; letter-spacing:0.05em; margin-right:6px;">&#9888; Not Legal Advice</span><span style="font-size:0.78rem; color:#e2e4ed;">The information on this site is technical and educational in nature. It is not legal advice and should not be relied upon as such. Always consult a licensed attorney for guidance specific to your situation.</span>
+        </div>
+        <p>&copy; 2026 Laudo Lux, LLC. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -7,6 +7,7 @@
     <meta name="description" content="The ABA issued Formal Opinion 512 in July 2024 on generative AI tools. Here's what it actually requires — competence, confidentiality, client consent, supervision, and fees — without the academic framing.">
     <link rel="canonical" href="https://lawtasksai.com/blog/aba-formal-opinion-512-guide.html">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/shared.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,31 +26,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        header { padding: 20px 0; background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
-        header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; text-decoration: none; }
-        .logo span { color: #2563eb; }
-        .nav-links { display: flex; align-items: center; gap: 24px; }
-        .nav-links > a { color: #4b5563; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .nav-links > a:hover, .nav-links > a.active { color: #2563eb; }
-        .header-cta { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.9rem; background: #2563eb; color: white !important; transition: all 0.2s; }
-        .header-cta:hover { background: #1d4ed8; }
-        .dropdown { position: relative; }
-        .dropdown-toggle { color: #4b5563; font-weight: 500; cursor: pointer; padding: 10px 0; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
-        .dropdown-toggle:hover { color: #2563eb; }
-        .dropdown-toggle::after { content: '▾'; font-size: 0.75rem; }
-        .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; padding: 8px 0; z-index: 200; }
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-menu a { display: block; padding: 10px 16px; color: #4b5563; text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
-        .dropdown-menu a:hover { background: #f3f4f6; color: #2563eb; }
-        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 300; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; margin: 5px 0; transition: all 0.3s; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 150; }
-        .mobile-overlay.active { display: block; }
-        .post-hero { padding: 48px 0 32px; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+        .dropdown:hover        .post-hero { padding: 48px 0 32px; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
         .post-hero .container { max-width: 800px; }
         .post-series { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 12px; }
         .post-series a { color: #2563eb; text-decoration: none; }
@@ -94,17 +71,7 @@
         footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
 
         @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links { display: none; position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: white; flex-direction: column; padding: 80px 32px 32px; gap: 0; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 200; align-items: flex-start; }
-            .nav-links.active { display: flex; }
-            .nav-links > a { padding: 14px 0; font-size: 1.05rem; border-bottom: 1px solid #f3f4f6; width: 100%; }
-            .dropdown { width: 100%; }
-            .dropdown-toggle { width: 100%; padding: 14px 0; border-bottom: 1px solid #f3f4f6; }
-            .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 15px; }
-            .dropdown:hover .dropdown-menu { display: none; }
-            .dropdown.mobile-open .dropdown-menu { display: block; }
-            .header-cta { margin-top: 16px; text-align: center; width: 100%; }
-            .post-hero h1 { font-size: 1.7rem; }
+            .dropdown:hover            .dropdown.mobile-open            .post-hero h1 { font-size: 1.7rem; }
             .checklist { padding: 20px; }
         }
     </style>
