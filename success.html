@@ -244,53 +244,76 @@ Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
                 </div>
-                <h1>You're In!</h1>
-                <p class="subtitle">Your free account is ready with <strong>5 credits</strong>.</p>
+                <h1>You're In! 🎉</h1>
+                <p class="subtitle">Your 5 free credits are ready. Let's get you set up — takes about 5 minutes.</p>
 
-                <div class="details">
-                    <div class="detail-row">
-                        <span class="detail-label">Credits</span>
-                        <span class="detail-value">5 free credits</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Next Step</span>
-                        <span class="detail-value">Download & install below</span>
-                    </div>
-                </div>
+                <div class="install" id="law-install-block">
+                  <div id="law-install-detecting" style="color:#6b7280;font-size:0.9rem;padding:12px 0;">Loading your setup instructions…</div>
 
-                <div class="install">
-                    <div class="install-step-label">Get Started</div>
-                    <h3>Install LawTasksAI</h3>
-                    <p style="margin-bottom:12px;">Choose your preferred AI client and follow the instructions below:</p>
-
-                    <div class="tabs">
-                        <button class="tab-btn active" id="tab-openclaw-s" onclick="showTab2('openclaw-s')">🤖 OpenClaw</button>
-                        <button class="tab-btn" id="tab-mcp-s" onclick="showTab2('mcp-s')">🔌 Claude Desktop & MCP</button>
+                  <div class="install-platform" id="law-install-claude_desktop" style="display:none;">
+                    <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:0.85rem;color:#92400e;">
+                      ⚠️ <strong>Important:</strong> These instructions are for the <strong>Claude Desktop app</strong>, not claude.ai (the website). <a href="https://claude.ai/download" target="_blank" style="color:#92400e;font-weight:700;">Download Claude Desktop free →</a>
                     </div>
+                    <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
+                      <li>Check your email for your license key</li>
+                      <li>Download your skill package (link in email)</li>
+                      <li>Open Claude Desktop → <strong>Settings → Developer → Edit Config</strong></li>
+                      <li>Paste the JSON snippet from the README inside the zip</li>
+                      <li>Restart Claude Desktop and ask: <em>"What legal tasks can you help me with?"</em></li>
+                    </ol>
+                    <div class="code-block" style="margin-top:10px;">Mac: ~/Library/Application Support/Claude/claude_desktop_config.json<br/>Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
+                  </div>
 
-                    <div class="tab-panel" id="panel-openclaw-s">
-                        <p style="margin-bottom:12px;">OpenClaw is a self-hosted AI assistant. Don't have it? <a href="https://openclaw.ai" target="_blank">Download here.</a></p>
-                        <ol>
-                            <li>Open your OpenClaw chat and type:
-                                <div class="code-block">openclaw skills install lawtasksai</div>
-                            </li>
-                            <li>When prompted, enter your license key (check your email).</li>
-                            <li>Start using — just ask for any legal task in chat.</li>
-                        </ol>
-                    </div>
+                  <div class="install-platform" id="law-install-openclaw" style="display:none;">
+                    <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
+                      <li>Check your email for your license key</li>
+                      <li>Open OpenClaw and type:</li>
+                    </ol>
+                    <div class="code-block">openclaw skills install lawtasksai</div>
+                    <p style="font-size:0.85rem;color:#6b7280;">OpenClaw installs automatically. Then ask: <em>"What legal tasks can you help me with?"</em></p>
+                  </div>
 
-                    <div class="tab-panel" id="panel-mcp-s" style="display:none;">
-                        <p style="margin-bottom:12px;">Check your email for your license key and download link. Then:</p>
-                        <div class="code-block">cd ~/Downloads/lawtasksai/mcp
-pip3 install -r requirements.txt
-python3 install.py</div>
-                        <p>Restart your MCP client — look for the <strong>lawtasksai</strong> tools.</p>
-                    </div>
+                  <div class="install-platform" id="law-install-cursor" style="display:none;">
+                    <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
+                      <li>Check your email for your license key and download link</li>
+                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
+                      <li>In Cursor: <strong>Settings → MCP</strong> — confirm lawtasksai appears, then restart</li>
+                    </ol>
+                  </div>
+
+                  <div class="install-platform" id="law-install-windsurf" style="display:none;">
+                    <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
+                      <li>Check your email for your license key and download link</li>
+                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
+                      <li>In Windsurf: click the <strong>MCPs icon</strong> → confirm lawtasksai, then restart. Config: <code>~/.codeium/windsurf/mcp_config.json</code></li>
+                    </ol>
+                  </div>
+
+                  <div class="install-platform" id="law-install-cline" style="display:none;">
+                    <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
+                      <li>Check your email for your license key and download link</li>
+                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
+                      <li>In VS Code: <strong>Cline → MCP Servers → Configure MCP Servers</strong>, then reload VS Code</li>
+                    </ol>
+                  </div>
+
+                  <div class="install-platform" id="law-install-other" style="display:none;">
+                    <p style="color:#4b5563;font-size:0.9rem;margin-bottom:12px;">Check your email for your license key and download link. The zip includes full setup instructions for all supported platforms.</p>
+                    <p style="font-size:0.85rem;color:#6b7280;">Supported: Claude Desktop · OpenClaw · Cursor · Windsurf · Cline</p>
+                  </div>
+
+                  <div id="law-multi-platform-note" style="display:none;margin-top:14px;padding:10px 14px;background:#f0f9ff;border-radius:6px;font-size:0.82rem;color:#0369a1;">
+                    🖥️ Using multiple platforms? The <a href="/getting-started" style="color:#0369a1;font-weight:600;">full setup guide</a> has instructions for all of them.
+                  </div>
+
+                  <p style="margin-top:14px;font-size:0.8rem;color:#9ca3af;text-align:center;">
+                    Using a different AI tool? <a href="/getting-started" style="color:#2563eb;">Get updated install instructions →</a>
+                  </p>
                 </div>
 
                 <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
                     <a href="/task-library" style="display:inline-flex;align-items:center;gap:6px;background:#2563eb;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;">Browse 200+ Tasks</a>
-                    <a href="/#pricing" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#2563eb;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:2px solid #2563eb;">Get More Credits</a>
+                    <a href="/getting-started" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#2563eb;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:2px solid #2563eb;">Full Setup Guide →</a>
                 </div>
 
                 <div class="privacy-note" style="margin-top:24px;">
@@ -361,6 +384,7 @@ python3 install.py</div>
             // Free signup — show the signup success view
             document.getElementById('loading').style.display = 'none';
             document.getElementById('signup-success').style.display = 'block';
+            renderLawPlatformInstall();
             return;
         }
 
@@ -436,6 +460,22 @@ python3 install.py</div>
     });
   }
 })();
-</script>
+
+    function renderLawPlatformInstall() {
+        var detecting = document.getElementById('law-install-detecting');
+        if (!detecting) return;
+        var platforms = [];
+        try { var raw = sessionStorage.getItem('signup_platforms'); if (raw) platforms = JSON.parse(raw); } catch(e) {}
+        if (!platforms.length) platforms = ['other'];
+        detecting.style.display = 'none';
+        document.querySelectorAll('.install-platform').forEach(function(d) { d.style.display = 'none'; });
+        var primary = platforms[0];
+        var el = document.getElementById('law-install-' + primary);
+        if (el) el.style.display = 'block';
+        else { var fb = document.getElementById('law-install-other'); if (fb) fb.style.display = 'block'; }
+        if (platforms.length > 1) { var note = document.getElementById('law-multi-platform-note'); if (note) note.style.display = 'block'; }
+    }
+
+    </script>
 </body>
 </html>
