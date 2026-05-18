@@ -283,6 +283,19 @@
                         </div>
                         <p style="font-size:0.75rem;color:#6b7280;margin:0;">Double-click the installer &rarr; enter your license key &rarr; restart your AI client. Done.</p>
                     </div>
+
+                    <!-- SmartScreen notice (shown by JS for Windows users) -->
+                    <div id="law-smartscreen-notice" style="display:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:18px 22px;margin:16px 0;">
+                        <p style="font-weight:700;color:#1e40af;margin-bottom:8px;">🛡️ Windows will show a safety warning &mdash; this is normal</p>
+                        <p style="color:#1e3a8a;font-size:0.88rem;margin-bottom:10px;">Because this is new software, Windows displays a blue &ldquo;Windows protected your PC&rdquo; screen the first time you run it. This happens with all new apps &mdash; it doesn&rsquo;t mean anything is wrong.</p>
+                        <p style="font-weight:600;color:#1e40af;font-size:0.88rem;margin-bottom:6px;">Here&rsquo;s what to do:</p>
+                        <ol style="color:#1e3a8a;font-size:0.88rem;margin:0 0 0 18px;line-height:1.9;">
+                            <li>Click <strong>&ldquo;More info&rdquo;</strong> (small link below the main message)</li>
+                            <li>Click <strong>&ldquo;Run anyway&rdquo;</strong></li>
+                            <li>That&rsquo;s it &mdash; the installer will open normally</li>
+                        </ol>
+                        <p style="margin-top:10px;font-size:0.8rem;color:#3730a3;">This warning will disappear as more people install the app. It&rsquo;s a standard Windows precaution for new software from any publisher.</p>
+                    </div>
                     <ol style="margin-top:8px;">
                         <li>Download and double-click the installer above</li>
                         <li>Enter your license key when prompted</li>
@@ -600,6 +613,9 @@
                     alt.href     = BASE + mac_file;
                     primLbl.textContent = 'Download for Windows';
                     altLbl.textContent  = 'Download for Mac instead';
+                    // Auto-show SmartScreen notice for Windows users
+                    var ssn = document.getElementById('law-smartscreen-notice');
+                    if (ssn) ssn.style.display = 'block';
                 }
             }
         })();
