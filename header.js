@@ -111,11 +111,7 @@
       });
     });
 
-    /* Desktop dropdown hover */
-    document.querySelectorAll('.dropdown').forEach(function (d) {
-      d.addEventListener('mouseenter', function () { d.querySelector('.dropdown-menu').style.display = 'block'; });
-      d.addEventListener('mouseleave', function () { d.querySelector('.dropdown-menu').style.display = ''; });
-    });
+    /* Desktop dropdowns are handled by CSS :hover on .dropdown — no JS needed */
   });
 
 })();

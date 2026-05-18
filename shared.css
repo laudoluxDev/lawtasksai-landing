@@ -151,7 +151,7 @@ header.masthead {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 6px);
+  top: 100%;
   right: 0;
   background: var(--white);
   border: 1px solid var(--border);
@@ -159,6 +159,7 @@ header.masthead {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   min-width: 220px;
   padding: 6px;
+  padding-top: 12px;  /* visual breathing room without a gap that breaks hover */
   z-index: 200;
 }
 .dropdown:hover .dropdown-menu { display: block; }
