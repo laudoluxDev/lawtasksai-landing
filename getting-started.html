@@ -267,29 +267,29 @@
                 </div>
                 
                 <div class="platform-card">
-                    <div class="badge">Claude · Cursor · Windsurf · Any MCP Client</div>
+                    <div class="badge">Claude · Cursor · Windsurf · Cline</div>
                     <h3>MCP-Compatible AI Clients</h3>
-                    <p class="desc">Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible app. <strong>Note:</strong> Requires Python and a one-time setup. The installer auto-detects your app(s) and configures everything.</p>
-                    <ol>
-                        <li>Download the <a href="/download" target="_blank">LawTasksAI MCP server</a> from your Account Page</li>
-                        <li>Extract the zip — you'll see a folder called <code>lawtasksai</code></li>
-                        <li>Open a terminal and run: <code>cd ~/Downloads/lawtasksai/mcp && python3 install.py</code></li>
-                        <li>The installer detects your MCP client(s), installs packages, and backs up existing configs</li>
-                        <li><strong>Mac users:</strong> macOS will ask <em>"python3 would like to access files in your Downloads folder"</em> — click <strong>Allow</strong>. This is a one-time security prompt.</li>
-                        <li>Restart your MCP client and start asking legal questions</li>
+                    <p class="desc">Works with Claude Desktop, Cursor, Windsurf, and Cline. Download the installer — no terminal or Python required.</p>
+                    <!-- Download box -->
+                    <div style="background:#f0fdf4;border:2px solid #86efac;border-radius:10px;padding:20px 24px;margin:16px 0;text-align:center;">
+                        <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#16a34a;margin-bottom:6px;">Download the installer</p>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;">
+                            <a id="law-btn-primary" href="#" style="display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:white;font-weight:700;font-size:0.95rem;padding:11px 22px;border-radius:7px;text-decoration:none;" target="_blank">
+                                &#11015; <span id="law-btn-primary-label">Download Installer</span>
+                            </a>
+                            <a id="law-btn-alt" href="#" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#374151;font-weight:600;font-size:0.85rem;padding:11px 16px;border-radius:7px;text-decoration:none;border:1px solid #d1d5db;" target="_blank">
+                                <span id="law-btn-alt-label">Other platform</span>
+                            </a>
+                        </div>
+                        <p style="font-size:0.75rem;color:#6b7280;margin:0;">Double-click the installer &rarr; enter your license key &rarr; restart your AI client. Done.</p>
+                    </div>
+                    <ol style="margin-top:8px;">
+                        <li>Download and double-click the installer above</li>
+                        <li>Enter your license key when prompted</li>
+                        <li><strong>Restart your AI client</strong> (Claude Desktop, Cursor, etc.)</li>
+                        <li>Ask: <em>&ldquo;Search for a motion to compel skill&rdquo;</em></li>
                     </ol>
-                </div>
-                
-                <div class="platform-card">
-                    <div class="badge">For Power Users</div>
-                    <h3>Other MCP Clients</h3>
-                    <p class="desc">LawTasksAI works with any app that supports the MCP protocol — Cursor, Windsurf, and more.</p>
-                    <ol>
-                        <li>Open your MCP-compatible app</li>
-                        <li>Add LawTasksAI as an MCP server</li>
-                        <li>Configure with your license key</li>
-                        <li>Access all 200+ tasks</li>
-                    </ol>
+                    <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">The installer places the server in a permanent location — you can delete the downloaded file when done.</p>
                 </div>
             </div>
         </div>
@@ -575,6 +575,36 @@
             });
         });
     </script>
+    <script>
+        // OS auto-detect for MCP installer download buttons
+        (function () {
+            var BASE = 'https://github.com/laudoluxDev/lawtasksai-mcp/releases/latest/download/';
+            var win_file = 'LawTasksAI-Setup.exe';
+            var mac_file = 'LawTasksAI-Setup-mac';
+            var isMac = /Mac|iPod|iPhone|iPad/.test(
+                navigator.platform ||
+                (navigator.userAgentData && navigator.userAgentData.platform) || ''
+            );
+            var primary = document.getElementById('law-btn-primary');
+            var alt     = document.getElementById('law-btn-alt');
+            var primLbl = document.getElementById('law-btn-primary-label');
+            var altLbl  = document.getElementById('law-btn-alt-label');
+            if (primary && alt) {
+                if (isMac) {
+                    primary.href = BASE + mac_file;
+                    alt.href     = BASE + win_file;
+                    primLbl.textContent = 'Download for Mac';
+                    altLbl.textContent  = 'Download for Windows instead';
+                } else {
+                    primary.href = BASE + win_file;
+                    alt.href     = BASE + mac_file;
+                    primLbl.textContent = 'Download for Windows';
+                    altLbl.textContent  = 'Download for Mac instead';
+                }
+            }
+        })();
+    </script>
+
     <script>
         // FAQ accordion
         document.querySelectorAll('.faq-q').forEach(q => {
