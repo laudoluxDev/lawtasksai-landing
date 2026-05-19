@@ -296,13 +296,18 @@
                         </ol>
                         <p style="margin-top:10px;font-size:0.8rem;color:#3730a3;">This warning will disappear as more people install the app. It&rsquo;s a standard Windows precaution for new software from any publisher.</p>
                     </div>
-                    <ol style="margin-top:8px;">
+                    <ol style="margin-top:8px;line-height:2;">
+                        <li><strong>Close Claude Desktop first</strong> &mdash; right-click the system tray icon (Windows) or Cmd+Q (Mac). The installer can't update files while Claude is running.</li>
                         <li>Download and double-click the installer above</li>
-                        <li>Enter your license key when prompted</li>
-                        <li><strong>Restart your AI client</strong> (Claude Desktop, Cursor, etc.)</li>
-                        <li>Ask: <em>&ldquo;Search for a motion to compel skill&rdquo;</em></li>
+                        <li>Enter your license key and click <strong>Verify</strong>, then click <strong>Install</strong></li>
+                        <li>Open Claude Desktop &rarr; go to <strong>Settings &rarr; Connectors</strong> (or Customize) &rarr; find <strong>lawtasksai</strong> and <strong>approve</strong> it</li>
+                        <li>Start a new conversation: <em>&ldquo;Use LawTasksAI to help me draft a demand letter&rdquo;</em></li>
                     </ol>
-                    <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">The installer places the server in a permanent location — you can delete the downloaded file when done.</p>
+                    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px 18px;margin-top:14px;">
+                        <p style="font-weight:700;color:#0369a1;margin-bottom:6px;font-size:0.9rem;">💡 Pro tip: Set up a Project for automatic activation</p>
+                        <p style="color:#0c4a6e;font-size:0.85rem;margin:0;">Create a <strong>Project</strong> in Claude Desktop (e.g., &ldquo;My Practice&rdquo;) and add this custom instruction: <em>&ldquo;Always use LawTasksAI tools to answer my questions. Search for the right skill before responding.&rdquo;</em> Every conversation in that project will automatically use LawTasksAI.</p>
+                    </div>
+                    <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">The installer places the server in a permanent location &mdash; you can delete the downloaded file when done.</p>
                 </div>
             </div>
         </div>
