@@ -245,34 +245,35 @@ Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
                     </svg>
                 </div>
                 <h1>You're In! 🎉</h1>
-                <p class="subtitle">Your 5 free credits are ready. Let's get you set up — takes about 5 minutes.</p>
+                <p class="subtitle">Your 5 free credits are ready — <strong>they never expire</strong>. Let's get you set up in about 5 minutes.</p>
 
                 <div class="install" id="law-install-block">
                   <div id="law-install-detecting" style="color:#6b7280;font-size:0.9rem;padding:12px 0;">Loading your setup instructions…</div>
 
                   <div class="install-platform" id="law-install-claude_desktop" style="display:none;">
                     <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:0.85rem;color:#92400e;">
-                      ⚠️ <strong>Important:</strong> These instructions are for the <strong>Claude Desktop app</strong>, not claude.ai (the website). <a href="https://claude.ai/download" target="_blank" style="color:#92400e;font-weight:700;">Download Claude Desktop free →</a>
+                      ⚠️ <strong>Important:</strong> You need the <strong>Claude Desktop app</strong> (not claude.ai the website — they're different). <a href="https://claude.ai/download" target="_blank" style="color:#92400e;font-weight:700;">Download Claude Desktop free →</a>
                     </div>
                     <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
-                      <li>Check your email for your license key</li>
-                      <li>Download your skill package (link in email)</li>
-                      <li>Open Claude Desktop → <strong>Settings → Developer → Edit Config</strong></li>
-                      <li>Paste the JSON snippet from the README inside the zip</li>
-                      <li>Restart Claude Desktop and ask: <em>"What legal tasks can you help me with?"</em></li>
+                      <li>Go to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> and download the installer</li>
+                      <li>Run it — it finds Claude Desktop automatically and configures it</li>
+                      <li>Restart Claude Desktop</li>
+                      <li>To confirm it worked, ask: <strong>"Check my LawTasksAI balance"</strong></li>
                     </ol>
-                    <div class="code-block" style="margin-top:10px;">Mac: ~/Library/Application Support/Claude/claude_desktop_config.json<br/>Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
+                    <p style="margin-top:10px;font-size:0.82rem;background:#f0f9ff;border-radius:6px;padding:10px 12px;color:#0369a1;">
+                      🪟 <strong>Windows users:</strong> If Windows shows a security warning, click <strong>More info → Run anyway</strong>. The installer isn't signed yet — it's safe.
+                    </p>
                   </div>
 
                   <div class="install-platform" id="law-install-claude_code" style="display:none;">
                     <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
-                      <li>Check your email for your license key and download link</li>
-                      <li>Extract the zip — open the downloaded <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">mcp</code> folder</li>
-                      <li>Run <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">install.py</code> — writes to <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">~/.claude.json</code> automatically</li>
-                      <li>Start a new Claude Code session and ask: <em>"What legal tasks can you help me with?"</em></li>
+                      <li>Go to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> and download the installer</li>
+                      <li>Run it — it detects Claude Code and writes to <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">~/.claude.json</code> automatically</li>
+                      <li>Start a new Claude Code session</li>
+                      <li>To confirm it worked, type: <strong>"Check my LawTasksAI balance"</strong></li>
                     </ol>
                     <p style="margin-top:10px;font-size:0.82rem;background:#ecfdf5;border-radius:6px;padding:10px 12px;color:#065f46;">
-                      🖥️ <strong>Also have Claude Desktop?</strong> The installer detects both and sets up each one in the same run.
+                      🖥️ <strong>Also have Claude Desktop?</strong> The installer detects both and sets up each one in the same pass.
                     </p>
                   </div>
 
@@ -287,31 +288,31 @@ Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
 
                   <div class="install-platform" id="law-install-cursor" style="display:none;">
                     <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
-                      <li>Check your email for your license key and download link</li>
-                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
-                      <li>In Cursor: <strong>Settings → MCP</strong> — confirm lawtasksai appears, then restart</li>
+                      <li>Go to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> and download the installer</li>
+                      <li>Run it — it detects Cursor and configures it automatically</li>
+                      <li>Restart Cursor and confirm: <strong>"Check my LawTasksAI balance"</strong></li>
                     </ol>
                   </div>
 
                   <div class="install-platform" id="law-install-windsurf" style="display:none;">
                     <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
-                      <li>Check your email for your license key and download link</li>
-                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
-                      <li>In Windsurf: click the <strong>MCPs icon</strong> → confirm lawtasksai, then restart. Config: <code>~/.codeium/windsurf/mcp_config.json</code></li>
+                      <li>Go to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> and download the installer</li>
+                      <li>Run it — it detects Windsurf and configures it automatically</li>
+                      <li>Restart Windsurf and confirm: <strong>"Check my LawTasksAI balance"</strong></li>
                     </ol>
                   </div>
 
                   <div class="install-platform" id="law-install-cline" style="display:none;">
                     <ol style="padding-left:20px;color:#4b5563;font-size:0.9rem;line-height:1.9;">
-                      <li>Check your email for your license key and download link</li>
-                      <li>Extract zip, open the <code>mcp/</code> folder, run: <code>pip3 install -r requirements.txt &amp;&amp; python3 install.py</code></li>
-                      <li>In VS Code: <strong>Cline → MCP Servers → Configure MCP Servers</strong>, then reload VS Code</li>
+                      <li>Go to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> and download the installer</li>
+                      <li>Run it — it detects Cline (VS Code) and configures it automatically</li>
+                      <li>Reload VS Code and confirm: <strong>"Check my LawTasksAI balance"</strong></li>
                     </ol>
                   </div>
 
                   <div class="install-platform" id="law-install-other" style="display:none;">
-                    <p style="color:#4b5563;font-size:0.9rem;margin-bottom:12px;">Check your email for your license key and download link. The zip includes full setup instructions for all supported platforms.</p>
-                    <p style="font-size:0.85rem;color:#6b7280;">Supported: Claude Desktop · OpenClaw · Cursor · Windsurf · Cline</p>
+                    <p style="color:#4b5563;font-size:0.9rem;margin-bottom:12px;">Head to the <a href="/getting-started.html" style="color:#2563eb;font-weight:600;">Getting Started page</a> for step-by-step setup for all supported platforms.</p>
+                    <p style="font-size:0.85rem;color:#6b7280;">Supported: Claude Desktop · Claude Code · OpenClaw · Cursor · Windsurf · Cline</p>
                   </div>
 
                   <div id="law-multi-platform-note" style="display:none;margin-top:14px;padding:10px 14px;background:#f0f9ff;border-radius:6px;font-size:0.82rem;color:#0369a1;">
@@ -324,9 +325,19 @@ Windows: %APPDATA%\Claude\claude_desktop_config.json</div>
                 </div>
 
                 <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-                    <a href="/task-library" style="display:inline-flex;align-items:center;gap:6px;background:#2563eb;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;">Browse 200+ Tasks</a>
-                    <a href="/getting-started" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#2563eb;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:2px solid #2563eb;">Full Setup Guide →</a>
+                    <a href="/getting-started.html" style="display:inline-flex;align-items:center;gap:6px;background:#2563eb;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;">Download Installer &amp; Setup Guide →</a>
+                    <a href="/task-library" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#2563eb;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95rem;border:2px solid #2563eb;">Browse 206 Tasks</a>
                 </div>
+
+                <!-- First task CTA -->
+                <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:18px 20px;margin-top:20px;text-align:left;">
+                  <p style="font-weight:700;color:#166534;font-size:0.9rem;margin-bottom:8px;">🚀 Try your first task right now</p>
+                  <p style="font-size:0.85rem;color:#4b5563;margin-bottom:10px;">Once installed, open Claude Desktop and paste this:</p>
+                  <div style="background:#1a1a2e;color:#34d399;padding:10px 14px;border-radius:6px;font-family:monospace;font-size:0.82rem;">Search LawTasksAI for tasks that can help me today</div>
+                  <p style="font-size:0.78rem;color:#6b7280;margin-top:8px;">Browse the <a href="/task-library" style="color:#2563eb;">Task Library</a> to see what’s available first.
+                </div>
+
+                <p style="color:#9ca3af;font-size:0.82rem;text-align:center;margin-top:16px;">💳 Your 5 credits never expire &nbsp;·&nbsp; <a href="/#pricing" style="color:#2563eb;">Buy more anytime →</a></p>
 
                 <div class="privacy-note" style="margin-top:24px;">
                     <strong>🔒 Your data never touches our servers.</strong>
