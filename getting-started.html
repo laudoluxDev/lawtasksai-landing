@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started - LawTasksAI</title>
+  <meta name="description" content="Connect LawTasksAI to OpenClaw, Claude Desktop, Cursor, and Windsurf. Step-by-step setup guide." />
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1GZ4XTPKZR"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -9,584 +13,617 @@
   gtag('js', new Date());
   gtag('config', 'G-1GZ4XTPKZR');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started — LawTasksAI</title>
-    <meta name="description" content="How to set up and use LawTasksAI. Step-by-step guide for attorneys — no technical background needed.">
-    <link rel="canonical" href="https://lawtasksai.com/getting-started.html">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background: #fafbfc;
-        }
-        
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-        /* Hero */
-        .page-hero {
-            padding: 60px 0 40px;
-            text-align: center;
-            background: linear-gradient(180deg, white 0%, #f3f4f6 100%);
-        }
-        .page-hero h1 {
-            font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em;
-        }
-        .page-hero h1 span { color: #2563eb; }
-        .page-hero p { font-size: 1.15rem; color: #374151; max-width: 650px; margin: 0 auto; }
-        
-        /* Content sections */
-        .content-section { padding: 60px 0; }
-        .content-section:nth-child(even) { background: white; }
-        .content-section:nth-child(odd) { background: #f9fafb; }
-        
-        .section-title {
-            font-size: 1.75rem; font-weight: 700; margin-bottom: 16px;
-        }
-        .section-subtitle {
-            font-size: 1.05rem; color: #374151; margin-bottom: 32px; max-width: 700px;
-        }
-        .section-number {
-            display: inline-block; background: #2563eb; color: white;
-            width: 36px; height: 36px; border-radius: 50%; text-align: center;
-            line-height: 36px; font-weight: 700; font-size: 1rem; margin-bottom: 12px;
-        }
-        
-        /* What are skills */
-        .concept-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-        }
-        .concept-visual {
-            background: #1a1a2e; border-radius: 12px; padding: 32px;
-            color: #e5e7eb; font-family: 'Courier New', monospace; font-size: 0.9rem;
-            line-height: 1.8;
-        }
-        .concept-visual .prompt { color: #60a5fa; }
-        .concept-visual .response { color: #34d399; }
-        .concept-visual .dim { color: #374151; }
-        
-        /* Platform cards */
-        .platform-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
-        }
-        .platform-card {
-            background: white; border-radius: 12px; padding: 32px;
-            border: 2px solid #e5e7eb; transition: all 0.2s;
-        }
-        .platform-card:hover {
-            border-color: #2563eb; transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        .platform-card.recommended { border-color: #2563eb; }
-        .platform-card .badge {
-            display: inline-block; background: #dbeafe; color: #2563eb;
-            padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;
-            font-weight: 600; margin-bottom: 12px;
-        }
-        .platform-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
-        .platform-card .desc { color: #374151; font-size: 0.95rem; margin-bottom: 16px; }
-        .platform-card ol {
-            padding-left: 20px; color: #374151; font-size: 0.92rem;
-        }
-        .platform-card li { margin-bottom: 8px; }
-        .platform-card a { color: #2563eb; text-decoration: none; font-weight: 500; }
-        .platform-card a:hover { text-decoration: underline; }
-        
-        /* Steps */
-        .steps { max-width: 700px; }
-        .step {
-            display: flex; gap: 20px; margin-bottom: 32px;
-        }
-        .step-num {
-            flex-shrink: 0; width: 40px; height: 40px; background: #2563eb;
-            color: white; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-weight: 700; font-size: 1.1rem;
-        }
-        .step-content h3 { font-size: 1.1rem; margin-bottom: 6px; }
-        .step-content p { color: #374151; font-size: 0.95rem; }
-        .step-content code {
-            background: #f3f4f6; padding: 2px 8px; border-radius: 4px;
-            font-size: 0.95rem; color: #1a1a2e;
-        }
-        
-        /* Security section */
-        .security-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
-        }
-        .security-card {
-            background: white; border-radius: 12px; padding: 28px;
-            border: 1px solid #e5e7eb;
-        }
-        .security-icon {
-            font-size: 2rem; margin-bottom: 12px;
-        }
-        .security-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-        .security-card p { color: #374151; font-size: 0.93rem; }
-        
-        /* How it works diagram */
-        .how-it-works {
-            background: #1a1a2e; border-radius: 12px; padding: 40px;
-            color: white; text-align: center; max-width: 800px; margin: 0 auto 32px;
-        }
-        .flow {
-            display: flex; align-items: center; justify-content: center;
-            gap: 16px; flex-wrap: wrap; margin-top: 24px;
-        }
-        .flow-box {
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 8px; padding: 16px 24px; min-width: 160px;
-        }
-        .flow-box .label { font-size: 0.9rem; color: #6b7280; margin-bottom: 4px; }
-        .flow-box .value { font-weight: 600; font-size: 1rem; color: #e5e7eb; }
-        .flow-box .emphasis { color: #fbbf24; font-weight: 700; }
-        .flow-box.secure { border-color: #34d399; }
-        .flow-box.secure .value { color: #34d399; }
-        .flow-arrow { font-size: 1.5rem; color: #60a5fa; }
-        
-        /* FAQ */
-        .faq-list { max-width: 750px; margin: 0 auto; }
-        .faq-item {
-            border-bottom: 1px solid #e5e7eb; padding: 20px 0;
-        }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-q {
-            font-weight: 600; font-size: 1.05rem; margin-bottom: 8px;
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-        }
-        .faq-q::after { content: '+'; font-size: 1.5rem; color: #2563eb; }
-        .faq-item.open .faq-q::after { content: '−'; }
-        .faq-a {
-            color: #374151; font-size: 0.95rem; display: none;
-            padding-top: 4px; line-height: 1.7;
-        }
-        .faq-item.open .faq-a { display: block; }
-        
-        /* CTA */
-        .bottom-cta {
-            padding: 80px 0; text-align: center; background: linear-gradient(180deg, #f9fafb 0%, white 100%);
-        }
-        .bottom-cta h2 { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
-        .bottom-cta p { color: #374151; margin-bottom: 32px; font-size: 1.1rem; }
-        .cta-button {
-            display: inline-block; background: #2563eb; color: white;
-            padding: 16px 32px; border-radius: 8px; text-decoration: none;
-            font-weight: 600; font-size: 1.1rem; transition: all 0.2s;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-        }
-        .cta-button:hover {
-            background: #1d4ed8; transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 40px 0; background: #f9fafb; border-top: 1px solid #e5e7eb;
-            text-align: center; color: #374151; font-size: 0.9rem;
-        }
-        footer a { color: #374151; text-decoration: none; margin: 0 15px; }
-        footer a:hover { color: #2563eb; }
-        .powered-by { margin-top: 15px; font-size: 0.9rem; }
-        .powered-by a { color: #2563eb; }
-        
-</style>
-    <link rel="stylesheet" href="/shared.css">
+    .page-hero { padding: 56px 0 36px; text-align: center; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+    .page-hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .page-hero h1 span { color: #2563eb; }
+    .page-hero p { font-size: 1.1rem; color: #6b7280; max-width: 620px; margin: 0 auto; }
+
+    .content { padding: 48px 0 80px; }
+
+    /* ── Install-path tabs ── */
+    .path-tabs { display: flex; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+    .path-tab {
+      flex: 1; min-width: 180px; padding: 18px 20px; border-radius: 12px;
+      border: 2px solid #e5e7eb; background: white; cursor: pointer;
+      text-align: left; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .path-tab:hover { border-color: #2563eb; }
+    .path-tab.active { border-color: #2563eb; box-shadow: 0 0 0 3px color-mix(in srgb, #2563eb 15%, transparent); }
+    .path-tab .tab-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 4px; }
+    .path-tab .tab-name { font-size: 1.1rem; font-weight: 700; color: #111827; }
+    .path-tab .tab-note { font-size: 0.82rem; color: #6b7280; margin-top: 4px; }
+    .path-tab.active .tab-label { color: #2563eb; }
+    .path-tab .recommended-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      background: #2563eb; color: white;
+      padding: 2px 8px; border-radius: 20px; margin-left: 8px; vertical-align: middle;
+    }
+
+    .path-section { display: none; }
+    .path-section.active { display: block; }
+
+    /* ── Steps ── */
+    .step { margin-bottom: 44px; }
+    .step-header { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+    .step-num { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: #2563eb; color: white; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .step h2 { font-size: 1.3rem; font-weight: 700; }
+    .step p, .step li { color: #4b5563; font-size: 1rem; margin-bottom: 8px; }
+    .step ul, .step ol { padding-left: 20px; margin-bottom: 12px; }
+    .step li { margin-bottom: 6px; }
+    .step a { color: #2563eb; text-decoration: none; font-weight: 500; }
+    .step a:hover { text-decoration: underline; }
+
+    /* ── Code blocks ── */
+    .code-block {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 14px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: #f1f5f9;
+      overflow-x: auto;
+      line-height: 1.8;
+    }
+    .code-block .comment { color: #94a3b8; font-style: italic; }
+    .code-block .cmd     { color: #7dd3fc; }
+    .code-block .key     { color: #86efac; }
+    .code-block .val     { color: #fda4af; }
+
+    /* Inline code */
+    .step code, p code, li code {
+      background: #f1f5f9; color: #0f172a;
+      padding: 2px 6px; border-radius: 4px;
+      font-size: 0.88em; font-family: 'Courier New', monospace;
+    }
+
+    /* ── Alert / info boxes ── */
+    .alert { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 0.95rem; color: #92400e; }
+    .alert strong { display: block; margin-bottom: 4px; }
+    .info-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+    .info-box h3 { font-size: 1rem; font-weight: 700; color: #0369a1; margin-bottom: 8px; }
+    .info-box p, .info-box li { color: #0c4a6e; font-size: 0.95rem; margin-bottom: 6px; }
+    .info-box a { color: #0369a1; font-weight: 600; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid #e5e7eb; margin: 40px 0; }
+
+    /* ── Support / CTA box ── */
+    .cta-box { background: #2563eb; border-radius: 12px; padding: 40px; text-align: center; color: white; margin-top: 48px; }
+    .cta-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+    .cta-box > p { opacity: 0.9; margin-bottom: 24px; }
+
+    /* ── Contact form ── */
+    .contact-form { display: flex; flex-direction: column; gap: 14px; margin-top: 20px; text-align: left; }
+    .contact-form label { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 4px; display: block; }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%; padding: 10px 14px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.15);
+      color: white; font-size: 0.95rem; font-family: inherit;
+    }
+    .contact-form select option { color: #1a1a2e; background: white; }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .contact-form button {
+      padding: 12px 28px; border-radius: 8px; border: none;
+      background: white; color: #2563eb;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      align-self: flex-start; transition: opacity 0.15s;
+    }
+    .contact-form button:hover { opacity: 0.9; }
+    .contact-form button:disabled { opacity: 0.6; cursor: default; }
+    .form-success {
+      display: none; background: rgba(255,255,255,0.18);
+      border-radius: 8px; padding: 16px 20px;
+      color: white; font-weight: 600;
+    }
+
+    footer { background: #1a1a2e; color: #9ca3af; padding: 32px 0; text-align: center; font-size: 0.9rem; }
+    footer a { color: #9ca3af; text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: white; }
+  </style>
 </head>
 <body>
-    <div id="site-header"></div>
-<script src="/header.js"></script>    
-    <section class="page-hero">
-        <div class="container">
-            <h1>Get Up and Running <span>in 10 Minutes</span></h1>
-            <p>No coding required. If you can install an app and type a question, you can use LawTasksAI.</p>
-        </div>
-    </section>
 
-    <!-- What Are Tasks -->
-    <section class="content-section">
-        <div class="container">
-            <div class="concept-grid">
-                <div>
-                    <div class="section-number">1</div>
-                    <h2 class="section-title">What Are AI Legal Tasks?</h2>
-                    <p class="section-subtitle">
-                        LawTasksAI provides <strong>specialized legal tools, not services</strong> — like a calculator for statutes of limitations 
-                        or a formula in Excel. Each of our 200+ tasks is purpose-built for a specific legal function: statute lookups, 
-                        deadline calculations, rule summaries, and more. You ask a question in plain English, the task processes it, 
-                        and you get a structured, cited answer. No prompts to memorize. No complicated setup. Just like Excel doesn't 
-                        replace your accountant, LawTasksAI doesn't replace your judgment.
-                    </p>
-                    <p class="section-subtitle">
-                        You don't need to know which task to use. Just ask your question — the AI automatically finds and runs the right one.
-                    </p>
-                </div>
-                <div class="concept-visual">
-                    <p class="dim">You type:</p>
-                    <p class="prompt">"What's the statute of limitations for medical malpractice in Colorado?"</p>
-                    <br>
-                    <p class="dim">LawTasksAI returns:</p>
-                    <p class="response">✓ Statute: 2 years from discovery</p>
-                    <p class="response">✓ Absolute limit: 3 years from act</p>
-                    <p class="response">✓ Minors exception: until age 8</p>
-                    <p class="response">✓ Citation: C.R.S. § 13-80-102.5</p>
-                    <p class="response">✓ Key cases + recent changes</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div id="site-header"></div>
+<script src="/header.js"></script>
 
-    <!-- Choose Your Platform -->
-    <section class="content-section">
-        <div class="container">
-            <div class="section-number">2</div>
-            <h2 class="section-title">Choose How You Want to Use It</h2>
-            <p class="section-subtitle">LawTasksAI works with several AI platforms. Pick the one that fits your comfort level.</p>
-            
-            <div class="platform-grid">
-                <div class="platform-card recommended">
-                    <div class="badge">Easiest</div>
-                    <h3>OpenClaw</h3>
-                    <p class="desc">A personal AI assistant that runs on your computer. Best for attorneys who want an always-available legal research tool. Simplest setup.</p>
-                    <ol>
-                        <li>Install <a href="https://openclaw.ai" target="_blank">OpenClaw</a> (one command)</li>
-                        <li>Download the skill file from your <a href="download.html">Account Page</a></li>
-                        <li>Extract the zip — you'll see a folder called <code>lawtasksai</code> containing your skill files</li>
-                        <li>Copy the <code>lawtasksai</code> folder into <code>~/.openclaw/skills/</code> (or just tell OpenClaw to install it for you)</li>
-                        <li>Enter your license key when prompted</li>
-                        <li>Start asking legal questions — 200+ tasks ready to use</li>
-                    </ol>
-                    <p style="font-size: 0.9rem; color: #374151; margin-top: 12px;"><strong>Bonus:</strong> Works via chat, Telegram, or WhatsApp</p>
-                    <p style="font-size: 0.9rem; color: #374151; margin-top: 4px;">See <a href="#quick-start" style="color: #2563eb;">detailed step-by-step below</a> if you need help.</p>
-                </div>
-                
-                <div class="platform-card">
-                    <div class="badge">Claude · Cursor · Windsurf · Any MCP Client</div>
-                    <h3>MCP-Compatible AI Clients</h3>
-                    <p class="desc">Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible app. <strong>Note:</strong> Requires Python and a one-time setup. The installer auto-detects your app(s) and configures everything.</p>
-                    <ol>
-                        <li>Download the <a href="/download" target="_blank">LawTasksAI MCP server</a> from your Account Page</li>
-                        <li>Extract the zip — you'll see a folder called <code>lawtasksai</code></li>
-                        <li>Open a terminal and run: <code>cd ~/Downloads/lawtasksai/mcp && python3 install.py</code></li>
-                        <li>The installer detects your MCP client(s), installs packages, and backs up existing configs</li>
-                        <li><strong>Mac users:</strong> macOS will ask <em>"python3 would like to access files in your Downloads folder"</em> — click <strong>Allow</strong>. This is a one-time security prompt.</li>
-                        <li>Restart your MCP client and start asking legal questions</li>
-                    </ol>
-                </div>
-                
-                <div class="platform-card">
-                    <div class="badge">For Power Users</div>
-                    <h3>Other MCP Clients</h3>
-                    <p class="desc">LawTasksAI works with any app that supports the MCP protocol — Cursor, Windsurf, and more.</p>
-                    <ol>
-                        <li>Open your MCP-compatible app</li>
-                        <li>Add LawTasksAI as an MCP server</li>
-                        <li>Configure with your license key</li>
-                        <li>Access all 200+ tasks</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How Data Flows -->
-    <section class="content-section">
-        <div class="container">
-            <div class="section-number">3</div>
-            <h2 class="section-title">How Your Data Stays Safe</h2>
-            <p class="section-subtitle">We built LawTasksAI with attorney-client privilege in mind. Here's exactly what happens when you use a task.</p>
-            
-            <div class="how-it-works" style="border: 1px solid #34d399;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 8px;">LawTasksAI Never Sees Your Data</h3>
-                <p style="color: #d1d5db; font-size: 0.9rem;">LawTasksAI.com never sees your prompts, your client files, or your client data. Your documents stay local if using OpenClaw, or go to your LLM provider if using a cloud AI. For full details see our <a href="https://lawtasksai.com/zdr-aba-compliance-guide" style="color: #60a5fa;">Zero Data Retention & ABA Compliance guide</a>.</p>
-                <div class="flow">
-                    <div class="flow-box secure">
-                        <div class="label">Your Computer</div>
-                        <div class="value">🔒 You ask a question or <span class="emphasis">load a document</span></div>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box">
-                        <div class="label">LawTasksAI Server</div>
-                        <div class="value">Validates license &amp; delivers expert framework</div>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box secure">
-                        <div class="label">Your Computer</div>
-                        <div class="value">🔒 Your AI applies the framework</div>
-                    </div>
-                </div>
-                <p style="color: #34d399; font-size: 0.9rem; margin-top: 16px;">✓ Your queries and documents are NEVER sent to LawTasksAI servers</p>
-                <p style="color: #34d399; font-size: 0.9rem; margin-top: 4px;">✓ You choose which AI model processes your work — local LLM for maximum privacy, or a cloud provider with appropriate data protections</p>
-            </div>
-            
-            <div class="security-grid">
-                <div class="security-card">
-                    <div class="security-icon">🛡️</div>
-                    <h3>Two-Layer Architecture</h3>
-                    <p>LawTasksAI.com never sees your prompts, your client files, or your client data. Your documents stay local if using OpenClaw, or go to your LLM provider if using a cloud AI. <a href="https://lawtasksai.com/zdr-aba-compliance-guide">Zero Data Retention & ABA Compliance guide →</a></p>
-                </div>
-                <div class="security-card">
-                    <div class="security-icon">🚫</div>
-                    <h3>Nothing to Subpoena From Us</h3>
-                    <p>We never receive your queries or results. There's nothing on LawTasksAI servers to find, subpoena, or breach — because we only deliver methodology, not process your data.</p>
-                </div>
-                <div class="security-card">
-                    <div class="security-icon">🔐</div>
-                    <h3>You Control the AI Layer</h3>
-                    <p>Choose a local LLM for maximum confidentiality, or a cloud provider with a zero data retention agreement. You decide what level of privacy fits your practice.</p>
-                </div>
-                <div class="security-card">
-                    <div class="security-icon">📋</div>
-                    <h3>Transparent By Design</h3>
-                    <p>We're clear about what we handle (license validation and expert frameworks) and what we don't (your data). See our <a href="/security" style="color: #34d399;">security page</a> for full details.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Start -->
-    <section class="content-section">
-        <div class="container">
-            <h1 class="section-title">Quick Start: <span style="color: #2563eb;">Get Your Tasks</span></h1>
-            <p class="section-subtitle">Here's the fastest path from zero to running your first legal research query. Follow each step exactly — we'll walk you through everything.</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-content">
-                        <h3>Buy a Credit Pack</h3>
-                        <p>Start with the <a href="https://lawtasksai.com/#pricing" style="color: #2563eb;">Trial pack ($20 for 10 tasks)</a> — perfect for getting started. Each task costs one credit. Credits never expire.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-content">
-                        <h3>Get Your License Key</h3>
-                        <p>After purchase, you'll receive a license key by email. It looks like: <code>lt_abc123...</code> — keep this handy, you'll need it in a few minutes.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-content">
-                        <h3>Install OpenClaw</h3>
-                        <p>Visit <a href="https://openclaw.ai" style="color: #2563eb;">openclaw.ai</a> and follow their install instructions. OpenClaw is the AI assistant that runs LawTasksAI's legal tools.</p>
-                        <p style="margin-top: 8px; font-size: 0.9rem; color: #374151;">Once installed, OpenClaw gives you a <strong>chat window</strong> where you type messages — similar to ChatGPT or iMessage. That chat window is where you'll do everything below.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <div class="step-content">
-                        <h3>Download the LawTasksAI Skill File</h3>
-                        <p>Go to your <a href="download.html" style="color: #2563eb;">LawTasksAI Account Page</a>, log in with your license key, and click <strong>"Download Skill Loader."</strong></p>
-                        <p style="margin-top: 8px; font-size: 0.9rem; color: #374151;">This downloads a small file to your computer (usually to your <strong>Downloads</strong> folder). You don't need to open or edit this file — you just need to know where it was saved.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">5</div>
-                    <div class="step-content">
-                        <h3>Install the Skill — Just Tell Your AI to Do It</h3>
-                        <p>This is the best part about having an AI assistant — <strong>you don't need to figure out the technical stuff yourself.</strong> Just tell it what you want in plain English.</p>
-                        
-                        <div style="background: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 24px; margin-top: 16px;">
-                            <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 16px;">✨ Open your OpenClaw chat and type this:</p>
-                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 14px 18px; border-radius: 8px; font-size: 1.05rem; line-height: 1.6;">I just downloaded the LawTasksAI skill file to my Downloads folder. Please find it, unzip it if needed, and install it so I can use it. My license key is lt_XXXXX</code>
-                            <p style="font-size: 0.92rem; color: #166534; margin-top: 14px;">📝 <strong>Replace <code style="background: #dcfce7; color: #166534;">lt_XXXXX</code> with your actual license key</strong> from the email you received after purchase.</p>
-                            <p style="font-size: 0.92rem; color: #166534; margin-top: 10px;">Your AI assistant will:</p>
-                            <ul style="padding-left: 20px; font-size: 0.92rem; color: #166534; margin-top: 6px;">
-                                <li style="margin-bottom: 4px;">✓ Find the downloaded file on your computer</li>
-                                <li style="margin-bottom: 4px;">✓ Unzip it if it's compressed</li>
-                                <li style="margin-bottom: 4px;">✓ Move it to the correct folder</li>
-                                <li style="margin-bottom: 4px;">✓ Configure your license key</li>
-                                <li style="margin-bottom: 0;">✓ Confirm when everything is ready</li>
-                            </ul>
-                            <p style="font-size: 0.95rem; color: #15803d; margin-top: 14px; font-weight: 600;">That's it. Your AI handles the installation. Skip to Step 6! 🎉</p>
-                        </div>
-
-                        <p style="margin-top: 20px; font-size: 0.92rem; color: #374151;">If your AI assistant has any trouble finding the file, just tell it where you saved it. For example: <em>"It's on my Desktop"</em> or <em>"I saved it to my Documents folder."</em></p>
-
-                        <details style="margin-top: 20px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
-                            <summary style="padding: 14px 18px; background: #f8fafc; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #374151;">🔧 Prefer to do it manually? Click here for step-by-step instructions</summary>
-                            <div style="padding: 18px;">
-                                <div style="margin-bottom: 16px;">
-                                    <p style="font-weight: 600; margin-bottom: 10px;">🖥️ Windows:</p>
-                                    <ol style="padding-left: 20px; color: #374151; font-size: 0.9rem;">
-                                        <li style="margin-bottom: 6px;">Open <strong>File Explorer</strong> (the folder icon on your taskbar)</li>
-                                        <li style="margin-bottom: 6px;">Go to your <strong>Downloads</strong> folder and find the <strong>lawtasksai</strong> file</li>
-                                        <li style="margin-bottom: 6px;">If it's a <code>.zip</code> file, right-click → <strong>"Extract All"</strong> → click <strong>Extract</strong></li>
-                                        <li style="margin-bottom: 6px;">Click the address bar at the top of File Explorer, type this, and press Enter:<br>
-                                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 8px 12px; border-radius: 6px; margin-top: 4px; font-size: 0.95rem;">%USERPROFILE%\.openclaw\skills</code></li>
-                                        <li style="margin-bottom: 6px;">If the <code>skills</code> folder doesn't exist, create it (right-click → New → Folder → name it <strong>skills</strong>)</li>
-                                        <li style="margin-bottom: 0;"><strong>Copy</strong> the lawtasksai folder from Downloads and <strong>paste</strong> it into the skills folder</li>
-                                    </ol>
-                                </div>
-                                <div style="margin-bottom: 16px;">
-                                    <p style="font-weight: 600; margin-bottom: 10px;">🍎 Mac:</p>
-                                    <ol style="padding-left: 20px; color: #374151; font-size: 0.9rem;">
-                                        <li style="margin-bottom: 6px;">If the download is a <code>.zip</code> file, double-click it to unzip</li>
-                                        <li style="margin-bottom: 6px;">Open <strong>Terminal</strong> (Command + Space → type Terminal → Enter)</li>
-                                        <li style="margin-bottom: 0;">Paste this and press Enter:<br>
-                                            <code style="display: block; background: #1a1a2e; color: #34d399; padding: 8px 12px; border-radius: 6px; margin-top: 4px; font-size: 0.95rem;">cp -r ~/Downloads/lawtasksai ~/.openclaw/skills/lawtasksai</code></li>
-                                    </ol>
-                                </div>
-                                <p style="font-size: 0.95rem; color: #92400e;">After copying, restart OpenClaw so it picks up the new skill.</p>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">6</div>
-                    <div class="step-content">
-                        <h3>Enter Your License Key</h3>
-                        <p>After the skill installs, OpenClaw will ask for your license key. Paste the key from your email (the one that starts with <code>lt_</code>). You only need to do this once.</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">7</div>
-                    <div class="step-content">
-                        <h3>Ask Your First Question!</h3>
-                        <p>Open your OpenClaw chat window and type a legal question in plain English. Try one of these:</p>
-                        <ul style="padding-left: 20px; color: #374151; font-size: 0.95rem; margin-top: 8px;">
-                            <li style="margin-bottom: 6px;"><em>"What's the statute of limitations for breach of contract in Texas?"</em></li>
-                            <li style="margin-bottom: 6px;"><em>"What are the filing deadlines for a personal injury case in California?"</em></li>
-                            <li style="margin-bottom: 6px;"><em>"Summarize Colorado's rules on expert witness disclosures."</em></li>
-                        </ul>
-                        <p style="margin-top: 8px;">You don't need to know which task to use — LawTasksAI automatically picks the right one based on your question.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="content-section">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-q">Is this practicing law?</div>
-                    <div class="faq-a">No. LawTasksAI is a software tool — like Westlaw or LexisNexis. It provides legal information and automates research tasks. It does not provide legal advice, represent clients, or create an attorney-client relationship. You, the licensed attorney, apply professional judgment to every result.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Can opposing counsel subpoena my AI queries?</div>
-                    <div class="faq-a">We don't store your queries or results on our servers. Once your request is processed, there's nothing to subpoena. Research queries (like statute lookups) generally don't contain privileged information anyway — they're questions about the law, not about your clients.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">How accurate are the results?</div>
-                    <div class="faq-a">Each of LawTasksAI's 206 skills is designed for a specific legal task — citing specific statutes, cases, and rules rather than giving generic answers. That said, AI can make mistakes — always verify critical information, just as you would with any research tool. Think of it as a very fast, structured first draft.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What if I have confidential documents to analyze?</div>
-                    <div class="faq-a">Your documents are never sent to LawTasksAI — we only deliver the expert analysis framework. However, your AI assistant processes the document, so if you use a cloud AI provider, the document is sent to them. For maximum confidentiality with sensitive client materials, use a local LLM or ensure your cloud provider has a zero data retention agreement.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Do credits expire?</div>
-                    <div class="faq-a">No. Buy credits when you need them, use them whenever you want. No subscriptions, no monthly fees, no pressure. Note: LawTasksAI credits cover LawTasksAI skills only. If you use a cloud AI provider (Anthropic, OpenAI, etc.), their charges are separate.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What platforms does this work with?</div>
-                    <div class="faq-a">LawTasksAI works with Claude Desktop, OpenClaw, Cursor, Windsurf, and any MCP-compatible client. We're adding more platforms regularly.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">I'm not technical. Can I still use this?</div>
-                    <div class="faq-a">Absolutely. The OpenClaw platform works just like a chat app — no coding, no command line, no technical knowledge required. Claude Desktop requires Python and a one-time setup, but we include an installer script to make it easy.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Can I use my license key on multiple computers?</div>
-                    <div class="faq-a">Yes. Your license key works on any device — your office desktop, laptop, home computer, wherever. Credits are tied to your account, not a specific machine.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What jurisdictions do you cover?</div>
-                    <div class="faq-a">All 50 U.S. states plus federal. Tasks cover statutes of limitations, court rules, filing deadlines, and procedures for every jurisdiction. We're expanding to additional practice areas regularly.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottom CTA -->
-    <section class="bottom-cta">
-        <div class="container">
-            <h2>Ready to Save Hours Every Week?</h2>
-            <p>Start with 10 tasks for $20. No subscription. No commitment.</p>
-            <a href="https://lawtasksai.com/#pricing" class="cta-button">Get Started Now</a>
-        </div>
-    </section>
-    
-    <footer class="site-footer-shared">
+<div class="page-hero">
   <div class="container">
-    <div class="footer-disclaimer">
-      <span class="disclaimer-label">&#9888; Not Legal Advice</span>
-      <span>LawTasksAI is software that assists attorneys and paralegals with legal research and drafting. It is not a law firm and does not provide legal advice. Always apply your own professional review and judgment to any output.</span>
+    <h1>Get started with <span>LawTasksAI</span></h1>
+    <p>Choose your AI client below - setup takes under 5 minutes.</p>
+  </div>
+</div>
+
+<!-- Compatibility banner -->
+<div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 0;">
+  <div class="container">
+    <p style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#9ca3af;margin-bottom:10px;">Platform compatibility</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#d1fae5;color:#065f46;font-weight:600;">&#10003; Claude Desktop</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#d1fae5;color:#065f46;font-weight:600;">&#10003; OpenClaw</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#d1fae5;color:#065f46;font-weight:600;">&#10003; Cursor</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#d1fae5;color:#065f46;font-weight:600;">&#10003; Windsurf</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#d1fae5;color:#065f46;font-weight:600;">&#10003; Cline</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#fef9c3;color:#854d0e;font-weight:600;">&#8987; Gemini (coming soon)</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#fee2e2;color:#991b1b;font-weight:600;">&#10005; claude.ai website</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#fee2e2;color:#991b1b;font-weight:600;">&#10005; ChatGPT</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:0.82rem;padding:4px 10px;border-radius:20px;background:#fee2e2;color:#991b1b;font-weight:600;">&#10005; Gemini Gems</span>
     </div>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/index.html" class="logo">LawTasks<span>AI</span></a>
-        <p>AI-powered legal workflows for attorneys and legal professionals.</p>
+    <p style="margin-top:10px;font-size:0.8rem;color:#92400e;background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;padding:8px 12px;display:inline-block;">
+      ⚠️ <strong>claude.ai (website) ≠ Claude Desktop (app).</strong> The website doesn't support skills. You need the free <a href="https://claude.ai/download" target="_blank" style="color:#92400e;font-weight:700;">Claude Desktop app</a>.
+    </p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+
+    <!-- ── Platform selector ── -->
+    <div style="text-align:center;margin-bottom:20px;">
+      <p style="font-size:1rem;font-weight:700;color:#1a1a2e;margin-bottom:6px;">Select your AI client to get started:</p>
+      <p style="font-size:0.85rem;color:#6b7280;">Each platform takes under 5 minutes to set up.</p>
+    </div>
+
+    <div class="path-tabs" id="path-tabs" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;">
+      <button class="path-tab active" onclick="selectPlatform('claude', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">Most popular</div>
+        <div class="tab-name">Claude Desktop</div>
+        <div class="tab-note">Anthropic's free app</div>
+      </button>
+      <button class="path-tab" onclick="selectPlatform('cursor', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">AI code editor</div>
+        <div class="tab-name">Cursor</div>
+        <div class="tab-note">Works great for professionals</div>
+      </button>
+      <button class="path-tab" onclick="selectPlatform('windsurf', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">AI code editor</div>
+        <div class="tab-name">Windsurf</div>
+        <div class="tab-note">Clean, fast interface</div>
+      </button>
+      <button class="path-tab" onclick="selectPlatform('cline', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">VS Code extension</div>
+        <div class="tab-name">Cline</div>
+        <div class="tab-note">Inside VS Code</div>
+      </button>
+      <button class="path-tab" onclick="selectPlatform('claudecode', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">Anthropic CLI</div>
+        <div class="tab-name">Claude Code</div>
+        <div class="tab-note">Terminal-based</div>
+      </button>
+      <button class="path-tab" onclick="selectPlatform('openclaw', this)" style="flex:1;min-width:140px;">
+        <div class="tab-label" style="color:#9ca3af;">Alternative</div>
+        <div class="tab-name">OpenClaw</div>
+        <div class="tab-note">One command, no config</div>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PATH A - OpenClaw
+    ══════════════════════════════════════ -->
+    <div id="path-openclaw" class="path-section active">
+
+      <div class="step">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <h2>Install OpenClaw</h2>
+        </div>
+        <p>If you don't have OpenClaw yet, download and install it from <a href="https://openclaw.ai" target="_blank">openclaw.ai</a>. It runs on Mac and Windows.</p>
       </div>
-      <div class="footer-links">
-        <a href="/task-library.html">Task Library</a>
-        <a href="/getting-started.html">Getting Started</a>
-        <a href="/security.html">ABA Rule 1.6</a>
-        <a href="/terms.html">Terms</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a>
+
+      <div class="step">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <h2>Install LawTasksAI</h2>
+        </div>
+        <p>Open a terminal and run:</p>
+        <div class="code-block">
+          <span class="cmd">openclaw skills install law</span>
+        </div>
+        <p>OpenClaw will download the skill, prompt you for your license key, and configure everything automatically. That's it.</p>
       </div>
+
+      <div class="step">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <h2>Start using your tasks</h2>
+        </div>
+        <p>Just describe what you need in plain language:</p>
+        <div class="code-block">
+          <span class="comment">You type:</span><br/>
+          <span class="cmd">"I need help with Draft a demand letter for a personal injury case"</span><br/><br/>
+          <span class="comment">LawTasksAI finds the right task, confirms with you,</span><br/>
+          <span class="comment">then runs it. Each task uses 1 credit.</span>
+        </div>
+        <p>Check your credit balance anytime: <em>"Check my law credits"</em></p>
+      </div>
+
+      <div class="info-box">
+        <h3>💡 Don't have a license key yet?</h3>
+        <p>Sign up for 5 free credits - no credit card required. Your license key is emailed to you immediately.</p>
+        <p><a href="/signup">→ Get 5 free credits at lawtasksai.com/signup</a></p>
+      </div>
+
+    </div><!-- /path-openclaw -->
+
+    <!-- ══════════════════════════════════════
+         PATH B - MCP (Claude Desktop / Cursor / Windsurf)
+    ══════════════════════════════════════ -->
+    <div id="path-mcp" class="path-section">
+
+      <!-- ── OS download box ── -->
+      <div id="exe-download-box" style="background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:28px 32px;margin-bottom:32px;text-align:center;">
+        <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#16a34a;margin-bottom:8px;">Step 1 — Download the installer</p>
+        <p style="color:#166534;margin-bottom:8px;font-size:0.95rem;">One file. Double-click it, enter your license key, then restart your AI client. No terminal required.</p>
+        <p style="font-size:0.8rem;color:#374151;margin-bottom:20px;"><strong>Requirements:</strong> Mac or Windows &nbsp;·&nbsp; Claude Desktop, Cursor, Windsurf, or Cline already installed &nbsp;·&nbsp; No terminal or Python required</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a id="btn-primary-dl" href="#" style="display:inline-flex;align-items:center;gap:8px;background:#16a34a;color:white;font-weight:700;font-size:1rem;padding:14px 28px;border-radius:8px;text-decoration:none;" target="_blank">
+            <span id="btn-primary-icon">⬇</span> <span id="btn-primary-label">Download Installer</span>
+          </a>
+          <a id="btn-alt-dl" href="#" style="display:inline-flex;align-items:center;gap:8px;background:white;color:#374151;font-weight:600;font-size:0.9rem;padding:14px 20px;border-radius:8px;text-decoration:none;border:1px solid #d1d5db;" target="_blank">
+            <span id="btn-alt-label">Other platform</span>
+          </a>
+        </div>
+        <p style="margin-top:14px;font-size:0.78rem;color:#6b7280;">Can't run the installer? <a href="#" onclick="document.getElementById('manual-install-section').style.display='block';this.closest('p').style.display='none';return false;" style="color:#16a34a;font-weight:600;">Use the manual Python setup instead →</a></p>
+      </div>
+
+      <!-- ── Claude Desktop ── -->
+      <div id="mcp-claude" class="mcp-client-section">
+        <div class="alert" style="margin-bottom:20px;">
+          <strong>⚠️ claude.ai (website) ≠ Claude Desktop (app)</strong>
+          These instructions are for the <strong>downloadable Claude Desktop app</strong> — not the claude.ai website. The website does not support skills.<br/>
+          <a href="https://claude.ai/download" target="_blank" style="color:#92400e;font-weight:700;">Download Claude Desktop free (Mac &amp; Windows) →</a>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">1</div><h2>Close Claude Desktop</h2></div>
+          <p>If Claude Desktop is running, <strong>fully quit it first</strong> — not just close the window.</p>
+          <ul>
+            <li><strong>Windows:</strong> Right-click the Claude icon in the system tray (bottom-right near the clock) → <strong>Quit</strong></li>
+            <li><strong>Mac:</strong> Click <strong>Claude → Quit Claude</strong> in the menu bar, or press <strong>⌘Q</strong></li>
+          </ul>
+          <p style="margin-top:8px;color:#6b7280;font-size:0.88rem;">This ensures the installer can write files without conflicts.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">2</div><h2>Download &amp; run the installer</h2></div>
+          <p>Use the green download button above. Double-click <code>LawTasksAI-Setup.exe</code> (Windows) or <code>LawTasksAI-Setup</code> (Mac).</p>
+          <ol>
+            <li>Enter your license key (from your signup email)</li>
+            <li>Click <strong>Verify</strong> to confirm your key works</li>
+            <li>Click <strong>Install</strong></li>
+            <li>Wait for "Installation complete" — then close the installer</li>
+          </ol>
+          <div style="background:#eff6ff;border:2px solid #93c5fd;border-radius:10px;padding:18px 22px;margin-top:14px;">
+            <p style="font-weight:700;color:#1e40af;margin:0 0 8px;font-size:0.95rem;">🛡️ Windows users: you'll see a safety warning — here's what to do</p>
+            <p style="color:#1e3a8a;font-size:0.88rem;margin:0 0 10px;">Windows shows a blue "Windows protected your PC" screen for all new software. It doesn't mean anything is wrong — just click through it:</p>
+            <ol style="color:#1e3a8a;font-size:0.9rem;margin:0 0 0 18px;line-height:2;font-weight:600;">
+              <li>Click <strong>"More info"</strong> (small text link below the main message)</li>
+              <li>Click <strong>"Run anyway"</strong></li>
+              <li>The installer opens normally — continue from there</li>
+            </ol>
+            <p style="margin-top:10px;font-size:0.82rem;color:#3730a3;margin-bottom:0;">This warning will disappear as more people install the app. It's a standard Windows precaution for any new publisher.</p>
+          </div>
+          <p style="margin-top:8px;color:#6b7280;font-size:0.88rem;">The installer places the server in a permanent location and configures Claude Desktop automatically. You can delete the installer file afterward.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">3</div><h2>Open Claude Desktop &amp; approve the connector</h2></div>
+          <p>Open Claude Desktop. Go to <strong>Settings → Connectors</strong> (or <strong>Customize</strong>).</p>
+          <p>You'll see <strong>lawtasksai</strong> listed. Click to <strong>approve</strong> it. It should show a green status.</p>
+          <div class="info-box" style="margin-top:12px;">
+            <p style="margin:0;">💡 <strong>Don't see it?</strong> Try fully quitting Claude Desktop (Step 1) and reopening it. MCP servers load at startup.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">4</div><h2>Confirm it's working (30 seconds)</h2></div>
+          <p>Open a new Claude Desktop conversation and type:</p>
+          <div class="code-block"><span class="cmd">Check my LawTasksAI balance</span></div>
+          <p>You should see your credit balance returned instantly. If you do — you're all set! 🎉</p>
+          <div class="info-box" style="margin-top:12px;">
+            <p style="margin:0;">🛑 <strong>Got an error?</strong> Make sure you fully quit and restarted Claude Desktop after the installer ran. If it still fails, visit <a href="/support.html" style="color:var(--accent);">Support</a>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">5</div><h2>Start a conversation with LawTasksAI</h2></div>
+          <p>Open a <strong>new conversation</strong> in Claude Desktop and type:</p>
+          <div class="code-block"><span class="cmd">"Use LawTasksAI to help me with Draft a demand letter for a personal injury case"</span></div>
+          <p>LawTasksAI will search its skill library and present options. Pick one, and Claude will run the full expert framework (1 credit per use).</p>
+          <div class="info-box" style="margin-top:16px;">
+            <h3>💡 Pro tip: Set up a Project for automatic activation</h3>
+            <p>Create a <strong>Project</strong> in Claude Desktop (e.g., "My Practice" or "My Office") and add this custom instruction:</p>
+            <div class="code-block" style="background:#0c4a6e;border-color:#0c4a6e;text-align:left;"><span class="cmd">"Always use LawTasksAI tools to answer my questions. Search for the right skill before responding."</span></div>
+            <p>Every conversation in that project will automatically use LawTasksAI — no need to mention it each time.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header"><div class="step-num">6</div><h2>You're set!</h2></div>
+          <p>Try these to explore:</p>
+          <ul>
+            <li><em>"Check my law credits"</em> — see your balance</li>
+            <li><em>"Show law categories"</em> — browse all skill categories</li>
+            <li><em>"Search LawTasksAI for Draft a demand letter for a personal injury case"</em> — find specific skills</li>
+          </ul>
+        </div>
+        <!-- Manual install fallback (hidden by default) -->
+        <div id="manual-install-section" style="display:none;">
+          <hr class="divider"/>
+          <div class="alert"><strong>Manual setup (Python required)</strong> Only use this if the installer didn't work.</div>
+          <div class="step">
+            <div class="step-header"><div class="step-num">A</div><h2>Requirements</h2></div>
+            <p>Python 3.10+ required. Check: <code>python3 --version</code>. Download from <a href="https://python.org/downloads" target="_blank">python.org</a> if needed.</p>
+          </div>
+          <div class="step">
+            <div class="step-header"><div class="step-num">B</div><h2>Run the Python installer</h2></div>
+            <div class="code-block">
+              <span class="cmd">cd ~/Downloads/lawtasksai/mcp</span><br/>
+              <span class="cmd">pip3 install -r requirements.txt</span><br/>
+              <span class="cmd">python3 install.py</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-header"><div class="step-num">C</div><h2>Manual config location</h2></div>
+            <ul>
+              <li><strong>Mac:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+              <li><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+            </ul>
+            <div class="code-block">
+<span class="key">{</span><br/>
+&nbsp;&nbsp;<span class="val">"mcpServers"</span>: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"lawtasksai"</span>: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"command"</span>: <span class="cmd">"python3"</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"args"</span>: [<span class="cmd">"/full/path/to/mcp/server.py"</span>],<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">"env"</span>: { <span class="val">"LAWTASKSAITASKSAI_LICENSE_KEY"</span>: <span class="cmd">"your-key"</span> }<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;}<br/>
+<span class="key">}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Claude Code ── -->
+      <div id="mcp-claudecode" class="mcp-client-section" style="display:none;">
+        <div class="step">
+          <div class="step-header"><div class="step-num">1</div><h2>Download &amp; run the installer</h2></div>
+          <p>Use the download button above. The installer detects Claude Code automatically and writes to <code>~/.claude.json</code>. If you also have Claude Desktop, it configures both in one pass.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">2</div><h2>Start a new Claude Code session</h2></div>
+          <p>Restart if one is already running. The MCP server loads at session start.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">3</div><h2>Try it</h2></div>
+          <div class="code-block"><span class="cmd">"I need help with Draft a demand letter for a personal injury case"</span></div>
+          <p>Or check your balance: <em>"Check my law credits"</em></p>
+        </div>
+      </div>
+
+      <!-- ── Cursor ── -->
+      <div id="mcp-cursor" class="mcp-client-section" style="display:none;">
+        <div class="step">
+          <div class="step-header"><div class="step-num">1</div><h2>Download &amp; run the installer</h2></div>
+          <p>Use the download button above. The installer detects Cursor automatically and configures it.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">2</div><h2>Restart Cursor</h2></div>
+          <p>Fully quit and reopen Cursor. Go to <strong>Settings → MCP</strong> to confirm <strong>lawtasksai</strong> appears.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">3</div><h2>Try it</h2></div>
+          <div class="code-block"><span class="cmd">"I need help with Draft a demand letter for a personal injury case"</span></div>
+        </div>
+      </div>
+
+      <!-- ── Windsurf ── -->
+      <div id="mcp-windsurf" class="mcp-client-section" style="display:none;">
+        <div class="step">
+          <div class="step-header"><div class="step-num">1</div><h2>Download &amp; run the installer</h2></div>
+          <p>Use the download button above. The installer writes to <code>~/.codeium/windsurf/mcp_config.json</code> automatically.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">2</div><h2>Restart Windsurf</h2></div>
+          <p>Fully quit and reopen Windsurf. Click the <strong>MCPs icon</strong> (top-right of the Cascade panel) — you should see <strong>lawtasksai</strong> listed.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">3</div><h2>Try it</h2></div>
+          <div class="code-block"><span class="cmd">"I need help with Draft a demand letter for a personal injury case"</span></div>
+        </div>
+      </div>
+
+      <!-- ── Cline ── -->
+      <div id="mcp-cline" class="mcp-client-section" style="display:none;">
+        <div class="step">
+          <div class="step-header"><div class="step-num">1</div><h2>Download &amp; run the installer</h2></div>
+          <p>Use the download button above. The installer detects Cline in VS Code and configures it automatically.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">2</div><h2>Reload VS Code</h2></div>
+          <p>Reload the VS Code window (<strong>Cmd/Ctrl+Shift+P → Reload Window</strong>). Open the Cline sidebar → MCP Servers to confirm <strong>lawtasksai</strong> is listed.</p>
+        </div>
+        <div class="step">
+          <div class="step-header"><div class="step-num">3</div><h2>Try it</h2></div>
+          <div class="code-block"><span class="cmd">"I need help with Draft a demand letter for a personal injury case"</span></div>
+        </div>
+      </div>
+
+    </div><!-- /path-mcp -->
+
+    <!-- ── Support contact form ── -->
+    <div class="cta-box">
+      <h2>Need Help?</h2>
+      <p>Fill in the form and we'll get back to you within a few hours.</p>
+      <form class="contact-form" id="supportForm">
+        <div>
+          <label for="sf_name">Your name</label>
+          <input type="text" id="sf_name" name="name" placeholder="Jane Smith" required />
+        </div>
+        <div>
+          <label for="sf_email">Your email</label>
+          <input type="email" id="sf_email" name="email" placeholder="jane@example.com" required />
+        </div>
+        <div>
+          <label for="sf_topic">What do you need help with?</label>
+          <select id="sf_topic" name="topic">
+            <option value="">- Select a topic -</option>
+            <option>Installation / setup</option>
+            <option>License key or credits</option>
+            <option>Task not working as expected</option>
+            <option>Billing question</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="sf_msg">Message</label>
+          <textarea id="sf_msg" name="message" placeholder="Describe what's happening..." required></textarea>
+        </div>
+        <button type="submit" id="sf_btn">Send Message</button>
+        <div class="form-success" id="sf_success">✓ Message sent! We'll reply within a few hours.</div>
+      </form>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Laudo Lux, LLC &nbsp;&middot;&nbsp; <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a></p>
-    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/support">Support</a>
+    </p>
+    <p style="margin-top:12px;">© 2026 LawTasksAI. All rights reserved.</p>
   </div>
 </footer>
-    
-    <script>
-        // Mobile nav
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        const overlay = document.getElementById('overlay');
-        
-        function toggleNav() {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-        
-        hamburger.addEventListener('click', toggleNav);
-        overlay.addEventListener('click', toggleNav);
-        
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    this.parentElement.classList.toggle('mobile-open');
-                });
-            });
-        }
-        
-        // Close nav when clicking a link
-        navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) toggleNav();
-            });
+
+<script>
+  // Single entry point for all platform selection
+  function selectPlatform(id, btn) {
+    // Update outer tab highlights
+    document.querySelectorAll('#path-tabs .path-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    if (id === 'openclaw') {
+      // Show OpenClaw path, hide MCP path
+      document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('path-openclaw').classList.add('active');
+    } else {
+      // Show MCP path and reveal the correct client section
+      document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('path-mcp').classList.add('active');
+      document.querySelectorAll('.mcp-client-section').forEach(s => s.style.display = 'none');
+      document.getElementById('mcp-' + id).style.display = 'block';
+    }
+  }
+
+  // On load: read ?platform= param (default claude_desktop → 'claude')
+  (function() {
+    var PLATFORM_MAP = {
+      'claude_desktop': 'claude', 'claude-desktop': 'claude',
+      'claude_code': 'claudecode', 'claude-code': 'claudecode',
+      'cursor': 'cursor', 'windsurf': 'windsurf',
+      'cline': 'cline', 'openclaw': 'openclaw'
+    };
+    var param = new URLSearchParams(window.location.search).get('platform') || 'claude_desktop';
+    var clientId = PLATFORM_MAP[param] || 'claude';
+    // Find matching outer tab button and activate
+    var NAME_MAP = { claude: 'Claude Desktop', cursor: 'Cursor', windsurf: 'Windsurf', cline: 'Cline', claudecode: 'Claude Code', openclaw: 'OpenClaw' };
+    var targetName = NAME_MAP[clientId];
+    var matchBtn = null;
+    document.querySelectorAll('#path-tabs .path-tab').forEach(function(t) {
+      var nm = t.querySelector('.tab-name');
+      if (nm && nm.textContent.trim() === targetName) matchBtn = t;
+    });
+    selectPlatform(clientId, matchBtn);
+  })();
+
+  // ── OS auto-detect for download buttons ────────────────────────────────────
+  (function () {
+    var PRODUCT   = 'LawTasksAI';
+    var BASE_URL  = 'https://github.com/laudoluxDev/lawtasksai-mcp/releases/latest/download/';
+    var win_file  = PRODUCT + '-Setup.exe';
+    var mac_file  = PRODUCT + '-Setup-mac';
+
+    var isMac     = /Mac|iPod|iPhone|iPad/.test(navigator.platform ||
+                    navigator.userAgentData && navigator.userAgentData.platform || '');
+
+    var primary   = document.getElementById('btn-primary-dl');
+    var alt       = document.getElementById('btn-alt-dl');
+    var primLabel = document.getElementById('btn-primary-label');
+    var altLabel  = document.getElementById('btn-alt-label');
+    var primIcon  = document.getElementById('btn-primary-icon');
+
+    if (isMac) {
+      primary.href    = BASE_URL + mac_file;
+      alt.href        = BASE_URL + win_file;
+      primLabel.textContent = 'Download for Mac';
+      altLabel.textContent  = 'Download for Windows instead';
+      primIcon.textContent  = '⬇';
+    } else {
+      primary.href    = BASE_URL + win_file;
+      alt.href        = BASE_URL + mac_file;
+      primLabel.textContent = 'Download for Windows';
+      altLabel.textContent  = 'Download for Mac instead';
+      primIcon.textContent  = '⬇';
+      // Auto-show SmartScreen notice for Windows users
+      var ssNotice = document.getElementById('smartscreen-notice');
+      if (ssNotice) ssNotice.style.display = 'block';
+    }
+  })();
+
+  (function () {
+    var form = document.getElementById('supportForm');
+    if (!form) return;
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn     = document.getElementById('sf_btn');
+      var success = document.getElementById('sf_success');
+      btn.disabled    = true;
+      btn.textContent = 'Sending...';
+      var payload = {
+        name:    document.getElementById('sf_name').value.trim(),
+        email:   document.getElementById('sf_email').value.trim(),
+        topic:   document.getElementById('sf_topic').value,
+        message: document.getElementById('sf_msg').value.trim(),
+        product: 'LawTasksAI'
+      };
+      try {
+        var res = await fetch('https://api.lawtasksai.com/v1/support', {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
         });
-    </script>
-    <script>
-        // FAQ accordion
-        document.querySelectorAll('.faq-q').forEach(q => {
-            q.addEventListener('click', () => {
-                const item = q.parentElement;
-                const wasOpen = item.classList.contains('open');
-                // Close all
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                // Toggle clicked
-                if (!wasOpen) item.classList.add('open');
-            });
-        });
-    </script>
+        if (res.ok || res.status === 204) {
+          form.reset();
+          success.style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          btn.disabled    = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please email us directly at hello@lawtasksai.com');
+        }
+      } catch (err) {
+        btn.disabled    = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please email us directly at hello@lawtasksai.com');
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
