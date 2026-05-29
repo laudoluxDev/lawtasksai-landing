@@ -194,30 +194,34 @@
     <div class="faq-section" id="getting-started">
       <h2>Getting Started</h2>
 
-      <!-- FEATURED -->
+      <!-- FEATURED: prefix -->
       <div class="faq-item featured open">
         <button class="faq-q" onclick="toggle(this)">
           <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-          <span>Why isn't LawTasksAI responding? Claude is just answering normally.</span>
+          <span>LawTasksAI is installed but Claude is just answering normally. My skills aren't being used.</span>
           <span class="badge">Most common</span>
         </button>
         <div class="faq-a">
-          <p>This is the most common thing new users experience. Here's why it happens:</p>
-          <p><strong>Claude has its own built-in training, and it defaults to that unless you direct it otherwise.</strong> When you type "draft a demand letter," Claude sees a writing task and answers from its general legal knowledge — it doesn't automatically reach for your installed skills.</p>
-          <p>The fix is a four-word prefix. Start every prompt with:</p>
-          <div class="code-block">Use LawTasksAI to…</div>
-          <p>That tells Claude to search your skill library, find the right expert framework, and run it instead of answering generically. It works every single time.</p>
-          <p><strong>Examples:</strong></p>
-          <ul>
-            <li><code>Use LawTasksAI to draft a demand letter for breach of contract</code></li>
-            <li><code>Use LawTasksAI to analyze the statute of limitations for a PI case in Texas</code></li>
-            <li><code>Use LawTasksAI to generate deposition questions for an eyewitness</code></li>
-            <li><code>Use LawTasksAI to show me what tasks are available</code></li>
-          </ul>
-          <div class="info-box">
-            💡 <strong>Don't want to type the prefix every time?</strong> Create a Project in Claude Desktop and add the instruction: <em>"Always use LawTasksAI tools to answer my questions."</em> Every conversation in that project invokes your skills automatically — no prefix needed.
-          </div>
-          <p>For the full explanation and more examples, see the blog post: <a href="/blog/use-lawtasksai-to-the-phrase-that-unlocks-everything.html">"Use LawTasksAI to…" — The Phrase That Unlocks Everything →</a></p>
+          <p><strong>Claude defaults to its own training unless you explicitly direct it.</strong> It doesn't automatically reach for installed skills — it answers generically first.</p>
+          <p>The fix is a four-word prefix. Start every prompt with <strong>“Use LawTasksAI to…”</strong> and Claude will always invoke your skill library instead of guessing.</p>
+          <div class="code-block">Use LawTasksAI to draft a demand letter for breach of contract</div>
+          <p>You don't need to know which of the 206 tasks to use — LawTasksAI finds the right framework automatically.</p>
+          <p>Full explanation, 8 copy-paste examples, and the Projects trick to skip the prefix entirely: <a href="/blog/use-lawtasksai-to-the-phrase-that-unlocks-everything.html">“Use LawTasksAI to…” — The Phrase That Unlocks Everything →</a></p>
+        </div>
+      </div>
+
+      <!-- FEATURED: permissions -->
+      <div class="faq-item featured">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>LawTasksAI worked once but now it's stopped — or it works inconsistently.</span>
+          <span class="badge">Most common</span>
+        </button>
+        <div class="faq-a">
+          <p><strong>Claude Desktop asks permission every time a tool runs.</strong> If that prompt was dismissed even once, your skills are silently blocked for the rest of the conversation — no error, Claude just answers normally.</p>
+          <p>Fix it permanently in 30 seconds: go to <strong>Settings → Connectors → Customize → lawtasksai</strong> and set all four tools to <strong>Always allow</strong>. Start a new conversation and it works every time.</p>
+          <p>Full walkthrough with screenshots: <a href="/blog/claude-desktop-permissions-always-allow.html">Why LawTasksAI Isn't Responding — And the 30-Second Permissions Fix →</a></p>
+          <div class="info-box">&#9432; Cursor, Windsurf, and Cline don't have this permission system — skip this entirely if you're on those clients.</div>
         </div>
       </div>
 
@@ -227,23 +231,9 @@
           <span>Claude Desktop keeps asking me to approve LawTasksAI every time I use it.</span>
         </button>
         <div class="faq-a">
-          <p>By default, Claude Desktop asks for permission each time a tool runs. Dismiss that prompt once and it won't run your skills at all. Fix it in 30 seconds:</p>
-          <ol>
-            <li>In Claude Desktop, click <strong>Settings</strong></li>
-            <li>Go to <strong>Connectors</strong> — click the <strong>Customize</strong> link when prompted</li>
-          </ol>
-          <img src="/images/setup/step1-connectors.png" alt="Claude Desktop Settings — Connectors pointing to Customize" class="perm-img" />
-          <p class="img-caption">Settings → Connectors → click "Customize"</p>
-          <ol start="3">
-            <li>Under <strong>Desktop</strong>, click <strong>lawtasksai</strong></li>
-            <li>Set all four tools to <strong>Always allow</strong></li>
-          </ol>
-          <img src="/images/setup/step2-always-allow.png" alt="Claude Desktop — LawTasksAI tools set to Always Allow" class="perm-img" />
-          <p class="img-caption">Set all four tools to "Always allow"</p>
-          <ol start="5">
-            <li>Start a <strong>new conversation</strong> — permissions take effect at conversation start</li>
-          </ol>
-          <p>Done. No more approval prompts.</p>
+          <p>By default, Claude Desktop asks for permission each time a tool runs. Dismiss that prompt once and your skills stop working for the rest of the conversation — with no error message.</p>
+          <p>Fix it once in 30 seconds: go to <strong>Settings → Connectors → Customize → lawtasksai</strong> and set all four tools to <strong>Always allow</strong>. Then start a new conversation.</p>
+          <p>Full walkthrough with screenshots: <a href="/blog/claude-desktop-permissions-always-allow.html">Why LawTasksAI Isn't Responding — And the 30-Second Permissions Fix →</a></p>
         </div>
       </div>
 
