@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions — LawTasksAI</title>
+  <meta name="description" content="Answers to the most common questions about LawTasksAI — setup, credits, permissions, Claude Desktop, and how to get the most out of 206 expert legal frameworks.">
+  <link rel="canonical" href="https://lawtasksai.com/faq.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1GZ4XTPKZR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1GZ4XTPKZR');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why isn't LawTasksAI responding? Claude is just answering normally.",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude defaults to its own training unless you explicitly direct it. Start every prompt with \"Use LawTasksAI to…\" — that prefix tells Claude to search your skill library and run the right expert framework instead of answering generically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know which task to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Just describe what you need in plain language after the prefix. LawTasksAI searches all 206 frameworks, finds the best match, and confirms before running."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I enable permissions in Claude Desktop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Go to Settings → Connectors → Customize → lawtasksai → set all four tools to Always allow. This prevents Claude from asking permission every time and ensures your skills run reliably."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do my credits expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your credits never expire. They're there whenever you're ready to use them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does each task cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each task execution costs 1 credit. Searching the library and browsing categories is free. Check your balance anytime with: Use LawTasksAI to check my balance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does LawTasksAI work on the claude.ai website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. LawTasksAI requires the Claude Desktop app (free download from claude.ai/download), not the claude.ai website. The website does not support MCP tools."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafbfc; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+    .page-hero { padding: 56px 0 36px; text-align: center; background: linear-gradient(180deg, white 0%, #f3f4f6 100%); }
+    .page-hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .page-hero h1 span { color: #2563eb; }
+    .page-hero p { font-size: 1.05rem; color: #6b7280; max-width: 580px; margin: 0 auto; }
+
+    .content { padding: 48px 0 80px; }
+
+    /* ── Category nav ── */
+    .cat-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .cat-nav a {
+      padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      background: white; border: 1px solid #e5e7eb; color: #4b5563;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .cat-nav a:hover { border-color: #2563eb; color: #2563eb; }
+
+    /* ── FAQ sections ── */
+    .faq-section { margin-bottom: 52px; }
+    .faq-section h2 {
+      font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #9ca3af; margin-bottom: 20px;
+      padding-bottom: 10px; border-bottom: 2px solid #e5e7eb;
+    }
+
+    /* ── Accordion items ── */
+    .faq-item { border: 1px solid #e5e7eb; border-radius: 10px; margin-bottom: 10px; background: white; overflow: hidden; }
+    .faq-item.featured { border-color: #2563eb; border-width: 2px; }
+    .faq-q {
+      width: 100%; text-align: left; padding: 18px 20px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: flex-start; gap: 12px;
+      font-family: inherit; font-size: 1rem; font-weight: 600; color: #1a1a2e;
+      line-height: 1.4;
+    }
+    .faq-item.featured .faq-q { color: #1d4ed8; }
+    .faq-q .chevron {
+      flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px;
+      color: #9ca3af; transition: transform 0.2s;
+    }
+    .faq-item.open .faq-q .chevron { transform: rotate(180deg); color: #2563eb; }
+    .faq-q .badge {
+      flex-shrink: 0; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; padding: 2px 8px; border-radius: 20px;
+      background: #2563eb; color: white; margin-top: 2px;
+    }
+    .faq-a { display: none; padding: 0 20px 20px 20px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p { color: #4b5563; font-size: 0.97rem; line-height: 1.75; margin-bottom: 12px; }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a ul, .faq-a ol { padding-left: 20px; color: #4b5563; font-size: 0.95rem; line-height: 1.9; margin-bottom: 12px; }
+    .faq-a li { margin-bottom: 4px; }
+    .faq-a a { color: #2563eb; text-decoration: underline; }
+    .faq-a strong { color: #1a1a2e; font-weight: 600; }
+    .faq-a code {
+      background: #f1f5f9; color: #0f172a; padding: 2px 6px;
+      border-radius: 4px; font-size: 0.88em; font-family: 'Courier New', monospace;
+    }
+    .code-block {
+      background: #0f172a; border-radius: 8px; padding: 14px 18px;
+      font-family: 'Courier New', monospace; font-size: 0.88rem;
+      color: #7dd3fc; line-height: 1.7; margin: 12px 0; overflow-x: auto;
+    }
+    .note-box { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 0.9rem; color: #92400e; }
+    .info-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: 0.9rem; color: #075985; }
+    .perm-img { width: 100%; border-radius: 8px; border: 1px solid #e0f2fe; display: block; margin: 10px 0 4px; }
+    .img-caption { font-size: 0.78rem; color: #6b7280; text-align: center; margin-bottom: 12px; }
+
+    /* ── CTA ── */
+    .faq-cta { background: #2563eb; border-radius: 12px; padding: 36px; text-align: center; color: white; margin-top: 16px; }
+    .faq-cta h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    .faq-cta p { opacity: 0.9; margin-bottom: 20px; font-size: 0.95rem; }
+    .faq-cta a { display: inline-block; background: white; color: #2563eb; font-weight: 700; padding: 12px 28px; border-radius: 8px; text-decoration: none; }
+    .faq-cta a:hover { opacity: 0.92; }
+
+    footer { background: #1a1a2e; color: #9ca3af; padding: 32px 0; text-align: center; font-size: 0.9rem; }
+    footer a { color: #9ca3af; text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: white; }
+
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 1.7rem; }
+      .faq-q { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+<script src="/header.js"></script>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Frequently Asked <span>Questions</span></h1>
+    <p>Everything you need to know about getting LawTasksAI working — and getting the most out of it.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+
+    <div class="cat-nav">
+      <a href="#getting-started">Getting Started</a>
+      <a href="#using-skills">Using Skills</a>
+      <a href="#credits">Credits &amp; Billing</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#compatibility">Compatibility</a>
+      <a href="#privacy">Privacy &amp; Security</a>
+    </div>
+
+    <!-- ══════════════════════════════════
+         GETTING STARTED
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="getting-started">
+      <h2>Getting Started</h2>
+
+      <!-- FEATURED -->
+      <div class="faq-item featured open">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Why isn't LawTasksAI responding? Claude is just answering normally.</span>
+          <span class="badge">Most common</span>
+        </button>
+        <div class="faq-a">
+          <p>This is the most common thing new users experience. Here's why it happens:</p>
+          <p><strong>Claude has its own built-in training, and it defaults to that unless you direct it otherwise.</strong> When you type "draft a demand letter," Claude sees a writing task and answers from its general legal knowledge — it doesn't automatically reach for your installed skills.</p>
+          <p>The fix is a four-word prefix. Start every prompt with:</p>
+          <div class="code-block">Use LawTasksAI to…</div>
+          <p>That tells Claude to search your skill library, find the right expert framework, and run it instead of answering generically. It works every single time.</p>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li><code>Use LawTasksAI to draft a demand letter for breach of contract</code></li>
+            <li><code>Use LawTasksAI to analyze the statute of limitations for a PI case in Texas</code></li>
+            <li><code>Use LawTasksAI to generate deposition questions for an eyewitness</code></li>
+            <li><code>Use LawTasksAI to show me what tasks are available</code></li>
+          </ul>
+          <div class="info-box">
+            💡 <strong>Don't want to type the prefix every time?</strong> Create a Project in Claude Desktop and add the instruction: <em>"Always use LawTasksAI tools to answer my questions."</em> Every conversation in that project invokes your skills automatically — no prefix needed.
+          </div>
+          <p>For the full explanation and more examples, see the blog post: <a href="/blog/use-lawtasksai-to-the-phrase-that-unlocks-everything.html">"Use LawTasksAI to…" — The Phrase That Unlocks Everything →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Claude Desktop keeps asking me to approve LawTasksAI every time I use it.</span>
+        </button>
+        <div class="faq-a">
+          <p>By default, Claude Desktop asks for permission each time a tool runs. Dismiss that prompt once and it won't run your skills at all. Fix it in 30 seconds:</p>
+          <ol>
+            <li>In Claude Desktop, click <strong>Settings</strong></li>
+            <li>Go to <strong>Connectors</strong> — click the <strong>Customize</strong> link when prompted</li>
+          </ol>
+          <img src="/images/setup/step1-connectors.png" alt="Claude Desktop Settings — Connectors pointing to Customize" class="perm-img" />
+          <p class="img-caption">Settings → Connectors → click "Customize"</p>
+          <ol start="3">
+            <li>Under <strong>Desktop</strong>, click <strong>lawtasksai</strong></li>
+            <li>Set all four tools to <strong>Always allow</strong></li>
+          </ol>
+          <img src="/images/setup/step2-always-allow.png" alt="Claude Desktop — LawTasksAI tools set to Always Allow" class="perm-img" />
+          <p class="img-caption">Set all four tools to "Always allow"</p>
+          <ol start="5">
+            <li>Start a <strong>new conversation</strong> — permissions take effect at conversation start</li>
+          </ol>
+          <p>Done. No more approval prompts.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>How do I install LawTasksAI?</span>
+        </button>
+        <div class="faq-a">
+          <p>Download the installer from the <a href="/download.html">Download page</a>. It's a single file — double-click it, enter your license key, click Install. No terminal or Python required.</p>
+          <p>The installer configures Claude Desktop, Cursor, Windsurf, or Cline automatically — whichever you have installed. Then restart your AI client and you're ready.</p>
+          <p>Full step-by-step: <a href="/getting-started.html">Getting Started guide →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Where do I find my license key?</span>
+        </button>
+        <div class="faq-a">
+          <p>Your license key is in the email you received when you signed up. Subject line: <em>"Your LawTasksAI License Key."</em></p>
+          <p>If you can't find it, go to <a href="/my-account.html">My Account</a> and log in with your signup email — your key is shown there. Or <a href="/support.html">contact support</a> and we'll resend it.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════
+         USING SKILLS
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="using-skills">
+      <h2>Using Skills</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Do I need to know which task to use?</span>
+        </button>
+        <div class="faq-a">
+          <p>No. Just describe what you're working on and LawTasksAI finds the right framework. You never need to browse a menu or remember a task name.</p>
+          <div class="code-block">Use LawTasksAI to help me with a breach of contract case where the other party stopped making payments</div>
+          <p>LawTasksAI searches all 206 frameworks, selects the closest match, and confirms with you before running. You stay in control of every step.</p>
+          <p>Want to browse first? Ask:</p>
+          <div class="code-block">Use LawTasksAI to show me all available categories</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>What kinds of tasks can LawTasksAI help with?</span>
+        </button>
+        <div class="faq-a">
+          <p>206 expert legal frameworks across all major practice areas, including:</p>
+          <ul>
+            <li><strong>Litigation</strong> — motions, discovery, depositions, trial prep, appeals</li>
+            <li><strong>Contracts</strong> — drafting, review, red-lining, negotiation strategy</li>
+            <li><strong>Legal Research</strong> — case law, statute analysis, legal memos</li>
+            <li><strong>Client Management</strong> — intake, fee agreements, client letters</li>
+            <li><strong>Drafting</strong> — pleadings, briefs, correspondence, demand letters</li>
+            <li><strong>Compliance &amp; Ethics</strong> — ABA rules, opinion letters, conflict checks</li>
+          </ul>
+          <p>Browse the full library: <a href="/task-library.html">Task Library →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>How do I skip typing the prefix every time?</span>
+        </button>
+        <div class="faq-a">
+          <p>Use a <strong>Claude Desktop Project</strong>. Create a project (e.g., "My Practice") and add a custom instruction:</p>
+          <div class="code-block">"Always use LawTasksAI tools to answer my questions. Search for the right skill before responding."</div>
+          <p>Every conversation you start inside that project will automatically invoke your LawTasksAI skills — no prefix needed. Just describe what you need.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════
+         CREDITS & BILLING
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="credits">
+      <h2>Credits &amp; Billing</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Do my credits expire?</span>
+        </button>
+        <div class="faq-a">
+          <p><strong>No. Your credits never expire.</strong> Whether you use them today or six months from now, they're waiting for you. No subscription, no monthly reset, no pressure.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>How much does each task cost?</span>
+        </button>
+        <div class="faq-a">
+          <p>Each task execution costs <strong>1 credit</strong>. Searching the skill library and browsing categories is free — you're only charged when a framework actually runs.</p>
+          <p>Check your balance anytime:</p>
+          <div class="code-block">Use LawTasksAI to check my balance</div>
+          <p>Buy more credits on the <a href="/buy-credits.html">Buy Credits page →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>What do I get with the 5 free credits?</span>
+        </button>
+        <div class="faq-a">
+          <p>Five full task executions — no credit card required. Each credit runs one complete expert framework: a motion, a demand letter, a research memo, a deposition outline, whatever you need.</p>
+          <p>Five credits is enough to see exactly what LawTasksAI does and decide if it fits your practice.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════
+         TROUBLESHOOTING
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="troubleshooting">
+      <h2>Troubleshooting</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>LawTasksAI isn't showing up in Claude Desktop at all.</span>
+        </button>
+        <div class="faq-a">
+          <p>Most likely cause: Claude Desktop wasn't fully quit before the installer ran, or it hasn't been restarted since installation.</p>
+          <ol>
+            <li><strong>Fully quit Claude Desktop</strong> — right-click the tray icon (Windows) or ⌘Q (Mac). Don't just close the window.</li>
+            <li><strong>Reopen Claude Desktop</strong> — MCP servers load at startup.</li>
+            <li>Go to <strong>Settings → Connectors</strong> and check whether <code>lawtasksai</code> appears.</li>
+          </ol>
+          <p>If it still doesn't appear, <a href="/getting-started.html">re-run the installer</a> after fully quitting Claude Desktop first.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Windows showed a "Windows protected your PC" warning. Is the installer safe?</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes — the installer is safe. Windows shows that blue "SmartScreen" warning for all new software from publishers who haven't yet accumulated enough install history with Microsoft.</p>
+          <p>To proceed:</p>
+          <ol>
+            <li>Click <strong>"More info"</strong> (the small link below the main warning)</li>
+            <li>Click <strong>"Run anyway"</strong></li>
+          </ol>
+          <p>The warning will disappear as more attorneys install the app. It's a standard Windows precaution, not an indication of any problem.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>I ran a task but my credit count didn't change.</span>
+        </button>
+        <div class="faq-a">
+          <p>Searching the library and browsing categories is free — credits are only deducted when a framework actually executes. If you searched but didn't confirm a task run, no credit was used.</p>
+          <p>Check your current balance:</p>
+          <div class="code-block">Use LawTasksAI to check my balance</div>
+          <p>If you believe a credit was charged incorrectly, <a href="/support.html">contact support</a> and we'll review it.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════
+         COMPATIBILITY
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="compatibility">
+      <h2>Compatibility</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Does LawTasksAI work on the claude.ai website?</span>
+        </button>
+        <div class="faq-a">
+          <p><strong>No.</strong> LawTasksAI requires the <strong>Claude Desktop app</strong> — the free downloadable application, not the claude.ai website. The website doesn't support MCP tools.</p>
+          <p>Download Claude Desktop free: <a href="https://claude.ai/download" target="_blank">claude.ai/download →</a></p>
+          <div class="note-box">⚠️ <strong>claude.ai (website) ≠ Claude Desktop (app).</strong> They look similar but the website doesn't support installed skills.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Which AI clients does LawTasksAI support?</span>
+        </button>
+        <div class="faq-a">
+          <ul>
+            <li>✅ <strong>Claude Desktop</strong> (Mac &amp; Windows)</li>
+            <li>✅ <strong>Cursor</strong></li>
+            <li>✅ <strong>Windsurf</strong></li>
+            <li>✅ <strong>Cline</strong> (VS Code extension)</li>
+            <li>✅ <strong>OpenClaw</strong></li>
+            <li>✅ <strong>Claude Code</strong></li>
+            <li>⏳ <strong>Gemini</strong> (coming soon)</li>
+            <li>❌ claude.ai website</li>
+            <li>❌ ChatGPT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Mac or Windows — does it matter?</span>
+        </button>
+        <div class="faq-a">
+          <p>Both are fully supported. The installer auto-detects your OS and downloads the right binary. There's no functional difference between Mac and Windows versions.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════
+         PRIVACY & SECURITY
+    ══════════════════════════════════ -->
+    <div class="faq-section" id="privacy">
+      <h2>Privacy &amp; Security</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Does LawTasksAI see my client data?</span>
+        </button>
+        <div class="faq-a">
+          <p><strong>No.</strong> LawTasksAI runs as a local MCP server on your machine. It provides frameworks and structure — it doesn't process, store, or transmit your client information. Your data stays in the conversation between you and your AI client (Claude Desktop, Cursor, etc.).</p>
+          <p>The only thing LawTasksAI's servers ever see is your license key validation and credit deductions — never the content of your prompts or your client's information.</p>
+          <p>Full details: <a href="/privacy.html">Privacy Policy →</a> &nbsp;·&nbsp; <a href="/security.html">Security Overview →</a></p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+          <span>Is LawTasksAI ABA Rule 1.6 compliant?</span>
+        </button>
+        <div class="faq-a">
+          <p>LawTasksAI is designed with Rule 1.6 confidentiality obligations in mind. Because the MCP server runs locally and doesn't transmit client data, it doesn't introduce new confidentiality risks beyond whatever AI client you're already using.</p>
+          <p>For a detailed analysis: <a href="/blog/aba-formal-opinion-512-guide.html">ABA Formal Opinion 512: A Practical Guide for Attorneys Using AI →</a></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Still have questions? -->
+    <div class="faq-cta">
+      <h2>Still have a question?</h2>
+      <p>We respond to every message within a few hours.</p>
+      <a href="/support.html">Contact Support →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/task-library.html">Task Library</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/support.html">Support</a>
+    </p>
+    <p style="margin-top:12px;">© 2026 LawTasksAI. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  function toggle(btn) {
+    var item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+
+  // Open item if hash matches a section id on load
+  (function () {
+    var hash = window.location.hash;
+    if (!hash) return;
+    var target = document.querySelector(hash);
+    if (target && target.classList.contains('faq-item')) {
+      target.classList.add('open');
+      setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+    }
+  })();
+</script>
+
+</body>
+</html>
