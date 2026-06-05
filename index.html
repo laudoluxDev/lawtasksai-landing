@@ -26,11 +26,12 @@
     <meta property="og:site_name" content="LawTasksAI">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LawTasksAI","applicationCategory":"BusinessApplication","description":"AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality.","url":"https://lawtasksai.com","operatingSystem":"Windows, macOS, Linux","offers":[{"@type":"Offer","name":"Peek","price":"5.00","priceCurrency":"USD"},{"@type":"Offer","name":"Trial Pack","price":"20.00","priceCurrency":"USD"},{"@type":"Offer","name":"Essentials Pack","price":"75.00","priceCurrency":"USD"},{"@type":"Offer","name":"Accelerator Pack","price":"125.00","priceCurrency":"USD"},{"@type":"Offer","name":"Efficient Pack","price":"250.00","priceCurrency":"USD"},{"@type":"Offer","name":"Unstoppable Pack","price":"500.00","priceCurrency":"USD"},{"@type":"Offer","name":"Apex Pack","price":"1000.00","priceCurrency":"USD"}],"audience":{"@type":"Audience","audienceType":"Solo attorneys, small law firms, legal professionals"}}
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LawTasksAI","applicationCategory":"BusinessApplication","description":"AI-powered legal task automation for lawyers, paralegals, and legal staff. 200+ specialized tasks addressing legal research, document analysis, deadline calculation, drafting, case management and more. Privacy-focused architecture designed for attorney confidentiality.","url":"https://lawtasksai.com","operatingSystem":"Windows, macOS, Linux","offers":[{"@type":"Offer","name":"Starter","price":"29.00","priceCurrency":"USD"},{"@type":"Offer","name":"Professional","price":"79.00","priceCurrency":"USD"},{"@type":"Offer","name":"Office","price":"199.00","priceCurrency":"USD"}],"audience":{"@type":"Audience","audienceType":"Solo attorneys, small law firms, legal professionals"}}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
     <!--Zoho Campaigns Web-Optin Form Header-->
     <script type="text/javascript" src="https://zgnp-zngp.maillist-manage.com/js/optin.min.js" onload="setupSF('sf3z8fd55bab10b692db8a3bb3ad943732191c8ec406a04be9a57286ced992a2c456','ZCFORMVIEW',false,'light',false,'0')"></script>
     <script type="text/javascript">function runOnFormSubmit_sf3z8fd55bab10b692db8a3bb3ad943732191c8ec406a04be9a57286ced992a2c456(th){};</script>
@@ -48,23 +49,33 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow">&#9878;&#65039; 200+ Expert Legal Workflows</div>
-        <h1>Draft a demand letter<br>in <span class="accent">2 minutes.</span><br>Not 2 hours.</h1>
-        <p class="hero-sub">200+ expert legal workflows. Pick a task, answer a few questions, get attorney-ready output &mdash; without writing a single prompt.</p>
-        <div class="hero-actions">
-          <a href="/signup" class="btn-primary">Try Free &mdash; 5 Credits, No Card &rarr;</a>
-          <a href="task-library.html" class="btn-secondary">Browse All 206 Tasks</a>
+    <div class="hero-inner" style="grid-template-columns:1fr;text-align:center;">
+      <div class="hero-content" style="max-width:780px;margin:0 auto;">
+        <div class="hero-eyebrow">&#9878;&#65039; For attorneys &amp; legal professionals</div>
+        <h1 style="font-family:'General Sans','Inter',sans-serif;">Your legal paperwork. Done in minutes.</h1>
+        <p class="hero-sub" style="max-width:680px;margin:0 auto 36px;"><strong>206 ready-to-use AI templates</strong> for attorneys and legal professionals. Draft demand letters, research statutes of limitations, summarize depositions, and prepare discovery inside <strong>Claude Desktop</strong> (free app) &mdash; no prompt engineering, no learning curve. Just type what you need.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="/signup" class="btn-primary" style="font-size:1.15rem;padding:18px 36px;">Get My 5 Free Credits &rarr;</a>
         </div>
-        <div class="hero-meta">
+        <div class="hero-meta" style="justify-content:center;">
           <span class="hero-meta-item">5 free credits on signup</span>
           <span class="hero-meta-item">Credits never expire</span>
           <span class="hero-meta-item">No subscription</span>
         </div>
       </div>
-      <!-- Hero Visual -->
-      <div class="hero-visual" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section style="background:#f0f9ff;border-top:1px solid #dbeafe;border-bottom:1px solid #dbeafe;padding:18px 0;text-align:center;">
+  <div class="container">
+    <p style="font-size:1.1rem;color:#1e293b;font-weight:500;margin:0;">&#128274; <strong>Your data stays on your machine.</strong> Client confidences stay confidential. We never see your documents.</p>
+  </div>
+</section>
+
+<!-- REMOVED: Hero Visual / Terminal Demo -->
+<div style="display:none;">
         <style>
           .law-demo-card {
             background: #0f172a;
@@ -239,13 +250,16 @@
   </div>
 </section>
 
+</div>
+<!-- END hidden terminal demo -->
+
 <!-- SOCIAL PROOF: hidden until real testimonials are collected -->
 <!-- <section class="social-proof"> ... </section> -->
 
 <!-- YouTube Video -->
 <section style="padding:80px 0 90px;background:linear-gradient(160deg,#0f172a 0%,#1e293b 100%);text-align:center;overflow:hidden;">
   <div class="container">
-    <div style="display:inline-block;background:rgba(124,58,237,0.18);color:#a78bfa;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;border:1px solid rgba(124,58,237,0.35);margin-bottom:16px;">See It In Action</div>
+    <div style="display:inline-block;background:rgba(124,58,237,0.18);color:#a78bfa;font-size:1rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;border:1px solid rgba(124,58,237,0.35);margin-bottom:16px;">See It In Action</div>
     <h2 style="color:#fff;font-size:2.2rem;font-weight:700;margin-bottom:12px;">Watch LawTasksAI Work</h2>
     <p style="color:#94a3b8;font-size:1.1rem;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;">Same task. Raw AI vs. LawTasksAI. The difference is immediate.</p>
     <div style="max-width:900px;margin:0 auto;padding:6px;background:linear-gradient(135deg,rgba(124,58,237,0.6),rgba(124,58,237,0.3));border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.06);">
@@ -269,33 +283,33 @@
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">How it works</p>
-      <h2 class="section-title">From Question to Professional Output in Seconds</h2>
-      <p class="section-sub">No setup wizards. No prompt libraries to memorize. Just open the task, answer a few questions, and get the output you need.</p>
+      <h2 class="section-title" style="font-family:'General Sans','Inter',sans-serif;">Up and running in under 5 minutes</h2>
+      <p class="section-sub">No technical setup. No prompt engineering. Just real professional output from step one.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-number">1</div>
-        <div class="step-icon">&#128640;</div>
-        <h3>Install the Plugin</h3>
-        <p>Download LawTasksAI and install it in OpenClaw, Claude Desktop, or any MCP-compatible AI client. Takes under 5 minutes.</p>
+        <div style="display:inline-block;background:#dbeafe;color:#2563eb;font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:5px 14px;border-radius:100px;margin-bottom:14px;">30 seconds</div>
+        <h3>Get your free credits</h3>
+        <p>Enter your email and get your license key instantly. 5 credits, no credit card required.</p>
       </div>
       <div class="step-card">
         <div class="step-number">2</div>
-        <div class="step-icon">&#129302;</div>
-        <h3>206+ Tasks That Find Themselves</h3>
-        <p>Tell your AI what you need. It selects the right task automatically &mdash; from a library of 206+ purpose-built legal workflows. No browsing. No guessing. Just results.</p>
+        <div style="display:inline-block;background:#dbeafe;color:#2563eb;font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:5px 14px;border-radius:100px;margin-bottom:14px;">1 minute</div>
+        <h3>Download the free AI app</h3>
+        <p>Get <a href="https://claude.ai/download" target="_blank" rel="noopener" style="color:#2563eb;font-weight:600;">Claude Desktop</a> from Anthropic &mdash; it's free. This is the AI your tasks run inside.</p>
       </div>
       <div class="step-card">
         <div class="step-number">3</div>
-        <div class="step-icon">&#128172;</div>
-        <h3>Provide Your Details</h3>
-        <p>The task asks you the right questions &mdash; jurisdiction, facts, parties, dates. You fill in the specifics. No prompt engineering required.</p>
+        <div style="display:inline-block;background:#dbeafe;color:#2563eb;font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:5px 14px;border-radius:100px;margin-bottom:14px;">1 minute</div>
+        <h3>Run our installer</h3>
+        <p>Double-click the installer, paste your license key, and it configures everything automatically. Done.</p>
       </div>
       <div class="step-card">
         <div class="step-number">4</div>
-        <div class="step-icon">&#128196;</div>
-        <h3>Get Attorney-Ready Output</h3>
-        <p>Receive formatted documents: demand letters, SOL research memos, discovery drafts, deposition summaries &mdash; organized for your review and signature.</p>
+        <div style="display:inline-block;background:#dbeafe;color:#2563eb;font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:5px 14px;border-radius:100px;margin-bottom:14px;">Instant</div>
+        <h3>Run your first task</h3>
+        <p>Type what you need. LawTasksAI finds the right task automatically and delivers attorney-ready output.</p>
       </div>
     </div>
   </div>
@@ -403,105 +417,63 @@
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">Pricing</p>
-      <h2 class="section-title">Simple, pay-as-you-go pricing</h2>
+      <h2 class="section-title" style="font-family:'General Sans','Inter',sans-serif;">Simple, Pay-As-You-Go Pricing</h2>
       <p class="section-sub">No subscriptions. No monthly fees. Buy credits, use them anytime. One credit = one task.</p>
     </div>
-    <p class="pricing-note">Credits never expire.* By purchasing, you agree to our <a href="terms.html" target="_blank">Terms of Service</a>.</p>
 
-    <div class="pricing-grid">
-      <!-- PEEK TIER HIDDEN — testing only, restore when needed
+    <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto;">
       <div class="pricing-card">
-        <div class="pricing-card-name">Peek</div>
-        <div class="pricing-price">$5</div>
-        <div class="pricing-tasks">5 tasks</div>
-        <div class="pricing-per">$1.00 per task</div>
+        <div class="pricing-card-name">Starter</div>
+        <div class="pricing-price">$29</div>
+        <div class="pricing-tasks">50 credits</div>
+        <div class="pricing-per">$0.58 per task</div>
         <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
+          <li>Access to all 206 tasks</li>
           <li>Credits never expire</li>
-          <li>No credit card required</li>
+          <li>Great for getting started</li>
         </ul>
-        <button onclick="checkout('peek')" class="buy-btn">Take a Peek</button>
-      </div>
-      END PEEK TIER -->
-      <div class="pricing-card" id="trial-card">
-        <div class="pricing-card-name">Trial</div>
-        <div class="pricing-price">$20</div>
-        <div class="pricing-tasks">10 tasks</div>
-        <div class="pricing-per">$2.00 per task</div>
-        <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
-          <li>Credits never expire</li>
-          <li>Try a full week of tasks</li>
-        </ul>
-        <button onclick="checkout('trial')" class="buy-btn">Get Started</button>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-name">Essentials</div>
-        <div class="pricing-price">$75</div>
-        <div class="pricing-tasks">50 tasks</div>
-        <div class="pricing-per">$1.50 per task &middot; 25% off</div>
-        <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
-          <li>Credits never expire</li>
-          <li>Covers a busy litigation month</li>
-        </ul>
-        <button onclick="checkout('essentials')" class="buy-btn">Get Credits</button>
+        <button onclick="checkout('starter')" class="buy-btn">Get Started</button>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-card-name">Accelerator</div>
-        <div class="pricing-price">$125</div>
-        <div class="pricing-tasks">100 tasks</div>
-        <div class="pricing-per">$1.25 per task &middot; 38% off</div>
+        <div class="pricing-card-name">Professional</div>
+        <div class="pricing-price">$79</div>
+        <div class="pricing-tasks">150 credits</div>
+        <div class="pricing-per">$0.53 per task</div>
         <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
+          <li>Access to all 206 tasks</li>
           <li>Credits never expire</li>
-          <li>Best for active practices &amp; small firms</li>
+          <li>Best value for active practices</li>
         </ul>
-        <button onclick="checkout('accelerator')" class="buy-btn">Get Credits</button>
+        <button onclick="checkout('professional')" class="buy-btn">Best Value</button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-name">Office</div>
+        <div class="pricing-price">$199</div>
+        <div class="pricing-tasks">500 credits</div>
+        <div class="pricing-per">$0.40 per task</div>
+        <ul class="pricing-perks">
+          <li>Access to all 206 tasks</li>
+          <li>Credits never expire</li>
+          <li>For offices and small firms</li>
+        </ul>
+        <button onclick="checkout('office')" class="buy-btn">Get Credits</button>
       </div>
     </div>
 
-    <div class="pricing-grid-lower">
-      <div class="pricing-card">
-        <div class="pricing-card-name">Efficient</div>
-        <div class="pricing-price">$250</div>
-        <div class="pricing-tasks">250 tasks</div>
-        <div class="pricing-per">$1.00 per task &middot; 50% off</div>
-        <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
-          <li>Credits never expire</li>
-          <li>Covers a full quarter for busy practices</li>
-        </ul>
-        <button onclick="checkout('efficient')" class="buy-btn">Get Credits</button>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-name">Unstoppable</div>
-        <div class="pricing-price">$500</div>
-        <div class="pricing-tasks">625 tasks</div>
-        <div class="pricing-per">$0.80 per task &middot; 60% off</div>
-        <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
-          <li>Credits never expire</li>
-          <li>Maximum value for high-volume firms</li>
-        </ul>
-        <button onclick="checkout('unstoppable')" class="buy-btn">Get Credits</button>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-name">Apex</div>
-        <div class="pricing-price">$1,000</div>
-        <div class="pricing-tasks">1,500 tasks</div>
-        <div class="pricing-per">$0.67 per task &middot; 67% off</div>
-        <ul class="pricing-perks">
-          <li>Access to all 200+ tasks</li>
-          <li>Credits never expire</li>
-          <li>Best value for power users</li>
-        </ul>
-        <button onclick="checkout('apex')" class="buy-btn">Get Credits</button>
-      </div>
+    <!-- Why pay-as-you-go? -->
+    <div style="max-width:900px;margin:48px auto 0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:36px 40px;">
+      <h3 style="font-family:'General Sans','Inter',sans-serif;font-size:1.3rem;font-weight:700;color:#111827;margin-bottom:16px;">Why pay-as-you-go?</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-size:1.05rem;color:#374151;display:flex;gap:12px;align-items:flex-start;line-height:1.5;"><span style="color:#2563eb;font-weight:700;font-size:1.1rem;flex-shrink:0;">&check;</span> Credits never expire &mdash; buy once, use whenever you need them. No monthly pressure.</li>
+        <li style="font-size:1.05rem;color:#374151;display:flex;gap:12px;align-items:flex-start;line-height:1.5;"><span style="color:#2563eb;font-weight:700;font-size:1.1rem;flex-shrink:0;">&check;</span> No subscriptions &mdash; credits sit in your account until you need them. No monthly billing, no auto-renewals.</li>
+        <li style="font-size:1.05rem;color:#374151;display:flex;gap:12px;align-items:flex-start;line-height:1.5;"><span style="color:#2563eb;font-weight:700;font-size:1.1rem;flex-shrink:0;">&check;</span> Your data stays yours &mdash; we never see or store your documents or client information.</li>
+        <li style="font-size:1.05rem;color:#374151;display:flex;gap:12px;align-items:flex-start;line-height:1.5;"><span style="color:#2563eb;font-weight:700;font-size:1.1rem;flex-shrink:0;">&check;</span> Pennies per task compared to $99/month legal SaaS tools you barely use.</li>
+      </ul>
     </div>
 
-    <p class="pricing-footnote">*LawTasksAI credits cover LawTasksAI skills only. If you use a cloud AI provider (Anthropic, OpenAI, etc.), their charges are separate.</p>
+    <p style="text-align:center;color:#6b7280;font-size:1rem;margin-top:28px;line-height:1.6;">*LawTasksAI credits cover LawTasksAI skills only. If you use a cloud AI provider (Anthropic, OpenAI, etc.), their charges are separate.</p>
+    <p style="text-align:center;color:#6b7280;font-size:1rem;margin-top:12px;">By purchasing, you agree to our <a href="/terms.html" style="color:#2563eb;text-decoration:underline;">Terms of Service</a></p>
   </div>
 </section>
 
@@ -516,9 +488,9 @@
       <div class="tech-grid">
         <div>
           <h3>What is LawTasksAI built on?</h3>
-          <p>LawTasksAI is a collection of expert-designed task templates that run through OpenClaw (MCP-compatible AI runtime) or Claude Desktop. The AI executes on your machine &mdash; your documents never touch LawTasksAI servers.</p>
+          <p>LawTasksAI is a collection of expert-designed task templates that run inside AI desktop apps like Claude Desktop, OpenClaw, or Cursor. The AI executes on your machine &mdash; your documents never touch LawTasksAI servers.</p>
           <ul>
-            <li>Works with OpenClaw, Claude Desktop, Cursor, and any MCP-compatible assistant</li>
+            <li>Works with Claude Desktop, OpenClaw, Cursor, and other AI desktop apps</li>
             <li>Supports local AI (Ollama) for 100% air-gapped operation</li>
             <li>Cloud AI (Claude, GPT-4) also supported &mdash; subject to provider terms</li>
             <li>VirusTotal-verified releases</li>
@@ -536,6 +508,16 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding:100px 0;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);text-align:center;">
+  <div class="container">
+    <h2 style="font-family:'General Sans','Inter',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;margin-bottom:12px;">Ready to get started?</h2>
+    <p style="color:#94a3b8;font-size:1.1rem;margin-bottom:36px;">5 free credits. No credit card. Attorney-ready output in minutes.</p>
+    <a href="/signup" class="btn-primary" style="font-size:1.15rem;padding:18px 36px;">Get My 5 Free Credits &rarr;</a>
+    <p style="margin-top:16px;font-size:1.1rem;color:#64748b;">5 free credits &middot; No credit card &middot; Works in 5 minutes</p>
   </div>
 </section>
 
@@ -596,7 +578,7 @@
         <a href="/terms.html">Terms</a>
         <a href="/privacy.html">Privacy</a>
         <a href="mailto:hello@lawtasksai.com">hello@lawtasksai.com</a>
-        <a href="/verified_safe.html" style="display:inline-flex;align-items:center;gap:5px;background:#10b981;color:white;padding:4px 12px;border-radius:100px;font-weight:600;font-size:0.82rem;">🛡️ Verified Safe</a>
+        <a href="/verified_safe.html" style="display:inline-flex;align-items:center;gap:5px;background:#10b981;color:white;padding:4px 12px;border-radius:100px;font-weight:600;font-size:1rem;">🛡️ Verified Safe</a>
       </div>
     </div>
     <div class="footer-bottom">
