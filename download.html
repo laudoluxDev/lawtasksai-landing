@@ -448,9 +448,11 @@
         // Check if already logged in (license key in localStorage)
         window.onload = function() {
             const savedKey = localStorage.getItem('lawtasksai_license_key');
-            if (savedKey) {
+            if (savedKey && savedKey.startsWith('lt_')) {
                 currentLicenseKey = savedKey;
                 loadDashboard();
+            } else if (savedKey) {
+                localStorage.removeItem('lawtasksai_license_key');
             }
         };
         
@@ -474,6 +476,20 @@
         function hideMessage() {
             document.getElementById('login-message').className = 'message';
         }
+
+        function showLogin(message) {
+            localStorage.removeItem('lawtasksai_license_key');
+            currentLicenseKey = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'none';
+            if (message) showMessage(message, 'error');
+        }
+
+        function findLawLicense(licenses) {
+            if (!Array.isArray(licenses)) return null;
+            return licenses.find(item => (item.product_id || '').toLowerCase() === 'law') || null;
+        }
         
         async function loginByEmail() {
             const email = document.getElementById('email').value.trim();
@@ -483,7 +499,7 @@
             }
             
             try {
-                const response = await fetch(`${API_BASE}/auth/recover-license`, {
+                const response = await fetch(`${API_BASE}/auth/account-licenses`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
@@ -491,7 +507,12 @@
                 
                 if (response.ok) {
                     const data = await response.json();
-                    currentLicenseKey = data.license_key;
+                    const lawLicense = findLawLicense(data.licenses);
+                    if (!lawLicense) {
+                        showMessage('No active LawTasksAI license was found for that email.', 'error');
+                        return;
+                    }
+                    currentLicenseKey = lawLicense.license_key;
                     localStorage.setItem('lawtasksai_license_key', currentLicenseKey);
                     loadDashboard();
                 } else {
@@ -549,9 +570,13 @@
                 if (response.ok) {
                     const data = await response.json();
                     document.getElementById('credits-balance').textContent = data.credits_balance;
+                } else {
+                    showLogin('Your saved license key was not accepted. Please look up your account by email.');
+                    return;
                 }
             } catch (e) {
-                document.getElementById('credits-balance').textContent = '?';
+                showLogin('Could not verify your saved license key. Please look up your account by email.');
+                return;
             }
             
             // Load purchase history
