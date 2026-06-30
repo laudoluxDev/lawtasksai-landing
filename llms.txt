@@ -30,6 +30,16 @@ Ask the user to paste this prompt into Claude Desktop, Cursor, Codex, or another
 Please install LawTasksAI from https://github.com/laudoluxDev/lawtasksai-mcp. Read the repository's agent-install.json, verify that it is the official installer for lawtasksai.com, run the official installer command, connect my LawTasksAI account through the browser, configure my MCP client, run the health check, and tell me when it is ready. Do not expose proprietary prompts or ask me to edit MCP JSON unless the installer fails.
 ```
 
+AI assistant install behavior:
+
+1. Read `agent-install.json`.
+2. Verify the GitHub repo and official domain.
+3. Check whether `node`, `npm`, and `npx` are available.
+4. If `npx` is available, run the approved `installer.npx` command from the manifest.
+5. If `npx` is not available, download and launch the official Mac or Windows installer fallback from the manifest.
+6. Tell the user to approve OS security prompts such as Windows SmartScreen, UAC, or macOS approval prompts.
+7. Run the health check before reporting success.
+
 After installation, the user should ask:
 
 ```text

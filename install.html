@@ -51,7 +51,7 @@
   <section class="install-hero">
     <div class="container">
       <h1>Install LawTasksAI with your AI assistant.</h1>
-      <p>Use Claude Desktop, Cursor, Codex, Windsurf, or another MCP-compatible client. Your assistant reads the official GitHub manifest, runs the installer, connects your account, and verifies the setup.</p>
+      <p>Use Claude Desktop, Cursor, Codex, Windsurf, or another MCP-compatible client. Your assistant reads the official GitHub manifest, chooses the right installer path for your machine, connects your account, and verifies the setup.</p>
     </div>
   </section>
 
@@ -72,6 +72,10 @@
 
         <div class="note">
           LawTasksAI servers handle authentication, credits, catalog/search metadata, and licensed skill delivery. LawTasksAI does not process your task content. Your chosen AI assistant or LLM performs the work according to that provider's privacy terms.
+        </div>
+
+        <div class="note">
+          If Node/npm/npx is already available, your assistant may use the `npx` installer. If not, it should download and launch the official Mac or Windows installer listed in the manifest. You may still need to approve Windows SmartScreen, UAC, or macOS security prompts.
         </div>
       </div>
 
