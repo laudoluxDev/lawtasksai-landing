@@ -33,6 +33,9 @@
     label { color: #111827; display: block; font-weight: 700; margin-bottom: 8px; }
     input { border: 1px solid #cbd5e1; border-radius: 7px; font: inherit; min-height: 46px; padding: 10px 12px; width: 100%; }
     input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); outline: none; }
+    .lookup-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 20px; padding: 18px; }
+    .lookup-title { color: #111827; font-weight: 800; margin-bottom: 6px; }
+    .lookup-help { color: #4b5563; font-size: 0.92rem; line-height: 1.55; margin-bottom: 14px; }
     .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
     button, .button { align-items: center; border: 0; border-radius: 7px; cursor: pointer; display: inline-flex; font: inherit; font-weight: 800; justify-content: center; min-height: 46px; padding: 10px 18px; text-decoration: none; }
     button.primary { background: #2563eb; color: #ffffff; }
@@ -76,9 +79,17 @@
           <label for="licenseKey">LawTasksAI license key</label>
           <input id="licenseKey" name="licenseKey" autocomplete="off" spellcheck="false" placeholder="lt_..." required>
         </div>
+        <div class="lookup-panel">
+          <div class="lookup-title">Need your license key?</div>
+          <p class="lookup-help">Enter the email used for your LawTasksAI account. If an active LawTasksAI license is found, this page will fill it in for approval.</p>
+          <label for="lookupEmail">Account email</label>
+          <input id="lookupEmail" name="lookupEmail" autocomplete="email" type="email" placeholder="you@lawfirm.com">
+          <div class="button-row">
+            <button class="button secondary" id="lookupButton" type="button">Find My License</button>
+          </div>
+        </div>
         <div class="button-row">
           <button class="primary" id="approveButton" type="submit">Approve Connection</button>
-          <a class="button secondary" href="/download.html">Find My License</a>
         </div>
       </form>
 
@@ -101,6 +112,14 @@
     var form = document.getElementById('connectForm');
     var button = document.getElementById('approveButton');
     var licenseInput = document.getElementById('licenseKey');
+    var lookupEmail = document.getElementById('lookupEmail');
+    var lookupButton = document.getElementById('lookupButton');
+
+    function normalizedProductId(value) {
+      var cleaned = (value || 'law').trim().toLowerCase();
+      if (cleaned === 'lawtasksai') return 'law';
+      return cleaned || 'law';
+    }
 
     function setStatus(kind, message) {
       ['statusInfo', 'statusSuccess', 'statusError'].forEach(function (id) {
@@ -114,7 +133,7 @@
     }
 
     function friendlyError(status, detail) {
-      if (status === 401) return 'That license key was not accepted. Check the key and try again.';
+      if (status === 401) return 'That license key was not accepted. Use Find My License on this page, or check that the key starts with lt_ and belongs to an active LawTasksAI account.';
       if (status === 403) return 'That license key does not match this LawTasksAI installation request.';
       if (status === 404) return 'This connection code was not found. Ask your AI assistant to start the install again.';
       if (status === 409) return 'This connection code has already been used or approved.';
@@ -130,6 +149,50 @@
     }
 
     setStatus('statusInfo', 'Enter your license key to approve this installation. Your AI assistant will finish setup after approval.');
+
+    lookupButton.addEventListener('click', function () {
+      var email = lookupEmail.value.trim();
+      if (!email) {
+        setStatus('statusError', 'Enter the email used for your LawTasksAI account.');
+        return;
+      }
+
+      lookupButton.disabled = true;
+      setStatus('statusInfo', 'Looking up your LawTasksAI license...');
+
+      fetch(API_BASE + '/auth/account-licenses', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (data) {
+            if (!response.ok) {
+              throw { status: response.status, detail: data.detail };
+            }
+            return data;
+          });
+        })
+        .then(function (data) {
+          var wantedProduct = normalizedProductId(product);
+          var licenses = Array.isArray(data.licenses) ? data.licenses : [];
+          var match = licenses.find(function (item) {
+            return normalizedProductId(item.product_id) === wantedProduct;
+          });
+          if (!match) {
+            setStatus('statusError', 'No active LawTasksAI license was found for that email.');
+            return;
+          }
+          licenseInput.value = match.license_key;
+          setStatus('statusSuccess', 'License found. Click Approve Connection to finish setup.');
+        })
+        .catch(function (error) {
+          setStatus('statusError', error.detail || 'No active LawTasksAI license was found for that email.');
+        })
+        .finally(function () {
+          lookupButton.disabled = false;
+        });
+    });
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
