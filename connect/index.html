@@ -1,15 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1GZ4XTPKZR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1GZ4XTPKZR');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connect LawTasksAI</title>
-  <meta http-equiv="refresh" content="0; url=/connect.html">
-  <script>
-    window.location.replace('/connect.html' + window.location.search + window.location.hash);
-  </script>
+  <meta name="description" content="Approve a LawTasksAI MCP installation connection.">
+  <link rel="canonical" href="https://lawtasksai.com/connect">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    main { background: #f8fafc; min-height: calc(100vh - 64px); }
+    .connect-wrap { max-width: 760px; margin: 0 auto; padding: 64px 20px 88px; }
+    .connect-panel { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 32px; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06); }
+    .eyebrow { color: #2563eb; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; margin-bottom: 12px; text-transform: uppercase; }
+    h1 { font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .intro { color: #374151; font-size: 1.05rem; line-height: 1.65; margin-bottom: 24px; }
+    .code-box { align-items: center; background: #0f172a; border-radius: 8px; color: #f8fafc; display: flex; justify-content: space-between; gap: 18px; margin: 22px 0; padding: 18px 20px; }
+    .code-label { color: #cbd5e1; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; }
+    .code-value { font-family: Menlo, Monaco, Consolas, monospace; font-size: 1.55rem; font-weight: 800; letter-spacing: 0.06em; margin-top: 4px; }
+    .form-row { margin-top: 20px; }
+    label { color: #111827; display: block; font-weight: 700; margin-bottom: 8px; }
+    input { border: 1px solid #cbd5e1; border-radius: 7px; font: inherit; min-height: 46px; padding: 10px 12px; width: 100%; }
+    input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); outline: none; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    button, .button { align-items: center; border: 0; border-radius: 7px; cursor: pointer; display: inline-flex; font: inherit; font-weight: 800; justify-content: center; min-height: 46px; padding: 10px 18px; text-decoration: none; }
+    button.primary { background: #2563eb; color: #ffffff; }
+    button.primary:disabled { background: #94a3b8; cursor: wait; }
+    .button.secondary { background: #e5e7eb; color: #0f172a; }
+    .status { border-radius: 8px; display: none; line-height: 1.55; margin-top: 22px; padding: 15px 16px; }
+    .status.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+    .status.success { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
+    .status.error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+    .fine-print { border-top: 1px solid #e5e7eb; color: #4b5563; font-size: 0.9rem; line-height: 1.6; margin-top: 28px; padding-top: 20px; }
+    @media (max-width: 620px) {
+      .connect-wrap { padding-top: 36px; }
+      .connect-panel { padding: 24px; }
+      h1 { font-size: 1.85rem; }
+      .code-box { align-items: flex-start; flex-direction: column; }
+      .code-value { font-size: 1.25rem; }
+    }
+  </style>
 </head>
 <body>
-  <p>Opening LawTasksAI connection approval...</p>
+<div id="site-header"></div>
+<script src="/header.js"></script>
+
+<main>
+  <div class="connect-wrap">
+    <section class="connect-panel">
+      <div class="eyebrow">MCP install approval</div>
+      <h1>Connect LawTasksAI to your AI assistant.</h1>
+      <p class="intro">Approve this connection only if you recently asked Claude Desktop, Cursor, Codex, Windsurf, or another AI assistant to install LawTasksAI from the official GitHub repository.</p>
+
+      <div class="code-box">
+        <div>
+          <div class="code-label">Connection code</div>
+          <div class="code-value" id="codeValue">Missing</div>
+        </div>
+        <a class="button secondary" href="/install">Install Help</a>
+      </div>
+
+      <form id="connectForm">
+        <div class="form-row">
+          <label for="licenseKey">LawTasksAI license key</label>
+          <input id="licenseKey" name="licenseKey" autocomplete="off" spellcheck="false" placeholder="lt_..." required>
+        </div>
+        <div class="button-row">
+          <button class="primary" id="approveButton" type="submit">Approve Connection</button>
+          <a class="button secondary" href="/download.html">Find My License</a>
+        </div>
+      </form>
+
+      <div class="status info" id="statusInfo"></div>
+      <div class="status success" id="statusSuccess"></div>
+      <div class="status error" id="statusError"></div>
+
+      <p class="fine-print">This page approves installation access only. LawTasksAI servers handle authentication, credits, catalog/search metadata, and licensed skill delivery. LawTasksAI does not process your task content. Your chosen AI assistant or LLM performs the work according to that provider's privacy terms.</p>
+    </section>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var API_BASE = 'https://lawtasksai-api-10437713249.us-central1.run.app';
+    var params = new URLSearchParams(window.location.search);
+    var code = (params.get('code') || '').trim().toUpperCase();
+    var product = (params.get('product') || 'law').trim().toLowerCase();
+    var codeValue = document.getElementById('codeValue');
+    var form = document.getElementById('connectForm');
+    var button = document.getElementById('approveButton');
+    var licenseInput = document.getElementById('licenseKey');
+
+    function setStatus(kind, message) {
+      ['statusInfo', 'statusSuccess', 'statusError'].forEach(function (id) {
+        var el = document.getElementById(id);
+        el.style.display = 'none';
+        el.textContent = '';
+      });
+      var target = document.getElementById(kind);
+      target.textContent = message;
+      target.style.display = 'block';
+    }
+
+    function friendlyError(status, detail) {
+      if (status === 401) return 'That license key was not accepted. Check the key and try again.';
+      if (status === 403) return 'That license key does not match this LawTasksAI installation request.';
+      if (status === 404) return 'This connection code was not found. Ask your AI assistant to start the install again.';
+      if (status === 409) return 'This connection code has already been used or approved.';
+      if (status === 410) return 'This connection code expired. Ask your AI assistant to start the install again.';
+      return detail || 'The connection could not be approved. Please try again.';
+    }
+
+    codeValue.textContent = code || 'Missing';
+    if (!code) {
+      form.style.display = 'none';
+      setStatus('statusError', 'No connection code was provided. Start the install from your AI assistant again.');
+      return;
+    }
+
+    setStatus('statusInfo', 'Enter your license key to approve this installation. Your AI assistant will finish setup after approval.');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var key = licenseInput.value.trim();
+      if (!key) {
+        setStatus('statusError', 'Enter your LawTasksAI license key to continue.');
+        return;
+      }
+
+      button.disabled = true;
+      setStatus('statusInfo', 'Approving this connection...');
+
+      fetch(API_BASE + '/v1/mcp/connect/approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_code: code,
+          license_key: key,
+          product_id: product
+        })
+      })
+        .then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (data) {
+            if (!response.ok) {
+              throw { status: response.status, detail: data.detail };
+            }
+            return data;
+          });
+        })
+        .then(function () {
+          licenseInput.value = '';
+          form.style.display = 'none';
+          setStatus('statusSuccess', 'Connection approved. Return to your AI assistant; it should finish the LawTasksAI setup automatically.');
+        })
+        .catch(function (error) {
+          setStatus('statusError', friendlyError(error.status, error.detail));
+          button.disabled = false;
+        });
+    });
+  })();
+</script>
 </body>
 </html>
