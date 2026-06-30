@@ -243,9 +243,9 @@
           <span>How do I install LawTasksAI?</span>
         </button>
         <div class="faq-a">
-          <p>Download the installer from the <a href="/download.html">Download page</a>. It's a single file — double-click it, enter your license key, click Install. No terminal or Python required.</p>
-          <p>The installer configures Claude Desktop, Cursor, Windsurf, or Cline automatically — whichever you have installed. Then restart your AI client and you're ready.</p>
-          <p>Full step-by-step: <a href="/getting-started.html">Getting Started guide →</a></p>
+          <p>Go to the <a href="/install.html">Install page</a>, copy the prompt, and paste it into Claude Desktop, Cursor, Codex, Windsurf, or another MCP-capable AI assistant.</p>
+          <p>Your assistant reads the official GitHub installer manifest, connects your account through the browser, configures LawTasksAI, and asks you to restart if needed.</p>
+          <p>After installation, use the <a href="/getting-started.html">Getting Started guide</a> to check your balance and run a first workflow.</p>
         </div>
       </div>
 
@@ -255,8 +255,8 @@
           <span>Where do I find my license key?</span>
         </button>
         <div class="faq-a">
-          <p>Your license key is in the email you received when you signed up. Subject line: <em>"Your LawTasksAI License Key."</em></p>
-          <p>If you can't find it, go to <a href="/my-account.html">My Account</a> and log in with your signup email — your key is shown there. Or <a href="/support.html">contact support</a> and we'll resend it.</p>
+          <p>Most users do not need to paste a license key during installation. Use the email address for your LawTasksAI account when the browser approval page opens.</p>
+          <p>If manual license-key entry is ever needed, use the key from your signup email. Manual key entry is the backup path, not the normal path.</p>
         </div>
       </div>
 
@@ -369,29 +369,28 @@
           <span>LawTasksAI isn't showing up in Claude Desktop at all.</span>
         </button>
         <div class="faq-a">
-          <p>Most likely cause: Claude Desktop wasn't fully quit before the installer ran, or it hasn't been restarted since installation.</p>
+          <p>Most likely cause: Claude Desktop has not been fully restarted since LawTasksAI was installed.</p>
           <ol>
             <li><strong>Fully quit Claude Desktop</strong> — right-click the tray icon (Windows) or ⌘Q (Mac). Don't just close the window.</li>
             <li><strong>Reopen Claude Desktop</strong> — MCP servers load at startup.</li>
             <li>Go to <strong>Settings → Connectors</strong> and check whether <code>lawtasksai</code> appears.</li>
           </ol>
-          <p>If it still doesn't appear, <a href="/getting-started.html">re-run the installer</a> after fully quitting Claude Desktop first.</p>
+          <p>If it still doesn't appear, return to the <a href="/install.html">Install page</a>, copy the install prompt again, and let your assistant re-check the setup.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggle(this)">
           <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-          <span>Windows showed a "Windows protected your PC" warning. Is the installer safe?</span>
+          <span>My assistant says npm or npx is unavailable. What should I do?</span>
         </button>
         <div class="faq-a">
-          <p>Yes — the installer is safe. Windows shows that blue "SmartScreen" warning for all new software from publishers who haven't yet accumulated enough install history with Microsoft.</p>
-          <p>To proceed:</p>
+          <p>Install Node.js first. Node.js is a standard helper app used by many modern tools, and it includes npm and npx automatically.</p>
           <ol>
-            <li>Click <strong>"More info"</strong> (the small link below the main warning)</li>
-            <li>Click <strong>"Run anyway"</strong></li>
+            <li>Go to <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a>.</li>
+            <li>Download the recommended installer for your computer.</li>
+            <li>Run it, then reopen your AI assistant and paste the LawTasksAI install prompt again.</li>
           </ol>
-          <p>The warning will disappear as more attorneys install the app. It's a standard Windows precaution, not an indication of any problem.</p>
         </div>
       </div>
 
@@ -435,15 +434,14 @@
         </button>
         <div class="faq-a">
           <ul>
-            <li>✅ <strong>Claude Desktop</strong> (Mac &amp; Windows)</li>
-            <li>✅ <strong>Cursor</strong></li>
-            <li>✅ <strong>Windsurf</strong></li>
-            <li>✅ <strong>Cline</strong> (VS Code extension)</li>
-            <li>✅ <strong>OpenClaw</strong></li>
-            <li>✅ <strong>Claude Code</strong></li>
-            <li>⏳ <strong>Gemini</strong> (coming soon)</li>
-            <li>❌ claude.ai website</li>
-            <li>❌ ChatGPT</li>
+            <li><strong>Claude Desktop</strong> (Mac &amp; Windows)</li>
+            <li><strong>Cursor</strong></li>
+            <li><strong>Codex</strong></li>
+            <li><strong>Windsurf</strong></li>
+            <li><strong>Cline</strong> (VS Code extension)</li>
+            <li><strong>Claude Code</strong></li>
+            <li>Gemini support is planned.</li>
+            <li>The claude.ai website and ChatGPT website do not currently support this MCP install flow.</li>
           </ul>
         </div>
       </div>
@@ -454,7 +452,7 @@
           <span>Mac or Windows — does it matter?</span>
         </button>
         <div class="faq-a">
-          <p>Both are fully supported. The installer auto-detects your OS and downloads the right binary. There's no functional difference between Mac and Windows versions.</p>
+          <p>Both are supported. The recommended install path is the same: copy the prompt from the <a href="/install.html">Install page</a> into your AI assistant and let it configure LawTasksAI.</p>
         </div>
       </div>
 
@@ -472,8 +470,8 @@
           <span>Does LawTasksAI see my client data?</span>
         </button>
         <div class="faq-a">
-          <p><strong>No.</strong> LawTasksAI runs as a local MCP server on your machine. It provides frameworks and structure — it doesn't process, store, or transmit your client information. Your data stays in the conversation between you and your AI client (Claude Desktop, Cursor, etc.).</p>
-          <p>The only thing LawTasksAI's servers ever see is your license key validation and credit deductions — never the content of your prompts or your client's information.</p>
+          <p><strong>No.</strong> LawTasksAI provides frameworks and structure; it does not process, store, or transmit your client task content. Your data stays in the conversation between you and your chosen AI assistant.</p>
+          <p>LawTasksAI servers handle account approval, credits, catalog/search metadata, and licensed workflow delivery. They do not receive your client prompts, uploaded documents, or task answers.</p>
           <p>Full details: <a href="/privacy.html">Privacy Policy →</a> &nbsp;·&nbsp; <a href="/security.html">Security Overview →</a></p>
         </div>
       </div>
@@ -484,7 +482,7 @@
           <span>Is LawTasksAI ABA Rule 1.6 compliant?</span>
         </button>
         <div class="faq-a">
-          <p>LawTasksAI is designed with Rule 1.6 confidentiality obligations in mind. Because the MCP server runs locally and doesn't transmit client data, it doesn't introduce new confidentiality risks beyond whatever AI client you're already using.</p>
+          <p>LawTasksAI is designed with Rule 1.6 confidentiality obligations in mind. LawTasksAI does not receive your client task content; the relevant confidentiality review is the AI assistant and settings you choose for the work.</p>
           <p>For a detailed analysis: <a href="/blog/aba-formal-opinion-512-guide.html">ABA Formal Opinion 512: A Practical Guide for Attorneys Using AI →</a></p>
         </div>
       </div>

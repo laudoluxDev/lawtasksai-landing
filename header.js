@@ -37,7 +37,6 @@
     '          <span class="dropdown-toggle">Support</span>',
     '          <div class="dropdown-menu">',
     '            <a href="/security.html">ABA Rule 1.6 &amp; Security</a>',
-    '            <a href="/download.html">Legacy Download</a>',
     '            <a href="/verified_safe.html">&#128737;&#65039; Verified Safe</a>',
     '            <a href="/terms.html">Terms of Service</a>',
     '            <a href="/privacy.html">Privacy Policy</a>',
