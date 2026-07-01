@@ -6,3 +6,31 @@ fix_fonts.py
 refactor.py
 apply_header_js.py
 *.bak
+
+# Local/generated noise
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+dist/
+build/
+out/
+coverage/
+.cache/
+.turbo/
+*.log
+
+# Local secrets
+.env
+.env.*
+!.env.example
+*key*.json
+*keys*.json
+*token*.json
+*secret*.json
+zoho-listkeys.json
